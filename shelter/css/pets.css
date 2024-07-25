@@ -1,0 +1,25 @@
+
+.header-container {
+    height: 120px;
+    background: var(--color-light-xl);
+}
+
+.pets-container {
+    height: 1342px;
+    background: var(--color-light-l);
+}
+.pets-content {
+    width: 1200px;
+    height: 1162px;
+}
+
+.cards_container {
+    width: 1200px;
+    height: 930px;
+}
+
+.navigation {
+    width: 340px;
+    height: 52px;
+}
+
