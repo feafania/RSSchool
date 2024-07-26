@@ -10,40 +10,73 @@
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container container-header">
-            
-            <section class="section section-not-only" title="Not only">
+<header>
+    <div class="container start-screen-container">
+        <section class="start-screen-container-header">
+            <div class="start-screen-container-header__item">
+                <h1>
+                    <p class="start-screen-container-header__logo-title">
+                        Cozy House
+                    </p>
+                    <p class="start-screen-container-header__logo-subtitle">
+                        Shelter for pets in Boston
+                    </p>
+                </h1>
+            </div>
+            <div class="start-screen-container-header__item">
+                <nav class="header__navigation">
+                    <a href="#about" class="link">About the shelter</a>
+                    <a href="#pets" class="link">Our pets</a>
+                    <a href="#help" class="link">Help the shelter</a>
+                    <a href="#contacts" class="link">Contacts</a>
+                </nav>
+            </div>
+        </section>
+        <section class="start-screen-container-content">
+            <div class="start-screen-container-content__not-only" title="Not only">
+                <h2 class="start-screen-container-content__not-only-header">
+                    Not only people need a house
+                </h2>
+                <p class="paragraph-l start-screen-container-content__not-only-text">
+                    We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!
+                </p>
+                <button class="button_oval button_primary">Make a friend</button>
 
-            </section>
-        </div>>
-    </header>
-    <main>
-        <div class="container container-main">
-   
-            <section class="section section-about" title="About">
+            </div>
+            <div class="start-screen-container-content__puppy">
+                <img src="./assets/img/__start-screen-puppy/start-screen-puppy.png" alt="Start screen puppy">
+            </div>
 
-            </section>
-            <section class="section section-our-friends" title="Our Friends">
+        </section>
+    </div>
+</header>
+<main>
+    <div class="container container-main">
+        <section id = "about" class="section section-about" title="About">
+            <div class="section-about_wrapper">
+                <div class="section-about__image">
+                    <img src="./assets/img/__about-pets/about-pets.png" alt="About pets">
+                </div>
+                <div class="section-about__content">
+                    <h3 class="section-about__header">
+                        About the shelter “Cozy House”
+                    </h3>
+                    <p class="paragraph-l section-about__header-text">
+                        Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.                </p>
+                    <p class="paragraph-l section-about__header-text">
+                        We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.
+                    </p>
+                </div>
+            </div>
 
-            </section>
-            <section class="section section-help" title="Help">
-
-            </section>
-            <section class="section section-in-addition" title="n addition">
-
-            </section>
-
-
-        </div>>
-
-    </main>
-    <footer>
-        <div class="container container-footer">
-            
-
-        </div>>
-
-    </footer>
+        </section>
+        <section id = "pets" class="section section-our-friends" title="Our Friends"></section>
+        <section id = "help" class="section section-help" title="Help"></section>
+        <section id = "contacts" class="section section-in-addition" title="In Addition"></section>
+    </div>
+</main>
+<footer>
+    <div class="container container-footer"></div>
+</footer>
 </body>
 </html>

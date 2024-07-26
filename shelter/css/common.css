@@ -58,7 +58,6 @@ table {
     --color-dark-3xl: #292929;
     --color-primary: #f1cdb3;
     --color-primary-light: #fddcc4;
-    --start-screen-gradient-background: linear-gradient(0deg, #211F20, #211F20);
     --card-hover: 0px 2px 35px 14px rgba(13,13,13,0);
     --h2: 44px;
     --h3: 35px;
@@ -76,43 +75,17 @@ table {
     --second-family: "Arial", sans-serif;
     --third-family: "Inter", sans-serif;
 }
-/* fonts styles*/
-.section-start-scree {
-    /* background-color: var(--start-screen-gradient-background);*/
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    background-color: #d9d9d9; /* Solid color background */
-    background-image:
-            var(--start-screen-gradient-background),
-            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-            url("../assets/img/_noise_transparent.png");
-}
 
-.logo-title {
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 110%;
-    letter-spacing: 0.06em;
-    color: var(--color-primary);
-}
-
-.logo-subtitle {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    color: var(--color-light-xl);
-}
-
-.h2 {
+h2 {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: var(--h2);
     line-height: 130%;
-    color: var(--color-dark-l);
+    color: var(--color-light-xl);
+
 }
 
-.h3 {
+h3 {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: var(--h3);
@@ -121,7 +94,7 @@ table {
     color: var(--color-dark-l);
 }
 
-.h4 {
+h4 {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: var(--h4);
@@ -131,7 +104,7 @@ table {
 
 }
 
-.h5 {
+h5 {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: var(--h5);
@@ -146,7 +119,6 @@ table {
     font-weight: 400;
     font-size: var(--paragraph-l);
     line-height: 160%;
-    color: var(--color-dark-xl);
 }
 
 .paragraph-s {
@@ -163,6 +135,32 @@ table {
     font-weight: 400;
 }
 
+.header__navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.link {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    margin-left: 35px;
+    color: var(--color-dark-s);
+    padding-bottom: 2px;
+    text-decoration: none;
+    transition: border-bottom 0.3s;    /* Плавный переход для подчеркивания */
+}
+
+.link:active {
+    color: var(--color-light-s);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.link:hover {
+    color: var(--color-light-s);
+}
+
 .list-item-text {
     font-family: var(--font-family);
     font-weight: 400;
@@ -171,55 +169,13 @@ table {
     letter-spacing: 0.06em;
     color: #000;
 }
+
 .list-item-dot {
     border-radius: 100%;
     fill: var(--color-primary);
 <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="2" cy="2" r="2" fill="#F1CDB3" />
 </svg>
-}
-
-.link {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 160%;
-}
-
-.link_normal {
-    color: var(--color-dark-s);
-}
-
-.link_active {
-    color: var(--color-light-s);
-    background: var(--color-primary);
-}
-
-.link_hover {
-    color: var(--color-light-s);
-}
-
-.link-rectangle {
-    width: 462px;
-    height: 44px;
-    background: var(--color-light-xl);
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 160%;
-}
-
-.link-rectangle_normal {
-    color: var(--color-dark-l);
-
-}
-
-.link-rectangle_active {
-    color: var(--color-dark-l);
-}
-
-.link-rectangle_hover {
-    color: var(--color-dark-3xl);
 }
 
 
@@ -244,7 +200,7 @@ table {
     /*background: url("path_to_image");*/
 }
 
-.card_hover {
+.card:hover {
     box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
     background: none;
 }
@@ -305,7 +261,7 @@ table {
     color: var(--color-dark-s);
 }
 
-.button_paginator_active {
+.button_paginator:active {
     background: var(--color-primary);
     color: var(--color-dark-3xl);
 }
@@ -315,12 +271,12 @@ table {
     color: var(--color-dark-3xl);
 }
 
-.button_paginator_hover {
+.button_paginator:hover {
     background: var(--color-primary-light);
     color: var(--color-dark-3xl);
 }
 
-.button_arrow_hover {
+.button_arrow:hover {
     fill: var(--color-primary-light);
 <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="52" height="52" rx="26" fill="#FDDCC4" />
@@ -371,7 +327,7 @@ table {
 <path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929" />
 </svg>
 }
-.modal_close_button_hover {
+.modal_close_button:hover {
     fill: var(--color-primary-light);
 <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="52" height="52" rx="26" fill="#FDDCC4" />
@@ -403,7 +359,7 @@ table {
     background: var(--color-primary);
 }
 
-.button_primary_hover {
+.button_primary:hover {
     background: var(--color-primary-light);
 }
 
@@ -412,7 +368,7 @@ table {
     background: none;
 }
 
-.button_secondary_hover {
+.button_secondary:hover {
     background: var(--color-primary-light);
 }
 
