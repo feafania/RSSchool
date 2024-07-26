@@ -146,20 +146,126 @@ h5 {
     font-size: 15px;
     line-height: 160%;
     margin-left: 35px;
-    color: var(--color-dark-s);
     padding-bottom: 2px;
     text-decoration: none;
     transition: border-bottom 0.3s;    /* Плавный переход для подчеркивания */
 }
 
 .link:active {
-    color: var(--color-light-s);
     border-bottom: 2px solid var(--color-primary);
 }
 
-.link:hover {
-    color: var(--color-light-s);
+.button-oval {
+    border-radius: 100px;
+    padding: 15px 45px;
+    height: 52px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-3xl);
+    text-align: center;
 }
+
+.button-primary {
+    background: var(--color-primary);
+}
+
+.button-primary:hover {
+    background: var(--color-primary-light);
+}
+
+.button-secondary {
+    border: 2px solid var(--color-primary);
+    background: none;
+}
+
+.button-secondary:hover {
+    background: var(--color-primary-light);
+}
+
+.button-round {
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--color-dark-3xl);
+    border: 2px solid var(--color-primary);
+    background-color: transparent;
+}
+
+.button-round:hover {
+    border: none;
+    background-color: var(--color-primary-light);
+}
+
+.button-round:active {
+    border: none;
+    background-color: var(--color-primary);
+}
+
+.button-round:disabled {
+    color: var(--color-dark-s);
+    border: 2px solid var(--color-dark-s);
+    background-color: transparent;
+}
+
+.button-arrow-left::before {
+    content: "\2190";
+}
+
+.button-arrow-right::before {
+    content: "\2192";
+}
+
+.button-make-friend:after {
+     content: "Make a friend";
+ }
+
+.button-make-learn-more:after {
+    content: "Learn more";
+}
+
+.button-get-to-know:after {
+    content: "Get to know the rest";
+}
+
+.card {
+    border-radius: 9px;
+    padding: 30px 35px;
+    width: 270px;
+    height: 435px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-light-s);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--color-dark-l);
+    transition: transform 0.5s ease;
+}
+
+.card-image {
+    border-radius: 9px 9px 0 0;
+    width: 270px;
+    height: 270px;
+}
+
+.card-title {
+    height: 23px;
+}
+
+/*
 
 .list-item-text {
     font-family: var(--font-family);
@@ -178,198 +284,9 @@ h5 {
 </svg>
 }
 
-
-.card {
-    border-radius: 9px;
-    padding: 30px 35px;
-    width: 270px;
-    height: 435px;
-    background: var(--color-light-s);
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 20px;
-    letter-spacing: 0.06em;
-    text-align: center;
-    color: var(--color-dark-l);
-}
-
-.card_picture {
-    border-radius: 9px 9px 0 0;
-    width: 270px;
-    height: 270px;
-    /*background: url("path_to_image");*/
-}
-
-.card:hover {
-    box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
-    background: none;
-}
-
-.modal_close_button-hover {
-    border-radius: 100px;
-    fill: var(--color-primary-light);
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="52" height="52" rx="26" fill="#FDDCC4" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929" />
-</svg>
-}
-
-.modal_close_button-hover_vector {
-    fill: var(--color-dark-3xl);
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
-</svg>
-}
-
-.modal_close_button {
-    border-radius: 100px;
-    border: 2px solid var(--color-primary);
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929" />
-</svg>
-}
-
-.modal_close_button_vector {
-    fill: var(--color-dark-3xl);
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<    path fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
-</svg>
-}
-
 .navigation_max-width-768 {
     width: 300px;
     height: 52px;
-}
-
-.button_round {
-    width: 52px;
-    height: 52px;
-    border-radius: 100px;
-    padding: 14px 21px;
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
-    text-align: center;
-}
-
-.button_paginator_inactive {
-    border: 2px solid var(--color-dark-s);
-    background: none;
-    color: var(--color-dark-s);
-}
-
-.button_paginator:active {
-    background: var(--color-primary);
-    color: var(--color-dark-3xl);
-}
-
-.button_paginator {
-    border: 2px solid var(--color-primary);
-    color: var(--color-dark-3xl);
-}
-
-.button_paginator:hover {
-    background: var(--color-primary-light);
-    color: var(--color-dark-3xl);
-}
-
-.button_arrow:hover {
-    fill: var(--color-primary-light);
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="52" height="52" rx="26" fill="#FDDCC4" />
-<path d="M33 25V27H22V29L19 26L22 23V25H33Z" fill="#292929" />
-</svg>
-}
-.button_arrow_hover_text {
-    fill: var(--color-dark-3xl);
-<svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
-</svg>
-}
-
-.button_arrow_inactive {
-    border: 2px solid var(--color-dark-s);
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="50" height="50" rx="25" stroke="#CDCDCD" stroke-width="2" />
-<path d="M33 25V27H22V29L19 26L22 23V25H33Z" fill="#CDCDCD" />
-</svg>
-}
-
-.button_arrow_inactive_text {
-    fill: var(--color-dark-s);
-<svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#CDCDCD" />
-</svg>
-}
-
-.button_arrow {
-    border-radius: 100px;
-    border: 2px solid var(--color-primary);
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2" />
-<path d="M33 25V27H22V29L19 26L22 23V25H33Z" fill="#292929" />
-</svg>
-}
-
-.button_arrow_text {
-    fill: var(--color-dark-3xl);
-<svg width="14" height="6" viewBox="0 0 14 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14 2V4H3V6L0 3L3 0V2H14Z" fill="#292929" />
-</svg>
-}
-
-.modal_close_button {
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="50" height="50" rx="25" stroke="#F1CDB3" stroke-width="2" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929" />
-</svg>
-}
-.modal_close_button:hover {
-    fill: var(--color-primary-light);
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="52" height="52" rx="26" fill="#FDDCC4" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M27.4262 26L31.7046 21.7216C32.0985 21.3277 32.0985 20.6892 31.7046 20.2954C31.3108 19.9016 30.6723 19.9016 30.2785 20.2954L26 24.5739L21.7215 20.2954C21.3276 19.9015 20.6892 19.9015 20.2953 20.2954C19.9016 20.6892 19.9016 21.3277 20.2953 21.7215L24.5738 26L20.2953 30.2785C19.9016 30.6723 19.9016 31.3108 20.2953 31.7046C20.6892 32.0985 21.3276 32.0985 21.7215 31.7046L26 27.4261L30.2785 31.7046C30.6723 32.0985 31.3108 32.0985 31.7046 31.7046C32.0985 31.3108 32.0985 30.6723 31.7046 30.2785L27.4262 26Z" fill="#292929" />
-</svg>
-}
-
-.modal_close_button_vector {
-    fill: var(--color-dark-3xl);
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M7.42618 6.00003L11.7046 1.72158C12.0985 1.32775 12.0985 0.689213 11.7046 0.295433C11.3108 -0.0984027 10.6723 -0.0984027 10.2785 0.295433L5.99998 4.57394L1.72148 0.295377C1.32765 -0.098459 0.68917 -0.098459 0.295334 0.295377C-0.0984448 0.689213 -0.0984448 1.32775 0.295334 1.72153L4.57383 5.99997L0.295334 10.2785C-0.0984448 10.6723 -0.0984448 11.3108 0.295334 11.7046C0.68917 12.0985 1.32765 12.0985 1.72148 11.7046L5.99998 7.42612L10.2785 11.7046C10.6723 12.0985 11.3108 12.0985 11.7046 11.7046C12.0985 11.3108 12.0985 10.6723 11.7046 10.2785L7.42618 6.00003Z" fill="#292929" />
-</svg>
-}
-
-.button_oval {
-    border-radius: 100px;
-    padding: 15px 45px;
-    width: 207px;
-    height: 52px;
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-    color: var(--color-dark-3xl);
-}
-
-.button_primary {
-    background: var(--color-primary);
-}
-
-.button_primary:hover {
-    background: var(--color-primary-light);
-}
-
-.button_secondary {
-    border: 2px solid var(--color-primary);
-    background: none;
-}
-
-.button_secondary:hover {
-    background: var(--color-primary-light);
 }
 
 .modal-window-1280 {
@@ -389,14 +306,14 @@ h5 {
     border-radius: 9px 0 0 9px;
     width: 500px;
     height: 500px;
-    /* background: url("path_to_image");*/
+    background: url("path_to_image");
 
 }
 
 .modal-window_content {
     width: 351px;
     height: 362px;
-}
+}*/
 
 
 

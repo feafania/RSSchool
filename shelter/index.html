@@ -14,33 +14,33 @@
     <div class="container start-screen-container">
         <section class="start-screen-container-header">
             <div class="start-screen-container-header__item">
-                <h1>
-                    <p class="start-screen-container-header__logo-title">
+                <div class=start-screen-container-header__logo">
+                    <h1 class="start-screen-container-header__logo-title">
                         Cozy House
-                    </p>
+                    </h1>
                     <p class="start-screen-container-header__logo-subtitle">
                         Shelter for pets in Boston
                     </p>
-                </h1>
+                </div>
             </div>
             <div class="start-screen-container-header__item">
                 <nav class="header__navigation">
-                    <a href="#about" class="link">About the shelter</a>
-                    <a href="#pets" class="link">Our pets</a>
-                    <a href="#help" class="link">Help the shelter</a>
-                    <a href="#contacts" class="link">Contacts</a>
+                    <a href="#about" class="link start-screen-container-header__link">About the shelter</a>
+                    <a href="#pets" class="link start-screen-container-header__link">Our pets</a>
+                    <a href="#help" class="link start-screen-container-header__link">Help the shelter</a>
+                    <a href="#contacts" class="link start-screen-container-header__link">Contacts</a>
                 </nav>
             </div>
         </section>
         <section class="start-screen-container-content">
-            <div class="start-screen-container-content__not-only" title="Not only">
+            <div class="start-screen-container-content__not-only">
                 <h2 class="start-screen-container-content__not-only-header">
                     Not only people need a house
                 </h2>
                 <p class="paragraph-l start-screen-container-content__not-only-text">
                     We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!
                 </p>
-                <button class="button_oval button_primary">Make a friend</button>
+                <button class="button-oval button-primary button-make-friend"></button>
 
             </div>
             <div class="start-screen-container-content__puppy">
@@ -50,9 +50,10 @@
         </section>
     </div>
 </header>
+
 <main>
     <div class="container container-main">
-        <section id = "about" class="section section-about" title="About">
+        <section id = "about" class="section section-about">
             <div class="section-about_wrapper">
                 <div class="section-about__image">
                     <img src="./assets/img/__about-pets/about-pets.png" alt="About pets">
@@ -70,13 +71,35 @@
             </div>
 
         </section>
-        <section id = "pets" class="section section-our-friends" title="Our Friends"></section>
-        <section id = "help" class="section section-help" title="Help"></section>
-        <section id = "contacts" class="section section-in-addition" title="In Addition"></section>
+        <section id = "pets" class="section section-our-friends">
+            <div class="section-our-friends_wrapper">
+                <div class="section section-our-friends__header">
+                    <h3>
+                        Our friends who<br>
+                        are looking for a house
+                    </h3>
+                </div>
+                <div class="section section-our-friends__slider">
+                    <button class="button-round button-arrow-left"></button>
+                    <div id="card1" class="card" ></div>
+                    <div id="card2" class="card" ></div>
+                    <div id="card3" class="card" ></div>
+                    <button class="button-round button-arrow-right"></button>
+                </div>
+                <div class="section section-our-friends__button">
+                    <button class="button-oval button-primary button-get-to-know"></button>
+                </div>
+            </div>
+        </section>
+        <section id = "help" class="section section-help"></section>
+        <section id = "contacts" class="section section-in-addition"></section>
     </div>
 </main>
+
 <footer>
     <div class="container container-footer"></div>
 </footer>
+
+<script src="./js/main.js"></script>
 </body>
 </html>

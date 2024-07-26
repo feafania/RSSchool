@@ -15,14 +15,13 @@ body {
     justify-content: space-between;
     min-height: 100vh;
     /* font use */
-    font-family: var(--second-family);
 }
 
 .container {
+
     max-width: 1280px;
     margin: 0 auto;
 }
-
 
 .start-screen-container {
     height: 908px;
@@ -44,7 +43,7 @@ body {
 }
 .start-screen-container-content {
     height: 728px;
-    margin: 0px 40px 0px;
+    margin: 0 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,13 +53,13 @@ body {
     flex: 1;
 }
 
-.start-screen-container-header__item h1 {
+.start-screen-container-header__logo {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
     margin: 0;
 }
+
 
 .start-screen-container-header__logo-title {
     height: 35px;
@@ -71,6 +70,10 @@ body {
     letter-spacing: 0.06em;
     color: var(--color-primary);
     margin: 0 0 10px;
+}
+
+.start-screen__button {
+    width: 207px;
 }
 
 .start-screen-container-header__logo-subtitle {
@@ -102,6 +105,18 @@ body {
 .start-screen-container-content__puppy {
     width: 698px;
     height: 728px;
+}
+
+.start-screen-container-header__link {
+    color: var(--color-dark-s);
+ }
+
+.start-screen-container-header__link:active {
+    color: var(--color-light-s);
+}
+
+.start-screen-container-header__link:hover {
+    color: var(--color-light-s);
 }
 
 .section-about {
@@ -144,18 +159,37 @@ body {
     color: var(--color-dark-xl);
 }
 
-.pets {
+.section-our-friends {
     height: 877px;
     background: var(--color-light-l);
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.pets-slider {
+
+.section-our-friends_wrapper {
+    width: 1200px;
+    height: 697px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-our-friends__header {
+    width: 400px;
+    height: 90px;
+    text-align: center;
+}
+
+.section-our-friends__slider {
     width: 1200px;
     height: 435px;
-}
-
-.pets-button {
-    width: 261px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s ease;
 }
 
 .help {
