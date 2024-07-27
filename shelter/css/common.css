@@ -29,6 +29,7 @@ body {
 }
 ol, ul {
     list-style: none;
+    text-decoration: none;
 }
 blockquote, q {
     quotes: none;
@@ -125,21 +126,6 @@ h5 {
     justify-content: flex-end;
 }
 
-.link {
-    font-family: var(--second-family);
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 160%;
-    margin-left: 35px;
-    padding-bottom: 2px;
-    text-decoration: none;
-    transition: border-bottom 0.3s;    /* Плавный переход для подчеркивания */
-}
-
-.link:active {
-    border-bottom: 2px solid var(--color-primary);
-}
-
 .button-oval {
     border-radius: 100px;
     padding: 15px 45px;
@@ -155,7 +141,7 @@ h5 {
 
 .button-primary {
     background: var(--color-primary);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, cursor 0.3s ease;
 }
 
 .button-primary:hover {
@@ -166,7 +152,7 @@ h5 {
 .button-secondary {
     border: 2px solid var(--color-primary);
     background: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, cursor 0.3s ease;
 }
 
 .button-secondary:hover {
@@ -187,7 +173,7 @@ h5 {
     color: var(--color-dark-3xl);
     border: 2px solid var(--color-primary);
     background-color: transparent;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, cursor 0.3s ease;
 }
 
 .button-round:hover {
@@ -196,12 +182,14 @@ h5 {
     cursor: pointer;
 }
 
-.button-round:active {
+.button-round:active,
+.button-round.inactive
+{
     border: none;
     background-color: var(--color-primary);
 }
 
-.button-round:disabled {
+.button-round.disabled {
     color: var(--color-dark-s);
     border: 2px solid var(--color-dark-s);
     background-color: transparent;
@@ -219,7 +207,7 @@ h5 {
      content: "Make a friend";
  }
 
-.button-make-learn-more:after {
+.button-learn-more:after {
     content: "Learn more";
 }
 
@@ -243,7 +231,7 @@ h5 {
     letter-spacing: 0.06em;
     text-align: center;
     color: var(--color-dark-l);
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, cursor 0.3s ease;
 }
 
 .card-image {
