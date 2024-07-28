@@ -217,7 +217,7 @@ h5 {
 
 .card {
     border-radius: 9px;
-    padding: 30px 35px;
+    padding: 0px 35px 30px;
     width: 270px;
     height: 435px;
     display: flex;
@@ -242,6 +242,12 @@ h5 {
 
 .card-title {
     height: 23px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--color-dark-l);
 }
 
 .card:hover {

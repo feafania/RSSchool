@@ -95,7 +95,7 @@ function createCard(numberArray,id) {
     cardElement.innerHTML = '';
 
     const img = document.createElement('img');
-    const title = document.createElement('p');
+    const title = document.createElement('div');
     if (numberArray < pets.length) {
         img.src = pets[numberArray].imgSrc;
         img.alt = `${pets[numberArray].name} — ${pets[numberArray].species}`;

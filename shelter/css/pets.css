@@ -57,7 +57,6 @@ body {
     justify-content: space-between;
     align-items: start;
     margin: 0;
-
 }
 
 .pets-container-header__logo-title {
@@ -80,11 +79,13 @@ body {
     letter-spacing: 0.1em;
     color: var(--color-dark-3xl);
     text-align: left;
+    padding-left: 4px;
 }
 
 .pets-container-header__navigation {
     height: 27px;
     float: right;
+    padding-right: 2px;
 }
 
 .pets-container-header__menu {
@@ -136,6 +137,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-top: -20px;
 }
 
 .section-pets__header {
@@ -230,17 +232,23 @@ body {
 .container-footer__title {
     font-size: 35px;
     line-height: 130%;
+    letter-spacing: 0.058em;
     color: var(--color-light-xl);
 }
+
 .container-footer__text {
     width: inherit;
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    justify-content: start;
+    align-items: center;
 }
 
-.container-footer__text img {
+.container-footer__text-item img {
+    display: inline-block;
+    align-items: center;
     padding-right: 20px;
+    margin-bottom: -5px;
 }
 
 .map-link,
