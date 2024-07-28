@@ -78,6 +78,12 @@ body {
     margin: 0;
 }
 
+.start-screen-container-header__logo_link {
+    text-decoration: none;
+    color: inherit;
+    transition: cursor 0.3s ease;
+}
+
 .start-screen-container-header__logo-title {
     height: 35px;
     font-family: var(--font-family);
@@ -396,6 +402,11 @@ body {
     color: var(--color-dark-l);
 }
 
+.section-donation__bank-number {
+    text-decoration: none;
+    color: inherit;
+    transition: cursor 0.3s ease;
+}
 .container-footer {
     height: 350px;
     display: flex;

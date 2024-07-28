@@ -144,7 +144,8 @@ h5 {
     transition: background-color 0.3s ease, border-color 0.3s ease, cursor 0.3s ease;
 }
 
-.button-primary:hover {
+.button-primary:hover,
+.card:hover .button-primary {
     background: var(--color-primary-light);
     cursor: pointer;
 }
@@ -155,7 +156,9 @@ h5 {
     transition: background-color 0.3s ease, cursor 0.3s ease;
 }
 
-.button-secondary:hover {
+.button-secondary:hover,
+.card:hover .button-secondary {
+    border: none;
     background: var(--color-primary-light);
     cursor: pointer;
 }
@@ -182,17 +185,24 @@ h5 {
     cursor: pointer;
 }
 
-.button-round:active,
+.button-round:active
+{
+    border: none;
+    background-color: var(--color-primary);
+}
+
 .button-round.inactive
 {
     border: none;
     background-color: var(--color-primary);
+    cursor: default;
 }
 
 .button-round.disabled {
     color: var(--color-dark-s);
     border: 2px solid var(--color-dark-s);
     background-color: transparent;
+    cursor: default;
 }
 
 .button-arrow-left::before {

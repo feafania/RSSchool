@@ -59,6 +59,12 @@ body {
     margin: 0;
 }
 
+.pets-container-header__logo_link {
+    text-decoration: none;
+    color: inherit;
+    transition: cursor 0.3s ease;
+}
+
 .pets-container-header__logo-title {
     height: 35px;
     font-family: var(--font-family);
