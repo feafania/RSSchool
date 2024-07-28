@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'Arial';
+    src: url('../assets/fonts/arial-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('../assets/fonts/georgia-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arial Italic';
+    src: url('../assets/fonts/arial-italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
 /* reset css */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -64,7 +85,7 @@ table {
     /*fonts   */
     --font-family: "Georgia", sans-serif;
     --second-family: "Arial", sans-serif;
-    --third-family: "Inter", sans-serif;
+    --second-family-italic: "Arial Italic", sans-serif;
 }
 
 h2 {
@@ -113,7 +134,7 @@ h5 {
 }
 
 .paragraph-s {
-    font-family: var(--second-family);
+    font-family: var(--second-family-italic);
     font-style: italic;
     font-weight: 400;
     font-size: 12px;
