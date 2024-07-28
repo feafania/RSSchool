@@ -1,6 +1,6 @@
 const pets = [
     {
-        imgSrc: './assets/img/__pets-katrine/pets-katrine.png',
+        imgSrc: './assets/img/pets-katrine/pets-katrine.png',
         name: 'Katrine',
         species: 'Cat',
         breed: 'British Shorthair',
@@ -11,7 +11,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-jennifer/pets-jennifer.png',
+        imgSrc: './assets/img/pets-jennifer/pets-jennifer.png',
         name: 'Jennifer',
         species: 'Dog',
         breed: 'Labrador',
@@ -22,7 +22,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-woody/pets-woody.png',
+        imgSrc: './assets/img/pets-woody/pets-woody.png',
         name: 'Woody',
         species: 'Dog',
         breed: 'Golden Retriever',
@@ -33,7 +33,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-sophia/pets-sophia.png',
+        imgSrc: './assets/img/pets-sophia/pets-sophia.png',
         name: 'Sophia',
         species: 'Dog',
         breed: 'Shih tzu',
@@ -44,7 +44,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-timmy/pets-timmy.png',
+        imgSrc: './assets/img/pets-timmy/pets-timmy.png',
         name: 'Timmy',
         species: 'Cat',
         breed: 'British Shorthair',
@@ -55,7 +55,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-charly/pets-charly.png',
+        imgSrc: './assets/img/pets-charly/pets-charly.png',
         name: 'Charly',
         species: 'Dog',
         breed: 'Jack Russell Terrier ',
@@ -66,7 +66,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-scarlet/pets-scarlet.png',
+        imgSrc: './assets/img/pets-scarlet/pets-scarlet.png',
         name: 'Scarlett',
         species: 'Dog',
         breed: 'Jack Russell Terrier',
@@ -77,7 +77,7 @@ const pets = [
         parasiters: 'none'
     },
     {
-        imgSrc: './assets/img/__pets-freddie/pets-freddie.png',
+        imgSrc: './assets/img/pets-freddie/pets-freddie.png',
         name: 'Freddie',
         species: 'Cat',
         breed: 'British Shorthair',
