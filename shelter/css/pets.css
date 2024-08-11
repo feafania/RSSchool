@@ -30,25 +30,46 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: auto; /* Height adjusts automatically */
+        display: block; /* Switch to block layout for screens up to 768px wide */
+        padding: 0 16px; /* Add padding to prevent content from sticking to edges */
+    }
+
+    @media (max-width: 320px) {
+        padding: 0 8px; /* Reduce padding for very small screens */
+        /* Additional styles for very small screens, if needed */
+    }
 }
 
 .pets-container_wrapper {
-    max-width: 100%;
-    width: 1280px;
-    height: 120px;
+    width: 100%;
+    max-width: 1280px;
+    min-height: 120px;
 }
 
 .pets-container-header {
-    max-width: 100%;
-    width: 1200px;
-    height: 60px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 60px;
     margin: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 768px) {
+
+    }
+
+    @media (max-width: 320px) {
+        margin: 8vh 10vw 15vh; /* Proportional margins for very small screens (320px and below) */
+        /* Additional styles for very small screens, if needed */
+    }
 }
 .pets-container-header__item {
-    flex: 1;
+    /*flex: 1;*/
 }
 
 .pets-container-header__logo {
@@ -66,7 +87,7 @@ body {
 }
 
 .pets-container-header__logo-title {
-    height: 35px;
+    min-height: 35px;
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 32px;
@@ -75,10 +96,22 @@ body {
     color: var(--color-dark-l);
     margin: 0 0 10px;
     text-align: left;
+
+    @media (max-width: 768px) {
+        min-height: 4.6vh; /* Adjusted height for screens up to 768px */
+        font-size: 3vw; /* Adjusted font-size for screens up to 768px */
+        margin: 0 4vw 4.6vh; /* Adjusted margin for screens up to 768px */
+    }
+
+    @media (max-width: 320px) {
+        min-height: 7.4vh; /* Further adjusted height for screens up to 320px */
+        font-size: 6vw; /* Further adjusted font-size for screens up to 320px */
+        margin: 0 6vw 7.4vh; /* Further adjusted margin for screens up to 320px */
+    }
 }
 
 .pets-container-header__logo-subtitle {
-    height: 15px;
+    min-height: 15px;
     font-family: var(--second-family);
     font-weight: 400;
     font-size: 13px;
@@ -86,13 +119,28 @@ body {
     color: var(--color-dark-3xl);
     text-align: left;
     padding-left: 4px;
+    @media (max-width: 768px) {
+        min-height: 3.0vh; /* Adjusted height for screens up to 768px */
+        font-size: 2.0vw; /* Adjusted font-size for screens up to 768px */
+        padding-left: 1vw; /* Adjusted padding-left for screens up to 768px */
+    }
+
+    @media (max-width: 320px) {
+        min-height: 4.7vh; /* Further adjusted height for screens up to 320px */
+        font-size: 4.0vw; /* Further adjusted font-size for screens up to 320px */
+        padding-left: 2vw; /* Further adjusted padding-left for screens up to 320px */
+    }
 }
 
 .pets-container-header__navigation {
-    height: 27px;
+    min-height: 27px;
     float: right;
     padding-right: 2px;
+    @media (max-width: 768px) {
+        display: none; /* Hide the navigation menu on smaller screens */
+    }
 }
+
 
 .pets-container-header__menu {
     display: flex;
@@ -127,57 +175,95 @@ body {
 }
 
 .section-pets {
-    max-width: 100%;
-    height: 1342px;
+    width: 100%;
+    min-height: 1342px;
     background: var(--color-light-l);
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+        height: 70vw; /* Adjusted height for medium screens (approx. 877px) */
+    }
+    @media (max-width: 320px) {
+        height: 90vw; /* Adjusted height for small screens (approx. 877px) */
+    }
 }
 
 .section-pets_wrapper {
-    max-width: 100%;
-    width: 1200px;
-    height: 1162px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 1162px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-top: -20px;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+
+    }
+
+    @media (max-width: 320px) {
+        max-width: 100%;
+
+    }
 }
 
 .section-pets__header {
-    max-width: 100%;
-    width: 400px;
-    height: 90px;
+    width: 100%;
+    max-width: 400px;
+    min-height: 90px;
     text-align: center;
+    @media (max-width: 768px) {
+        max-width: 80vw; /* Adjusts width for medium screens */
+    }
+
+    @media (max-width: 320px) {
+        max-width: 90vw; /* Adjusts width for small screens */
+    }
 }
 
 .section-pets_card-container {
-    max-width: 100%;
-    width: 1200px;
-    height: 930px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 930px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
     transition: transform 0.5s ease;
+
+    @media (max-width: 768px) {
+        max-width: 90vw; /* Adjust width for medium screens */
+    }
+
+    @media (max-width: 320px) {
+        max-width: 95vw; /* Adjust width for small screens */
+    }
 }
 
 .section-pets__puginator {
-    max-width: 100%;
-    width: 340px;
-    height: 52px;
+    width: 100%;
+    max-width: 340px;
+    min-height: 52px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
     transition: transform 0.5s ease;
+    @media (max-width: 768px) {
+        max-width: 90vw; /* Adjust width for medium screens */
+    }
+
+    @media (max-width: 320px) {
+        max-width: 95vw; /* Adjust width for small screens */
+    }
 }
 .container-footer {
-    height: 350px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -189,12 +275,21 @@ body {
     background-image:
             url("../assets/img/start-screen-background.png");
     background-size: cover;
+
+    @media (max-width: 768px) {
+
+    }
+
+
+    @media (max-width: 320px) {
+
+    }
 }
 
 .container-footer_wrapper {
-    max-width: 100%;
-    width: 1200px;
-    height: 310px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 310px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -206,33 +301,70 @@ body {
     letter-spacing: 0.06em;
     color: var(--color-primary);
 
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media (max-width: 320px) {
+
+    }
+
 }
 .container-footer__contacts {
-    max-width: 100%;
-    width: 278px;
-    height: 234px;
+    width: 100%;
+    max-width: 278px;
+    min-height: 234px;
     margin-bottom: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
+    @media (max-width: 768px) {
+
+    }
+
+    @media (max-width: 320px) {
+
+    }
 }
 
 .container-footer__locations {
-    max-width: 100%;
-    width: 302px;
-    height: 234px;
+    width: 100%;
+    max-width: 302px;
+    min-height: 234px;
     margin-bottom: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
+    @media (max-width: 768px) {
+
+    }
+
+
+    @media (max-width: 320px) {
+
+    }
 }
 
 .container-footer__image {
-    max-width: 100%;
-    width: 300px;
-    height: 310px;
+    width: 100%;
+    max-width: 300px; /* Max width for screens 1280px wide and above */
+    aspect-ratio: 300 / 310; /* Maintain the aspect ratio of 300x310 */
+    height: auto; /* Adjust height automatically based on width and aspect ratio */
+
+    /* Media query for screens up to 768px */
+    @media (max-width: 768px) {
+
+    }
+
+    /* Media query for screens up to 320px */
+    @media (max-width: 320px) {
+
+    }
 }
 
 .container-footer__title {
@@ -251,10 +383,21 @@ body {
 }
 
 .container-footer__text-item img {
+    height: inherit;
     display: inline-block;
     align-items: center;
     padding-right: 20px;
     margin-bottom: -5px;
+
+    @media (max-width: 768px) {
+        padding-right: 2vw; /* Adjusted for smaller screens */
+        margin-bottom: -0.75vh; /* Adjusted for smaller screens */
+    }
+
+    @media (max-width: 320px) {
+        padding-right: 3vw; /* Further adjustment for very small screens */
+        margin-bottom: -1vh; /* Further adjustment for very small screens */
+    }
 }
 
 .map-link,
