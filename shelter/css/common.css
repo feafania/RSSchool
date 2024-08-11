@@ -106,15 +106,9 @@ h3 {
     line-height: 130%;
     letter-spacing: 0.06em;
     color: var(--color-dark-l);
-}
-
-h3-mobile {
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
-    color: var(--color-light-xl);
+    @media (max-width: 320px) {
+        font-size: 25px;
+    }
 }
 
 h4 {
@@ -277,35 +271,23 @@ h5 {
     color: var(--color-dark-l);
     transition: transform 0.5s ease, cursor 0.3s ease;
 
-    @media (max-width: 900px) {
-        padding: 0 3vw 2.5vw; /* Adjusted padding for smaller screens */
-        width: 22vw; /* Adjusted width for smaller screens */
-        height: 37vh; /* Adjusted height for smaller screens */
-    }
+    /*@media (max-width: 900px) {*/
+    /*    padding: 0 3vw 2.5vw; !* Adjusted padding for smaller screens *!*/
+    /*    width: 22vw; !* Adjusted width for smaller screens *!*/
+    /*    height: 37vh; !* Adjusted height for smaller screens *!*/
+    /*}*/
 
-    @media (max-width: 320px) {
-        padding: 0 4vw 3vw; /* Further adjusted padding for very small screens */
-        width: 27vw; /* Further adjusted width for very small screens */
-        height: 43vh; /* Further adjusted height for very small screens */
-    }
+    /*@media (max-width: 320px) {*/
+    /*    padding: 0 4vw 3vw; !* Further adjusted padding for very small screens *!*/
+    /*    width: 27vw; !* Further adjusted width for very small screens *!*/
+    /*    height: 43vh; !* Further adjusted height for very small screens *!*/
+    /*}*/
 }
 
 .card-image {
     border-radius: 9px 9px 0 0;
-    width: 100%;
-    aspect-ratio: 1;
-    height: auto;
-    padding: 0;
-
-    @media (max-width: 768px) {
-        width: 90%; /* Maintains proportionate width relative to the card's width */
-        max-height: 65%; /* Adjusted height for smaller screens, relative to the card's height */
-    }
-
-    @media (max-width: 320px) {
-        width: 90%; /* Further adjusted width for very small screens */
-        max-height: 60%; /* Further adjusted height for very small screens, relative to the card's height */
-    }
+    width: 270px;
+    height: 270px;
 }
 
 .card-title {
@@ -317,13 +299,13 @@ h5 {
     text-align: center;
     color: var(--color-dark-l);
 
-    @media (max-width: 768px) {
-        height: 5.5%; /* Adjusted height for smaller screens */
-    }
+    /*@media (max-width: 768px) {*/
+    /*    height: 5.5%; !* Adjusted height for smaller screens *!*/
+    /*}*/
 
-    @media (max-width: 320px) {
-        height: 6%; /* Further adjusted height for very small screens */
-    }
+    /*@media (max-width: 320px) {*/
+    /*    height: 6%; !* Further adjusted height for very small screens *!*/
+    /*}*/
 }
 
 .card:hover {
@@ -343,11 +325,9 @@ h5 {
         position: absolute; /* Absolute positioning */
         top: 50px; /* Adjust as needed */
         right: 20px;
-        width: 100%;
         width: 30px; /* Width of the burger menu */
         height: 22px; /* Height of the burger menu */
         background: none;
-
     }
 
 }

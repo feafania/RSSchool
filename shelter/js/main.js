@@ -1,7 +1,18 @@
 let startCard = 0;
+let cardsForPage = 0;
+
+function calculateCards() {
+    if (window.innerWidth <= 320) {
+        cardsForPage = 1;
+    } else if (window.innerWidth <= 768) {
+        cardsForPage = 2;
+    } else {
+        cardsForPage = 3;
+    }
+}
 
 function createCards() {
-    for (let i=0; i < 3; i++) {
+    for (let i=0; i < cardsForPage; i++) {
         createCard(startCard+i,"card"+(i+1));
     }
 }
@@ -15,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         arrowLeftButton.disabled = startCard === 0;
         arrowLeftButton.classList.toggle('disabled', startCard === 0);
 
-        arrowRightButton.disabled = startCard >= pets.length - 3;
-        arrowRightButton.classList.toggle('disabled', startCard >= pets.length - 3);
+        arrowRightButton.disabled = startCard >= pets.length - cardsForPage;
+        arrowRightButton.classList.toggle('disabled', startCard >= pets.length - cardsForPage);
     }
 
     function handleArrowLeftClick() {
@@ -26,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleArrowRightClick() {
-        startCard = Math.min(pets.length - 3,startCard + 1);
+        startCard = Math.min(pets.length - cardsForPage,startCard + 1);
         createCards();
         updateButtonStates();
     }
@@ -46,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //    setInactive(event.currentTarget);
     }
 
+    calculateCards();
     createCards();
     arrowLeftButton.addEventListener('click', handleArrowLeftClick);
     arrowRightButton.addEventListener('click', handleArrowRightClick);
@@ -59,5 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     setInactive(document.getElementById('about-link'));
+
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', () => {
+        calculateCards(); // Пересчитать количество карточек
+    });
 });
 
