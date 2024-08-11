@@ -264,6 +264,10 @@ body {
     }
 }
 
+.start-screen-container-content__puppy img {
+    width: 100%;
+    height: auto;
+}
 
 .section-about {
     min-height: 588px;
@@ -323,6 +327,11 @@ body {
         margin-right: 1vw;
 
     }
+}
+
+.section-about__image img {
+    width: 100%;
+    height: auto;
 }
 
 .section-about__content {
@@ -663,6 +672,11 @@ body {
     }
 }
 
+.section-donation__image img {
+    width: 100%;
+    height: auto;
+}
+
 
 .section-donation__content {
     width: 100%;
@@ -847,6 +861,10 @@ body {
     }
 }
 
+.container-footer__image img {
+    width: 100%;
+    height: auto;
+}
 
 .container-footer__title {
     font-size: 35px;
