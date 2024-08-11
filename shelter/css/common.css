@@ -149,7 +149,7 @@ h5 {
 
 .button-oval {
     border-radius: 100px;
-    padding: 15px 45px;
+    padding: 10px 45px;
     width: fit-content;
     height: 52px;
     font-family: var(--font-family);
@@ -159,6 +159,11 @@ h5 {
     letter-spacing: 0.06em;
     color: var(--color-dark-3xl);
     text-align: center;
+
+    @media (max-width: 900px) {
+        padding: 5px 20px;
+
+    }
 }
 
 .button-primary {
@@ -251,7 +256,7 @@ h5 {
     border-radius: 9px;
     padding: 0px 35px 30px;
     width: 270px;
-    height: 435px;
+    min-height: 435px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -264,22 +269,52 @@ h5 {
     text-align: center;
     color: var(--color-dark-l);
     transition: transform 0.5s ease, cursor 0.3s ease;
+
+    @media (max-width: 900px) {
+        padding: 0 3vw 2.5vw; /* Adjusted padding for smaller screens */
+        width: 22vw; /* Adjusted width for smaller screens */
+        height: 37vh; /* Adjusted height for smaller screens */
+    }
+
+    @media (max-width: 320px) {
+        padding: 0 4vw 3vw; /* Further adjusted padding for very small screens */
+        width: 27vw; /* Further adjusted width for very small screens */
+        height: 43vh; /* Further adjusted height for very small screens */
+    }
 }
 
 .card-image {
     border-radius: 9px 9px 0 0;
     width: 270px;
     height: 270px;
+
+    @media (max-width: 768px) {
+        width: 90%; /* Maintains proportionate width relative to the card's width */
+        max-height: 65%; /* Adjusted height for smaller screens, relative to the card's height */
+    }
+
+    @media (max-width: 320px) {
+        width: 90%; /* Further adjusted width for very small screens */
+        max-height: 60%; /* Further adjusted height for very small screens, relative to the card's height */
+    }
 }
 
 .card-title {
-    height: 23px;
+    min-height: 23px;
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
     letter-spacing: 0.06em;
     text-align: center;
     color: var(--color-dark-l);
+
+    @media (max-width: 768px) {
+        height: 5.5%; /* Adjusted height for smaller screens */
+    }
+
+    @media (max-width: 320px) {
+        height: 6%; /* Further adjusted height for very small screens */
+    }
 }
 
 .card:hover {
