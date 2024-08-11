@@ -24,11 +24,11 @@ body {
 .wrapper {
     max-width: 1280px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 768px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 320px;
         margin: 0 auto;
     }
@@ -56,14 +56,14 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         width: 100%;
         min-height: 1165px;
         height: auto; /* Height adjusts automatically */
         display: block; /* Switch to block layout for screens up to 768px wide */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 823px;
 
     }
@@ -78,12 +78,12 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 708px;
         margin: 30px auto;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 280px;
     }
 }
@@ -98,7 +98,7 @@ body {
     align-items: start;
     margin: 0;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         /*max-width: 184px;*/
         /*width: 100%;*/
     }
@@ -120,7 +120,7 @@ body {
     color: var(--color-primary);
     margin: 0 0 10px;
     text-align: left;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
     }
 }
 
@@ -141,11 +141,7 @@ body {
     width: 100%;
     float: right;
 
-    @media (max-width: 640px) {
-        min-width: inherit;
-    }
-
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
             display: none; /* Hide the navigation menu on smaller screens */
     }
 }
@@ -156,7 +152,7 @@ body {
     width: 100%;
     justify-content: space-between;
 
-    @media (max-width: 640px) {
+    @media (max-width: 767px) {
         flex-wrap: wrap;
     }
 
@@ -203,14 +199,14 @@ body {
     align-items: center;
     gap: 42px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 569px;
         min-height: 1015px;
         flex-direction: column; /* Stack items vertically */
         margin: 0 auto;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 300px;
         min-height: 673px;
     }
@@ -227,10 +223,10 @@ body {
     justify-content: space-between;
     margin-top: -80px;/*-80px;*/
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         margin-top: 30px;
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 300px;
         min-height: 296px;
         text-align: center;
@@ -243,9 +239,9 @@ body {
     max-width: 310px; /* For screens 1280px wide and above */
     min-height: 114px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         font-size: 25px;
         letter-spacing: 0.06em;
         min-height: 64px;
@@ -258,9 +254,9 @@ body {
     width: 100%;
     min-height: 72px;
     color: var(--color-dark-s);
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 96px;
 
     }
@@ -268,7 +264,7 @@ body {
 
 .button-make-friend{
     display: inline-block;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         margin: 0 auto;
     }
 }
@@ -280,14 +276,14 @@ body {
     aspect-ratio: 698 / 728;
 
     /* Media queries inside the style */
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 569px; /* Adjusts the width proportionally for screens between 768px and 320px */
         aspect-ratio: 569 / 593;
         margin-left: 140px;
         margin-top: 60px;
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 260px; /* Adjusts the width proportionally for screens between 768px and 320px */
         aspect-ratio: 260 / 271;
         margin-left: auto;
@@ -309,10 +305,10 @@ body {
     align-items: center;
     height: auto; /* Height is automatically calculated based on aspect-ratio */
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         min-height: 1048px;
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 974px;
     }
 }
@@ -326,7 +322,7 @@ body {
     justify-content: start;
     margin-top: -15px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         flex-direction: column-reverse; /* Stack items vertically */
         max-width: 437px;
         min-height: 868px;
@@ -334,7 +330,7 @@ body {
         height: auto;
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 320px;
         min-height: 974px;
     }
@@ -348,11 +344,11 @@ body {
     margin-left: 175px;
     margin-right: 120px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 260px;
 
     }
@@ -361,12 +357,12 @@ body {
 .section-about__image img {
     width: 100%;
     height: auto;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         margin-left: -27px;
         margin-top: 58px;
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         margin-left: -28px;
         margin-top: 20px;
 
@@ -379,13 +375,13 @@ body {
     min-height: 380px;
     height: auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 760px; /* Adjusts max-width for medium screens */
         padding-left: 3px;
         margin-top: -20px;
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 300px;
         min-height: 494px;
         padding-left: 0;
@@ -399,10 +395,10 @@ body {
     min-height: 90px;
     margin: 15px 0 25px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 300px;
         min-height: 64px;
         margin-top: 48px;
@@ -418,9 +414,9 @@ body {
     margin-bottom: 25px;
     color: var(--color-dark-xl);
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 270px;
         margin: 0px auto 20px;
 
@@ -436,10 +432,10 @@ body {
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 791px;
     }
 }
@@ -455,11 +451,11 @@ body {
     margin-top: -25px;
     padding: 0;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 708px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 300px;
         min-height: 707px;
         margin-top: 0;
@@ -472,10 +468,10 @@ body {
     min-height: 90px;
     text-align: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 300px;
         min-height: 64px;
         padding: 0 5px;
@@ -492,11 +488,11 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 708px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 270px;
         min-height: 507px;
         justify-content: space-around;
@@ -506,7 +502,7 @@ body {
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
     .section-our-friends__cards {
         order: 1;
         /*margin-bottom: 10px;*/
@@ -529,23 +525,23 @@ body {
     align-items: center;
     transition: transform 0.5s ease;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 580px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 100%;
     }
 }
 
 #card2 {
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         display: none;
     }
 }
 
 #card3 {
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         display: none;
     }
 }
@@ -556,11 +552,11 @@ body {
     background: var(--color-light-xl);
    margin-top: 75px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         min-height: 779px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 745px;
     }
 }
@@ -576,12 +572,12 @@ body {
     align-content: space-between;
     margin: 0 auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 630px; /* Maintains the maximum width of 1200px */
         min-height: 599px;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 290px; /* Maintains the maximum width of 1200px */
         min-height: 703px;
     }
@@ -594,11 +590,11 @@ body {
     text-align: center;
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
         max-width: 220px;
         min-height: 64px;
@@ -617,13 +613,13 @@ body {
     flex-wrap: wrap;
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 630px;
         min-height: 449px;
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 290px;
         min-height: 555px;
 
@@ -646,11 +642,11 @@ body {
     text-align: center;
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         /*h5*/
         font-size: 15px;
         line-height: 110%;
@@ -662,11 +658,11 @@ body {
     width: 60px;
     height: 60px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         width: 50px;
         height: 50px;
     }
@@ -680,12 +676,12 @@ body {
     justify-content: center;
     align-items: center;
     /* Media query for screens up to 768px */
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         height: 35.78vh; /* Adjust height proportionally */
     }
 
     /* Media query for screens up to 320px */
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         height: 35.78vh; /* Adjust height proportionally */
     }
 }
@@ -701,11 +697,11 @@ body {
     align-items: center;
     margin-top: -20px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         flex-direction: column;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -722,13 +718,13 @@ body {
     }
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 39.53vw; /* Keeps the width proportional */
         margin-right: 3.13vw; /* 30px / 768px * 100vw */
     }
 
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 71.56vw; /* Keeps the width proportional */
         margin-right: 9.38vw; /* 30px / 320px * 100vw */
     }
@@ -749,11 +745,11 @@ body {
     justify-content: space-between;
     align-items: flex-start;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
     }
 }
 
@@ -762,11 +758,11 @@ body {
     max-width: 300px; /* Keep maximum width in pixels */
     min-height: 90px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         margin-top: 48px;
 
         padding: 0 10px;
@@ -800,12 +796,12 @@ body {
     color: var(--color-dark-l);
 
     /* Media query for screens up to 768px */
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         padding: 1.5vh 2vw; /* Adjust padding for smaller screens */
     }
 
     /* Media query for screens up to 320px */
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         padding: 2vh 2.5vw; /* Adjust padding for very small screens */
     }
 }
@@ -833,12 +829,12 @@ body {
     background-size: cover;
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -859,12 +855,12 @@ body {
     letter-spacing: 0.058em;
     color: var(--color-primary);
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         flex-direction: column;
         align-items: center;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -880,11 +876,11 @@ body {
     align-items: flex-start;
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -899,12 +895,12 @@ body {
     justify-content: space-between;
     align-items: flex-start;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -916,12 +912,12 @@ body {
     height: auto; /* Adjust height automatically based on width and aspect ratio */
 
     /* Media query for screens up to 768px */
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
     /* Media query for screens up to 320px */
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -954,12 +950,12 @@ body {
     padding-right: 20px;
     margin-bottom: -5px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         padding-right: 2vw; /* Adjusted for smaller screens */
         margin-bottom: -0.75vh; /* Adjusted for smaller screens */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         padding-right: 3vw; /* Further adjustment for very small screens */
         margin-bottom: -1vh; /* Further adjustment for very small screens */
     }

@@ -2,13 +2,14 @@ let startCard = 0;
 let cardsForPage = 0;
 
 function calculateCards() {
-    if (window.innerWidth <= 320) {
+    if (window.innerWidth < 768) {
         cardsForPage = 1;
-    } else if (window.innerWidth <= 768) {
+    } else if (window.innerWidth < 1280) {
         cardsForPage = 2;
     } else {
         cardsForPage = 3;
     }
+    startCard = Math.min(startCard,pets.length-cardsForPage)
 }
 
 function createCards() {
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработчик изменения размера окна
     window.addEventListener('resize', () => {
         calculateCards(); // Пересчитать количество карточек
+        createCards();
     });
 });
 

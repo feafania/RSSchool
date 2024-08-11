@@ -31,14 +31,14 @@ body {
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         width: 100%;
         height: auto; /* Height adjusts automatically */
         display: block; /* Switch to block layout for screens up to 768px wide */
         padding: 0 16px; /* Add padding to prevent content from sticking to edges */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         padding: 0 8px; /* Reduce padding for very small screens */
         /* Additional styles for very small screens, if needed */
     }
@@ -59,11 +59,11 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         margin: 8vh 10vw 15vh; /* Proportional margins for very small screens (320px and below) */
         /* Additional styles for very small screens, if needed */
     }
@@ -97,13 +97,13 @@ body {
     margin: 0 0 10px;
     text-align: left;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         min-height: 4.6vh; /* Adjusted height for screens up to 768px */
         font-size: 3vw; /* Adjusted font-size for screens up to 768px */
         margin: 0 4vw 4.6vh; /* Adjusted margin for screens up to 768px */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 7.4vh; /* Further adjusted height for screens up to 320px */
         font-size: 6vw; /* Further adjusted font-size for screens up to 320px */
         margin: 0 6vw 7.4vh; /* Further adjusted margin for screens up to 320px */
@@ -119,13 +119,13 @@ body {
     color: var(--color-dark-3xl);
     text-align: left;
     padding-left: 4px;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         min-height: 3.0vh; /* Adjusted height for screens up to 768px */
         font-size: 2.0vw; /* Adjusted font-size for screens up to 768px */
         padding-left: 1vw; /* Adjusted padding-left for screens up to 768px */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         min-height: 4.7vh; /* Further adjusted height for screens up to 320px */
         font-size: 4.0vw; /* Further adjusted font-size for screens up to 320px */
         padding-left: 2vw; /* Further adjusted padding-left for screens up to 320px */
@@ -136,7 +136,7 @@ body {
     min-height: 27px;
     float: right;
     padding-right: 2px;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         display: none; /* Hide the navigation menu on smaller screens */
     }
 }
@@ -181,10 +181,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         height: 70vw; /* Adjusted height for medium screens (approx. 877px) */
     }
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         height: 90vw; /* Adjusted height for small screens (approx. 877px) */
     }
 }
@@ -199,12 +199,12 @@ body {
     align-items: center;
     margin-top: -20px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 100%;
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 100%;
 
     }
@@ -215,11 +215,11 @@ body {
     max-width: 400px;
     min-height: 90px;
     text-align: center;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 80vw; /* Adjusts width for medium screens */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 90vw; /* Adjusts width for small screens */
     }
 }
@@ -235,11 +235,11 @@ body {
     align-items: center;
     transition: transform 0.5s ease;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 90vw; /* Adjust width for medium screens */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 95vw; /* Adjust width for small screens */
     }
 }
@@ -254,11 +254,11 @@ body {
     flex-wrap: wrap;
     align-items: center;
     transition: transform 0.5s ease;
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         max-width: 90vw; /* Adjust width for medium screens */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         max-width: 95vw; /* Adjust width for small screens */
     }
 }
@@ -276,12 +276,12 @@ body {
             url("../assets/img/start-screen-background.png");
     background-size: cover;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -301,12 +301,12 @@ body {
     letter-spacing: 0.06em;
     color: var(--color-primary);
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         flex-direction: column;
         align-items: center;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 
@@ -321,11 +321,11 @@ body {
     justify-content: space-between;
     align-items: flex-start;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -340,12 +340,12 @@ body {
     justify-content: space-between;
     align-items: flex-start;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -357,12 +357,12 @@ body {
     height: auto; /* Adjust height automatically based on width and aspect ratio */
 
     /* Media query for screens up to 768px */
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
 
     }
 
     /* Media query for screens up to 320px */
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
 
     }
 }
@@ -394,12 +394,12 @@ body {
     padding-right: 20px;
     margin-bottom: -5px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1279px) {
         padding-right: 2vw; /* Adjusted for smaller screens */
         margin-bottom: -0.75vh; /* Adjusted for smaller screens */
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         padding-right: 3vw; /* Further adjustment for very small screens */
         margin-bottom: -1vh; /* Further adjustment for very small screens */
     }
