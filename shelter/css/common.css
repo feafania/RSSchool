@@ -254,7 +254,7 @@ h5 {
 
 .card {
     border-radius: 9px;
-    padding: 0px 35px 30px;
+    padding-bottom: 30px;
     width: 270px;
     min-height: 435px;
     display: flex;
@@ -285,8 +285,10 @@ h5 {
 
 .card-image {
     border-radius: 9px 9px 0 0;
-    width: 270px;
-    height: 270px;
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    padding: 0;
 
     @media (max-width: 768px) {
         width: 90%; /* Maintains proportionate width relative to the card's width */
@@ -322,6 +324,33 @@ h5 {
     cursor: pointer;
     background: none;
 }
+
+.burger-menu {
+    display: none; /* Hidden by default */
+
+    @media (max-width: 768px) {
+        display: flex; /* Show burger menu */
+        cursor: pointer; /* Pointer cursor for clickable area */
+        flex-direction: column; /* Stack lines vertically */
+        justify-content: space-between; /* Space lines evenly */
+        min-width: 24px; /* Width of the burger menu */
+        min-height: 18px; /* Height of the burger menu */
+        position: absolute; /* Absolute positioning */
+        top: 10px; /* Adjust as needed */
+        right: 10px;
+    }
+
+}
+
+.burger-menu-line {
+    background-color: var(--color-primary); /* Color of the lines */
+    height: 3px; /* Thickness of the lines */
+    width: 100%; /* Full width of the burger menu */
+    border-radius: 2px; /* Rounded corners for a modern look */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions for animations */
+    color: white;
+}
+
 
 /*
 

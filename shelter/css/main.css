@@ -150,29 +150,6 @@ body {
     }
 }
 
-.start-screen-container-header__burger-menu {
-    display: none; /* Hidden by default */
-
-    @media (max-width: 768px) {
-        display: flex; /* Show burger menu */
-        cursor: pointer; /* Pointer cursor for clickable area */
-        flex-direction: column; /* Stack lines vertically */
-        justify-content: space-between; /* Space lines evenly */
-        width: 24px; /* Width of the burger menu */
-        height: 18px; /* Height of the burger menu */
-        align-items: end;
-    }
-
-}
-
-.start-screen-container-header__burger-menu-line {
-    background-color: var(--color-primary); /* Color of the lines */
-    height: 3px; /* Thickness of the lines */
-    width: 100%; /* Full width of the burger menu */
-    border-radius: 2px; /* Rounded corners for a modern look */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions for animations */
-}
-
 .start-screen-container-header__menu {
     display: flex;
     flex-direction: row;
@@ -287,10 +264,6 @@ body {
     }
 }
 
-.start-screen-container-content__puppy img {
-    width: 100%;
-    height: auto;
-}
 
 .section-about {
     min-height: 588px;
@@ -350,11 +323,6 @@ body {
         margin-right: 1vw;
 
     }
-}
-
-.section-about__image img {
-    width: 100%;
-    height: auto;
 }
 
 .section-about__content {
@@ -432,12 +400,12 @@ body {
 
     @media (max-width: 768px) {
         max-width: 100%;
-        aspect-ratio: 768 / 427; /* Adjusted aspect ratio for screens 768px wide */
+
     }
 
     @media (max-width: 320px) {
         max-width: 100%;
-        aspect-ratio: 320 / 175; /* Adjusted aspect ratio for screens 320px wide */
+
     }
 }
 
@@ -695,11 +663,6 @@ body {
     }
 }
 
-.section-donation__image img {
-    width: 100%;
-    height: auto;
-}
-
 
 .section-donation__content {
     width: 100%;
@@ -875,19 +838,15 @@ body {
 
     /* Media query for screens up to 768px */
     @media (max-width: 768px) {
-        aspect-ratio: 300 / 310; /* Maintain the same aspect ratio */
+
     }
 
     /* Media query for screens up to 320px */
     @media (max-width: 320px) {
-        aspect-ratio: 300 / 310; /* Maintain the same aspect ratio */
+
     }
 }
 
-.container-footer__image img {
-    width: 100%;
-    height: auto;
-}
 
 .container-footer__title {
     font-size: 35px;
