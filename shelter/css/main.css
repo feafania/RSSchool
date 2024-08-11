@@ -23,6 +23,15 @@ body {
 
 .wrapper {
     max-width: 1280px;
+
+    @media (max-width: 768px) {
+        max-width: 768px;
+    }
+
+    @media (max-width: 320px) {
+        max-width: 320px;
+        margin: 0 auto;
+    }
 }
 
 .start-screen-container {
@@ -30,6 +39,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /*background: var(--start-screen-gradient-background), radial-gradient(237.5% 111.8% at 0% 0%, rgb(91, 72, 58) 0%, rgb(38, 36, 37) 100%), url("../assets/img/start-screen-gradient-background.jpg");*/
+
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     background-image:
          url("../assets/img/start-screen-background.png");
@@ -47,14 +58,14 @@ body {
 
     @media (max-width: 768px) {
         width: 100%;
+        min-height: 1165px;
         height: auto; /* Height adjusts automatically */
         display: block; /* Switch to block layout for screens up to 768px wide */
-        padding: 0 16px; /* Add padding to prevent content from sticking to edges */
     }
 
     @media (max-width: 320px) {
-        padding: 0 8px; /* Reduce padding for very small screens */
-        /* Additional styles for very small screens, if needed */
+        min-height: 823px;
+
     }
 }
 
@@ -68,12 +79,12 @@ body {
     align-items: center;
 
     @media (max-width: 768px) {
-
+        max-width: 708px;
+        margin: 30px auto;
     }
 
     @media (max-width: 320px) {
-        margin: 8vh 10vw 15vh; /* Proportional margins for very small screens (320px and below) */
-        /* Additional styles for very small screens, if needed */
+        max-width: 280px;
     }
 }
 .start-screen-container-header__item {
@@ -86,6 +97,11 @@ body {
     justify-content: space-between;
     align-items: start;
     margin: 0;
+
+    @media (max-width: 768px) {
+        /*max-width: 184px;*/
+        /*width: 100%;*/
+    }
 }
 
 .start-screen-container-header__logo_link {
@@ -104,17 +120,7 @@ body {
     color: var(--color-primary);
     margin: 0 0 10px;
     text-align: left;
-
     @media (max-width: 768px) {
-        min-height: 4.6vh; /* Adjusted height for screens up to 768px */
-        font-size: 3vw; /* Adjusted font-size for screens up to 768px */
-        margin: 0 4vw 4.6vh; /* Adjusted margin for screens up to 768px */
-    }
-
-    @media (max-width: 320px) {
-        min-height: 7.4vh; /* Further adjusted height for screens up to 320px */
-        font-size: 6vw; /* Further adjusted font-size for screens up to 320px */
-        margin: 0 6vw 7.4vh; /* Further adjusted margin for screens up to 320px */
     }
 }
 
@@ -127,25 +133,19 @@ body {
     color: var(--color-light-xl);
     text-align: left;
     padding-left: 4px;
-
-    @media (max-width: 768px) {
-        min-height: 3.0vh; /* Adjusted height for screens up to 768px */
-        font-size: 2.0vw; /* Adjusted font-size for screens up to 768px */
-        padding-left: 1vw; /* Adjusted padding-left for screens up to 768px */
-    }
-
-    @media (max-width: 320px) {
-        min-height: 4.7vh; /* Further adjusted height for screens up to 320px */
-        font-size: 4.0vw; /* Further adjusted font-size for screens up to 320px */
-        padding-left: 2vw; /* Further adjusted padding-left for screens up to 320px */
-    }
 }
 
 .start-screen-container-header__navigation {
     min-height: 27px;
+    min-width: 443px;
+    width: 100%;
     float: right;
-    padding-right: 2px;
-    @media (max-width: 768px) {
+
+    @media (max-width: 640px) {
+        min-width: inherit;
+    }
+
+    @media (max-width: 320px) {
             display: none; /* Hide the navigation menu on smaller screens */
     }
 }
@@ -153,29 +153,39 @@ body {
 .start-screen-container-header__menu {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+
+    @media (max-width: 640px) {
+        flex-wrap: wrap;
+    }
+
+
 }
 
 .start-screen-container-header__link {
-    display: inline-block;
-    margin-left: 35px;
+
+}
+
+.start-screen-container-header__link_a {
+    /*display: inline-block;*/
     text-decoration: none;
     color: var(--color-dark-s);
     transition: color 0.3s ease, cursor 0.3s ease;
 }
 
-.start-screen-container-header__link:active {
+
+.start-screen-container-header__link_a:active {
     color: var(--color-light-s);
     border-bottom: 3px solid var(--color-primary);
 }
 
-.start-screen-container-header__link:hover {
+.start-screen-container-header__link_a:hover {
     color: var(--color-light-s);
     cursor: pointer;
 }
 
-.start-screen-container-header__link.inactive {
+.start-screen-container-header__link_a.inactive {
     color: var(--color-light-s);
    /* pointer-events: none;*/
     cursor: default;
@@ -194,20 +204,22 @@ body {
     gap: 42px;
 
     @media (max-width: 768px) {
-        max-width: 100%; /* Remove max-width constraint on smaller screens */
-        aspect-ratio: auto; /* Allow aspect ratio to adjust based on content */
-        margin: 0 1vw;
+        max-width: 569px;
+        min-height: 1015px;
         flex-direction: column; /* Stack items vertically */
+        margin: 0 auto;
     }
 
     @media (max-width: 320px) {
+        max-width: 300px;
+        min-height: 673px;
     }
 }
 
 
 .start-screen-container-content__not-only {
     width: 100%;
-    max-width: 38.333%; /* 460px relative to 1200px container width */
+    max-width: 460px;/*38.333%; 460px relative to 1200px container width */
     height: auto;
     min-height: 322px;
     display: flex;
@@ -216,12 +228,12 @@ body {
     margin-top: -80px;/*-80px;*/
 
     @media (max-width: 768px) {
-        max-width: 80vw; /* Adjusts the width proportionally for screens between 768px and 320px */
-        aspect-ratio: 80 / 57; /* Adjusts the aspect ratio proportionally */
-        margin-top: 8vw; /* Adjusts margin-top proportionally */
+        margin-top: 30px;
     }
     @media (max-width: 320px) {
-
+        max-width: 300px;
+        min-height: 296px;
+        text-align: center;
     }
 }
 
@@ -232,35 +244,55 @@ body {
     min-height: 114px;
 
     @media (max-width: 768px) {
-        max-width: 50vw; /* Adjusts the width proportionally for screens between 768px and 320px */
     }
     @media (max-width: 320px) {
-        max-width: 100%; /* Takes full width for very small screens */
+        min-height: 64px;
+        /*h3-mobile*/
+        font-size: 25px;
+        letter-spacing: 0.06em;
+        padding: 0 40px;
     }
 }
 
 .start-screen-container-content__not-only-text{
     display: inline-block;
+    width: 100%;
+    min-height: 72px;
     color: var(--color-dark-s);
+    @media (max-width: 768px) {
+    }
+    @media (max-width: 320px) {
+        min-height: 96px;
+
+    }
 }
 
 .button-make-friend{
     display: inline-block;
+    @media (max-width: 768px) {
+        margin: 0 auto;
+    }
 }
 
 .start-screen-container-content__puppy {
     width: 100%;
-    max-width: 58.1666vw; /* 698px relative to 1200px container width */
+    max-width: 698px;/*58.1666vw; 698px relative to 1200px container width */
     height: auto;
     aspect-ratio: 698 / 728;
 
     /* Media queries inside the style */
     @media (max-width: 768px) {
-        max-width: 80vw; /* Adjusts the width proportionally for screens between 768px and 320px */
+        max-width: 569px; /* Adjusts the width proportionally for screens between 768px and 320px */
+        aspect-ratio: 569 / 593;
+        margin-left: 140px;
+        margin-top: 60px;
 
     }
     @media (max-width: 320px) {
-        max-width: 100%; /* Takes full width for very small screens */
+        max-width: 260px; /* Adjusts the width proportionally for screens between 768px and 320px */
+        aspect-ratio: 260 / 271;
+        margin-left: auto;
+        margin-top: 65px;
     }
 }
 
