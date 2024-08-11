@@ -367,6 +367,11 @@ body {
     }
 }
 
+.container-footer__image img {
+    width: 100%;
+    height: auto;
+}
+
 .container-footer__title {
     font-size: 35px;
     line-height: 130%;

@@ -86,6 +86,8 @@ table {
     --font-family: "Georgia", sans-serif;
     --second-family: "Arial", sans-serif;
     --second-family-italic: "Arial Italic", sans-serif;
+    --start-screen-gradient-background: #211f20;
+    --footer-gradient-background: #211f20;
 }
 
 h2 {
@@ -104,6 +106,9 @@ h3 {
     line-height: 130%;
     letter-spacing: 0.06em;
     color: var(--color-dark-l);
+    @media (max-width: 320px) {
+        font-size: 25px;
+    }
 }
 
 h4 {
@@ -160,10 +165,6 @@ h5 {
     color: var(--color-dark-3xl);
     text-align: center;
 
-    @media (max-width: 900px) {
-        padding: 5px 20px;
-
-    }
 }
 
 .button-primary {
@@ -270,35 +271,23 @@ h5 {
     color: var(--color-dark-l);
     transition: transform 0.5s ease, cursor 0.3s ease;
 
-    @media (max-width: 900px) {
-        padding: 0 3vw 2.5vw; /* Adjusted padding for smaller screens */
-        width: 22vw; /* Adjusted width for smaller screens */
-        height: 37vh; /* Adjusted height for smaller screens */
-    }
+    /*@media (max-width: 900px) {*/
+    /*    padding: 0 3vw 2.5vw; !* Adjusted padding for smaller screens *!*/
+    /*    width: 22vw; !* Adjusted width for smaller screens *!*/
+    /*    height: 37vh; !* Adjusted height for smaller screens *!*/
+    /*}*/
 
-    @media (max-width: 320px) {
-        padding: 0 4vw 3vw; /* Further adjusted padding for very small screens */
-        width: 27vw; /* Further adjusted width for very small screens */
-        height: 43vh; /* Further adjusted height for very small screens */
-    }
+    /*@media (max-width: 320px) {*/
+    /*    padding: 0 4vw 3vw; !* Further adjusted padding for very small screens *!*/
+    /*    width: 27vw; !* Further adjusted width for very small screens *!*/
+    /*    height: 43vh; !* Further adjusted height for very small screens *!*/
+    /*}*/
 }
 
 .card-image {
     border-radius: 9px 9px 0 0;
-    width: 100%;
-    aspect-ratio: 1;
-    height: auto;
-    padding: 0;
-
-    @media (max-width: 768px) {
-        width: 90%; /* Maintains proportionate width relative to the card's width */
-        max-height: 65%; /* Adjusted height for smaller screens, relative to the card's height */
-    }
-
-    @media (max-width: 320px) {
-        width: 90%; /* Further adjusted width for very small screens */
-        max-height: 60%; /* Further adjusted height for very small screens, relative to the card's height */
-    }
+    width: 270px;
+    height: 270px;
 }
 
 .card-title {
@@ -310,13 +299,13 @@ h5 {
     text-align: center;
     color: var(--color-dark-l);
 
-    @media (max-width: 768px) {
-        height: 5.5%; /* Adjusted height for smaller screens */
-    }
+    /*@media (max-width: 768px) {*/
+    /*    height: 5.5%; !* Adjusted height for smaller screens *!*/
+    /*}*/
 
-    @media (max-width: 320px) {
-        height: 6%; /* Further adjusted height for very small screens */
-    }
+    /*@media (max-width: 320px) {*/
+    /*    height: 6%; !* Further adjusted height for very small screens *!*/
+    /*}*/
 }
 
 .card:hover {
@@ -328,27 +317,26 @@ h5 {
 .burger-menu {
     display: none; /* Hidden by default */
 
-    @media (max-width: 768px) {
+    @media (max-width: 320px) {
         display: flex; /* Show burger menu */
         cursor: pointer; /* Pointer cursor for clickable area */
         flex-direction: column; /* Stack lines vertically */
         justify-content: space-between; /* Space lines evenly */
-        min-width: 24px; /* Width of the burger menu */
-        min-height: 18px; /* Height of the burger menu */
         position: absolute; /* Absolute positioning */
-        top: 10px; /* Adjust as needed */
-        right: 10px;
+        top: 50px; /* Adjust as needed */
+        right: 20px;
+        width: 30px; /* Width of the burger menu */
+        height: 22px; /* Height of the burger menu */
+        background: none;
     }
 
 }
 
 .burger-menu-line {
-    background-color: var(--color-primary); /* Color of the lines */
-    height: 3px; /* Thickness of the lines */
-    width: 100%; /* Full width of the burger menu */
-    border-radius: 2px; /* Rounded corners for a modern look */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions for animations */
-    color: white;
+    border: 2px solid var(--color-primary);
+    width: 100%;
+    height: 0px;
+    transition: border 0.3s, transform 0.3s; /* Smooth transitions for animations */
 }
 
 

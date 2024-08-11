@@ -28,20 +28,21 @@
                 <div class="start-screen-container-header__item">
                     <nav class="start-screen-container-header__navigation">
                         <ul class="start-screen-container-header__menu">
-                            <li><a id="about-link" class = "start-screen-container-header__link paragraph-l">About the shelter</a></li>
-                            <li><a href="pets.html" class = "start-screen-container-header__link paragraph-l" >Our pets</a></li>
-                            <li><a href="#help" class = "start-screen-container-header__link paragraph-l">Help the shelter</a></li>
-                            <li><a href="#footer" class = "start-screen-container-header__link paragraph-l">Contacts</a></li>
+                            <li class = "start-screen-container-header__link"><a id="about-link" class = "start-screen-container-header__link_a paragraph-l">About the shelter</a></li>
+                            <li class = "start-screen-container-header__link"><a href="pets.html" class = "start-screen-container-header__link_a paragraph-l" >Our pets</a></li>
+                            <li class = "start-screen-container-header__link"><a href="#help" class = "start-screen-container-header__link_a paragraph-l">Help the shelter</a></li>
+                            <li class = "start-screen-container-header__link"><a href="#footer" class = "start-screen-container-header__link_a paragraph-l">Contacts</a></li>
                         </ul>
                     </nav>
+                    <div class="start-screen-container-header__burger-menu burger-menu">
+                        <div class="start-screen-container-header__burger-menu-line burger-menu-line"></div>
+                        <div class="start-screen-container-header__burger-menu-line burger-menu-line"></div>
+                        <div class="start-screen-container-header__burger-menu-line burger-menu-line"></div>
+                    </div>
 
                 </div>
 
-                <div class="start-screen-container-header__burger-menu burger-menu">
-                    <div class="start-screen-container-header__burger-menu-line burger-menu-line"></div>
-                    <div class="start-screen-container-header__burger-menu-line burger-menu-line"></div>
-                    <div class="start-screen-container-header__burger-menu-line burger-menu-line"></div>
-                </div>
+
             </section>
             <section class="start-screen-container-content">
                 <div class="start-screen-container-content__not-only">
@@ -92,13 +93,17 @@
                       </h3>
                   </div>
                   <div class="section section-our-friends__slider">
-                      <button class="button-round button-arrow-left"></button>
+                      <div class="section section-our-friends__slider__button-arrow-left">
+                          <button class="button-round button-arrow-left"></button>
+                      </div>
                       <div class="section-our-friends__cards">
                           <div id="card1" class="card section-our-friends__card" ></div>
                           <div id="card2" class="card section-our-friends__card" ></div>
                           <div id="card3" class="card section-our-friends__card" ></div>
                       </div>
-                      <button class="button-round button-arrow-right"></button>
+                      <div class="section section-our-friends__slider__button-arrow-right">
+                          <button class="button-round button-arrow-right"></button>
+                      </div>
                   </div>
                   <div class="section section-our-friends__button">
                       <button id = 'button-get-to-know' class="button-oval button-primary button-get-to-know"></button>
@@ -114,45 +119,41 @@
                       </h3>
                   </div>
                   <div class="section section-help_wrapper__list">
-                      <div class="section-help_wrapper__list-row1">
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-pet-food/icon-pet-food.svg" alt="Pet food" class="help-list-picture">
-                              <h4>Pet food</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-transportation/icon-transportation.svg" alt="Transportation" class="help-list-picture">
-                              <h4>Transportation</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-toys/icon-toys.svg" alt="Toys" class="help-list-picture">
-                              <h4>Toys</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-bowls-and-cups/icon-bowls-and-cups.svg" alt="Bowls and cups" class="help-list-picture">
-                              <h4>Bowls and cups</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-shampoos/icon-shampoos.svg" alt="Shampoos" class="help-list-picture">
-                              <h4>Shampoos</h4>
-                          </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-pet-food/icon-pet-food.svg" alt="Pet food" class="help-list-picture">
+                          <h4>Pet food</h4>
                       </div>
-                      <div class="section-help_wrapper__list-row2">
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-vitamins/icon-vitamins.svg" alt="Vitamins" class="help-list-picture">
-                              <h4>Vitamins</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-medicines/icon-medicines.svg" alt="Medicines" class="section-help-list-picture">
-                              <h4>Medicines</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-collars-leashes/icon-collars-leashes.svg" alt="Collars / leashes" class="help-list-picture">
-                              <h4>Collars / leashes</h4>
-                          </div>
-                          <div class="section-help_wrapper__list-item">
-                              <img src="assets/svg/icon-sleeping-area/icon-sleeping-area.svg" alt="Sleeping areas" class="help-list-picture">
-                              <h4>Sleeping areas</h4>
-                          </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-transportation/icon-transportation.svg" alt="Transportation" class="help-list-picture">
+                          <h4>Transportation</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-toys/icon-toys.svg" alt="Toys" class="help-list-picture">
+                          <h4>Toys</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-bowls-and-cups/icon-bowls-and-cups.svg" alt="Bowls and cups" class="help-list-picture">
+                          <h4>Bowls and cups</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-shampoos/icon-shampoos.svg" alt="Shampoos" class="help-list-picture">
+                          <h4>Shampoos</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-vitamins/icon-vitamins.svg" alt="Vitamins" class="help-list-picture">
+                          <h4>Vitamins</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-medicines/icon-medicines.svg" alt="Medicines" class="section-help-list-picture">
+                          <h4>Medicines</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-collars-leashes/icon-collars-leashes.svg" alt="Collars / leashes" class="help-list-picture">
+                          <h4>Collars / leashes</h4>
+                      </div>
+                      <div class="section-help_wrapper__list-item">
+                          <img src="assets/svg/icon-sleeping-area/icon-sleeping-area.svg" alt="Sleeping areas" class="help-list-picture">
+                          <h4>Sleeping areas</h4>
                       </div>
                   </div>
               </div>
