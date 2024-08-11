@@ -106,7 +106,7 @@ h3 {
     line-height: 130%;
     letter-spacing: 0.06em;
     color: var(--color-dark-l);
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         font-size: 25px;
     }
 }
@@ -271,13 +271,13 @@ h5 {
     color: var(--color-dark-l);
     transition: transform 0.5s ease, cursor 0.3s ease;
 
-    /*@media (max-width: 900px) {*/
+    /*@media (max-width: 1279px) {*/
     /*    padding: 0 3vw 2.5vw; !* Adjusted padding for smaller screens *!*/
     /*    width: 22vw; !* Adjusted width for smaller screens *!*/
     /*    height: 37vh; !* Adjusted height for smaller screens *!*/
     /*}*/
 
-    /*@media (max-width: 320px) {*/
+    /*@media (max-width: 767px) {*/
     /*    padding: 0 4vw 3vw; !* Further adjusted padding for very small screens *!*/
     /*    width: 27vw; !* Further adjusted width for very small screens *!*/
     /*    height: 43vh; !* Further adjusted height for very small screens *!*/
@@ -299,11 +299,11 @@ h5 {
     text-align: center;
     color: var(--color-dark-l);
 
-    /*@media (max-width: 768px) {*/
+    /*@media (max-width: 1279px) {*/
     /*    height: 5.5%; !* Adjusted height for smaller screens *!*/
     /*}*/
 
-    /*@media (max-width: 320px) {*/
+    /*@media (max-width: 767px) {*/
     /*    height: 6%; !* Further adjusted height for very small screens *!*/
     /*}*/
 }
@@ -317,7 +317,7 @@ h5 {
 .burger-menu {
     display: none; /* Hidden by default */
 
-    @media (max-width: 320px) {
+    @media (max-width: 767px) {
         display: flex; /* Show burger menu */
         cursor: pointer; /* Pointer cursor for clickable area */
         flex-direction: column; /* Stack lines vertically */
