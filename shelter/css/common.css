@@ -392,7 +392,8 @@ h5 {
 
 
 .container-footer {
-    max-width: 1280px;
+    width: 100%;
+    max-width: 100%;
     min-height: 350px;
     height: auto;
     display: flex;
@@ -410,12 +411,10 @@ h5 {
 
 
     @media (max-width: 1279px) {
-        max-width: 768px;
         min-height: 639px;
     }
 
     @media (max-width: 767px) {
-        max-width: 320px;
         min-height: 809px;
         justify-content: flex-end;
         align-content: center;

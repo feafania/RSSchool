@@ -1,7 +1,27 @@
 let startPetsCard = 0;
+let cardsForPage = 0;
+
+function calculateCards() {
+    if (window.innerWidth < 768) {
+        cardsForPage = 3;
+    } else if (window.innerWidth < 1280) {
+        cardsForPage = 6;
+    } else {
+        cardsForPage = 8;
+    }
+    startPetsCard = Math.min(startPetsCard,pets.length-cardsForPage)
+    // for (i = 0; i < pets.length; i++) {
+    //     card = document.getElementById(`card${(i+1)}`);
+    //     if (i < cardsForPage) {
+    //         card.style.display = 'none'; // hide element
+    //     } else {
+    //         card.style.display = 'block'; // show element (use '' for reset)
+    //     }
+    // }
+}
 
 function createCards() {
-    for (let i=0; i < 8; i++) {
+    for (let i=0; i < cardsForPage; i++) {
        createCard(startPetsCard+i,"card"+(i+1));
     }
 }
@@ -33,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //    setInactive(event.currentTarget);
     }
 
+    calculateCards();
     createCards();
    // arrowLeftButton.addEventListener('click', handleArrowLeftClick);
    // arrowRightButton.addEventListener('click', handleArrowRightClick);
@@ -41,6 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
         //    link.addEventListener('click', handleLinkClick);
     });
     setInactive(document.getElementById('our-pets'));
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', () => {
+        calculateCards(); // Пересчитать количество карточек
+        createCards();
+    });
+
     document.getElementById('button-much-less').classList.add('disabled');
     document.getElementById('button-less').classList.add('disabled');
     document.getElementById('button-center').classList.add('inactive');
