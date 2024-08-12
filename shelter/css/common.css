@@ -391,4 +391,199 @@ h5 {
 }*/
 
 
+.container-footer {
+    max-width: 1280px;
+    min-height: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 
+    font-family: var(--font-family);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-image: url("../assets/img/start-screen-background.png");
+    background-size: cover;
+
+
+    @media (max-width: 1279px) {
+        max-width: 768px;
+        min-height: 639px;
+    }
+
+    @media (max-width: 767px) {
+        max-width: 320px;
+        min-height: 809px;
+        justify-content: flex-end;
+        align-content: center;
+    }
+}
+
+.container-footer_wrapper {
+    max-width: 1200px;
+    width: 1200px;
+    min-height: 310px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.065em;
+    text-align: left;
+    text-wrap: wrap;
+    color: var(--color-primary);
+
+    @media (max-width: 1279px) {
+
+        flex-wrap: wrap;
+        justify-content: space-around;
+        /*column-gap: 53px;*/
+
+        max-width: 708px;
+        width: 708px;
+        min-height: 609px;
+    }
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 300px;
+        min-height: 779px;
+        margin: 0 auto;
+    }
+}
+
+.container-footer__contacts {
+    width: 100%;
+    max-width: 278px;
+    min-height: 234px;
+    margin-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    align-content: start;
+
+
+    @media (max-width: 1279px) {
+        margin-bottom: 55px;
+    }
+
+    @media (max-width: 767px) {
+        min-height: 208px;
+        margin-bottom: 0;
+        align-items: center;
+        align-content: center;
+    }
+}
+
+.container-footer__locations {
+    width: 100%;
+    max-width: 302px;
+    min-height: 234px;
+    margin-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @media (max-width: 1279px) {
+        margin-bottom: 55px;
+    }
+
+
+    @media (max-width: 767px) {
+        max-width: 300px;
+        min-height: 222px;
+        margin-bottom: 0;
+        align-items: center;
+        align-content: center;
+    }
+}
+
+.container-footer__image {
+    width: 100%;
+    max-width: 300px; /* Max width for screens 1280px wide and above */
+    aspect-ratio: 300 / 310; /* Maintain the aspect ratio of 300x310 */
+    height: auto; /* Adjust height automatically based on width and aspect ratio */
+
+    @media (max-width: 1279px) {
+
+    }
+
+    @media (max-width: 767px) {
+        max-width: 260px;
+        aspect-ratio: 260 / 269;
+    }
+}
+
+.container-footer__image img {
+    width: 100%;
+    height: auto;
+}
+
+.container-footer__title {
+    width: 100%;
+    min-height: 90px;
+
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: var(--color-light-xl);
+    text-align: left;
+    text-wrap: wrap;
+
+    @media (max-width: 767px) {
+        min-height: 64px;
+        max-width: 280px;
+        font-size: 25px;
+        text-align: center;
+    }
+}
+
+.container-footer__text {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.container-footer__text-item img {
+    height: inherit;
+    display: inline-block;
+    align-items: center;
+    padding-right: 18px;
+}
+
+.map-link,
+.email-link,
+.phone-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, cursor 0.3s ease;
+}
+
+.map-link:hover,
+.email-link:hover,
+.phone-link:hover {
+    color: var(--color-light-s);
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+   .container-footer__contacts .container-footer__text {
+       margin-left: 35px;
+   }
+
+    .container-footer__contacts .container-footer__text .container-footer__text-item img {
+        padding-right: 18px;
+    }
+}
