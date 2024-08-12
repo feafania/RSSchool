@@ -580,6 +580,8 @@ body {
     @media (max-width: 767px) {
         max-width: 290px; /* Maintains the maximum width of 1200px */
         min-height: 703px;
+        margin-top: -35px;
+        justify-content: start;
     }
 }
 
@@ -590,14 +592,11 @@ body {
     text-align: center;
 
 
-    @media (max-width: 1279px) {
-
-    }
-
     @media (max-width: 767px) {
 
-        max-width: 220px;
+        min-width: 220px;
         min-height: 64px;
+        font-size: 25px;
     }
 }
 
@@ -606,32 +605,34 @@ body {
     width: 100%;
     max-width: 1026px;
     min-height: 281px;
+    margin-top: 40px;
     display: flex;
-    gap: 119px;
     justify-content:center;
-    align-items: flex-end;
+    align-content: flex-end;
     flex-wrap: wrap;
+    row-gap: 55px; /* Отступ между строками */
+    column-gap: 119px;
 
 
     @media (max-width: 1279px) {
         max-width: 630px;
         min-height: 449px;
-
+        row-gap: 55px;
+        column-gap: 60px;
+        align-content: center;
     }
 
     @media (max-width: 767px) {
         max-width: 290px;
         min-height: 555px;
-
+        row-gap: 20px;
+        column-gap: 30px;
+        justify-content:start;
+        align-content: space-between;
     }
 }
 
-
-
-
 .section-help_wrapper__list-item {
-    align-self: flex-end;
-    flex-grow: 1;
 
     width: max-content;
     min-height: 113px;
@@ -641,30 +642,39 @@ body {
     justify-content: space-between;
     text-align: center;
 
-
     @media (max-width: 1279px) {
-
+        min-width: 170px;
     }
 
     @media (max-width: 767px) {
-        /*h5*/
-        font-size: 15px;
-        line-height: 110%;
+        min-width: 130px;
+        min-height: 87px;
     }
 }
 
 .section-help-list-picture {
-    max-width: 100%;
     width: 60px;
     height: 60px;
 
-    @media (max-width: 1279px) {
-
-    }
-
     @media (max-width: 767px) {
-        width: 50px;
-        height: 50px;
+        max-width: 50px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+}
+.section-help-list-picture img{
+    width: 100%;
+    height: auto;
+}
+
+
+.section-help_wrapper__list-item h4 {
+    display: block;
+    @media (max-width: 767px) {
+        /*h5*/
+        font-size: 15px;
+        line-height: 110%;
     }
 }
 
