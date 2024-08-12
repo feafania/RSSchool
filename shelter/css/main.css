@@ -144,6 +144,10 @@ body {
     }
 }
 
+.start-screen-container-header__link {
+    background: none;
+}
+
 .start-screen-container-header__menu {
     display: flex;
     flex-direction: row;
@@ -177,6 +181,10 @@ body {
    /* pointer-events: none;*/
     cursor: default;
     border-bottom: 3px solid var(--color-primary);
+}
+
+.start-screen-container-header__burger-menu-line {
+    border: 2px solid var(--color-primary);
 }
 
 /* Main content container styles */
@@ -580,7 +588,7 @@ body {
 
 .section-help_wrapper__header {
     width: 100%;
-    max-width: 309px;
+    max-width: 310px;
     min-height: 90px;
     text-align: center;
 

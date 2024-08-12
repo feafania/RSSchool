@@ -9,7 +9,7 @@ function calculateCards() {
     } else {
         cardsForPage = 8;
     }
-    startPetsCard = Math.min(startPetsCard,pets.length-cardsForPage)
+    startPetsCard = Math.min(   startPetsCard,pets.length-cardsForPage)
     // for (i = 0; i < pets.length; i++) {
     //     card = document.getElementById(`card${(i+1)}`);
     //     if (i < cardsForPage) {

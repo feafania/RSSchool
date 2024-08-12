@@ -333,9 +333,8 @@ h5 {
 }
 
 .burger-menu-line {
-    border: 2px solid var(--color-primary);
     width: 100%;
-    height: 0px;
+    height: 0;
     transition: border 0.3s, transform 0.3s; /* Smooth transitions for animations */
 }
 
@@ -460,7 +459,7 @@ h5 {
 
 .container-footer__contacts {
     width: 100%;
-    max-width: 278px;
+    max-width: 279px;
     min-height: 234px;
     margin-bottom: 45px;
     display: flex;
