@@ -262,6 +262,7 @@ body {
         letter-spacing: 0.06em;
         min-height: 64px;
         padding: 0 40px;
+        align-self: center;
     }
 }
 
@@ -293,17 +294,24 @@ body {
 
     /* Media queries inside the style */
     @media (max-width: 1279px) {
-        max-width: 569px; /* Adjusts the width proportionally for screens between 768px and 320px */
+        width: calc((569 / 768) * 100vw);
         aspect-ratio: 569 / 593;
         margin-left: 140px;
         margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+        max-width: 569px; /* Adjusts the width proportionally for screens between 768px and 320px */
 
     }
     @media (max-width: 767px) {
-        max-width: 260px; /* Adjusts the width proportionally for screens between 768px and 320px */
+        width: calc((260 / 320) * 100vw);
         aspect-ratio: 260 / 271;
         margin-left: auto;
         margin-top: 65px;
+    }
+    @media (max-width: 320px) {
+        max-width: 260px; /* Adjusts the width proportionally for screens between 768px and 320px */
     }
 }
 
@@ -370,7 +378,14 @@ body {
     margin-left: 175px;
     margin-right: 120px;
 
+    @media (max-width: 1279px) {
+        width: calc((300 / 768) * 100vw);
+    }
     @media (max-width: 767px) {
+        width: calc((260 / 320) * 100vw);
+    }
+
+    @media (max-width: 320px) {
         max-width: 260px;
     }
 }
@@ -423,13 +438,14 @@ body {
     margin: 15px 0 25px;
 
     @media (max-width: 1279px) {
-        max-width: calc((370 / 768) * 100vw);
+        /*max-width: calc((370 / 768) * 100vw);*/
     }
 
     @media (max-width: 767px) {
-        max-width: calc((300 / 320) * 100vw);
+        /*max-width: calc((300 / 320) * 100vw);*/
+        max-width: 300px;
         min-height: 64px;
-        margin-top: 48px;
+        margin: 48px auto 27px;
         padding: 0 10px;
         text-align: center;
     }
@@ -693,11 +709,18 @@ body {
     width: 60px;
     height: 60px;
 
+    @media (max-width: 1279px) {
+        width: calc((60 / 768) * 100vw);
+    }
+    @media (max-width: 767px) {
+        width: calc((50 / 320) * 100vw);
+        height: auto;
+        aspect-ratio: 1;
+    }
+
     @media (max-width: 767px) {
         max-width: 50px;
         width: 100%;
-        height: auto;
-        aspect-ratio: 1;
     }
 }
 .section-help-list-picture img{
@@ -776,16 +799,21 @@ body {
     margin-top: 13px;
 
     @media (max-width: 1279px) {
+        width: calc((505 / 768) * 100vw);
         margin-left: 30px;
         margin-top: 62px;
     }
 
     @media (max-width: 767px) {
-        max-width: 260px;
+        width: calc((260 / 320) * 100vw);
         aspect-ratio: 260 / 135.2;
         margin-top: 22px;
         margin-bottom: 0px;
     }
+    @media (max-width: 320px) {
+        max-width: 260px;
+    }
+
 }
 
 .section-donation__image img {

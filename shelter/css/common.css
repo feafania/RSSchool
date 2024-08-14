@@ -512,12 +512,16 @@ h5 {
     height: auto; /* Adjust height automatically based on width and aspect ratio */
 
     @media (max-width: 1279px) {
-
+        width: calc((300 / 768) * 100vw);
+    }
+    @media (max-width: 767px) {
+        aspect-ratio: 260 / 269;
+        width: calc((260 / 320) * 100vw);
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 320px) {
         max-width: 260px;
-        aspect-ratio: 260 / 269;
+
     }
 }
 
