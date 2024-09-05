@@ -9,13 +9,7 @@ function calculateCards() {
     } else {
         cardsForPage = 3;
     }
-    startCard = Math.min(startCard,pets.length-cardsForPage)
-}
-
-function createCards() {
-    for (let i=0; i < cardsForPage; i++) {
-        createCard(startCard+i,"card"+(i+1));
-    }
+    startCard = Math.min(startCard,Math.max(pets.length-cardsForPage,0))
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,7 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     calculateCards();
+
+    loadPets()
+        .then(data => {
+            pets = data;
+            createCards();
+        });
     createCards();
+
     arrowLeftButton.addEventListener('click', handleArrowLeftClick);
     arrowRightButton.addEventListener('click', handleArrowRightClick);
 

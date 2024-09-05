@@ -1,4 +1,4 @@
-let startPetsCard = 0;
+let startCard = 0;
 let cardsForPage = 0;
 
 function calculateCards() {
@@ -9,7 +9,7 @@ function calculateCards() {
     } else {
         cardsForPage = 8;
     }
-    startPetsCard = Math.min(   startPetsCard,pets.length-cardsForPage)
+    startCard = Math.min(startCard,Math.max(pets.length-cardsForPage,0))
     // for (i = 0; i < pets.length; i++) {
     //     card = document.getElementById(`card${(i+1)}`);
     //     if (i < cardsForPage) {
@@ -20,20 +20,14 @@ function calculateCards() {
     // }
 }
 
-function createCards() {
-    for (let i=0; i < cardsForPage; i++) {
-       createCard(startPetsCard+i,"card"+(i+1));
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('.pets-container-header__link');
 
     function updateButtonStates() {
-        arrowLeftButton.disabled = startPetsCard === 0;
+        arrowLeftButton.disabled = startCard === 0;
         arrowLeftButton.classList.toggle('disabled', startCard === 0);
 
-        arrowRightButton.disabled = startPetsCard >= pets.length - 3;
+        arrowRightButton.disabled = startCard >= pets.length - 3;
         arrowRightButton.classList.toggle('disabled', startCard >= pets.length - 3);
     }
 
@@ -54,7 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     calculateCards();
+    loadPets()
+        .then(data => {
+            pets = data;
+            createCards();
+        });
     createCards();
+
    // arrowLeftButton.addEventListener('click', handleArrowLeftClick);
    // arrowRightButton.addEventListener('click', handleArrowRightClick);
 
