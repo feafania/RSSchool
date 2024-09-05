@@ -6,9 +6,12 @@ async function loadPets() {
     return await response.json(); // array
 }
 
-function createCard(numberArray,id) {
-    const cardElement = document.getElementById(id);
-    if (!cardElement) {return}
+function createCard(numberArray) {
+    const cardContainer = document.querySelector('.cards-container');
+    if (!cardContainer) {return}
+
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('card');
     cardElement.innerHTML = '';
 
     const img = document.createElement('img');
@@ -31,10 +34,18 @@ function createCard(numberArray,id) {
     cardElement.appendChild(title);
     cardElement.appendChild(button);
 
+    cardContainer.appendChild(cardElement);
+
 }
 
 function createCards() {
+    const cardContainer = document.querySelector('.cards-container');
+    if (!cardContainer) {return}
+    else {
+        cardContainer.innerHTML = ''; // Удаляет всех детей
+    }
+
     for (let i=0; i < cardsForPage; i++) {
-        createCard(startCard+i,"card"+(i+1));
+        createCard(startCard+i);
     }
 }
