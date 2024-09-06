@@ -79,5 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateCards(); // Пересчитать количество карточек
         createCards();
     });
+
+    const burgerMenu = document.querySelector('.burger-menu');
+
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+        });
+    }
 });
 

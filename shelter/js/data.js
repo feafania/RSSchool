@@ -42,7 +42,7 @@ function createCards() {
     const cardContainer = document.querySelector('.cards-container');
     if (!cardContainer) {return}
     else {
-        cardContainer.innerHTML = ''; // Удаляет всех детей
+        cardContainer.innerHTML = ''; // remove all children
     }
 
     for (let i=0; i < cardsForPage; i++) {

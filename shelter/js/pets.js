@@ -10,18 +10,14 @@ function calculateCards() {
         cardsForPage = 8;
     }
     startCard = Math.min(startCard,Math.max(pets.length-cardsForPage,0))
-    // for (i = 0; i < pets.length; i++) {
-    //     card = document.getElementById(`card${(i+1)}`);
-    //     if (i < cardsForPage) {
-    //         card.style.display = 'none'; // hide element
-    //     } else {
-    //         card.style.display = 'block'; // show element (use '' for reset)
-    //     }
-    // }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('.pets-container-header__link');
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navigationMenu = document.querySelector('.header__navigation');
+    const overlay = document.querySelector('.overlay');
+    const navigationLinks = document.querySelectorAll('.navigation_link');
 
     function updateButtonStates() {
         arrowLeftButton.disabled = startCard === 0;
@@ -36,15 +32,48 @@ document.addEventListener('DOMContentLoaded', () => {
         elementActive.classList.add('inactive');
     }
 
-    function resetInactive() {
-        links.forEach(link => {
-            link.classList.remove('inactive');
-        });
+    function hideMenu() {
+        if (burgerMenu) {
+            burgerMenu.classList.remove('active');
+        }
+        if (navigationMenu) {
+            navigationMenu.classList.remove('active');
+        }
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        document.body.classList.remove('no-scroll');
     }
 
-    function handleLinkClick(event) {
-        //    resetInactive();
-        //    setInactive(event.currentTarget);
+
+    function handleClickOutside(event) {
+        if (navigationMenu.classList.contains('active')) {
+            if (!navigationMenu.contains(event.target) && !burgerMenu.contains(event.target)) {
+                hideMenu();
+            }
+        }
+    }
+    function handleResize() {
+        calculateCards(); // Пересчитать количество карточек
+        createCards();
+        if (window.innerWidth >= 768) {
+            hideMenu()
+        }
+    }
+
+    function toggleMenu() {
+        burgerMenu.classList.toggle('active');
+        if (navigationMenu) {
+            navigationMenu.classList.toggle('active');
+        }
+        if (overlay) {
+            overlay.classList.toggle('active'); // Переключаем слой затемнения
+        }
+        if (navigationMenu.classList.contains('active')) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
     }
 
     calculateCards();
@@ -55,21 +84,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     createCards();
 
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    document.addEventListener('click', handleClickOutside);
+
    // arrowLeftButton.addEventListener('click', handleArrowLeftClick);
    // arrowRightButton.addEventListener('click', handleArrowRightClick);
 
-    links.forEach(link => {
-        //    link.addEventListener('click', handleLinkClick);
+    navigationLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
     });
     setInactive(document.getElementById('our-pets'));
-    // Обработчик изменения размера окна
-    window.addEventListener('resize', () => {
-        calculateCards(); // Пересчитать количество карточек
-        createCards();
-    });
+
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', toggleMenu);
+    }
 
     document.getElementById('button-much-less').classList.add('disabled');
     document.getElementById('button-less').classList.add('disabled');
     document.getElementById('button-center').classList.add('inactive');
+
 });
 
