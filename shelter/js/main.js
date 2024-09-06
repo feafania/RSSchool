@@ -1,5 +1,3 @@
-let startCard = 0;
-let cardsForPage = 0;
 
 function calculateCards() {
     if (window.innerWidth < 768) {
@@ -15,7 +13,6 @@ function calculateCards() {
 document.addEventListener('DOMContentLoaded', () => {
     const arrowLeftButton = document.querySelector('.button-arrow-left');
     const arrowRightButton = document.querySelector('.button-arrow-right');
-    const links = document.querySelectorAll('.start-screen-container-header__link');
 
     function updateButtonStates() {
         arrowLeftButton.disabled = startCard === 0;
@@ -37,29 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateButtonStates();
     }
 
-    function setInactive(elementActive) {
-        elementActive.classList.add('inactive');
-    }
-
-    function resetInactive() {
-        links.forEach(link => {
-            link.classList.remove('inactive');
-        });
-    }
-
-    function handleLinkClick(event) {
-    //    resetInactive();
-    //    setInactive(event.currentTarget);
-    }
-
-    calculateCards();
-
-    loadPets()
-        .then(data => {
-            pets = data;
-            createCards();
-        });
-    createCards();
 
     arrowLeftButton.addEventListener('click', handleArrowLeftClick);
     arrowRightButton.addEventListener('click', handleArrowRightClick);
@@ -68,24 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('make-friends').addEventListener('click',() => window.location.href = '#friends');
 
 
-    links.forEach(link => {
-    //    link.addEventListener('click', handleLinkClick);
-    });
-
     setInactive(document.getElementById('about-link'));
 
-    // Обработчик изменения размера окна
-    window.addEventListener('resize', () => {
-        calculateCards(); // Пересчитать количество карточек
-        createCards();
-    });
-
-    const burgerMenu = document.querySelector('.burger-menu');
-
-    if (burgerMenu) {
-        burgerMenu.addEventListener('click', () => {
-            burgerMenu.classList.toggle('active');
-        });
-    }
 });
 

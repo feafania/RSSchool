@@ -1,4 +1,3 @@
-
 let pets = [];
 
 async function loadPets() {
@@ -49,3 +48,5 @@ function createCards() {
         createCard(startCard+i);
     }
 }
+
+
