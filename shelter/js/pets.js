@@ -1,3 +1,4 @@
+let cardsForPage = 0;
 
 function calculateCards() {
     if (window.innerWidth < 768) {
@@ -7,18 +8,17 @@ function calculateCards() {
     } else {
         cardsForPage = 8;
     }
-    startCard = Math.min(startCard,Math.max(pets.length-cardsForPage,0))
-
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    function updateButtonStates() {
-        arrowLeftButton.disabled = startCard === 0;
-        arrowLeftButton.classList.toggle('disabled', startCard === 0);
 
-        arrowRightButton.disabled = startCard >= pets.length - 3;
-        arrowRightButton.classList.toggle('disabled', startCard >= pets.length - 3);
+function createCardsForPets() {
+    for (let i=0; i < cardsForPage; i++) {
+        createCard(i);
     }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
 
    // arrowLeftButton.addEventListener('click', handleArrowLeftClick);
    // arrowRightButton.addEventListener('click', handleArrowRightClick);

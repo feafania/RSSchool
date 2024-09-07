@@ -1,4 +1,5 @@
 let pets = [];
+let petsNumbers = [];
 const overlay = document.querySelector('.overlay');
 const modalWindow = document.querySelector('.modal-window');
 const modalWindowButton = document.querySelector('.button-close');
@@ -19,7 +20,7 @@ function createCard(numberArray) {
 
     const img = document.createElement('img');
     const title = document.createElement('div');
-    if ((numberArray < pets.length)&&(pets.length>0)) {
+    if (pets[numberArray]) {
         img.src = pets[numberArray].img;
         img.alt = `${pets[numberArray].name} — ${pets[numberArray].type}`;
         img.title = `${pets[numberArray].name} — ${pets[numberArray].type} ${pets[numberArray].breed}`;
@@ -38,7 +39,7 @@ function createCard(numberArray) {
     cardElement.appendChild(button);
 
     cardContainer.appendChild(cardElement);
-    cardElement.addEventListener('click', () => openPopupMenu(cardElement,numberArray));
+    cardElement.addEventListener('click', () => openPopupMenu(numberArray));
 
 }
 
@@ -74,7 +75,7 @@ function fillModalContent(content,pet) {
 
 }
 
-function fillModalWindow(cardElement,numberArray) {
+function fillModalWindow(numberArray) {
     if (!modalWindow) {return}
     //clean content
     const cardImg = modalWindow.querySelector('.modal-card-image');
@@ -82,17 +83,16 @@ function fillModalWindow(cardElement,numberArray) {
     if (cardImg) cardImg.remove();
     if (cardContent) cardContent.remove();
 
-    if (!cardElement) {return}
+    if (!pets[numberArray]) {return}
 
     const contentImg = document.createElement('div');
     contentImg.classList.add('modal-card-image');
     const img = document.createElement('img');
-    const imgElement = cardElement.querySelector('.card-image');
-    if (imgElement) {
-        img.src = imgElement.src;
-        img.alt = imgElement.alt || '';
-        img.title = imgElement.title || '';
-    }
+
+    img.src = pets[numberArray].img;
+    img.alt = `${pets[numberArray].name} — ${pets[numberArray].type}`;
+    img.title = `${pets[numberArray].name} — ${pets[numberArray].type} ${pets[numberArray].breed}`;
+
     contentImg.appendChild(img);
     modalWindow.appendChild(contentImg);
 
@@ -112,19 +112,21 @@ function createCards() {
         cardContainer.innerHTML = ''; // remove all children
     }
 
-    for (let i=0; i < cardsForPage; i++) {
-        createCard(startCard+i);
-    }
+    // Проверяем, на какой странице мы находимся
+    const currentPage = window.location.pathname;  // Возвращает путь текущего URL
+
+    if (currentPage.includes('index.html')) createCardsForMain()
+    else if (currentPage.includes('pets.html')) createCardsForPets()
 }
 
-function openPopupMenu(cardElement,numberArray) {
+function openPopupMenu(numberArray) {
     if (overlay) {
         overlay.classList.add('active');
         document.body.classList.add('no-scroll')
     }
     if (modalWindow) {
         modalWindow.classList.add('active');
-        fillModalWindow(cardElement,numberArray);
+        fillModalWindow(numberArray);
     }
     if (modalWindowButton) {
         modalWindowButton.classList.add('active');

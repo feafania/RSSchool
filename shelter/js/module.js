@@ -19,8 +19,6 @@
 //     }
 //     windowOnload();
 // });
-let startCard = 0;
-let cardsForPage = 0;
 
 function setInactive(elementActive) {
     elementActive.classList.add('inactive');
@@ -81,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPets()
         .then(data => {
             pets = data;
+            calculateCards();
             createCards();
         });
     createCards();
