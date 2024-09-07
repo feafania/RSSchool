@@ -1,4 +1,7 @@
 let pets = [];
+const overlay = document.querySelector('.overlay');
+const modalWindow = document.querySelector('.modal-window');
+const burgerMenu = document.querySelector('.burger-menu');
 
 async function loadPets() {
     const response = await fetch('./js/pets.json');
@@ -34,6 +37,7 @@ function createCard(numberArray) {
     cardElement.appendChild(button);
 
     cardContainer.appendChild(cardElement);
+    cardElement.addEventListener('click', openPopupMenu);
 
 }
 
@@ -47,6 +51,28 @@ function createCards() {
     for (let i=0; i < cardsForPage; i++) {
         createCard(startCard+i);
     }
+}
+
+function openPopupMenu(event) {
+    if (overlay) {
+        overlay.classList.add('active');
+        document.body.classList.add('no-scroll')
+    }
+    if (modalWindow) {
+        modalWindow.classList.add('active');
+    }
+    burgerMenu.style.zIndex = '800';
+}
+
+function closePopupMenu(event) {
+    if (overlay) {
+        overlay.classList.remove('active');
+        document.body.classList.remove('no-scroll')
+    }
+    if (modalWindow) {
+        modalWindow.classList.remove('active');
+    }
+    burgerMenu.style.zIndex = '999';
 }
 
 

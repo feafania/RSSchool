@@ -27,10 +27,9 @@ function setInactive(elementActive) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const burgerMenu = document.querySelector('.burger-menu');
     const navigationMenu = document.querySelector('.header__navigation');
-    const overlay = document.querySelector('.overlay');
     const navigationLinks = document.querySelectorAll('.navigation_link');
+    const buttonClose = document.querySelector('.button-close');
 
 
     function hideMenu() {
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function handleClickOutside(event) {
-        if (navigationMenu.classList.contains('active')) {
+        if ((navigationMenu.classList.contains('active')) && !modalWindow.classList.contains('active')) {
             if (!navigationMenu.contains(event.target) && !burgerMenu.contains(event.target)) {
                 hideMenu();
             }
@@ -57,23 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleResize() {
         calculateCards(); // Пересчитать количество карточек
         createCards();
-        if (window.innerWidth >= 768) {
+        if ((window.innerWidth >= 768) && !modalWindow.classList.contains('active')) {
             hideMenu()
         }
     }
 
     function toggleMenu() {
-        burgerMenu.classList.toggle('active');
-        if (navigationMenu) {
-            navigationMenu.classList.toggle('active');
-        }
-        if (overlay) {
-            overlay.classList.toggle('active'); // Переключаем слой затемнения
-        }
-        if (navigationMenu.classList.contains('active')) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
+        if ((window.innerWidth < 768) && !modalWindow.classList.contains('active')) {
+            burgerMenu.classList.toggle('active');
+            if (navigationMenu) {
+                navigationMenu.classList.toggle('active');
+            }
+            if (overlay) {
+                overlay.classList.toggle('active'); // Переключаем слой затемнения
+            }
+            if (navigationMenu.classList.contains('active')) {
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.classList.remove('no-scroll');
+            }
         }
     }
     calculateCards();
@@ -96,4 +97,17 @@ document.addEventListener('DOMContentLoaded', () => {
         burgerMenu.addEventListener('click', toggleMenu);
     }
 
+    if (overlay) {
+        overlay.addEventListener('click', closePopupMenu);
+    }
+
+    if (buttonClose) {
+        buttonClose.addEventListener('click', closePopupMenu);
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closePopupMenu();
+        }
+    })
 });
