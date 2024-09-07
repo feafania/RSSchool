@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function toggleMenu() {
-        if ((window.innerWidth < 768) && !modalWindow.classList.contains('active')) {
+         if ((window.innerWidth < 768) && !modalWindow.classList.contains('active')) {
             burgerMenu.classList.toggle('active');
             if (navigationMenu) {
                 navigationMenu.classList.toggle('active');
