@@ -1,6 +1,7 @@
 let pets = [];
 const overlay = document.querySelector('.overlay');
 const modalWindow = document.querySelector('.modal-window');
+const modalWindowButton = document.querySelector('.button-close');
 const burgerMenu = document.querySelector('.burger-menu');
 
 async function loadPets() {
@@ -54,17 +55,17 @@ function fillModalContent(content,pet) {
     elementHeader.classList.add('modal-card-content_header');
     const elementSubHeader = document.createElement('h4');
     elementSubHeader.textContent = `${pet.type} - ${pet.breed}`;
-    elementSubHeader.classList.add('modal-card-content_subheader');
+    elementSubHeader.classList.add('modal-card-content_subheader','modal-card-content_element');
     const elementDescription = document.createElement('h5');
     elementDescription.textContent = pet.description;
-    elementDescription.classList.add('modal-card-content_description');
+    elementDescription.classList.add('modal-card-content_description','modal-card-content_element');
     content.appendChild(elementHeader);
     content.appendChild(elementSubHeader);
     content.appendChild(elementDescription);
 
     //list
     const elementList = document.createElement('ul');
-    elementList.classList.add('modal-card-content_list');
+    elementList.classList.add('modal-card-content_list','modal-card-content_element');
     addModalContentListItem(elementList,'age',pet);
     addModalContentListItem(elementList,'inoculations',pet);
     addModalContentListItem(elementList,'diseases',pet);
@@ -83,21 +84,23 @@ function fillModalWindow(cardElement,numberArray) {
 
     if (!cardElement) {return}
 
+    const contentImg = document.createElement('div');
+    contentImg.classList.add('modal-card-image');
     const img = document.createElement('img');
-    const content = document.createElement('div');
-
     const imgElement = cardElement.querySelector('.card-image');
     if (imgElement) {
         img.src = imgElement.src;
         img.alt = imgElement.alt || '';
         img.title = imgElement.title || '';
     }
-    img.classList.add('modal-card-image');
+    contentImg.appendChild(img);
+    modalWindow.appendChild(contentImg);
 
+    const content = document.createElement('div');
     content.classList.add('modal-card-content');
     fillModalContent(content,pets[numberArray]);
 
-    modalWindow.appendChild(img);
+
     modalWindow.appendChild(content);
 
 }
@@ -123,6 +126,9 @@ function openPopupMenu(cardElement,numberArray) {
         modalWindow.classList.add('active');
         fillModalWindow(cardElement,numberArray);
     }
+    if (modalWindowButton) {
+        modalWindowButton.classList.add('active');
+    }
     burgerMenu.style.zIndex = '800';
 }
 
@@ -133,6 +139,9 @@ function closePopupMenu(event) {
     }
     if (modalWindow) {
         modalWindow.classList.remove('active');
+    }
+    if (modalWindowButton) {
+        modalWindowButton.classList.remove('active');
     }
     burgerMenu.style.zIndex = '999';
 }
