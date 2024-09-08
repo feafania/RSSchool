@@ -5,6 +5,12 @@ const modalWindow = document.querySelector('.modal-window');
 const modalWindowButton = document.querySelector('.button-close');
 const burgerMenu = document.querySelector('.burger-menu');
 
+const navigationMenu = document.querySelector('.header__navigation');
+const navigationLinks = document.querySelectorAll('.navigation_link');
+const buttonClose = document.querySelector('.button-close');
+
+
+
 async function loadPets() {
     const response = await fetch('./js/pets.json');
     return await response.json(); // array
@@ -105,23 +111,8 @@ function fillModalWindow(numberArray) {
     content.classList.add('modal-card-content');
     fillModalContent(content,pets[numberArray]);
 
-
     modalWindow.appendChild(content);
 
-}
-
-function createCards() {
-    const cardContainer = document.querySelector('.cards-container');
-    if (!cardContainer) {return}
-    else {
-        cardContainer.innerHTML = ''; // remove all children
-    }
-
-    // Проверяем, на какой странице мы находимся
-    const currentPage = window.location.pathname;  // Возвращает путь текущего URL
-
-    if (currentPage.includes('index.html')) createCardsForMain()
-    else if (currentPage.includes('pets.html')) createCardsForPets()
 }
 
 function openPopupMenu(numberArray) {
@@ -152,5 +143,28 @@ function closePopupMenu(event) {
     }
     burgerMenu.style.zIndex = '999';
 }
+
+function getRandomNumber(excludeSet) {
+    const availableNumbers = Array.from({ length: pets.length }, (_, i) => i);
+    const possibleNumbers = availableNumbers.filter(num => !excludeSet.has(num));
+    if (possibleNumbers.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
+    return possibleNumbers[randomIndex];
+}
+
+function hideMenu() {
+    if (burgerMenu) {
+        burgerMenu.classList.remove('active');
+    }
+    if (navigationMenu) {
+        navigationMenu.classList.remove('active');
+    }
+    if (overlay) {
+        overlay.classList.remove('active');
+    }
+    document.body.classList.remove('no-scroll');
+}
+
+
 
 

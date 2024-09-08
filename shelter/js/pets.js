@@ -58,6 +58,26 @@ function createCardsForPets() {
         updateCard(card,i);
     }
 }
+function createCards() {
+    const cardContainer = document.querySelector('.cards-container');
+    if (!cardContainer) {return}
+    else {
+        cardContainer.innerHTML = ''; // remove all children
+    }
+    loadPetsNumbers();
+    createCardsForPets();
+}
+
+function handleResize() {
+    calculateCards(); // Пересчитать количество карточек
+    updateButtonStates();
+    updateCardsForPets();
+
+    if ((window.innerWidth >= 768) && !modalWindow.classList.contains('active')) {
+        hideMenu()
+    }
+}
+
 
 function updateCardsForPets() {
     for (let i=0; i < (petsNumbers.length); i++) {

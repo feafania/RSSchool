@@ -48,6 +48,26 @@ function createCardsForMain() {
     }
 }
 
+function createCards() {
+    const cardContainer = document.querySelector('.cards-container');
+    if (!cardContainer) {return}
+    else {
+        cardContainer.innerHTML = ''; // remove all children
+    }
+
+    createCardsForMain();
+}
+
+function handleResize() {
+    calculateCards(); // Пересчитать количество карточек
+    createCards();
+
+    if ((window.innerWidth >= 768) && !modalWindow.classList.contains('active')) {
+        hideMenu()
+    }
+}
+
+
 function createCurrentTransforms() {
     const currentTransforms = new Map();
     const containerRect = cardsContainer.getBoundingClientRect();
