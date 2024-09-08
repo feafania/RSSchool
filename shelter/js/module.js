@@ -23,6 +23,9 @@
 function setInactive(elementActive) {
     elementActive.classList.add('inactive');
 }
+function setActive(elementActive) {
+    elementActive.classList.remove('inactive');
+}
 
 function getRandomNumber(excludeSet) {
     const availableNumbers = Array.from({ length: pets.length }, (_, i) => i);
