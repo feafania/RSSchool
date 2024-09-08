@@ -65,7 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function handleResize() {
         calculateCards(); // Пересчитать количество карточек
-        createCards();
+        if (window.location.pathname.includes('index.html')) createCards()
+        else {
+            updateButtonStates();
+            updateCardsForPets();
+        };
         if ((window.innerWidth >= 768) && !modalWindow.classList.contains('active')) {
             hideMenu()
         }
@@ -92,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             pets = data;
             calculateCards();
+           if (window.location.pathname.includes('pets.html')) loadPetsNumbers()
             createCards();
         });
     createCards();

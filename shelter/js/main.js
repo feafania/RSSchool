@@ -60,7 +60,6 @@ function createCurrentTransforms() {
             // currentTransforms.set(card, transformValue);
             const cardRect = card.getBoundingClientRect();
             const currentX = cardRect.left - containerRect.left; // The actual position inside the container
-
             currentTransforms.set(card, currentX);
         }
     }
@@ -86,27 +85,25 @@ function handleTransition() {
 
 }
 
-function preMovingEvents(card,currentTransforms) {
+function preMovingEvents(card,currentTransforms,direction='left') {
     // Apply their current positions to the cards before the changes
     // const currentTransform = currentTransforms.get(card) || 'translateX(0px)';
     // card.style.transform = currentTransform;
     card.style.transition = 'none'
-    const currentX = currentTransforms.get(card) || 0; // current card position
+    let currentX = currentTransforms.get(card) || 0; // current card position
+    // console.log(' card ',card.dataNumber,currentX);
+    if (direction='left') {
+        // currentX -= (+card.offsetWidth)*cardsForPage;
+        // console.log(' transform ',currentX);
+    }
+
     card.style.transform = `translateX(${currentX}px)`; // Use the current card position  as the starting point
 
     // To force redrawing (so that the browser fixes the current position)
     card.offsetHeight; // Trigger reflow
 
-    card.style.transition = '0.5s ease transform, 0.5s ease opacity';
+    card.style.transition = '0.3s ease transform, 0.3s ease opacity';
 }
-
-// function updateButtonStates() {
-//     arrowLeftButton.disabled = startCard === 0;
-//     arrowLeftButton.classList.toggle('disabled', startCard === 0);
-//
-//     arrowRightButton.disabled = startCard >= pets.length - cardsForPage;
-//     arrowRightButton.classList.toggle('disabled', startCard >= pets.length - cardsForPage);
-// }
 
 function handleArrowLeftClick() {
     const containerWidth = cardsContainer.offsetWidth;
@@ -162,8 +159,6 @@ function handleArrowLeftClick() {
         cardsContainer.offsetHeight; // Trigger a reflow
     }, 100); // A slight delay before synchronizing animations
 
-
-    // updateButtonStates();
 }
 
 function handleArrowRightClick() {
@@ -204,12 +199,12 @@ function handleArrowRightClick() {
             const card = cardsContainer.querySelector(`.card[data-number="${i}"]`);
             const cardWidth = card.offsetWidth;
             if (card) {
-                preMovingEvents(card,currentTransforms);
+                preMovingEvents(card,currentTransforms,"right");
 
                 if (i >= cardsForPage) {
                     const shiftAmount = (i%cardsForPage) * cardWidth + containerWidth;
                     card.style.transform = `translateX(${shiftAmount}px)`;
-                    card.classList.add('hidden');
+                    // card.classList.add('hidden');
                 } else {
                     // animation
                     // const nextCard = cardsContainer.querySelector(`.card[data-number="${cardsForPage + i}"]`);
@@ -217,7 +212,6 @@ function handleArrowRightClick() {
                     // card.style.transform = `translateX(${currentXNextCard}px)`; // Use the current card position  as the starting point
                     card.style.transform = 'translateX(0)'; //move to center
                     card.classList.remove('hidden');
-
                 }
             }
         }
@@ -225,10 +219,7 @@ function handleArrowRightClick() {
         // Trigger a reflow (recalculation of styles) to ensure the browser processes the changes
         cardsContainer.offsetHeight; // Trigger a reflow
     }, 100); // A slight delay before synchronizing animations
-
-    // updateButtonStates();
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
 

@@ -36,6 +36,7 @@ function createCard(dataNumber) {
     button.classList.add('button-learn-more');
 
     cardElement.setAttribute('data-number', dataNumber);
+    cardElement.dataNumber = dataNumber
 
     cardElement.appendChild(img);
     cardElement.appendChild(title);

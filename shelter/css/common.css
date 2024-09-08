@@ -302,6 +302,10 @@ h5 {
     position: absolute;
 }
 
+.hidden-display {
+    display: none;
+}
+
 .burger-menu {
     display: none; /* Hidden by default */
 
