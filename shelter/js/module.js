@@ -23,55 +23,15 @@
 function setInactive(elementActive) {
     elementActive.classList.add('inactive');
 }
-function setActive(elementActive) {
-    elementActive.classList.remove('inactive');
-}
-
-function getRandomNumber(excludeSet) {
-    const availableNumbers = Array.from({ length: pets.length }, (_, i) => i);
-    const possibleNumbers = availableNumbers.filter(num => !excludeSet.has(num));
-    if (possibleNumbers.length === 0) return null;
-    const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
-    return possibleNumbers[randomIndex];
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const navigationMenu = document.querySelector('.header__navigation');
-    const navigationLinks = document.querySelectorAll('.navigation_link');
-    const buttonClose = document.querySelector('.button-close');
-
-
-    function hideMenu() {
-        if (burgerMenu) {
-            burgerMenu.classList.remove('active');
-        }
-        if (navigationMenu) {
-            navigationMenu.classList.remove('active');
-        }
-        if (overlay) {
-            overlay.classList.remove('active');
-        }
-        document.body.classList.remove('no-scroll');
-    }
-
 
     function handleClickOutside(event) {
         if ((navigationMenu.classList.contains('active')) && !modalWindow.classList.contains('active')) {
             if (!navigationMenu.contains(event.target) && !burgerMenu.contains(event.target)) {
                 hideMenu();
             }
-        }
-    }
-    function handleResize() {
-        calculateCards(); // Пересчитать количество карточек
-        if (window.location.pathname.includes('index.html')) createCards()
-        else {
-            updateButtonStates();
-            updateCardsForPets();
-        };
-        if ((window.innerWidth >= 768) && !modalWindow.classList.contains('active')) {
-            hideMenu()
         }
     }
 
@@ -96,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             pets = data;
             calculateCards();
-           if (window.location.pathname.includes('pets.html')) loadPetsNumbers()
             createCards();
         });
     createCards();
