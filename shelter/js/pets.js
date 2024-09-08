@@ -1,75 +1,121 @@
-let startPetsCard = 0;
 let cardsForPage = 0;
+let activePage = 1;
+let numberOfPages = 0;
+const cardsContainer = document.querySelector('.cards-container');
+
+const buttonMuchLess = document.getElementById('button-much-less');
+const buttonLess = document.getElementById('button-less');
+const buttonCenter = document.getElementById('button-center');
+const buttonGreater = document.getElementById('button-greater');
+const buttonMuchGreater = document.getElementById('button-much-greater');
 
 function calculateCards() {
+    startCard = ((activePage-1)*cardsForPage);
+    petsNumbers.length = 48;
     if (window.innerWidth < 768) {
         cardsForPage = 3;
     } else if (window.innerWidth < 1280) {
         cardsForPage = 6;
+        numberOfPages = 8;
     } else {
         cardsForPage = 8;
     }
-    startPetsCard = Math.min(   startPetsCard,pets.length-cardsForPage)
-    // for (i = 0; i < pets.length; i++) {
-    //     card = document.getElementById(`card${(i+1)}`);
-    //     if (i < cardsForPage) {
-    //         card.style.display = 'none'; // hide element
-    //     } else {
-    //         card.style.display = 'block'; // show element (use '' for reset)
-    //     }
-    // }
+    numberOfPages = Math.round(petsNumbers.length/cardsForPage);
+
+    //recalculate active page
+    activePage = Math.floor(startCard/cardsForPage)+1;
+    updateButtonStates();
+    updateCardsForPets();
 }
 
-function createCards() {
-    for (let i=0; i < cardsForPage; i++) {
-       createCard(startPetsCard+i,"card"+(i+1));
+function loadPetsNumbers() {
+    for (let i=0; i < petsNumbers.length; i++) {
+        const position3 = i%3;
+        const position6 = i%6;
+        const position8 = i%8;
+        const excludeSet = new Set();
+        for (let j = 1; j <= Math.max(position3,position6,position8); j++) {
+            if (i - j >= 0) excludeSet.add(petsNumbers[i - j]);
+        }
+        petsNumbers[i] = getRandomNumber(excludeSet)
     }
+}
+
+function updateCard(card,numberOfCard) {
+    if (card) {
+        if ((numberOfCard>=((activePage-1)*cardsForPage))&&(numberOfCard<(activePage*cardsForPage))) {
+            card.classList.remove('hidden-display');
+        } else {
+            card.classList.add('hidden-display');
+        }
+    }
+}
+
+
+function createCardsForPets() {
+    for (let i=0; i < (petsNumbers.length); i++) {
+        card = createCard(i);
+        updateCard(card,i);
+    }
+}
+
+function updateCardsForPets() {
+    for (let i=0; i < (petsNumbers.length); i++) {
+        const card = cardsContainer.querySelector(`.card[data-number="${i}"]`);
+        updateCard(card,i);
+    }
+}
+
+function updateButtonStates() {
+    buttonMuchLess.disabled = activePage <= 1;
+    buttonMuchLess.classList.toggle('disabled', activePage <= 1);
+    buttonLess.disabled = activePage <= 1;
+    buttonLess.classList.toggle('disabled', activePage <= 1);
+
+    buttonGreater.disabled = activePage >= numberOfPages;
+    buttonGreater.classList.toggle('disabled', activePage >= numberOfPages);
+    buttonMuchGreater.disabled = activePage >= numberOfPages;
+    buttonMuchGreater.classList.toggle('disabled', activePage >= numberOfPages);
+    buttonCenter.textContent = activePage;
+
+}
+
+function handleButtonClick(direction) {
+    switch (direction) {
+        case 'less': {
+            activePage = Math.max(activePage-1,1);
+            break;
+        }
+        case 'greater': {
+            activePage = Math.min(activePage+1,numberOfPages);
+            break;
+        }
+        case 'much-less': {
+            activePage = 1;
+            break;
+        }
+        case 'much-greater': {
+            activePage = numberOfPages;
+            break;
+        }
+        default: {}
+    }
+    updateButtonStates();
+    updateCardsForPets();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('.pets-container-header__link');
 
-    function updateButtonStates() {
-        arrowLeftButton.disabled = startPetsCard === 0;
-        arrowLeftButton.classList.toggle('disabled', startCard === 0);
-
-        arrowRightButton.disabled = startPetsCard >= pets.length - 3;
-        arrowRightButton.classList.toggle('disabled', startCard >= pets.length - 3);
-    }
-
-
-    function setInactive(elementActive) {
-        elementActive.classList.add('inactive');
-    }
-
-    function resetInactive() {
-        links.forEach(link => {
-            link.classList.remove('inactive');
-        });
-    }
-
-    function handleLinkClick(event) {
-        //    resetInactive();
-        //    setInactive(event.currentTarget);
-    }
+    buttonMuchLess.addEventListener('click', () => handleButtonClick('much-less'));
+    buttonLess.addEventListener('click', () => handleButtonClick('less'));
+    buttonGreater.addEventListener('click', () => handleButtonClick('greater'));
+    buttonMuchGreater.addEventListener('click', () => handleButtonClick('much-greater'));
 
     calculateCards();
-    createCards();
-   // arrowLeftButton.addEventListener('click', handleArrowLeftClick);
-   // arrowRightButton.addEventListener('click', handleArrowRightClick);
+    updateButtonStates();
 
-    links.forEach(link => {
-        //    link.addEventListener('click', handleLinkClick);
-    });
     setInactive(document.getElementById('our-pets'));
-    // Обработчик изменения размера окна
-    window.addEventListener('resize', () => {
-        calculateCards(); // Пересчитать количество карточек
-        createCards();
-    });
+    setInactive(buttonCenter);
 
-    document.getElementById('button-much-less').classList.add('disabled');
-    document.getElementById('button-less').classList.add('disabled');
-    document.getElementById('button-center').classList.add('inactive');
 });
 

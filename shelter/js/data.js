@@ -1,117 +1,156 @@
-const pets = [
-    {
-        imgSrc: './assets/img/pets-katrine/pets-katrine.png',
-        name: 'Katrine',
-        species: 'Cat',
-        breed: 'British Shorthair',
-        about:'Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.',
-        age: '9 months',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-jennifer/pets-jennifer.png',
-        name: 'Jennifer',
-        species: 'Dog',
-        breed: 'Labrador',
-        about:'Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won\'t hesitate to play up a storm in the house if she has all of her favorite toys.',
-        age: '2 months',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-woody/pets-woody.png',
-        name: 'Woody',
-        species: 'Dog',
-        breed: 'Golden Retriever',
-        about:'Woody is a handsome 3 1/2 year old boy. Woody does know basic commands and is a smart pup. Since he is on the stronger side, he will learn a lot from your training. Woody will be happier when he finds a new family that can spend a lot of time with him.',
-        age: '2 years',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-sophia/pets-sophia.png',
-        name: 'Sophia',
-        species: 'Dog',
-        breed: 'Shih tzu',
-        about:'',
-        age: '1 month',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-timmy/pets-timmy.png',
-        name: 'Timmy',
-        species: 'Cat',
-        breed: 'British Shorthair',
-        about:'Timmy is an adorable grey british shorthair male. He loves to play and snuggle. He is neutered and up to date on age appropriate vaccinations. He can be chatty and enjoys being held. Timmy has a lot to say and wants a person to share his thoughts with.',
-        age: '4 years',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-charly/pets-charly.png',
-        name: 'Charly',
-        species: 'Dog',
-        breed: 'Jack Russell Terrier ',
-        about:'This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.',
-        age: '6 years',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-scarlet/pets-scarlet.png',
-        name: 'Scarlett',
-        species: 'Dog',
-        breed: 'Jack Russell Terrier',
-        about:'Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.',
-        age: '5 months',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    },
-    {
-        imgSrc: './assets/img/pets-freddie/pets-freddie.png',
-        name: 'Freddie',
-        species: 'Cat',
-        breed: 'British Shorthair',
-        about:'Freddie is a little shy at first, but very sweet when he warms up. He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms of his human’s daily life. Freddie has bounced around a lot in his life, and is looking to find his forever home.',
-        age: '7 months',
-        inoculations: 'none',
-        diseases: 'none',
-        parasiters: 'none'
-    }
-];
+let pets = [];
+let petsNumbers = [];
+const overlay = document.querySelector('.overlay');
+const modalWindow = document.querySelector('.modal-window');
+const modalWindowButton = document.querySelector('.button-close');
+const burgerMenu = document.querySelector('.burger-menu');
 
-function createCard(numberArray,id) {
-    const cardElement = document.getElementById(id);
-    if (!cardElement) {return}
+async function loadPets() {
+    const response = await fetch('./js/pets.json');
+    return await response.json(); // array
+}
+
+function createCard(dataNumber) {
+    numberInArray = petsNumbers[dataNumber];
+    const cardContainer = document.querySelector('.cards-container');
+    if (!cardContainer) {return}
+
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('card');
     cardElement.innerHTML = '';
 
     const img = document.createElement('img');
     const title = document.createElement('div');
-    if (numberArray < pets.length) {
-        img.src = pets[numberArray].imgSrc;
-        img.alt = `${pets[numberArray].name} — ${pets[numberArray].species}`;
-        img.title = `${pets[numberArray].name} — ${pets[numberArray].species} ${pets[numberArray].breed}`;
+    if (pets[numberInArray]) {
+        img.src = pets[numberInArray].img;
+        img.alt = `${pets[numberInArray].name} — ${pets[numberInArray].type}`;
+        img.title = `${pets[numberInArray].name} — ${pets[numberInArray].type} ${pets[numberInArray].breed}`;
         img.classList.add('card-image');
 
         title.classList.add('card-title');
-        title.textContent = pets[numberArray].name;
+        title.textContent = pets[numberInArray].name;
     }
     const button = document.createElement('button');
     button.classList.add('button-oval');
     button.classList.add('button-secondary');
     button.classList.add('button-learn-more');
 
+    cardElement.setAttribute('data-number', dataNumber);
+    cardElement.dataNumber = dataNumber
+
     cardElement.appendChild(img);
     cardElement.appendChild(title);
     cardElement.appendChild(button);
 
+    cardContainer.appendChild(cardElement);
+    cardElement.addEventListener('click', () => openPopupMenu(numberInArray));
+    return cardElement;
+
 }
+
+function addModalContentListItem(elementList,attName,pet) {
+    const elementListItem = document.createElement('li');
+    elementListItem.innerHTML = `<span class="modal-card-content_list-item-bold">${attName[0].toUpperCase()}${attName.slice(1)}:</span> ${pet[attName]}`;
+    elementListItem.classList.add('modal-card-content_list-item');
+    elementList.appendChild(elementListItem);
+}
+
+function fillModalContent(content,pet) {
+    const elementHeader = document.createElement('h3');
+    elementHeader.textContent = pet.name;
+    elementHeader.classList.add('modal-card-content_header');
+    const elementSubHeader = document.createElement('h4');
+    elementSubHeader.textContent = `${pet.type} - ${pet.breed}`;
+    elementSubHeader.classList.add('modal-card-content_subheader','modal-card-content_element');
+    const elementDescription = document.createElement('h5');
+    elementDescription.textContent = pet.description;
+    elementDescription.classList.add('modal-card-content_description','modal-card-content_element');
+    content.appendChild(elementHeader);
+    content.appendChild(elementSubHeader);
+    content.appendChild(elementDescription);
+
+    //list
+    const elementList = document.createElement('ul');
+    elementList.classList.add('modal-card-content_list','modal-card-content_element');
+    addModalContentListItem(elementList,'age',pet);
+    addModalContentListItem(elementList,'inoculations',pet);
+    addModalContentListItem(elementList,'diseases',pet);
+    addModalContentListItem(elementList,'parasites',pet);
+    content.appendChild(elementList);
+
+}
+
+function fillModalWindow(numberArray) {
+    if (!modalWindow) {return}
+    //clean content
+    const cardImg = modalWindow.querySelector('.modal-card-image');
+    const cardContent = modalWindow.querySelector('.modal-card-content');
+    if (cardImg) cardImg.remove();
+    if (cardContent) cardContent.remove();
+
+    if (!pets[numberArray]) {return}
+
+    const contentImg = document.createElement('div');
+    contentImg.classList.add('modal-card-image');
+    const img = document.createElement('img');
+
+    img.src = pets[numberArray].img;
+    img.alt = `${pets[numberArray].name} — ${pets[numberArray].type}`;
+    img.title = `${pets[numberArray].name} — ${pets[numberArray].type} ${pets[numberArray].breed}`;
+
+    contentImg.appendChild(img);
+    modalWindow.appendChild(contentImg);
+
+    const content = document.createElement('div');
+    content.classList.add('modal-card-content');
+    fillModalContent(content,pets[numberArray]);
+
+
+    modalWindow.appendChild(content);
+
+}
+
+function createCards() {
+    const cardContainer = document.querySelector('.cards-container');
+    if (!cardContainer) {return}
+    else {
+        cardContainer.innerHTML = ''; // remove all children
+    }
+
+    // Проверяем, на какой странице мы находимся
+    const currentPage = window.location.pathname;  // Возвращает путь текущего URL
+
+    if (currentPage.includes('index.html')) createCardsForMain()
+    else if (currentPage.includes('pets.html')) createCardsForPets()
+}
+
+function openPopupMenu(numberArray) {
+    if (overlay) {
+        overlay.classList.add('active');
+        document.body.classList.add('no-scroll')
+    }
+    if (modalWindow) {
+        modalWindow.classList.add('active');
+        fillModalWindow(numberArray);
+    }
+    if (modalWindowButton) {
+        modalWindowButton.classList.add('active');
+    }
+    burgerMenu.style.zIndex = '800';
+}
+
+function closePopupMenu(event) {
+    if (overlay) {
+        overlay.classList.remove('active');
+        document.body.classList.remove('no-scroll')
+    }
+    if (modalWindow) {
+        modalWindow.classList.remove('active');
+    }
+    if (modalWindowButton) {
+        modalWindowButton.classList.remove('active');
+    }
+    burgerMenu.style.zIndex = '999';
+}
+
+
