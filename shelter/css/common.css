@@ -254,6 +254,7 @@ h5 {
 
 
 .card {
+    flex: 0 0 auto;
     border-radius: 9px;
     padding-bottom: 30px;
     width: 270px;
@@ -269,19 +270,8 @@ h5 {
     letter-spacing: 0.06em;
     text-align: center;
     color: var(--color-dark-l);
-    transition: transform 0.5s ease, cursor 0.3s ease;
-
-    /*@media (max-width: 1279px) {*/
-    /*    padding: 0 3vw 2.5vw; !* Adjusted padding for smaller screens *!*/
-    /*    width: 22vw; !* Adjusted width for smaller screens *!*/
-    /*    height: 37vh; !* Adjusted height for smaller screens *!*/
-    /*}*/
-
-    /*@media (max-width: 767px) {*/
-    /*    padding: 0 4vw 3vw; !* Further adjusted padding for very small screens *!*/
-    /*    width: 27vw; !* Further adjusted width for very small screens *!*/
-    /*    height: 43vh; !* Further adjusted height for very small screens *!*/
-    /*}*/
+    opacity: 1;
+    transition: transform 0.5s ease;
 }
 
 .card-image {
@@ -298,20 +288,18 @@ h5 {
     letter-spacing: 0.06em;
     text-align: center;
     color: var(--color-dark-l);
-
-    /*@media (max-width: 1279px) {*/
-    /*    height: 5.5%; !* Adjusted height for smaller screens *!*/
-    /*}*/
-
-    /*@media (max-width: 767px) {*/
-    /*    height: 6%; !* Further adjusted height for very small screens *!*/
-    /*}*/
 }
 
 .card:hover {
     box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
     cursor: pointer;
     background: none;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
 }
 
 .burger-menu {

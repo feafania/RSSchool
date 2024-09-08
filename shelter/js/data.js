@@ -10,7 +10,8 @@ async function loadPets() {
     return await response.json(); // array
 }
 
-function createCard(numberArray) {
+function createCard(dataNumber) {
+    numberInArray = petsNumbers[dataNumber];
     const cardContainer = document.querySelector('.cards-container');
     if (!cardContainer) {return}
 
@@ -20,26 +21,29 @@ function createCard(numberArray) {
 
     const img = document.createElement('img');
     const title = document.createElement('div');
-    if (pets[numberArray]) {
-        img.src = pets[numberArray].img;
-        img.alt = `${pets[numberArray].name} — ${pets[numberArray].type}`;
-        img.title = `${pets[numberArray].name} — ${pets[numberArray].type} ${pets[numberArray].breed}`;
+    if (pets[numberInArray]) {
+        img.src = pets[numberInArray].img;
+        img.alt = `${pets[numberInArray].name} — ${pets[numberInArray].type}`;
+        img.title = `${pets[numberInArray].name} — ${pets[numberInArray].type} ${pets[numberInArray].breed}`;
         img.classList.add('card-image');
 
         title.classList.add('card-title');
-        title.textContent = pets[numberArray].name;
+        title.textContent = pets[numberInArray].name;
     }
     const button = document.createElement('button');
     button.classList.add('button-oval');
     button.classList.add('button-secondary');
     button.classList.add('button-learn-more');
 
+    cardElement.setAttribute('data-number', dataNumber);
+
     cardElement.appendChild(img);
     cardElement.appendChild(title);
     cardElement.appendChild(button);
 
     cardContainer.appendChild(cardElement);
-    cardElement.addEventListener('click', () => openPopupMenu(numberArray));
+    cardElement.addEventListener('click', () => openPopupMenu(numberInArray));
+    return cardElement;
 
 }
 

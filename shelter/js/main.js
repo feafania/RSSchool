@@ -1,4 +1,5 @@
 let cardsForPage = 0;
+const cardsContainer = document.querySelector('.cards-container');
 
 function calculateCards() {
     if (window.innerWidth < 768) {
@@ -21,18 +22,25 @@ function calculateCards() {
     }
 }
 
-function getRandomNumber(excludeSet) {
-    const availableNumbers = Array.from({ length: pets.length }, (_, i) => i);
-    const possibleNumbers = availableNumbers.filter(num => !excludeSet.has(num));
-    if (possibleNumbers.length === 0) return null;
-    const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
-    return possibleNumbers[randomIndex];
-}
-
 
 function createCardsForMain() {
-    for (let i=cardsForPage; i < (cardsForPage*2); i++) {
-        createCard(petsNumbers[i]);
+    for (let i=0; i < (petsNumbers.length); i++) {
+        // alert(((i<cardsForPage)||(i>=(2*cardsForPage))));
+        card = createCard(i);
+        if (card) {
+            card.style.transition = 'none';
+            if (i < cardsForPage) {
+                card.style.transform = 'translateX(-100%)';
+                card.classList.add('hidden');
+            } else if (i < 2 * cardsForPage) {
+                card.style.transform = 'translateX(0)';
+                card.classList.remove('hidden');
+            } else {
+                card.style.transform = 'translateX(100%)';
+                card.classList.add('hidden');
+            }
+            card.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+        }
     }
 }
 
@@ -49,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
 
     function handleArrowLeftClick() {
-        // console.log('i---','petsNumbers',petsNumbers);
+
         for (let i=0; i < cardsForPage; i++) {
             petsNumbers.shift();
             const excludeSet = new Set();
@@ -57,16 +65,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (petsNumbers.length - j >= 0) excludeSet.add(petsNumbers[petsNumbers.length - j]);
             }
             petsNumbers[petsNumbers.length] = getRandomNumber(excludeSet)
-            // console.log('i',i,'excludeSet',excludeSet);
-            // console.log('i',i,'petsNumbers',petsNumbers);
         }
-        // console.log('i+++','petsNumbers',petsNumbers);
-        createCards();
+
+
+        // Move the first cards to the end of the container
+        for (let i = 0; i < cardsForPage; i++) {
+            const card = cardsContainer.querySelector(`.card[data-number="${i}"]`);
+
+            if (card) {
+                cardsContainer.appendChild(card); // to the end
+                card.style.transition = 'none'; // cancel animation
+                card.style.transform = 'translateX(100%)'; // move to the right
+                card.classList.add('hidden');
+                card.style.transition = 'transform 0.5s ease'; // return animation
+            }
+        }
+
+        // Delay for the browser to process the move
+        setTimeout(() => {
+
+            // Handle the transition end event
+            const onTransitionEnd = () => {
+                // Cleanup the event listener
+                cardsContainer.removeEventListener('transitionend', onTransitionEnd);
+
+                // Call createCards after transition ends
+                createCards();
+            };
+
+            // Add the event listener to the container (or directly to each card if needed)
+            cardsContainer.addEventListener('transitionend', onTransitionEnd);
+
+            for (let i = cardsForPage; i < petsNumbers.length; i++) {
+                const card = cardsContainer.querySelector(`.card[data-number="${i}"]`);
+                if (card) {
+                    card.style.transition = 'transform 0.5s ease'; // animation
+                    if (i >= 2 * cardsForPage) {
+                        card.style.transform = 'translateX(0)'; //move to center
+                        card.classList.remove('hidden');
+                    } else {
+                        card.style.transform = 'translateX(-100%)'; // move to the left
+                        card.classList.add('hidden');
+                    }
+                }
+            }
+
+
+            // Trigger a reflow (recalculation of styles) to ensure the browser processes the changes
+            cardsContainer.offsetHeight; // Trigger a reflow
+        }, 100); // A slight delay before synchronizing animations
+
+
         // updateButtonStates();
     }
 
     function handleArrowRightClick() {
-        // console.log('i---','petsNumbers',petsNumbers);
+
         for (let i=0; i < cardsForPage; i++) {
             petsNumbers.unshift(petsNumbers.pop());
             const excludeSet = new Set();
@@ -74,11 +128,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ( j < petsNumbers.length) excludeSet.add(petsNumbers[j]);
             }
             petsNumbers[0] = getRandomNumber(excludeSet)
-            // console.log('i',i,'excludeSet',excludeSet);
-            // console.log('i',i,'petsNumbers',petsNumbers);
         }
-        // console.log('i+++','petsNumbers',petsNumbers);
-        createCards();
+
+        // Move the last cards to the beginning of the container
+        for (let i = 2 * cardsForPage; i < petsNumbers.length; i++) {
+            const card = cardsContainer.querySelector(`.card[data-number="${i}"]`);
+
+            if (card) {
+                cardsContainer.prepend(card); // to the beginning
+                card.style.transition = 'none'; // cancel animation
+                card.style.transform = 'translateX(-100%)'; // move to the left
+                card.classList.add('hidden');
+                card.style.transition = 'transform 0.5s ease'; // return animation
+            }
+        }
+
+        // Delay for the browser to process the move
+        setTimeout(() => {
+
+            // Handle the transition end event
+            const onTransitionEnd = () => {
+                // Cleanup the event listener
+                cardsContainer.removeEventListener('transitionend', onTransitionEnd);
+
+                // Call createCards after transition ends
+                createCards();
+            };
+
+            // Add the event listener to the container (or directly to each card if needed)
+            cardsContainer.addEventListener('transitionend', onTransitionEnd);
+
+            for (let i = (2 * cardsForPage-1); i >= 0; i--) {
+                const card = cardsContainer.querySelector(`.card[data-number="${i}"]`);
+                if (card) {
+                    card.style.transition = 'transform 0.5s ease'; // animation
+                    if (i >= cardsForPage) {
+                        card.style.transform = 'translateX(100%)'; // move to the right
+                        card.classList.add('hidden');
+                    } else {
+                        card.style.transform = 'translateX(0)'; //move to center
+                        card.classList.remove('hidden');
+                    }
+                }
+            }
+
+            // Trigger a reflow (recalculation of styles) to ensure the browser processes the changes
+            cardsContainer.offsetHeight; // Trigger a reflow
+        }, 100); // A slight delay before synchronizing animations
+
         // updateButtonStates();
     }
 

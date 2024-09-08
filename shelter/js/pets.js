@@ -8,6 +8,18 @@ function calculateCards() {
     } else {
         cardsForPage = 8;
     }
+
+    petsNumbers.length = cardsForPage;
+    for (let i=0; i < petsNumbers.length; i++) {
+        if (petsNumbers[i]===undefined || petsNumbers[i]===null) {
+            const positionInScreen = i%(cardsForPage);
+            const excludeSet = new Set();
+            for (let j = 1; j <= (cardsForPage+positionInScreen); j++) {
+                if (i - j >= 0) excludeSet.add(petsNumbers[i - j]);
+            }
+            petsNumbers[i] = getRandomNumber(excludeSet)
+        }
+    }
 }
 
 

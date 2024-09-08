@@ -605,6 +605,8 @@ body {
     justify-content: space-between;
     align-items: center;
     transition: transform 0.5s ease;
+    overflow: hidden;
+    position: relative;
 
     @media (max-width: 1279px) {
         max-width: 580px;
@@ -612,18 +614,6 @@ body {
 
     @media (max-width: 767px) {
         max-width: 100%;
-    }
-}
-
-#card2 {
-    @media (max-width: 767px) {
-        display: none;
-    }
-}
-
-#card3 {
-    @media (max-width: 1279px) {
-        display: none;
     }
 }
 

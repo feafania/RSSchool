@@ -24,6 +24,15 @@ function setInactive(elementActive) {
     elementActive.classList.add('inactive');
 }
 
+function getRandomNumber(excludeSet) {
+    const availableNumbers = Array.from({ length: pets.length }, (_, i) => i);
+    const possibleNumbers = availableNumbers.filter(num => !excludeSet.has(num));
+    if (possibleNumbers.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
+    return possibleNumbers[randomIndex];
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const navigationMenu = document.querySelector('.header__navigation');
     const navigationLinks = document.querySelectorAll('.navigation_link');
