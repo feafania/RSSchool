@@ -54,9 +54,20 @@ function createCard(dataNumber) {
 
 }
 
+function prettyElemOfPet(elem) {
+    let result;
+
+    if (typeof elem === 'string') {
+        return elem;
+    } else if (Array.isArray(elem)) {
+        return elem.join(', ');
+    } else {
+        return '';
+    }
+}
 function addModalContentListItem(elementList,attName,pet) {
     const elementListItem = document.createElement('li');
-    elementListItem.innerHTML = `<span class="modal-card-content_list-item-bold">${attName[0].toUpperCase()}${attName.slice(1)}:</span> ${pet[attName]}`;
+    elementListItem.innerHTML = `<span class="modal-card-content_list-item-bold">${attName[0].toUpperCase()}${attName.slice(1)}:</span> ${prettyElemOfPet(pet[attName])}`;
     elementListItem.classList.add('modal-card-content_list-item');
     elementList.appendChild(elementListItem);
 }
