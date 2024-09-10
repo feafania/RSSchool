@@ -17,7 +17,7 @@ async function loadPets() {
 }
 
 function createCard(dataNumber) {
-    numberInArray = petsNumbers[dataNumber];
+    let numberInArray = petsNumbers[dataNumber];
     const cardContainer = document.querySelector('.cards-container');
     if (!cardContainer) {return}
 
