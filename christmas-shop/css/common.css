@@ -99,6 +99,7 @@ p {
     --static-white-40: rgba(255, 255, 255, 0.4);
     --overlay: rgba(24, 28, 41, 0.8);
 }
+
 /* Colour end*/
 
 /* Button start*/
@@ -161,4 +162,63 @@ p {
     stroke-width: 1px;
     stroke: var(--primary);
 }
+
 /* Button end*/
+
+/* Common styles start*/
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    font: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+     /*border: 1px solid red;*/
+}
+
+.container {
+    max-width: 1440px;
+    min-width: 1440px; /* fix layout */
+    margin: 0 auto;
+}
+
+/* Common styles end*/
+
+/* Burger menu start*/
+.burger-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer; /* Pointer cursor for clickable area */
+    width: 40px;
+    height: 40px;
+    background: none;
+
+    @media (max-width: 768px) {
+        display: flex; /* Show burger menu */
+        transition: transform 0.3s ease;
+    }
+}
+
+.burger-menu-line {
+    width: 50%;
+    height: 1px;
+    background-color: var(--dark);
+    transition: transform 0.3s ease; /* Smooth transitions for animations */
+    transform-origin: center;
+}
+
+.burger-menu-line-one.active {
+    transform: translate(0, 4.5px) rotate(45deg);
+}
+
+.burger-menu-line-two.active {
+    transform: translate(0, -4.5px) rotate(-45deg);
+}
+/* Burger menu end*/
