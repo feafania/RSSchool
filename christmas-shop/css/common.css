@@ -11,6 +11,7 @@
     font-weight: 400;
     font-style: normal;
 }
+
 /* Fonts start*/
 
 body {
@@ -82,3 +83,82 @@ p {
 }
 
 /* Fonts end*/
+
+/* Colour start*/
+
+:root {
+    --primary: #ff4646;
+    --dark: #181c29;
+    --static-white: #fff;
+    --content-background: #ecf3f8;
+    --tag-purple: #4361ff;
+    --tag-pink: #ff43f7;
+    --tag-green: #06a44f;
+    --primary-10: rgba(255, 70, 70, 0.1);
+    --static-white-20: rgba(255, 255, 255, 0.2);
+    --static-white-40: rgba(255, 255, 255, 0.4);
+    --overlay: rgba(24, 28, 41, 0.8);
+}
+/* Colour end*/
+
+/* Button start*/
+
+.primary-button { /*.action-small*/
+    border-radius: 20px;
+    padding: 20px 32px;
+    width: 235px;
+    height: 56px;
+    background: var(--dark);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    vertical-align: center;
+    color: var(--static-white);
+
+}
+
+.primary-button:hover,
+.primary-button:focus {
+    filter: invert(1);
+}
+
+.arrow-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--static-white);
+    border-radius: 20px;
+    width: 56px;
+    height: 56px;
+    stroke-width: 1px;
+    stroke: var(--static-white);
+    transition: background-color 0.3s ease, color 0.3s ease, stroke 0.3s ease;
+    pointer-events: auto;
+}
+
+.arrow-button:hover,
+.arrow-button:focus {
+    background: var(--static-white);
+    stroke: var(--primary);
+}
+
+.arrow-button.inactive {
+    border: 1px solid var(--static-white-40);
+    cursor: default;
+    stroke: var(--static-white-40);
+    pointer-events: none;
+}
+
+.back-to-top-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary);
+    border-radius: 100px;
+    width: 56px;
+    height: 56px;
+    background: var(--static-white);
+    stroke-width: 1px;
+    stroke: var(--primary);
+}
+/* Button end*/
