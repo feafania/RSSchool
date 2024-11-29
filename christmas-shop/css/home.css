@@ -1,4 +1,4 @@
-
+/* Hero start*/
 .hero-section {
     position: relative;
     z-index: 500;
@@ -6,18 +6,17 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
     border-radius: 20px 20px 0 0;
     padding: 60px 8px;
     width: 100%;
-    min-height: 524px;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png), url(../assets/img/bg-ball.png);
     background-repeat: no-repeat, no-repeat;
     background-size: cover, cover;
     background-position: center, center;
-    transition: width 0.3s ease;
 }
+
 .hero-element {
     display: flex;
     align-items: center;
@@ -25,14 +24,15 @@
     flex-direction: column;
     gap: 12px;
     margin: 0 auto;
-    padding: 60px 0px;
+    padding: 60px 0;
     max-width: 430px;
-    min-height: 404px;
     text-align: center;
     color: var(--static-white);
-    @media (max-width: 767px) {
-        max-width: 364px;
-    }
+    transition: width 0.3s ease;
+
+    /*@media (max-width: 767px) {*/
+    /*    max-width: 364px;*/
+    /*}*/
 }
 
 .hero-element__paragraph {
@@ -42,4 +42,153 @@
 .hero-element__button {
     letter-spacing: 0.09em;
 }
+/* Hero end*/
 
+/* About start*/
+.about-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0;
+    padding: 60px 8px;
+    background-color: var(--primary);
+    background-image: url(../assets/img/bg-snow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.about-section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 0;
+    border-radius: 20px;
+    margin: 0 auto;
+    max-width: 1276px;
+    background: var(--static-white);
+    transition: width 0.3s ease;
+
+    /*@media (768px <= width < 1440px) {*/
+    /*    max-width: 752px;*/
+    /*}*/
+
+    /*@media (max-width: 767px) {*/
+    /*        align-items: flex-start;*/
+    /*        justify-content: center;*/
+    /*        flex-direction: column;*/
+    /*    max-width: 364px;*/
+    /*}*/
+}
+
+.about-element {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 60px;
+    padding: 60px 0;
+    max-width: 426px;
+
+    /*@media (768px <= width < 1440px) {*/
+    /*    max-width: 256px;*/
+    /*}*/
+
+    /*@media (max-width: 767px) {*/
+    /*      margin: 0px 20px;*/
+    /*    max-width: 364px;*/
+    /*}*/
+}
+
+.about-element__caption {
+    display: block;
+    color: var(--primary);
+}
+
+.about-picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 20px;
+    width: 638px;
+    overflow: hidden;
+
+    /*@media (768px <= width < 1440px) {*/
+    /*    max-width: 376px;*/
+    /*}*/
+
+    /*@media (max-width: 767px) {*/
+    /*    max-width: 364px;*/
+    /*}*/
+}
+
+.about-picture_img {
+    display: block;
+}
+/* About end*/
+
+/* Slider start*/
+.slider-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0;
+    padding: 60px 8px;
+    min-height: 488px;
+    background-color: var(--primary);
+    background-image: url(../assets/img/bg-snow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: var(--static-white);
+
+    /*@media (768px <= width < 1440px) {*/
+    /*    min-height: 908px;*/
+    /*}*/
+}
+
+.slider-section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    overflow: visible;
+}
+
+.slider__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.slider-header-caption {
+    display: block;
+}
+
+.slider__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+/* Slider end*/
+
+/* Best gifts start*/
+/* Best gifts end*/
+/* CTA start*/
+/* CTA end*/
+/* Footer start*/
+/* Footer end*/

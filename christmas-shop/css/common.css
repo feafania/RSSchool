@@ -129,8 +129,9 @@ p {
     border-radius: 20px;
     width: 56px;
     height: 56px;
-    stroke-width: 1px;
-    stroke: var(--static-white);
+    font-size: 24px;
+    background: transparent;
+    color: var(--static-white);
     transition: background-color 0.3s ease, color 0.3s ease, stroke 0.3s ease;
     pointer-events: auto;
 }
@@ -139,6 +140,14 @@ p {
 .arrow-button:focus {
     background: var(--static-white);
     stroke: var(--primary);
+}
+
+.arrow-button-left::before {
+    content: "\2190";
+}
+
+.arrow-button-right1::before {
+    content: "\2192";
 }
 
 .arrow-button.inactive {
@@ -184,6 +193,21 @@ html {
 .wrapper {
     max-width: 1440px;
     min-width: 1440px; /* fix layout */
+    transition: width 0.3s ease;
+}
+
+.section-wrapper {
+    max-width: 1276px;
+    min-width: 1276px; /* fix layout */
+    transition: width 0.3s ease;
+
+    /*@media (768px <= width < 1440px) {*/
+    /*    max-width: 752px;*/
+    /*}*/
+
+    /*@media (max-width: 767px) {*/
+    /*!*    max-width: 364px;*!*/
+    /*}*/
 }
 .section {
     overflow-x: auto;
@@ -217,7 +241,6 @@ html {
     gap: 12px;
     margin: 0 auto;
     padding: 12px 0px;
-    max-width: 1276px;
     width: 100%;
     min-height: 40px;
     transition: width 0.3s ease;
