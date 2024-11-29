@@ -39,9 +39,6 @@
     display: block;
 }
 
-.hero__button {
-    letter-spacing: 0.09em;
-}
 /* Hero end*/
 
 /* About start*/
@@ -230,6 +227,79 @@
 /* Slider end*/ /* Best gifts end*/
 
 /* CTA start*/
+.cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 0 0 20px 20px;
+    padding: 60px 8px;
+    background-color: var(--primary);
+    background-image: url(../assets/img/bg-snow.png), url(../assets/img/bg-forest.png);
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    background-position: center;
+}
+
+.cta-section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 18px;
+    margin: 60px auto;
+    padding: 60px 0px;
+    max-width: 426px;
+    text-align: center;
+    color: var(--static-white);
+}
+.cta__button {
+    margin-bottom: 2px;
+}
+.cta__timer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cta__paragraph {
+    display: block;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0px;
+    border-radius: 20px;
+    padding: 8px 20px 12px 20px;
+    background: var(--static-white-40);
+    text-align: center;
+    color: var(--static-white);
+    max-width: 344px;
+
+}
+
+.timer__sector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 80px;
+    height: 52px;
+}
+
+.separator {
+    border-bottom: 1px solid var(--static-white-40);
+    width: 20px;
+    height: 0px;
+    transform: rotate(90deg);
+
+}
+
 /* CTA end*/
 /* Footer start*/
 /* Footer end*/

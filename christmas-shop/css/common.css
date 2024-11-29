@@ -108,6 +108,7 @@ p {
     text-align: center;
     background: var(--dark);
     color: var(--static-white);
+    letter-spacing: 0.09em;
 }
 
 .primary-button:hover {/*.primary-button:focus*/
