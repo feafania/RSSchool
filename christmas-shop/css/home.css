@@ -17,7 +17,7 @@
     background-position: center, center;
 }
 
-.hero-element {
+.hero-section-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,11 +35,11 @@
     /*}*/
 }
 
-.hero-element__paragraph {
+.hero__paragraph {
     display: block;
 }
 
-.hero-element__button {
+.hero__button {
     letter-spacing: 0.09em;
 }
 /* Hero end*/
@@ -126,8 +126,7 @@
 }
 /* About end*/
 
-/* Slider start*/
-/* Best gifts start*/
+/* Slider start*/ /* Best gifts start*/
 .slider-section,
 .best-gifts-section {
     display: flex;
@@ -209,9 +208,27 @@
     flex-direction: row;
     gap: 20px;
 }
-/* Slider end*/
 
-/* Best gifts end*/
+.best-gifts-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 12px;
+    justify-content: center;
+    align-items: start;
+
+    /*@media (768px <= width < 1440px) {*/
+    /*    grid-template-columns: repeat(2, 1fr);*/
+    /*    grid-template-rows: repeat(2, 1fr);*/
+    /*}*/
+
+    /*@media (max-width: 767px) {*/
+    /*    grid-template-columns: 1fr;*/
+    /*    grid-template-rows: repeat(4, 1fr);*/
+    /*}*/
+}
+/* Slider end*/ /* Best gifts end*/
+
 /* CTA start*/
 /* CTA end*/
 /* Footer start*/

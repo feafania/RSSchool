@@ -168,6 +168,72 @@ p {
 
 /* Button end*/
 
+/* Card start*/
+.card {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0px;
+    border-radius: 20px;
+    width: 310px;
+    height: 342px;
+    background: var(--content-background);
+    overflow: hidden;
+    color: var(--dark);
+    cursor: pointer;
+
+    opacity: 1;
+    transition: 0.3s ease transform, 0.3s ease opacity, 0.3s ease background;
+}
+
+.card__picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 230px;
+}
+
+.card__image {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 8px;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%;
+    background: var(--static-white);
+}
+
+.card__title-for-work {
+    color: var(--tag-purple) !important;
+}
+
+.card__title-for-health {
+    color: var(--tag-green) !important;
+}
+
+.card__title-for-harmony {
+    color: var(--tag-pink) !important;
+}
+
+.card:hover {
+    color: var(--primary);
+}
+
+/* Card end*/
+
 /* Common styles start*/
 html {
     box-sizing: border-box;
