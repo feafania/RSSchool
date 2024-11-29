@@ -69,11 +69,6 @@ p {
     text-transform: uppercase;
 }
 
-.slider-text {
-    font-size: 80px;
-    text-transform: uppercase;
-}
-
 .caption {
     font-family: 'Allura', 'Montserrat', cursive;
     font-weight: 400;
@@ -115,8 +110,7 @@ p {
     color: var(--static-white);
 }
 
-.primary-button:hover,
-.primary-button:focus {
+.primary-button:hover {/*.primary-button:focus*/
     background: var(--static-white);
     color: var(--dark);
 }
@@ -131,23 +125,23 @@ p {
     height: 56px;
     font-size: 24px;
     background: transparent;
-    color: var(--static-white);
     transition: background-color 0.3s ease, color 0.3s ease, stroke 0.3s ease;
     pointer-events: auto;
+    stroke-width: 1px;
+    stroke: var(--static-white);
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.arrow-button:hover,
-.arrow-button:focus {
+.arrow-button__icon {
+    width: 14px;
+    height: 14px;
+    fill: none;
+}
+
+.arrow-button:hover {/*.arrow-button:focus*/
     background: var(--static-white);
     stroke: var(--primary);
-}
-
-.arrow-button-left::before {
-    content: "\2190";
-}
-
-.arrow-button-right1::before {
-    content: "\2192";
 }
 
 .arrow-button.inactive {
@@ -168,6 +162,8 @@ p {
     background: var(--static-white);
     stroke-width: 1px;
     stroke: var(--primary);
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* Button end*/
@@ -199,6 +195,7 @@ html {
 .section-wrapper {
     max-width: 1276px;
     min-width: 1276px; /* fix layout */
+    margin: 0 auto;
     transition: width 0.3s ease;
 
     /*@media (768px <= width < 1440px) {*/
@@ -208,9 +205,6 @@ html {
     /*@media (max-width: 767px) {*/
     /*!*    max-width: 364px;*!*/
     /*}*/
-}
-.section {
-    overflow-x: auto;
 }
 
 /* Common styles end*/

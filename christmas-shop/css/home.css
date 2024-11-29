@@ -49,8 +49,6 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    flex-direction: row;
-    gap: 0;
     padding: 60px 8px;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png);
@@ -66,8 +64,6 @@
     flex-direction: row;
     gap: 0;
     border-radius: 20px;
-    margin: 0 auto;
-    max-width: 1276px;
     background: var(--static-white);
     transition: width 0.3s ease;
 
@@ -112,8 +108,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 0;
     border-radius: 20px;
     width: 638px;
     overflow: hidden;
@@ -127,66 +121,96 @@
     /*}*/
 }
 
-.about-picture_img {
+.about-picture__img {
     display: block;
 }
 /* About end*/
 
 /* Slider start*/
-.slider-section {
+/* Best gifts start*/
+.slider-section,
+.best-gifts-section {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 0;
     padding: 60px 8px;
-    min-height: 488px;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     color: var(--static-white);
-
-    /*@media (768px <= width < 1440px) {*/
-    /*    min-height: 908px;*/
-    /*}*/
+    overflow: hidden;
 }
 
-.slider-section-wrapper {
+.slider-section-wrapper,
+.best-gifts-section-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     gap: 20px;
-    overflow: visible;
+    width: 100%;
 }
 
-.slider__header {
+.slider__header,
+.best-gifts__header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     gap: 12px;
-
 }
 
-.slider-header-caption {
+.slider-header-caption,
+.best-gifts__caption {
     display: block;
+}
+
+.slider__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow: visible;
+}
+
+.slider__text {
+    font-size: 80px;
+    text-transform: uppercase;
+    padding-left: 1px;
+}
+
+.slider__picture {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.slider__img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
 }
 
 .slider__buttons {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-self: flex-end;
     flex-direction: row;
     gap: 20px;
 }
-
-
 /* Slider end*/
 
-/* Best gifts start*/
 /* Best gifts end*/
 /* CTA start*/
 /* CTA end*/

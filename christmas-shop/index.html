@@ -19,7 +19,7 @@
 <header>
     <div class="container header-container-fixed"></div>
     <div class="container header-container">
-        <div class="wrapper">
+        <div class="wrapper section-wrapper">
             <div class="header-element action-small">
                 <div class="header-logo">
                     <a href="javascript:void(0);" class="header-logo__link">
@@ -74,7 +74,7 @@
             </div>
 
         </section>
-        <section class="about-section">
+        <section id="about" class="about-section">
             <div class="wrapper">
                 <div class="about-section-wrapper section-wrapper">
                     <div class="about-element">
@@ -86,7 +86,7 @@
 
                     </div>
                     <div class="about-picture">
-                        <img src="assets/img/santa.png" alt="Santa and a snowman" class="about-picture_img">
+                        <img src="assets/img/santa.png" alt="Santa and a snowman" class="about-picture__img">
                     </div>
                 </div>
             </div>
@@ -94,34 +94,58 @@
         </section>
         <section class="slider-section">
             <div class="wrapper">
-                <div class="slider-section-wrapper section-wrapper">
-                    <div class="slider__header">
-                        <span   class="slider-header-caption caption">Become Happier!</span>
-                        <h2 class="slider-header-header">in the new 2025</h2>
+                <div class="section-wrapper">
+                    <div class="slider-section-wrapper">
+                        <div class="slider__header">
+                            <span class="slider-header-caption caption">Become Happier!</span>
+                            <h2 class="slider-header-header">in the new 2025</h2>
+                        </div>
+                        <div class="slider__row">
+                            <div class="slider__text ">Live</div>
+                            <div class="slider__picture">
+                                <img src="assets/img/snowman.png" alt="Snowman" class="slider__img">
+                            </div>
+                            <div class="slider__text ">create</div>
+                            <div class="slider__picture">
+                                <img src="assets/img/christmas-trees.png" alt="Christmas trees" class="slider__img">
+                            </div>
+                            <div class="slider__text ">Love</div>
+                            <div class="slider__picture">
+                                <img src="assets/img/christmas-tree-ball.png" alt="Christmas tree ball"
+                                     class="slider__img">
+                            </div>
+                            <div class="slider__text ">dream</div>
+                            <div class="slider__picture">
+                                <img src="assets/img/fairytale-house.png" alt="Fairytale house" class="slider__img">
+                            </div>
+                        </div>
+                        <div class="slider__buttons">
+                            <button class="slider__left-button arrow-button arrow-button-left inactive">
+                                <svg class="arrow-button__icon" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.5 7H1M1 7L7 1M1 7L7 13"/>
+                                </svg>
+                            </button>
+                            <button class="slider__right-button arrow-button arrow-button-right">
+                                <svg class="arrow-button__icon" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    <div class="slider__row">
-
-                    </div>
-                    <div class="slider__buttons">
-                        <button class="slider__left-button arrow-button arrow-button-left">
-                        </button>
-                        <button class="slider__right-button arrow-button arrow-button-right1">
-                        </button>
-                        <button class="slider__right-button arrow-button arrow-button-right">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-
-                    </div>
-
                 </div>
             </div>
 
         </section>
         <section class="best-gifts-section">
             <div class="wrapper">
-
+                <div class="section-wrapper">
+                    <div class="best-gifts-section-wrapper">
+                        <div class="best-gifts__header">
+                            <span class="best-gifts-caption caption">Best Gifts</span>
+                            <h2 class="best-gifts-header-header">especially for you</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>
