@@ -19,6 +19,7 @@ body {
     font-weight: 600;
     font-style: normal;
     font-optical-sizing: auto;
+    min-height: 100vh;
 }
 
 h1 {
@@ -104,7 +105,7 @@ p {
     border-radius: 20px;
     padding: 20px 32px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
     text-align: center;
     background: var(--dark);
     color: var(--static-white);
@@ -126,7 +127,7 @@ p {
     height: 56px;
     font-size: 24px;
     background: transparent;
-    transition: background-color 0.3s ease, color 0.3s ease, stroke 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, stroke 0.3s ease;
     pointer-events: auto;
     stroke-width: 1px;
     stroke: var(--static-white);
@@ -135,8 +136,8 @@ p {
 }
 
 .arrow-button__icon {
-    width: 14px;
-    height: 14px;
+    width: 24px;
+    height: 24px;
     fill: none;
 }
 
@@ -176,7 +177,7 @@ p {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
     border-radius: 20px;
     width: 310px;
     height: 342px;
@@ -186,7 +187,7 @@ p {
     cursor: pointer;
 
     opacity: 1;
-    transition: 0.3s ease transform, 0.3s ease opacity, 0.3s ease background;
+    transition: 0.3s ease transform, 0.3s ease opacity, 0.3s ease background, 0.3s ease color;
 }
 
 .card__picture {
@@ -252,15 +253,19 @@ html {
 
 .container {
     margin: 0 auto;
+    background: var(--static-white);
 }
 .wrapper {
     max-width: 1440px;
+    width: 100%;
     min-width: 1440px; /* fix layout */
     transition: width 0.3s ease;
+    margin: 0 auto;
 }
 
 .section-wrapper {
     max-width: 1276px;
+    width: 100%;
     min-width: 1276px; /* fix layout */
     margin: 0 auto;
     transition: width 0.3s ease;
@@ -280,17 +285,16 @@ html {
 .header-container-fixed {
     height: 64px;
 }
-.header-container {
+.header-section {
     position: fixed;
     z-index: 950;
     top: 0;
     left: 0;
     right: 0;
-    padding: 0px 8px;
-    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 64px;
     background: var(--static-white);
 }
 .header-element {
@@ -301,7 +305,7 @@ html {
     flex-direction: row;
     gap: 12px;
     margin: 0 auto;
-    padding: 12px 0px;
+    padding: 12px 0;
     width: 100%;
     min-height: 40px;
     transition: width 0.3s ease;
@@ -312,23 +316,19 @@ html {
 
 .header-logo {
     border-radius: 12px;
-}
-
-.header-logo__link {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
     gap: 8px;
     padding: 8px 20px;
-    width: 100%;
-    height: 100%;
     text-decoration: none;
     color: inherit;
 }
 
-.header-logo__link:hover,
-.header-logo__link:active {
+.header-logo:hover,
+.header-logo:active {
     text-decoration: none;
     color: inherit;
     background-color: transparent;
@@ -338,26 +338,23 @@ html {
     display: inline-block;
     width: 24px;
     height: 24px;
+    cursor: pointer;
+    pointer-events: auto;
 }
 .header-logo__text {
     display: inline-block;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .header-element__nav-menu {
     position: inherit;
-    transition: right 0.3s ease, color 0.3s ease;
     z-index: 900;
     color: var(--dark);
 
     /*@media (width < 1440px) {*/
     /*    position: fixed;*/
     /*    right: -100%;*/
-    /*}*/
-}
-
-.header-element__nav-menu.active {
-    /*@media (width < 1440px) {*/
-    /*    right: 0;*/
     /*}*/
 }
 
@@ -376,10 +373,12 @@ html {
     display: inline-block;
     margin-left: 4px;
     height: 40px;
+    color: inherit;
+    cursor: pointer;
 }
 
 .header-element__nav-menu-item:first-of-type {
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 .header-element__nav-menu-link {
@@ -392,6 +391,7 @@ html {
     height: 100%;
     color: inherit;
     text-decoration: none;
+    transition: color 0.3s ease, background 0.3s ease;
 }
 
 .header-element__nav-menu-link:active {
@@ -412,6 +412,133 @@ html {
 }
 
 /* Header end*/
+
+/* Footer start*/
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: var(--static-white);
+}
+
+.footer-section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 60px 0;
+    gap: 60px;
+    text-align: center;
+    color: var(--dark);
+}
+
+.contacts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 60px;
+    width: 100%;
+
+    /*@media (width < 1440px) {*/
+    /*    grid-template-columns: 1fr;*/
+    /*    grid-template-rows: 3fr;*/
+    /*}*/
+}
+
+.contacts-item  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 20px;
+    padding: 20px;
+    min-width: 330px;
+    background: var(--content-background);
+    cursor: pointer;
+}
+
+
+.contacts-item__picture {
+    width: 80px;
+    height: 80px;
+}
+
+.contacts-item__img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contacts-item__link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.contacts-item__link:hover {
+    color: var(--primary);
+}
+
+.footer__info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.social {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.social-item {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+}
+.social-item__link {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-item__link-svg {
+    display: block;
+    margin: auto;
+    stroke-width: 1.50px;
+    stroke: var(--dark);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 24px;
+    height: 24px;
+    fill: none;
+}
+
+.footer__RSSchool {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Footer end*/
 
 /* Burger menu start*/
 .burger-menu {

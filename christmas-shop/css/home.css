@@ -1,5 +1,9 @@
 /* Hero start*/
 .hero-section {
+
+}
+
+.hero-section-background {
     position: relative;
     z-index: 500;
     display: flex;
@@ -8,13 +12,18 @@
     flex-direction: column;
     gap: 0;
     border-radius: 20px 20px 0 0;
-    padding: 60px 8px;
     width: 100%;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png), url(../assets/img/bg-ball.png);
     background-repeat: no-repeat, no-repeat;
-    background-size: cover, cover;
+    /*background-size: cover, cover;*/
+    background-size: 1440px auto, 1440px auto;
     background-position: center, center;
+    padding: 60px 0;
+
+    /*@media (width < 1440px) {*/
+    /*    background-position: 0 center, 0 center;*/
+    /*}*/
 }
 
 .hero-section-wrapper {
@@ -43,15 +52,23 @@
 
 /* About start*/
 .about-section {
+
+}
+
+.about-section-background {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 60px 8px;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png);
     background-repeat: no-repeat;
     background-size: cover;
+    /*background-size: 1440px auto;*/
     background-position: center;
+    /*@media (width < 1440px) {*/
+    /*    background-position: 0 center;*/
+    /*}*/
+    padding: 60px 0;
 }
 
 .about-section-wrapper {
@@ -63,6 +80,7 @@
     border-radius: 20px;
     background: var(--static-white);
     transition: width 0.3s ease;
+    width: 100%;
 
     /*@media (768px <= width < 1440px) {*/
     /*    max-width: 752px;*/
@@ -121,21 +139,31 @@
 .about-picture__img {
     display: block;
 }
+
 /* About end*/
 
 /* Slider start*/ /* Best gifts start*/
 .slider-section,
 .best-gifts-section {
+
+}
+
+.slider-section-background,
+.best-gifts-section-background {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
-    padding: 60px 8px;
+    padding: 60px 0;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
+    background-size: 1440px auto;
     background-position: center;
+    /*@media (width < 1440px) {*/
+    /*    background-position: 0 center;*/
+    /*}*/
     color: var(--static-white);
     overflow: hidden;
 }
@@ -144,7 +172,7 @@
 .best-gifts-section-wrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
     gap: 20px;
     width: 100%;
@@ -177,7 +205,7 @@
 .slider__text {
     font-size: 80px;
     text-transform: uppercase;
-    padding-left: 1px;
+    text-align: center;
 }
 
 .slider__picture {
@@ -189,6 +217,7 @@
     width: 200px;
     height: 200px;
     overflow: hidden;
+    margin: 0 1px;
 }
 
 .slider__img {
@@ -224,21 +253,31 @@
     /*    grid-template-rows: repeat(4, 1fr);*/
     /*}*/
 }
+
 /* Slider end*/ /* Best gifts end*/
 
 /* CTA start*/
 .cta-section {
+
+}
+
+.cta-section-background {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    padding: 60px 0;
     border-radius: 0 0 20px 20px;
-    padding: 60px 8px;
+
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png), url(../assets/img/bg-forest.png);
     background-repeat: no-repeat, no-repeat;
     background-size: cover, cover;
-    background-position: center;
+    /*background-size: 1440px auto, 1440px auto;*/
+    background-position: center, center;
+    /*@media (width < 1440px)*/
+    /*    background-position: 0 center, 0 center;*/
+    /*}*/
 }
 
 .cta-section-wrapper {
@@ -248,14 +287,16 @@
     flex-direction: column;
     gap: 18px;
     margin: 60px auto;
-    padding: 60px 0px;
+    padding: 60px 0;
     max-width: 426px;
     text-align: center;
     color: var(--static-white);
 }
+
 .cta__button {
     margin-bottom: 2px;
 }
+
 .cta__timer {
     display: flex;
     align-items: center;
@@ -273,7 +314,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 0px;
+    gap: 0;
     border-radius: 20px;
     padding: 8px 20px 12px 20px;
     background: var(--static-white-40);
@@ -295,11 +336,9 @@
 .separator {
     border-bottom: 1px solid var(--static-white-40);
     width: 20px;
-    height: 0px;
+    height: 0;
     transform: rotate(90deg);
 
 }
 
 /* CTA end*/
-/* Footer start*/
-/* Footer end*/
