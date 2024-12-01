@@ -18,7 +18,6 @@ body {
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-optical-sizing: auto;
     min-height: 100vh;
 }
 
@@ -127,6 +126,7 @@ p {
     height: 56px;
     font-size: 24px;
     background: transparent;
+    color: inherit;
     transition: background 0.3s ease, color 0.3s ease, stroke 0.3s ease;
     pointer-events: auto;
     stroke-width: 1px;
@@ -187,7 +187,7 @@ p {
     cursor: pointer;
 
     opacity: 1;
-    transition: 0.3s ease transform, 0.3s ease opacity, 0.3s ease background, 0.3s ease color;
+    transition: 0.3s ease transform, 0.3s ease background, 0.3s ease color;
 }
 
 .card__picture {
@@ -285,18 +285,32 @@ html {
 .header-container-fixed {
     height: 64px;
 }
+
 .header-section {
     position: fixed;
     z-index: 950;
     top: 0;
     left: 0;
     right: 0;
+    margin: 0 auto;
+}
+
+.header-section-background {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 64px;
     background: var(--static-white);
 }
+
+.header-section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12px;
+}
+
 .header-element {
     position: relative;
     display: flex;
@@ -307,7 +321,6 @@ html {
     margin: 0 auto;
     padding: 12px 0;
     width: 100%;
-    min-height: 40px;
     transition: width 0.3s ease;
 
     /*@media (768px <= width < 1440px) {*/
@@ -315,13 +328,13 @@ html {
 }
 
 .header-logo {
-    border-radius: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
     gap: 8px;
+    border-radius: 12px;
     padding: 8px 20px;
     text-decoration: none;
     color: inherit;
@@ -363,16 +376,23 @@ html {
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
+    gap: 8px;
     flex-wrap: wrap;
+    flex-grow: 1;
     /*@media (width < 1440px) {*/
     /*    flex-direction: column;*/
     /*}*/
 }
 
 .header-element__nav-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+
     display: inline-block;
     margin-left: 4px;
-    height: 40px;
+    border-radius: 12px;
     color: inherit;
     cursor: pointer;
 }
@@ -385,27 +405,25 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: inherit;
     padding: 12px 20px;
     width: 100%;
     height: 100%;
     color: inherit;
     text-decoration: none;
+    background: inherit;
     transition: color 0.3s ease, background 0.3s ease;
 }
 
-.header-element__nav-menu-link:active {
-    color: var(--primary);
-    background: var(--primary-10);
-
-}
-
+.header-element__nav-menu-item:active,
+.header-element__nav-menu-item:hover,
+.header-element__nav-menu-link:active,
 .header-element__nav-menu-link:hover {
     color: var(--primary);
     background: var(--primary-10);
-    cursor: pointer;
 }
 
+.header-element__nav-menu-item.inactive,
 .header-element__nav-menu-link.inactive {
     pointer-events: none;
     cursor: default;
@@ -505,13 +523,21 @@ html {
     padding: 8px;
     width: 40px;
     height: 40px;
+    color: inherit;
+    stroke: var(--dark);
+    cursor: pointer;
+    transition: color 0.3s ease, stroke 0.3s ease;
 }
+
+.social-item:hover {
+    color: var(--primary);
+    stroke: var(--primary);
+}
+
 .social-item__link {
     width: 100%;
     height: 100%;
-    color: inherit;
     text-decoration: none;
-    transition: color 0.3s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -521,7 +547,6 @@ html {
     display: block;
     margin: auto;
     stroke-width: 1.50px;
-    stroke: var(--dark);
     stroke-linecap: round;
     stroke-linejoin: round;
     width: 24px;
@@ -538,6 +563,9 @@ html {
     transition: color 0.3s ease;
 }
 
+.footer__RSSchool:hover {
+    color: var(--primary);
+}
 /* Footer end*/
 
 /* Burger menu start*/

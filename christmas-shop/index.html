@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Christmas shop</title>
     <link rel="stylesheet" href="css/common.css">
@@ -12,7 +12,6 @@
     <script src="js/data.js" defer></script>
     <script src="js/home.js" defer></script>
     <script src="js/module.js" defer></script>
-
 </head>
 <body>
 <div class="overlay"></div>
@@ -21,42 +20,38 @@
     <div class="container header-container">
         <div class="header-section">
             <div class="wrapper">
-                <div class="section-wrapper">
-                    <div class="header-element action-small">
-                        <div class="header-logo" onclick="window.location.href='index.html'">
-                            <img src="assets/svg/snowflake.svg" alt="Snowflake logo" class="header-logo__img">
-                            <span class="header-logo__text">
+                <div class="header-section-background">
+                    <div class="section-wrapper">
+                        <div class="header-section-wrapper">
+                            <div class="header-element action-small">
+                                <div class="header-logo" onclick="window.location.href='index.html'">
+                                    <img src="assets/svg/snowflake.svg" alt="Snowflake logo" class="header-logo__img">
+                                    <span class="header-logo__text">
                                      the gifts
                                 </span>
+                                </div>
+                                <div class="header-element__burger-menu burger-menu">
+                                    <div class="header-element__burger-menu-line burger-menu-line burger-menu-line-one"></div>
+                                    <div class="header-element__burger-menu-line burger-menu-line burger-menu-line-two"></div>
+                                </div>
+                                <nav class="header-element__nav-menu">
+                                    <ul class="header-element__nav-menu-list">
+                                        <li id="gifts" class="header-element__nav-menu-item">
+                                            <a href="gifts.html" class="header-element__nav-menu-link">gifts</a>
+                                        </li>
+                                        <li class="header-element__nav-menu-item">
+                                            <a href="#about" class="header-element__nav-menu-link">about</a>
+                                        </li>
+                                        <li class="header-element__nav-menu-item">
+                                            <a href="#best" class="header-element__nav-menu-link">best</a>
+                                        </li>
+                                        <li class="header-element__nav-menu-item">
+                                            <a href="#contacts" class="header-element__nav-menu-link">contacts</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
-                        <div class="header-element__burger-menu burger-menu">
-                            <div class="header-element__burger-menu-line burger-menu-line burger-menu-line-one"></div>
-                            <div class="header-element__burger-menu-line burger-menu-line burger-menu-line-two"></div>
-                        </div>
-                        <nav class="header-element__nav-menu">
-                            <ul class="header-element__nav-menu-list">
-                                <li class="header-element__nav-menu-item">
-                                    <a href="gifts.html" class="header-element__nav-menu-link">
-                                        gifts
-                                    </a>
-                                </li>
-                                <li class="header-element__nav-menu-item">
-                                    <a href="#about" class="header-element__nav-menu-link">
-                                        about
-                                    </a>
-                                </li>
-                                <li class="header-element__nav-menu-item">
-                                    <a href="#best" class="header-element__nav-menu-link">
-                                        best
-                                    </a>
-                                </li>
-                                <li class="header-element__nav-menu-item">
-                                    <a href="#contacts" class="header-element__nav-menu-link">
-                                        contacts
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -217,7 +212,7 @@
             <div class="section-wrapper">
                 <div class="footer-section-wrapper">
                     <div class="contacts-container">
-                        <a class="contacts-item__link" href=tel:+375291112233" target="_blank">
+                        <a class="contacts-item__link" href="tel:+375291112233" target="_blank">
                             <div class="contacts-item">
                                 <div class="contacts-item__picture">
                                     <img src="assets/img/santa-claus.png" alt="Santa Claus" class="contacts-item__img">
@@ -226,7 +221,9 @@
                                 <h3 class="contacts-item__header">Call Us</h3>
                             </div>
                         </a>
-                        <a class="contacts-item__link" href="https://www.google.com/maps/place/53.67617831314245, 23.825379377510785" target="_blank">
+                        <a class="contacts-item__link"
+                           href="https://www.google.com/maps/place/53.67617831314245,23.825379377510785"
+                           target="_blank">
                             <div class="contacts-item">
                                 <div class="contacts-item__picture">
                                     <img src="assets/img/christmas-tree.png" alt="Christmas tree"
@@ -248,41 +245,41 @@
                     </div>
                     <div class="footer__info">
                         <div class="social">
-                            <div class="social-item telegram">
-                                <a href="https://t.me/rsschool" target="_blank" class="social-item__link">
+                            <a href="https://t.me/rsschool" target="_blank" class="social-item__link">
+                                <div class="social-item telegram">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                          class="social-item__link-svg">
                                         <path d="M21 5L2 12.5L9 13.5M21 5L18.5 20L9 13.5M21 5L9 13.5M9 13.5V19L12.2488 15.7229"/>
                                     </svg>
-                                </a>
-                            </div>
-                            <div class="social-item facebook">
-                                <a href="https://facebook.com/rsschool" target="_blank" class="social-item__link">
+                                </div>
+                            </a>
+                            <a href="https://facebook.com/rsschool" target="_blank" class="social-item__link">
+                                <div class="social-item facebook">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                          class="social-item__link-svg">
                                         <path d="M17 2H14C12.6739 2 11.4021 2.52678 10.4645 3.46447C9.52678 4.40215 9 5.67392 9 7V10H6V14H9V22H13V14H16L17 10H13V7C13 6.73478 13.1054 6.48043 13.2929 6.29289C13.4804 6.10536 13.7348 6 14 6H17V2Z"/>
                                     </svg>
-                                </a>
-                            </div>
-                            <div class="social-item instagram">
-                                <a href="https://instagram.com/rsschool" target="_blank" class="social-item__link">
+                                </div>
+                            </a>
+                            <a href="https://instagram.com/rsschool" target="_blank" class="social-item__link">
+                                <div class="social-item instagram">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                          class="social-item__link-svg">
                                         <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"/>
                                         <path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"/>
                                         <path d="M17.5 6.51L17.51 6.49889"/>
                                     </svg>
-                                </a>
-                            </div>
-                            <div class="social-item twitter">
-                                <a href="https://twitter.com/rsschool" target="_blank" class="social-item__link">
+                                </div>
+                            </a>
+                            <a href="https://twitter.com/rsschool" target="_blank" class="social-item__link">
+                                <div class="social-item twitter">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                          class="social-item__link-svg">
                                         <path d="M16.8198 20.7684L3.75317 3.96836C3.44664 3.57425 3.72749 3 4.22678 3H6.70655C6.8917 3 7.06649 3.08548 7.18016 3.23164L20.2468 20.0316C20.5534 20.4258 20.2725 21 19.7732 21H17.2935C17.1083 21 16.9335 20.9145 16.8198 20.7684Z"/>
-                                        <path d="M20 3L4 21" stroke="#181C29"/>
+                                        <path d="M20 3L4 21"/>
                                     </svg>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
                         <p class="footer__info-caption">
                             © Copyright 2025, All Rights Reserved
@@ -295,7 +292,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </footer>
 </body>

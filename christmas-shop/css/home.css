@@ -34,8 +34,9 @@
     gap: 12px;
     margin: 0 auto;
     padding: 60px 0;
-    max-width: 430px;
+    max-width: 432px;
     text-align: center;
+    width: 100%;
     color: var(--static-white);
     transition: width 0.3s ease;
 
