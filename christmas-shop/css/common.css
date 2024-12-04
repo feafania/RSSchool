@@ -430,6 +430,8 @@ html {
 .header-element__nav-menu-link.inactive {
     pointer-events: none;
     cursor: default;
+    color: var(--primary);
+    background: var(--primary-10);
 }
 
 /* Header end*/
