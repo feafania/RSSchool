@@ -16,14 +16,9 @@
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png), url(../assets/img/bg-ball.png);
     background-repeat: no-repeat, no-repeat;
-    /*background-size: cover, cover;*/
-    background-size: 1440px auto, 1440px auto;
+    background-size: cover, cover;
     background-position: center, center;
     padding: 60px 0;
-
-    /*@media (width < 1440px) {*/
-    /*    background-position: 0 center, 0 center;*/
-    /*}*/
 }
 
 .hero-section-wrapper {
@@ -34,15 +29,20 @@
     gap: 12px;
     margin: 0 auto;
     padding: 60px 0;
-    max-width: 432px;
+    max-width: calc((432 / 1440) * 100vw);
+    /*max-width: 432px;*/
     text-align: center;
     width: 100%;
     color: var(--static-white);
     transition: width 0.3s ease;
 
-    /*@media (max-width: 767px) {*/
-    /*    max-width: 364px;*/
-    /*}*/
+    @media (656px < width <= 1300px) {
+        max-width: calc((432 / 768) * 100vw);
+    }
+
+    @media (max-width: 656px) {
+        max-width: 100%;
+    }
 }
 
 .hero__paragraph {
@@ -64,11 +64,7 @@
     background-image: url(../assets/img/bg-snow.png);
     background-repeat: no-repeat;
     background-size: cover;
-    /*background-size: 1440px auto;*/
     background-position: center;
-    /*@media (width < 1440px) {*/
-    /*    background-position: 0 center;*/
-    /*}*/
     padding: 60px 0;
 }
 
@@ -83,16 +79,11 @@
     transition: width 0.3s ease;
     width: 100%;
 
-    /*@media (768px <= width < 1440px) {*/
-    /*    max-width: 752px;*/
-    /*}*/
-
-    /*@media (max-width: 767px) {*/
-    /*        align-items: flex-start;*/
-    /*        justify-content: center;*/
-    /*        flex-direction: column;*/
-    /*    max-width: 364px;*/
-    /*}*/
+    @media (max-width: 656px) {
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
 
 .about-element {
@@ -105,14 +96,16 @@
     padding: 60px 0;
     max-width: 426px;
 
-    /*@media (768px <= width < 1440px) {*/
-    /*    max-width: 256px;*/
-    /*}*/
+    @media (656px < width <= 1300px) {
+        max-width: calc((256 / 768) * 100vw);
+        /*max-width: 256px;*/
+    }
 
-    /*@media (max-width: 767px) {*/
-    /*      margin: 0px 20px;*/
-    /*    max-width: 364px;*/
-    /*}*/
+    @media (max-width: 656px) {
+        max-width: calc((324 / 380) * 100vw);
+        margin: 0px 20px;
+        max-width: 100%;
+    }
 }
 
 .about-element__caption {
@@ -125,16 +118,18 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    width: 638px;
+    max-width: calc((638 / 1440) * 100vw);
+    width: 100%;
     overflow: hidden;
 
-    /*@media (768px <= width < 1440px) {*/
-    /*    max-width: 376px;*/
-    /*}*/
+    @media (656px < width <= 1300px) {
+        max-width: calc((376 / 768) * 100vw);
+        /*max-width: 376px;*/
+    }
 
-    /*@media (max-width: 767px) {*/
-    /*    max-width: 364px;*/
-    /*}*/
+    @media (max-width: 656px) {
+        max-width: 100%;
+    }
 }
 
 .about-picture__img {
@@ -159,12 +154,8 @@
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png);
     background-repeat: no-repeat;
-    /*background-size: cover;*/
-    background-size: 1440px auto;
+    background-size: cover;
     background-position: center;
-    /*@media (width < 1440px) {*/
-    /*    background-position: 0 center;*/
-    /*}*/
     color: var(--static-white);
     overflow: hidden;
 }
@@ -244,15 +235,15 @@
     justify-content: center;
     align-items: start;
 
-    /*@media (768px <= width < 1440px) {*/
-    /*    grid-template-columns: repeat(2, 1fr);*/
-    /*    grid-template-rows: repeat(2, 1fr);*/
-    /*}*/
+    @media (656px < width <= 1300px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
 
-    /*@media (max-width: 767px) {*/
-    /*    grid-template-columns: 1fr;*/
-    /*    grid-template-rows: repeat(4, 1fr);*/
-    /*}*/
+    @media (max-width: 656px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
 }
 
 /* Slider end*/ /* Best gifts end*/
@@ -274,11 +265,7 @@
     background-image: url(../assets/img/bg-snow.png), url(../assets/img/bg-forest.png);
     background-repeat: no-repeat, no-repeat;
     background-size: cover, cover;
-    /*background-size: 1440px auto, 1440px auto;*/
     background-position: center, center;
-    /*@media (width < 1440px)*/
-    /*    background-position: 0 center, 0 center;*/
-    /*}*/
 }
 
 .cta-section-wrapper {
@@ -289,9 +276,18 @@
     gap: 18px;
     margin: 60px auto;
     padding: 60px 0;
-    max-width: 426px;
+    max-width: calc((426 / 1440) * 100vw);
+    /*max-width: 426px;*/
     text-align: center;
     color: var(--static-white);
+
+    @media (656px < width <= 1300px) {
+        max-width: calc((426 / 768) * 100vw);
+    }
+
+    @media (max-width: 656px) {
+        max-width: 100%;
+    }
 }
 
 .cta__button {
