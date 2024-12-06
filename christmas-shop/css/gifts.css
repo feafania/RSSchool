@@ -33,16 +33,8 @@
     text-align: center;
     color: var(--static-white);
 
-    @media (1300px < width <= 1440px) {
-        max-width: calc((426 / 1440) * 100vw);
-    }
-
-    @media (656px < width <= 1300px) {
-        max-width: calc((426 / 768) * 100vw);
-    }
-
-    @media (max-width: 656px) {
-        max-width: calc((364 / 380) * 100vw);
+    @media (max-width: 426px) {
+        max-width: 100%;
     }
 }
 

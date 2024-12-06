@@ -649,7 +649,7 @@ html {
 }
 
 .burger-menu-line {
-    width: 50%;
+    width: 22px;
     height: 1px;
     background-color: var(--dark);
     transition: transform 0.3s ease; /* Smooth transitions for animations */
