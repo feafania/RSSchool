@@ -136,6 +136,10 @@ p {
     stroke: var(--static-white);
     stroke-linecap: round;
     stroke-linejoin: round;
+    @media (max-width: 56px) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .arrow-button__icon {
@@ -171,6 +175,10 @@ p {
     stroke: var(--primary);
     stroke-linecap: round;
     stroke-linejoin: round;
+    @media (max-width: 56px) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 /* Button end*/
@@ -192,6 +200,10 @@ p {
     cursor: pointer;
     opacity: 1;
     transition: 0.3s ease transform, 0.3s ease background, 0.3s ease color, 0.3s ease width;
+    @media (max-width: 310px) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .card__picture {
@@ -269,11 +281,14 @@ html {
 }
 
 .section-wrapper {
-    max-width: calc((1276 / 1440) * 100vw);
-    /*max-width: 1276px;*/
+    max-width: 1276px;
     width: 100%;
     margin: 0 auto;
     transition: width 0.3s ease;
+
+    @media (1300px < width <= 1440px) {
+        max-width: calc((1276 / 1440) * 100vw);
+    }
 
     @media (656px < width <= 1300px) {
         max-width: calc((752 / 768) * 100vw);
@@ -292,6 +307,9 @@ html {
 .header-container-fixed {
     height: 64px;
     background: var(--static-white);
+    @media (hover: none) {
+        display: none;
+    }
 }
 
 .header-section {
@@ -301,6 +319,10 @@ html {
     left: 0;
     right: 0;
     margin: 0 auto;
+    @media (hover: none) {
+        position: static;
+        background: var(--static-white);
+    }
 }
 
 .header-section-background {
@@ -380,6 +402,7 @@ html {
     @media (width <= 768px) {
         position: fixed;
         right: -100%;
+        display: none;
     }
 }
 
@@ -469,6 +492,9 @@ html {
     gap: 60px;
     text-align: center;
     color: var(--dark);
+    @media (max-width: 200px) {
+        gap: 0;
+    }
 }
 
 .contacts-container {
@@ -498,12 +524,22 @@ html {
     min-width: 330px;
     background: var(--content-background);
     cursor: pointer;
+    @media (max-width: 330px) {
+        min-width: unset;
+        max-width: 100vw;
+        width: 100%;
+        overflow: hidden;
+    }
 }
 
 
 .contacts-item__picture {
     width: 80px;
     height: 80px;
+    @media (max-width: 80px) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .contacts-item__img {
@@ -628,3 +664,25 @@ html {
     transform: translate(0, -4.5px) rotate(-45deg);
 }
 /* Burger menu end*/
+
+@media (max-width: 360px) {
+    * {
+        flex-direction: column !important;
+        overflow: hidden !important;
+        font-size: 0.3em !important;
+    }
+
+    img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media (max-width: 200px) {
+    * {
+        border-radius: unset !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+}
+

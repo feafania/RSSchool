@@ -10,7 +10,7 @@
     background-color: var(--primary);
     background-image: url(../assets/img/bg-garland.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center top;
 }
 
@@ -29,10 +29,13 @@
     justify-content: center;
     flex-direction: column;
     gap: 12px;
-    max-width: calc((426 / 1440) * 100vw);
-    /*max-width: 426px;*/
+    max-width: 426px;
     text-align: center;
     color: var(--static-white);
+
+    @media (1300px < width <= 1440px) {
+        max-width: calc((426 / 1440) * 100vw);
+    }
 
     @media (656px < width <= 1300px) {
         max-width: calc((426 / 768) * 100vw);
@@ -53,6 +56,9 @@
     justify-content: flex-start;
     flex-direction: row;
     gap: 8px;
+    @media (max-width: 656px) {
+        gap: 0px;
+    }
 }
 
 .gifts__tab-item {
@@ -105,3 +111,24 @@
 }
 
 /* Gifts end*/
+
+@media (max-width: 360px) {
+    * {
+        flex-direction: column !important;
+        overflow: hidden !important;
+        font-size: 0.3em !important;
+    }
+
+    img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media (max-width: 200px) {
+    * {
+        border-radius: unset !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+}

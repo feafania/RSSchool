@@ -29,12 +29,15 @@
     gap: 12px;
     margin: 0 auto;
     padding: 60px 0;
-    max-width: calc((432 / 1440) * 100vw);
-    /*max-width: 432px;*/
+    max-width: 432px;
     text-align: center;
     width: 100%;
     color: var(--static-white);
     transition: width 0.3s ease;
+
+    @media (1300px < width <= 1440px) {
+        max-width: calc((432 / 1440) * 100vw);
+    }
 
     @media (656px < width <= 1300px) {
         max-width: calc((432 / 768) * 100vw);
@@ -53,6 +56,7 @@
 
 /* About start*/
 .about-section {
+    width: 100%;
 
 }
 
@@ -102,9 +106,9 @@
     }
 
     @media (max-width: 656px) {
-        max-width: calc((324 / 380) * 100vw);
-        margin: 0px 20px;
         max-width: 100%;
+        margin: 0px 20px;
+        padding: 60px 0px;
     }
 }
 
@@ -118,9 +122,13 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    max-width: calc((638 / 1440) * 100vw);
+    max-width: 638px;
     width: 100%;
     overflow: hidden;
+
+    @media (1300px < width <= 1440px) {
+        max-width: calc((638 / 1440) * 100vw);
+    }
 
     @media (656px < width <= 1300px) {
         max-width: calc((376 / 768) * 100vw);
@@ -210,6 +218,10 @@
     height: 200px;
     overflow: hidden;
     margin: 0 1px;
+    @media (max-width: 200px) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .slider__img {
@@ -276,10 +288,13 @@
     gap: 18px;
     margin: 60px auto;
     padding: 60px 0;
-    max-width: calc((426 / 1440) * 100vw);
-    /*max-width: 426px;*/
+    max-width: 426px;
     text-align: center;
     color: var(--static-white);
+
+    @media (1300px < width <= 1440px) {
+        max-width: calc((426 / 1440) * 100vw);
+    }
 
     @media (656px < width <= 1300px) {
         max-width: calc((426 / 768) * 100vw);
@@ -300,10 +315,17 @@
     justify-content: flex-start;
     flex-direction: column;
     gap: 8px;
+    max-width: 100%;
 }
 
 .cta__paragraph {
     display: block;
+}
+
+h2.cta__paragraph {
+    @media (max-width: 656px) {
+        letter-spacing: 0.15em;
+    }
 }
 
 .timer {
@@ -328,6 +350,10 @@
     flex-direction: column;
     width: 80px;
     height: 52px;
+    @media (max-width: 80px) {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .separator {
@@ -339,3 +365,25 @@
 }
 
 /* CTA end*/
+
+@media (max-width: 360px) {
+    * {
+        flex-direction: column !important;
+        overflow: hidden !important;
+        font-size: 0.3em !important;
+    }
+
+    img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media (max-width: 200px) {
+    * {
+        border-radius: unset !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+}
+
