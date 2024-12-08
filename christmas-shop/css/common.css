@@ -305,6 +305,7 @@ html {
 
 /* Header start*/
 .header-container-fixed {
+    display: none;
     height: 64px;
     background: var(--static-white);
     @media (hover: none) {
@@ -313,7 +314,8 @@ html {
 }
 
 .header-section {
-    position: fixed;
+    position: static;
+    /*position: fixed;*/
     z-index: 950;
     top: 0;
     left: 0;
@@ -420,11 +422,6 @@ html {
 }
 
 .header-element__nav-menu-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: row;
-
     display: inline-block;
     margin-left: 4px;
     border-radius: 12px;
@@ -685,4 +682,3 @@ html {
         padding: 0 !important;
     }
 }
-

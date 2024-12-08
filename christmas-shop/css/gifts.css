@@ -49,7 +49,7 @@
     flex-direction: row;
     gap: 8px;
     @media (max-width: 656px) {
-        gap: 0px;
+        gap: 0;
     }
 }
 
