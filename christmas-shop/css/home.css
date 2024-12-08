@@ -353,11 +353,11 @@ h2.cta__paragraph {
 
 /* CTA end*/
 
-@media (max-width: 360px) {
+@media (max-width: 370px) {
     * {
         flex-direction: column !important;
         overflow: hidden !important;
-        font-size: 0.3em !important;
+        font-size: 0.75rem !important;
     }
 
     img {
@@ -368,8 +368,8 @@ h2.cta__paragraph {
 
 @media (max-width: 200px) {
     * {
-        border-radius: unset !important;
+        border-radius: 3px !important;
         margin: 0 auto !important;
-        padding: 0 !important;
+        padding: 1px !important;
     }
 }
