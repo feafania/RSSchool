@@ -665,7 +665,6 @@ html {
 @media (max-width: 370px) {
     * {
         flex-direction: column !important;
-        overflow: hidden !important;
         font-size: 0.75rem !important;
     }
 
