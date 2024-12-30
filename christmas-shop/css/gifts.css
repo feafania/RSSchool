@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 20px;
     border-radius: 20px;
-    padding: 60px 0;
+    padding: 60px 8px;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-garland.png);
     background-repeat: no-repeat;

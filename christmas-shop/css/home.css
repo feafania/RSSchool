@@ -45,7 +45,7 @@
 }
 
 h1.hero__paragraph {
-    letter-spacing: 0.165em;
+    letter-spacing: 0.175em;
 }
 
 /* Hero end*/
@@ -65,7 +65,7 @@ h1.hero__paragraph {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    padding: 60px 0;
+    padding: 60px 8px;
 }
 
 .about-section-wrapper {
@@ -153,7 +153,7 @@ h1.hero__paragraph {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 60px 0;
+    padding: 60px 8px;
     background-color: var(--primary);
     background-image: url(../assets/img/bg-snow.png);
     background-repeat: no-repeat;
@@ -198,6 +198,7 @@ h1.hero__paragraph {
 }
 
 .slider__text {
+    font-weight: 600;
     font-size: 80px;
     text-transform: uppercase;
     text-align: center;
@@ -265,7 +266,7 @@ h1.hero__paragraph {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding: 60px 0;
+    padding: 60px 8px;
     border-radius: 0 0 20px 20px;
 
     background-color: var(--primary);
@@ -311,7 +312,7 @@ h1.hero__paragraph {
 
 h2.cta__paragraph {
     @media (max-width: 656px) {
-        letter-spacing: 0.15em;
+        /*letter-spacing: 0.15em;*/
     }
 }
 
