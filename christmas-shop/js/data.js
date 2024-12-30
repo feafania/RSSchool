@@ -18,13 +18,6 @@ let giftsCategories = [
     },
 ];
 const overlay = document.querySelector('.overlay');
-// const modalWindow = document.querySelector('.modal-window');
-// const modalWindowButton = document.querySelector('.button-close');
-// const burgerMenu = document.querySelector('.burger-menu');
-//
-// const navigationMenu = document.querySelector('.header__navigation');
-// const navigationLinks = document.querySelectorAll('.navigation_link');
-// const buttonClose = document.querySelector('.button-close');
 
 async function loadGifts() {
     const response = await fetch('./js/gifts.json');

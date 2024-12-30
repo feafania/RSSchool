@@ -332,7 +332,6 @@ html {
     align-items: center;
     justify-content: center;
     height: 64px;
-    /*background: var(--static-white);*/
     background: var(--static-white-95);
 }
 
@@ -368,6 +367,10 @@ html {
     padding: 8px 20px;
     text-decoration: none;
     color: inherit;
+    @media (width <= 768px) {
+        position: relative;
+        z-index: 990;
+    }
 }
 
 .header-logo:active {
@@ -400,13 +403,28 @@ html {
     position: inherit;
     z-index: 900;
     color: var(--dark);
+    transition: right 0.5s ease, width 0.3s ease;
 
     @media (width <= 768px) {
         position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        top: 0;
         right: -100%;
-        display: none;
+        width: 100%;
+        height: 100%;
+        background: var(--static-white);
     }
 }
+
+.header-element__nav-menu.active {
+    @media (max-width: 768px) {
+        right: 0;
+    }
+}
+
 
 .header-element__nav-list {
     display: flex;
@@ -417,16 +435,23 @@ html {
     flex-wrap: wrap;
     flex-grow: 1;
     @media (width <= 768px) {
+        justify-content: center;
         flex-direction: column;
+        height: 100%;
+        width: 100vw;
+        margin-top: 64px;
     }
 }
 
 .header-element__nav-menu-item {
     display: inline-block;
-    margin-left: 4px;
     border-radius: 12px;
     color: inherit;
     cursor: pointer;
+    @media (width <= 768px) {
+        display: block;
+        width: 100%;
+    }
 }
 
 .header-element__nav-menu-item:first-of-type {
@@ -640,6 +665,10 @@ html {
     background: none;
 
     @media (width <= 768px) {
+        position: absolute;
+        z-index: 999; /* on top */
+        top: 12px;
+        right: 0;
         display: flex; /* Show burger menu */
         transition: transform 0.3s ease;
     }
@@ -653,14 +682,34 @@ html {
     transform-origin: center;
 }
 
-.burger-menu-line-one.active {
-    transform: translate(0, 4.5px) rotate(45deg);
+.burger-menu.active > :first-child {
+    transform: translate(0,4.5px) rotate(45deg);
 }
 
-.burger-menu-line-two.active {
-    transform: translate(0, -4.5px) rotate(-45deg);
+.burger-menu.active > :last-child {
+    transform: translate(0,-4.5px) rotate(-45deg);
 }
 /* Burger menu end*/
+
+/* Overlay start*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--overlay);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 899;
+}
+
+
+.no-scroll {
+    overflow: hidden;
+}
+/* Overlay end*/
 
 @media (max-width: 370px) {
     * {
