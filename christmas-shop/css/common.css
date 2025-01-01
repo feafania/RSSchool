@@ -175,6 +175,7 @@ p {
     cursor: default;
     stroke: var(--static-white-40);
     pointer-events: none;
+    background: transparent;
 }
 
 .back-to-top-button {

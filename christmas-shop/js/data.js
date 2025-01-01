@@ -73,3 +73,11 @@ function createCard(dataNumber, cardContainer) {
     // cardElement.addEventListener('click', () => openPopupMenu(numberInArray));
     return cardElement;
 }
+
+function getRandomNumber(excludeSet,arrLength) {
+    const availableNumbers = Array.from({ length: arrLength }, (_, i) => i);
+    const possibleNumbers = availableNumbers.filter(num => !excludeSet.has(num));
+    if (possibleNumbers.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
+    return possibleNumbers[randomIndex];
+}

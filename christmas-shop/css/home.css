@@ -195,6 +195,7 @@ h1.hero__paragraph {
     gap: 20px;
     width: 100%;
     overflow: visible;
+    transition: transform 0.3s ease-in-out;
 }
 
 .slider__text {
