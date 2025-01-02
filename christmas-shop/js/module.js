@@ -6,8 +6,12 @@ const navigationLinks = document.querySelectorAll('.nav-menu-item');
 const modalWindow = document.querySelector('.modal-window');
 const modalWindowButton = document.querySelector('.button-close');
 
-function setInactive(elementActive) {
-    elementActive.classList.add('inactive');
+function setInactive(elementActive, variant = 1) {
+    if (variant === 1) {
+        elementActive.classList.add('inactive');
+    } else {
+        elementActive.classList.remove('inactive');
+    }
 }
 
 function openPopupMenu(numberArray) {

@@ -4,12 +4,18 @@ const cardContainer = document.querySelector('.cards-container');
 const arrowLeftButton = document.querySelector('.arrow-button-left');
 const arrowRightButton = document.querySelector('.arrow-button-right');
 const sliderRow = document.querySelector('.slider__row');
+const timerDays = document.querySelector('.timer__sector.days').firstElementChild;
+const timerHours = document.querySelector('.timer__sector.hours').firstElementChild;
+const timerMinutes = document.querySelector('.timer__sector.minutes').firstElementChild;
+const timerSeconds = document.querySelector('.timer__sector.seconds').firstElementChild;
 let currentSliderPosition = 0;
 let totalSliderPositions = 3;
+const nextYear = (new Date()).getUTCFullYear() + 1;
+const newYear = new Date(Date.UTC(nextYear, 0, 1, 0, 0, 0));
+
 
 function calculateCards() {
     giftsNumbers.length = cardsForPage;
-    // giftsNumbers = [1, 15, 3, 27];
     for (let i=0; i < giftsNumbers.length; i++) {
         if (giftsNumbers[i]===undefined || giftsNumbers[i]===null) {
             const positionInScreen = i%(cardsForPage);
@@ -70,11 +76,33 @@ function handleHomeResize() {
     moveSlider();
 }
 
+function updateTimer() {
+    const now = new Date();
+    const diffInSeconds = Math.floor((newYear - now) / 1000);
+
+    if (diffInSeconds <= 0) {
+        // thre is New Year!
+        timerDays.textContent = '0';
+        timerHours.textContent = '0';
+        timerMinutes.textContent = '0';
+        timerSeconds.textContent = '0';
+        return;
+    }
+
+    timerDays.textContent = Math.floor(diffInSeconds / (24 * 60 * 60)).toString();
+    timerHours.textContent = Math.floor((diffInSeconds % (24 * 60 * 60)) / (60 * 60)).toString();
+    timerMinutes.textContent = Math.floor((diffInSeconds % (60 * 60)) / 60).toString();
+    timerSeconds.textContent = (diffInSeconds % 60).toString();
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
     arrowLeftButton.addEventListener('click', handleArrowClick);
     arrowRightButton.addEventListener('click', handleArrowClick);
     window.addEventListener('resize', handleHomeResize);
     handleHomeResize();
-
+    setInterval(updateTimer, 1000);
+    updateTimer();
+    document.querySelector('.slider__header').lastElementChild.textContent = `in the new ${nextYear}`;
 });
