@@ -86,13 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleResize() {
         calculateCards(); // Пересчитать количество карточек
         if (window.innerWidth > 768) {
+            if (navigationMenu) {
+                navigationMenu.classList.remove('action-large');
+            }
             if (modalWindow) {
                 if (modalWindow.classList.contains('active')) {
                     return;
                 }
-            }
-            if (navigationMenu) {
-                navigationMenu.classList.remove('action-large');
             }
             hideMenu()
         }
