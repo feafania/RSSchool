@@ -1,5 +1,6 @@
 const cardContainer = document.querySelector('.cards-container');
 const tabItems = document.querySelectorAll(".gifts__tab-item");
+const scrollToTopButton = document.querySelector('.arrow-button-up');
 
 function calculateCards(currentCategory = '') {
     const tempGiftsNumbers = [];
@@ -37,6 +38,14 @@ function handleTabSwitch(event) {
     createCards();
 }
 
+function scrollFunction() {
+    if ((document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) && (window.innerWidth <= 768)) {
+        scrollToTopButton.style.opacity = "1";
+    } else {
+        scrollToTopButton.style.opacity = "0";
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     setInactive(document.getElementById('gifts'));
@@ -46,4 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // tabItems[0].dispatchEvent(new Event('click'));
     setInactive(tabItems[0]);
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    window.onscroll = function() {scrollFunction()};
+    window.addEventListener('resize', scrollFunction);
 });

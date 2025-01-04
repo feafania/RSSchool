@@ -45,7 +45,6 @@ function moveSlider() {
 }
 
 function handleArrowClick(event) {
-    event.preventDefault();
     const clickedElement = event.target.closest('.arrow-button');
 
     if (clickedElement.classList.contains('arrow-button-right')) {
@@ -56,6 +55,7 @@ function handleArrowClick(event) {
     checkArrowState();
     moveSlider();
 }
+
 
 function checkArrowState() {
     arrowLeftButton.disabled = currentSliderPosition === 0;
@@ -95,11 +95,20 @@ function updateTimer() {
     timerSeconds.textContent = (diffInSeconds % 60).toString();
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    arrowLeftButton.addEventListener('click', handleArrowClick);
-    arrowRightButton.addEventListener('click', handleArrowClick);
+    arrowLeftButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        handleArrowClick(event);
+        return false;
+    });
+    arrowRightButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        handleArrowClick(event);
+        return false;
+    });
     window.addEventListener('resize', handleHomeResize);
     handleHomeResize();
     setInterval(updateTimer, 1000);

@@ -104,6 +104,27 @@
 
 /* Gifts end*/
 
+/* Arrow button start */
+
+.arrow-button.arrow-button-up {
+    display: none;
+    border: 1px solid var(--primary);
+    border-radius: 100px;
+    background: var(--static-white);
+    stroke: var(--primary);
+    transition: opacity 0.3s;
+    opacity: 0;
+
+    @media (max-width: 768px) {
+        display: flex;
+        position: fixed;
+        bottom: 8px;
+        right: 8px;
+    }
+}
+
+/* Arrow button end */
+
 @media (max-width: 370px) {
     * {
         flex-direction: column !important;

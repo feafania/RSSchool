@@ -143,4 +143,35 @@ document.addEventListener('DOMContentLoaded', () => {
             closePopupMenu();
         }
     })
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error fetching footer:', error));
+
+    fetch('modal.html')
+        .then(response => response.text())
+        .then(data => {
+            const template = document.createElement('template');
+            template.innerHTML = data;
+            document.body.appendChild(template.content.cloneNode(true));
+            const skillElement = document.getElementById('skill-template');
+            const originalSnowflake = skillElement.content.querySelector('.modal-superpowers__snowflake');
+            if (originalSnowflake) {
+                for (let i = 0; i < 4; i++) {
+                    const clone = originalSnowflake.cloneNode(true);
+                    originalSnowflake.insertAdjacentElement('afterend', clone);
+                }
+            }
+            const skillsContainer = document.querySelector('.modal-superpowers__skills');
+            if (skillsContainer && skillElement) {
+                for (let i = 0; i < 4; i++) {
+                    console.log(i);
+                    const clone = skillElement.content.cloneNode(true);
+                    skillsContainer.append(clone);
+                }
+            }
+        });
+
 });
