@@ -52,6 +52,8 @@ function createCard(dataNumber, cardContainer) {
         if (giftCategory) {
             img.src = giftCategory.img;
             textCategory.classList.add(giftCategory.class);
+        } else {
+            img.src = '';
         }
         img.alt = `${gifts[numberInArray].name} — ${gifts[numberInArray].category}`;
         img.title = img.alt;
@@ -70,7 +72,7 @@ function createCard(dataNumber, cardContainer) {
     cardElement.appendChild(titleElement);
 
     cardContainer.appendChild(cardElement);
-    // cardElement.addEventListener('click', () => openPopupMenu(numberInArray));
+    cardElement.addEventListener('click', () => openModalWindow(numberInArray));
     return cardElement;
 }
 
@@ -80,4 +82,86 @@ function getRandomNumber(excludeSet,arrLength) {
     if (possibleNumbers.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * possibleNumbers.length);
     return possibleNumbers[randomIndex];
+}
+
+function fillModalWindow(numberArray) {
+    if (!modalWindow) {return}
+    const screenWidthMinus16 = window.innerWidth - 16;
+    modalWindow.style.maxWidth = `${Math.min(screenWidthMinus16, 400)}px`;
+
+    const cardImg = modalWindow.querySelector('.modal-img-box__img');
+    const skillsContainer = modalWindow.querySelector('.modal-superpowers__skills');
+    const cardHeader = modalWindow.querySelector('.modal-description__header');
+    const skillElement = document.getElementById('skill-template');
+    Array.from(skillsContainer.children).forEach(child => {
+        if (child !== skillElement) {
+            skillsContainer.removeChild(child);
+        }
+    });
+
+    if (!gifts[numberArray]) {return}
+    const giftCategory = giftsCategories.find((el) => el.category === gifts[numberArray].category);
+    if (giftCategory) {
+        if (cardImg) {
+            cardImg.src = giftCategory.img;
+        }
+        if (cardHeader) {
+            if (cardHeader.firstElementChild) {
+                [...cardHeader.firstElementChild.classList]
+                    .filter(cls => cls !== 'modal-description__category')
+                    .forEach(cls => cardHeader.firstElementChild.classList.remove(cls));
+                cardHeader.firstElementChild.classList.add(giftCategory.class);
+    }
+        }
+    } else {
+        if (cardImg) {
+            cardImg.src = '';
+        }
+    }
+    if (cardImg) {
+        cardImg.alt = `${gifts[numberArray].name} — ${gifts[numberArray].category}`;
+        cardImg.title = cardImg.alt;
+    }
+
+    const modalDescriptionCategory = cardHeader.querySelector('.modal-description__category');
+    if (modalDescriptionCategory) {
+        modalDescriptionCategory.textContent = gifts[numberArray].category;
+    }
+    const modalDescriptionName = cardHeader.querySelector('.modal-description__name');
+    if (modalDescriptionName) {
+        modalDescriptionName.textContent = gifts[numberArray].name;
+    }
+    const modalDescription = cardHeader.querySelector('.modal-description__description');
+    if (modalDescription) {
+        modalDescription.textContent = gifts[numberArray].description;
+    }
+
+    if (skillsContainer && skillElement) {
+        const superpowersEntries = Object.entries(gifts[numberArray].superpowers);
+        for (let i = 0; i < superpowersEntries.length; i++) {
+            const clone = skillElement.content.cloneNode(true);
+            const superpowersName = clone.querySelector('.modal-superpowers__name');
+            if (superpowersName) {
+                superpowersName.textContent = superpowersEntries[i][0][0].toUpperCase() + superpowersEntries[i][0].slice(1);
+            }
+            let degree = 0;
+            const superpowersDegree = clone.querySelector('.modal-superpowers__degree');
+            if (superpowersDegree) {
+                superpowersDegree.textContent = superpowersEntries[i][1];
+                degree = parseInt(superpowersEntries[i][1],10);
+            }
+            const superpowersSnowflakes = clone.querySelector('.modal-superpowers__snowflakes');
+            if (superpowersSnowflakes) {
+                for (let j = 0; j < 5; j++) {
+                    const snowflake = superpowersSnowflakes.children[j];
+                    if (snowflake) {
+                        if ((j + 1) * 100 > degree) {
+                            snowflake.classList.add('inactive');
+                        }
+                    }
+                }
+            }
+            skillsContainer.append(clone);
+        }
+    }
 }

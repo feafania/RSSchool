@@ -127,7 +127,7 @@
 
 @media (max-width: 370px) {
     * {
-        flex-direction: column !important;
+        flex-wrap: wrap !important;
     }
 
     img {

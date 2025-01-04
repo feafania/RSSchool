@@ -357,7 +357,7 @@ h2.cta__paragraph {
 
 @media (max-width: 370px) {
     * {
-        flex-direction: column !important;
+        flex-wrap: wrap !important;
         font-size: 0.75rem !important;
     }
 

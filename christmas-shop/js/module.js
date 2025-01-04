@@ -3,8 +3,8 @@ const burgerMenu = document.querySelector('.burger-menu');
 const navigationMenu = document.querySelector('.nav-menu');
 const navigationLinks = document.querySelectorAll('.nav-menu-item');
 
-const modalWindow = document.querySelector('.modal-window');
-const modalWindowButton = document.querySelector('.button-close');
+let modalWindow;
+let modalCloseButton;
 
 function setInactive(elementActive, variant = 1) {
     if (variant === 1) {
@@ -14,31 +14,25 @@ function setInactive(elementActive, variant = 1) {
     }
 }
 
-function openPopupMenu(numberArray) {
+function openModalWindow(numberArray) {
     if (overlay) {
         overlay.classList.add('active');
         document.body.classList.add('no-scroll')
     }
     if (modalWindow) {
         modalWindow.classList.add('active');
-        // fillModalWindow(numberArray);
-    }
-    if (modalWindowButton) {
-        modalWindowButton.classList.add('active');
+        fillModalWindow(numberArray);
     }
     burgerMenu.style.zIndex = '800';
 }
 
-function closePopupMenu() {
+function closeModalWindow() {
     if (overlay) {
         overlay.classList.remove('active');
         document.body.classList.remove('no-scroll')
     }
     if (modalWindow) {
         modalWindow.classList.remove('active');
-    }
-    if (modalWindowButton) {
-        modalWindowButton.classList.remove('active');
     }
     burgerMenu.style.zIndex = '999';
 }
@@ -107,6 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 navigationMenu.classList.add('action-large');
             }
         }
+        if (modalWindow) {
+            const screenWidthMinus16 = window.innerWidth - 16;
+            modalWindow.style.maxWidth = `${Math.min(screenWidthMinus16, 400)}px`;
+        }
     }
 
     calculateCards();
@@ -131,16 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (overlay) {
-        overlay.addEventListener('click', closePopupMenu);
-    }
-
-    if (modalWindowButton) {
-        modalWindowButton.addEventListener('click', closePopupMenu);
+        overlay.addEventListener('click', closeModalWindow);
     }
 
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            closePopupMenu();
+            closeModalWindow();
         }
     })
     fetch('footer.html')
@@ -164,14 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     originalSnowflake.insertAdjacentElement('afterend', clone);
                 }
             }
-            const skillsContainer = document.querySelector('.modal-superpowers__skills');
-            if (skillsContainer && skillElement) {
-                for (let i = 0; i < 4; i++) {
-                    console.log(i);
-                    const clone = skillElement.content.cloneNode(true);
-                    skillsContainer.append(clone);
-                }
+            modalWindow = document.querySelector('.modal-window');
+            modalCloseButton = document.querySelector('.modal-close-button');
+            if (modalCloseButton) {
+                modalCloseButton.addEventListener('click', closeModalWindow);
             }
-        });
 
+        });
 });
