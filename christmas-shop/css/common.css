@@ -305,7 +305,7 @@ html {
 
 /* Header start*/
 .header-container-fixed {
-    display: none;
+    /*display: none;*/
     height: 64px;
     background: var(--static-white);
     @media (hover: none) {
@@ -314,9 +314,9 @@ html {
 }
 
 .header-section {
-    position: static;
-    /*position: fixed;*/
-    z-index: 950;
+    /*position: static;*/
+    position: fixed;
+    z-index: 800;
     top: 0;
     left: 0;
     right: 0;
@@ -817,10 +817,10 @@ html {
 .modal-superpowers__snowflake {
     width: 16px;
     height: 16px;
-    fill: var(--primary);
+    fill: var(--primary) !important;
 }
 .modal-superpowers__snowflake.inactive {
-    fill: var(--primary-10);
+    fill: var(--primary-10) !important;
 }
 .modal-close-button {
     display: flex;

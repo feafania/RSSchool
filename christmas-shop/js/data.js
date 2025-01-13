@@ -158,9 +158,17 @@ function fillModalWindow(numberArray) {
                         if ((j + 1) * 100 > degree) {
                             snowflake.classList.add('inactive');
                         }
+                        const uniqueId = `clip0_${i * 5 + j}`;
+                        snowflake.id = uniqueId;
+                        const clipPathElement = snowflake.querySelector('g[clip-path]');
+                        if (clipPathElement) {
+                            const clipPathUrl = `url(#${uniqueId})`;
+                            clipPathElement.setAttribute('clip-path', clipPathUrl);
+                        }
                     }
                 }
             }
+
             skillsContainer.append(clone);
         }
     }
