@@ -1,0 +1,365 @@
+
+/* Fonts start*/
+@font-face {
+    font-family: 'Stick Figures';
+    src: url('../assets/fonts/StickFigures-ppeO.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mixed Silhouettes';
+    src: url('../assets/fonts/MixedSilhouettesFive-A1KD.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'zyxox';
+    src: url('../assets/fonts/Zyxox-lPOZ.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('../assets/fonts/RobotoMono-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Patrick Hand';
+    src: url('../assets/fonts/PatrickHand-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    min-height: 100vh;
+}
+
+.patrick-hand-regular {
+    font-family: "Patrick Hand", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-mono-regular {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.inter-regular {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* Fonts end*/
+
+/* Colour start*/
+
+:root {
+    --gallows-stroke: #000000;
+    --gallows-fill: #FFFEFE;
+    --hangman-stroke: #909090;
+    --hangman-fill: #FFFFFF;
+    --key-color: #FFFFFF;
+    --key-backgroud: #303097;
+    --incorrect-color: red;
+}
+
+/* Colour end*/
+
+/* Common start*/
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /*background: var(--static-white);*/
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid red;*/
+}
+
+.wrapper {
+    max-width: 1440px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 4rem;
+    margin: 0 auto;
+    padding: 2em;
+
+    @media  (width <= 780px) {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1em;
+
+    }
+}
+/* Common end*/
+
+/* Gallow start*/
+.hangman {
+    width: 30%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    min-width: 450px;
+    @media  (width <= 780px) {
+        width: 100%;
+        flex-shrink: 1;
+        min-width: 360px;
+
+    }
+}
+.gallows-frame {
+    height: 80%;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gallows {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    min-width: 100px;
+    min-height: 600px;
+    overflow: visible;
+}
+
+.gallows > * {
+    border: 3px solid var(--gallows-fill);
+    border-radius: 5px;
+    background: var(--gallows-stroke);
+}
+
+.gallows__vertical {
+    position: absolute;
+    z-index: 4;
+    width: 42px;
+    height: 581px;
+    top: 0;
+    left: 33px;
+}
+
+.gallows__horizontal {
+    position: absolute;
+    z-index: 5;
+    width: 42px;
+    height: 353px;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    top: 75px;
+    left: 0;
+}
+
+.gallows__between {
+    width: 42px;
+    height: 202px;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    position: absolute;
+    z-index: 3;
+    top: 33px;
+    left: 177px;
+}
+
+.gallows__hanger {
+    position: absolute;
+    width: 10px;
+    height: 74px;
+    border: none;
+    top: 75px   ;
+    left: 298px;
+}
+.hangman-frame {
+    position: absolute;
+    z-index: 10;
+    top: 150px;
+    left: 300.5px;
+    fill: var(--hangman-fill);
+    stroke: var(--hangman-stroke);
+    background: var(--hangman-stroke);
+
+}
+.hangman-frame > * {
+    transition: fill 0.3s ease-out, background 0.3s ease-out;
+}
+.head {
+    position: absolute;
+    top: 0;
+    left: -48px;
+    border-radius: 100%;
+    stroke-width: 5px;
+    width: 101px;
+    height: 101px;
+}
+.body {
+    position: absolute;
+    top: 101px;
+    left: 0;
+    width: 5px;
+    height: 131px;
+    background: inherit;
+}
+.hand-left {
+    position: absolute;
+    top: 101px;
+    left: -33px;
+    width: 5px;
+    height: 100px;
+    transform: rotate(40deg);
+    background: inherit;
+
+}
+.hand-right {
+    position: absolute;
+    top: 101px;
+    left: 33px;
+    width: 5px;
+    height: 100px;
+    transform: rotate(-40deg);
+    background: inherit;
+
+}
+.leg-left {
+    position: absolute;
+    top: 217px;
+    left: -33px;
+    width: 5px;
+    height: 100px;
+    transform: rotate(40deg);
+    background: inherit;
+}
+.leg-right {
+    position: absolute;
+    top: 217px;
+    left: 33px;
+    width: 5px;
+    height: 100px;
+    transform: rotate(-40deg);
+    background: inherit;
+}
+.hangman-name {
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    font-family: "Patrick Hand", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 55px;
+    letter-spacing: 3px;
+    border-top: 5px solid;
+}
+/* Gallow end*/
+
+/* Game start*/
+.game {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px;
+}
+.game-word {
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 60px;
+    text-transform: uppercase;
+}
+
+.game-hint {
+    text-align: center;
+
+}
+
+.game-guess {
+    text-align: center;
+}
+
+.game-guess__score-wrapper {
+    display: inline-block;
+    color: var(--incorrect-color);
+    text-align: center;
+}
+
+.game-keys {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.game-keys__key {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: var(--key-color);
+    background: var(--key-backgroud);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.game-keys__key:hover {
+    background: #0056b3;
+    color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+.game-keys__key:active {
+    background: #003f7f;
+    transform: scale(1);
+}
+/* Game end*/
