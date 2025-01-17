@@ -4,6 +4,8 @@ let maxWords = 20;
 let numberOfAttempts = 6;
 let currentWord = 'mosquito';
 let currentHint = 'A small insect known for its buzzing sound and its tendency to bite humans and animals';
+let currentPart = 0;
+
 
 function getRandomNumber(excludeSet,arrLength) {
     const availableNumbers = Array.from({ length: arrLength }, (_, i) => i);
@@ -13,7 +15,7 @@ function getRandomNumber(excludeSet,arrLength) {
     return possibleNumbers[randomIndex];
 }
 
-function fillWords(word) {
+function fillWords() {
     const gameWords = document.querySelector('.game-words');
     if (gameWords) {
         while (gameWords.firstChild) {
@@ -31,8 +33,9 @@ function fillWords(word) {
         for (let i = 0; i < currentWord.length; i += 1) {
             const gameWordLetter = document.createElement('span');
             gameWordLetter.classList.add('game-word__letter');
+            gameWordLetter.classList.add('inactive');
             gameWordLetter.id = 'letter' + i;
-            gameWordLetter.textContent = currentWord[i];
+            gameWordLetter.textContent = "";
             gameWords.append(gameWordLetter);
         }
     }
@@ -55,6 +58,7 @@ function fillKeys(gameKeys) {
         button.dataset.key = letter;
         button.textContent = letter;
         gameKeys.append(button);
+        button.addEventListener('click', buttonClick);
     }
 }
 
@@ -96,6 +100,7 @@ function fillGame(game) {
     game.append(gameKeys);
     fillKeys(gameKeys);
 }
+
 function fillHangman(hangman) {
     const gallowsFrame = document.createElement('div');
     gallowsFrame.classList.add('gallows-frame');
@@ -116,7 +121,6 @@ function fillHangman(hangman) {
     const gallowsHanger = document.createElement('div');
     gallowsHanger.classList.add('gallows__hanger');
     gallows.append(gallowsHanger);
-
     const hangmanFrame = document.createElement('div');
     hangmanFrame.classList.add('hangman-frame');
     gallowsFrame.append(hangmanFrame);
@@ -143,6 +147,7 @@ function fillHangman(hangman) {
     const legRight = document.createElement('div');
     legRight.classList.add('leg-right');
     hangmanFrame.append(legRight);
+    clearHangman(hangmanFrame);
 
     const hangmanName = document.createElement('div');
     hangmanName.classList.add('hangman-name');
@@ -171,6 +176,81 @@ async function fillPage() {
 
 }
 
+function clearHangman(hangmanFrame) {
+    currentPart = 0;
+    if (hangmanFrame) {
+        for (let i = 0; i < hangmanFrame.children.length; i++) {
+            const currPart = hangmanFrame.children[i];
+            if (currPart) {
+                currPart.classList.add('inactive');
+            }
+        }
+    }
+}
+
+function activateKeys() {
+    const gameKeys = document.querySelector('.game-keys');
+    if (gameKeys) {
+        const children = gameKeys.children;
+        for (let child of children) {
+            child.classList.remove('inactive');
+        }
+    }
+}
+
+function checkEndOfGame() {
+    if (currentPart >= numberOfAttempts) {
+        alert('hello');
+        fillWords();
+        clearHangman(document.querySelector('.hangman-frame'));
+        activateKeys();
+    }
+}
+
+function buttonClick(event) {
+    if (currentPart >= numberOfAttempts) {
+        return;
+    }
+    const sampleLetter = event.target.dataset.key;
+    const gameWords = document.querySelector('.game-words');
+    event.target.classList.add('inactive');
+    let findLetter = false;
+    for (let i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] === sampleLetter) {
+            const currentLetter = gameWords.children[i];
+            currentLetter.textContent = sampleLetter;
+            currentLetter.classList.remove('inactive');
+            findLetter = true;
+        }
+    }
+    if (!findLetter) {
+        currentPart += 1;
+        const elementPart = document.querySelector('.hangman-frame').children[currentPart - 1];
+        if (elementPart) {
+            elementPart.classList.remove('inactive')
+        }
+        const elementGuess = document.querySelector('.game-guess__score');
+        if (elementGuess) {
+            elementGuess.textContent = currentPart;
+        }
+    }
+    setTimeout(checkEndOfGame, 100);
+}
+
+function keyPressed(event) {
+    const pressedKey = event.key.toLowerCase();
+    if (pressedKey >= 'a' && pressedKey <= 'z') {
+        const button = document.querySelector(`button[data-key="${pressedKey}"]`);
+        if (button && !button.classList.contains('inactive')) {
+            button.classList.add('hover');
+            setTimeout(() => {
+                button.classList.remove('hover');
+                button.click();
+            }, 100);
+        }
+    }
+}
+
 async function loadWords() {
     const response = await fetch('./js/words.json');
     return await response.json(); // array
@@ -185,4 +265,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error("Error loading the page:", error);
     }
+    window.addEventListener('keydown', keyPressed);
 });

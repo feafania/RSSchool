@@ -54,6 +54,11 @@ body {
     --hangman-fill: #FFFFFF;
     --key-color: #FFFFFF;
     --key-backgroud: #303097;
+    --key-background-hover: #0056B3;
+    --key-color-hover: #E0E0E0;
+    --key-background-active: #003F7F;
+    --key-background-inactive: #4e5257;
+    --key-color-inactive: #191818;
     --incorrect-color: red;
 }
 
@@ -196,13 +201,14 @@ html {
     z-index: 10;
     top: calc(min(5.21vw, 75px) + min(5.14vw, 74px, 10vh));
     left: min(20.69vw, 298px);
-    fill: var(--hangman-fill);
-    stroke: var(--hangman-stroke);
-    background: var(--hangman-stroke);
 }
 .hangman-frame > * {
-    transition: fill 0.3s ease-out, background 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
     transform-origin: top left;
+    opacity: 1;
+}
+.hangman-frame > *.inactive {
+    opacity: 0;
 }
 .head {
     position: absolute;
@@ -212,6 +218,11 @@ html {
     stroke-width: min(0.35vw, 5px);
     width: min(7vw, 101px, 20vh);
     height: min(7vw, 101px, 20vh);
+    fill: var(--hangman-fill);
+    stroke: var(--hangman-stroke);
+    @media (width < 250px) {
+        top: calc(5vw - 13px);
+    }
 }
 .body {
     position: absolute;
@@ -219,7 +230,7 @@ html {
     left: 0;
     width: min(0.35vw, 5px);
     height: min(9.1vw, 131px, 15vh);
-    background: inherit;
+    background: var(--hangman-stroke);
 
 }
 .hand-left {
@@ -229,7 +240,7 @@ html {
     width: min(0.35vw, 5px);
     height: min(6.94vw, 100px, 11vh);
     transform: rotate(40deg);
-    background: inherit;
+    background: var(--hangman-stroke);
 
 }
 .hand-right {
@@ -239,7 +250,7 @@ html {
     width: min(0.35vw, 5px);
     height: min(6.94vw, 100px, 11vh);
     transform: rotate(-40deg);
-    background: inherit;
+    background: var(--hangman-stroke);
 
 }
 .leg-left {
@@ -249,7 +260,7 @@ html {
     width: min(0.35vw, 5px);
     height: min(6.94vw, 100px, 11vh);
     transform: rotate(40deg);
-    background: inherit;
+    background: var(--hangman-stroke);
 
 }
 .leg-right {
@@ -259,7 +270,7 @@ html {
     width: min(0.35vw, 5px);
     height: min(6.94vw, 100px, 11vh);
     transform: rotate(-40deg);
-    background: inherit;
+    background: var(--hangman-stroke);
 }
 
 .hangman-name {
@@ -301,12 +312,12 @@ html {
     font-size: 1.56rem;/*25px;*/
 
     @media  (width < 1440px) {
-        gap: clamp(1.5rem, calc(min(2.22vh,2.22vw)), 2rem);
-        font-size: clamp(1.25rem, calc(min(1.7vh,1.7vw)), 1.56rem);
+        gap: clamp(1rem, calc(min(2.22vh,2.22vw)), 2rem);
+        font-size: clamp(1rem, calc(min(2vh,2vw)), 2rem);
     }
     @media  (width < 360px) {
-        gap: clamp(0.5rem, calc(min(2.22vh,2.22vw)), 1.5rem);
-        font-size: clamp(1rem, calc(min(1.7vh,1.7vw)), 1.25rem);
+        gap: clamp(0.2rem, calc(min(1vh,1vw)), 1.5rem);
+        font-size: clamp(0.7rem, calc(min(1.7vh,1.7vw)), 1rem);
     }
 }
 .game-words {
@@ -327,20 +338,48 @@ html {
         font-size: clamp(1rem, calc(min(6vh,3vw)), 3.75rem);
     }
     @media  (width < 360px) {
-        font-size: clamp(1rem, calc(min(6vh,3vw)), 1.7rem);
+        font-size: clamp(0.7rem, calc(min(6vh,3vw)), 1.7rem);
     }
     @media  (height < 550px) {
-        font-size: clamp(1rem, calc(min(3vh,3vw)), 1.7rem);
+        font-size: clamp(0.7rem, calc(min(3vh,3vw)), 1.7rem);
+    }
+}
+.game-word__letter {
+    text-align: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    @media  (width < 1440px) {
+        width: clamp(1.2rem, calc(min(7vh,3.5vw)), 3.75rem);
+        height: clamp(1.2rem, calc(min(7vh,3.5vw)), 3.75rem);
+    }
+    @media  (width < 768px) {
+        width: clamp(1rem, calc(min(6vh,3vw)), 3.75rem);
+        height: clamp(1rem, calc(min(6vh,3vw)), 3.75rem);
+    }
+    @media  (width < 360px) {
+        width: clamp(1rem, calc(min(6vh,3vw)), 1.7rem);
+        height: clamp(1rem, calc(min(6vh,3vw)), 1.7rem);
+    }
+    @media  (height < 550px) {
+        width: clamp(1rem, calc(min(3vh,3vw)), 1.7rem);
+        height: clamp(1rem, calc(min(3vh,3vw)), 1.7rem);
+    }
+}
+.game-word__letter.inactive {
+    border-bottom: 4px solid;
+    @media  (width < 1440px) {
+        border-bottom-width: clamp(1px, 0.3vw, 4px);
     }
 }
 
 .game-hint {
     text-align: center;
-
+    font: inherit;
 }
 
 .game-guess {
     text-align: center;
+    font: inherit;
 }
 
 .game-guess__score-wrapper {
@@ -395,15 +434,29 @@ html {
         height: clamp(1.6rem, calc(min(8vh,10vw)), 3rem);
         font-size: clamp(0.5rem, calc(min(5vh,7vw)), 1.8rem);
     }
+    @media (max-height: 360px), (max-width: 360px) {
+        width: clamp(0.7rem, calc(min(8vh,10vw)), 1.6rem);
+        height: clamp(0.7rem, calc(min(8vh,10vw)), 1.6rem);
+        font-size: clamp(0.4rem, calc(min(5vh,7vw)), 0.5rem);
+    }
 }
-.game-keys__key:hover {
-    background: #0056b3;
-    color: #e0e0e0;
+.game-keys__key:not(.inactive):hover,
+.game-keys__key.hover {
+    background: var(--key-background-hover);
+    color: var(--key-color-hover);
     transform: scale(1.1);
 }
 
-.game-keys__key:active {
-    background: #003f7f;
+.game-keys__key.inactive {
+    background: var(--key-background-inactive);
+    color: var(--key-color-inactive);
+    pointer-events: none;
+}
+
+
+
+.game-keys__key:not(.inactive):active {
+    background: var(--key-background-active);
     transform: scale(1);
 }
 /* Game end*/
