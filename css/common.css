@@ -128,8 +128,9 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
     @media  (height < 650px) {
-        height: calc(min(100vh - 60px,min(41.6vw,600px)));
+        height: calc(min(80vh,min(41.6vw,600px)));
     }
 }
 
@@ -142,7 +143,7 @@ html {
     display: inline-block;
     height: min(41.6vw,600px);
     @media  (height < 650px) {
-        height: calc(min(100vh - 60px,min(41.6vw,600px)));
+        height: calc(min(80vh,min(41.6vw,600px)));
     }
 }
 
@@ -157,12 +158,9 @@ html {
     position: absolute;
     z-index: 4;
     width: min(2.92vw, 42px);
-    height: min(40.35vw, 581px);
+    height: min(40.35vw, 581px, 78vh);
     top: 0;
     left: min(2.29vw, 33px);
-    @media  (height < 650px) {
-        height: calc(min(40.35vw, 581px) - 60px);
-    }
 }
 
 .gallows__horizontal {
@@ -188,7 +186,7 @@ html {
 .gallows__hanger {
     position: absolute;
     width: min(0.69vw, 10px);
-    height: min(5.14vw, 74px);
+    height: min(5.14vw, 74px, 10vh);
     border: none;
     top: min(5.21vw, 75px);
     left: min(20.69vw, 298px);
@@ -196,7 +194,7 @@ html {
 .hangman-frame {
     position: absolute;
     z-index: 10;
-    top: calc(min(5.21vw, 75px) + min(5.14vw, 74px));
+    top: calc(min(5.21vw, 75px) + min(5.14vw, 74px, 10vh));
     left: min(20.69vw, 298px);
     fill: var(--hangman-fill);
     stroke: var(--hangman-stroke);
@@ -209,67 +207,61 @@ html {
 .head {
     position: absolute;
     top: 0;
-    left: calc(min(0.35vw, 5px) - (min(7vw, 101px) / 2));
+    left: calc(min(0.35vw, 5px) - (min(7vw, 101px, 20vh) / 2));
     border-radius: 100%;
     stroke-width: min(0.35vw, 5px);
-    width: min(7vw, 101px);
-    height: min(7vw, 101px);
+    width: min(7vw, 101px, 20vh);
+    height: min(7vw, 101px, 20vh);
 }
 .body {
     position: absolute;
-    top: min(7vw, 101px);
+    top: min(7vw, 101px, 20vh);
     left: 0;
     width: min(0.35vw, 5px);
-    height: min(9.1vw, 131px);
+    height: min(9.1vw, 131px, 15vh);
     background: inherit;
-    @media  (height < 650px) {
-        height: calc(min(9.1vw, 131px) - 30px);
-    }
+
 }
 .hand-left {
     position: absolute;
-    top: min(7vw, 101px);
+    top: min(7vw, 101px, 20vh);
     left: 0;
     width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    height: min(6.94vw, 100px, 11vh);
     transform: rotate(40deg);
     background: inherit;
 
 }
 .hand-right {
     position: absolute;
-    top: min(7vw, 101px);
+    top: min(7vw, 101px, 20vh);
     left: 0;
     width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    height: min(6.94vw, 100px, 11vh);
     transform: rotate(-40deg);
     background: inherit;
 
 }
 .leg-left {
     position: absolute;
-    top: calc(min(7vw, 101px) + min(9.1vw, 131px));
+    top: calc(min(7vw, 101px, 20vh) + min(9.1vw, 131px, 15vh));
     left: 0;
     width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    height: min(6.94vw, 100px, 11vh);
     transform: rotate(40deg);
     background: inherit;
-    @media  (height < 650px) {
-        top: calc(min(7vw, 101px) + min(9.1vw, 131px) - 30px);
-    }
+
 }
 .leg-right {
     position: absolute;
-    top: calc(min(7vw, 101px) + min(9.1vw, 131px));
+    top: calc(min(7vw, 101px, 20vh) + min(9.1vw, 131px, 15vh));
     left: 0;
     width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    height: min(6.94vw, 100px, 11vh);
     transform: rotate(-40deg);
     background: inherit;
-    @media  (height < 650px) {
-        top: calc(min(7vw, 101px) + min(9.1vw, 131px) - 30px);
-    }
 }
+
 .hangman-name {
     width: 100%;
     text-align: center;
@@ -285,6 +277,9 @@ html {
     @media (width < 1440px) {
         font-size: clamp(2.4rem, calc(min(3.82vh,3.82vw)), 3.44rem);
         letter-spacing: clamp(0.13rem, 0.21vw, 0.19rem);
+    }
+    @media  (height < 400px) {
+        font-size: clamp(1.7rem, calc(min(3.82vh,3.82vw)), 3.44rem);
     }
 }
 /* Gallow end*/
@@ -326,12 +321,15 @@ html {
 
     @media  (width < 1440px) {
         gap: 0.83vw;
-        font-size: clamp(1.2rem, calc(min(3.5vh,3.5vw)), 3.75rem);
+        font-size: clamp(1.2rem, calc(min(7vh,3.5vw)), 3.75rem);
     }
     @media  (width < 768px) {
-        font-size: clamp(1rem, calc(min(3vh,3vw)), 3.75rem);
+        font-size: clamp(1rem, calc(min(6vh,3vw)), 3.75rem);
     }
     @media  (width < 360px) {
+        font-size: clamp(1rem, calc(min(6vh,3vw)), 1.7rem);
+    }
+    @media  (height < 550px) {
         font-size: clamp(1rem, calc(min(3vh,3vw)), 1.7rem);
     }
 }
@@ -372,8 +370,8 @@ html {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 78px;
+    height: 78px;
     font-size: 30px;
     font-weight: normal;
     text-transform: uppercase;
@@ -383,14 +381,19 @@ html {
     cursor: pointer;
     transition: all 0.2s ease;
     @media  (768px <= width < 1440px) {
-        width: clamp(3rem, calc(min(5.55vh,10vw)), 80px);
-        height: clamp(3rem, calc(min(5.55vh,10vw)), 80px);
+        width: clamp(3rem, calc(min(7vh,10vw)), 78px);
+        height: clamp(3rem, calc(min(7vh,10vw)), 78px);
         font-size: clamp(1.6rem, 1.6rem, 30px);
     }
     @media  (width < 768px) {
         width: clamp(1.6rem, calc(min(4vh,8vw)), 3rem);
         height: clamp(1.6rem, calc(min(4vh,8vw)), 3rem);
         font-size: clamp(0.5rem, calc(min(3.5vh,5vw)), 1.8rem);
+    }
+    @media  (height < 550px) {
+        width: clamp(1.6rem, calc(min(8vh,10vw)), 3rem);
+        height: clamp(1.6rem, calc(min(8vh,10vw)), 3rem);
+        font-size: clamp(0.5rem, calc(min(5vh,7vw)), 1.8rem);
     }
 }
 .game-keys__key:hover {
