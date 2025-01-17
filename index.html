@@ -1,10 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Hangman</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="icon" type="image/png" href="assets/img/favicon/favicon-96x96.png" sizes="96x96" />
@@ -15,88 +14,5 @@
     <script src="js/main.js" defer></script>
 </head>
 <body>
-<header></header>
-<main>
-    <div class="wrapper">
-        <section class="hangman">
-            <div class="gallows-frame">
-                <div class="gallows">
-                    <div class="gallows__vertical"></div>
-                    <div class="gallows__horizontal"></div>
-                    <div class="gallows__between"></div>
-                    <div class="gallows__hanger"></div>
-                </div>
-                <div class="hangman-frame">
-                    <div class="head">
-                        <svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50.5" cy="50.5" r="48" fill="white" stroke="#909090" stroke-width="5" />
-                        </svg>
-                    </div>
-                    <div class="body"></div>
-                    <div class="hand-left"></div>
-                    <div class="hand-right"></div>
-                    <div class="leg-left"></div>
-                    <div class="leg-right"></div>
-                </div>
-            </div>
-            <div class="hangman-name">Hangman game</div>
-        </section>
-        <section class="game">
-            <div class="game-word" >
-                <span class="game-word__letter" id = "letter1">p</span>
-                <span class="game-word__letter" id = "letter2">y</span>
-                <span class="game-word__letter" id = "letter3">t</span>
-                <span class="game-word__letter" id = "letter4">h</span>
-                <span class="game-word__letter" id = "letter5">o</span>
-                <span class="game-word__letter" id = "letter6">n</span>
-                <span class="game-word__letter" id = "letter7">n</span>
-                <span class="game-word__letter" id = "letter8">n</span>
-                <span class="game-word__letter" id = "letter9">n</span>
-                <span class="game-word__letter" id = "letter10">n</span>
-            </div>
-            <div class="game-hint" >
-                Hint: A type of snake or a popular programming language
-            </div>
-            <div class="game-guess">
-                <span class="game-guess__text">Incorrect guesses:</span>
-                <span class="game-guess__score-wrapper">
-                    <span class="game-guess__score">0</span>
-                    <span class="game-guess__slash"> / </span>
-                    <span class="game-guess__max-score">6</span>
-                </span>
-            </div>
-            <div class="game-keys">
-                <button class="game-keys__key" type="button" data-key="a">a</button>
-                <button class="game-keys__key" type="button" data-key="b">b</button>
-                <button class="game-keys__key" type="button" data-key="b">c</button>
-                <button class="game-keys__key" type="button" data-key="d">d</button>
-                <button class="game-keys__key" type="button" data-key="e">e</button>
-                <button class="game-keys__key" type="button" data-key="f">f</button>
-                <button class="game-keys__key" type="button" data-key="g">g</button>
-                <button class="game-keys__key" type="button" data-key="h">h</button>
-                <button class="game-keys__key" type="button" data-key="i">i</button>
-                <button class="game-keys__key" type="button" data-key="j">j</button>
-                <button class="game-keys__key" type="button" data-key="k">k</button>
-                <button class="game-keys__key" type="button" data-key="l">l</button>
-                <button class="game-keys__key" type="button" data-key="m">m</button>
-                <button class="game-keys__key" type="button" data-key="n">n</button>
-                <button class="game-keys__key" type="button" data-key="o">o</button>
-                <button class="game-keys__key" type="button" data-key="p">p</button>
-                <button class="game-keys__key" type="button" data-key="q">q</button>
-                <button class="game-keys__key" type="button" data-key="r">r</button>
-                <button class="game-keys__key" type="button" data-key="s">s</button>
-                <button class="game-keys__key" type="button" data-key="t">t</button>
-                <button class="game-keys__key" type="button" data-key="u">u</button>
-                <button class="game-keys__key" type="button" data-key="v">v</button>
-                <button class="game-keys__key" type="button" data-key="w">w</button>
-                <button class="game-keys__key" type="button" data-key="x">x</button>
-                <button class="game-keys__key" type="button" data-key="y">y</button>
-                <button class="game-keys__key" type="button" data-key="z">z</button>
-
-            </div>
-        </section>
-    </div>
-</main>
-<footer></footer>
 </body>
 </html>

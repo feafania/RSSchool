@@ -76,11 +76,11 @@ html {
 
 .wrapper {
     max-width: 1440px;
-    height: auto;
+    min-height: 380px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: end;
+    align-items: start;
     gap: 4rem;
     margin: 0 auto;
     padding: 2rem;
@@ -89,15 +89,8 @@ html {
         gap: 4.44vw;
         padding: 2.5vw;
     }
-    @media (width < 768px) and (orientation: portrait) {
+    @media (max-width: 768px) and (orientation: portrait), (pointer: fine) {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    @media  (height < 650px) {
-        padding: 0.5vh;
-        justify-content: center;
-        align-items: center;
     }
 
 }
@@ -105,170 +98,175 @@ html {
 
 /* Gallow start*/
 .hangman {
+    max-width: 40vw;
     width: 100%;
+    height: 100%;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    @media (width < 768px) and (orientation: portrait) {
-        width: 90vw;
-        align-items: center;
-    }
-    @media  (height < 650px) {
-        align-items: center;
+    transition: width 0.3s ease;
+    @media (width <= 1020px) {
+        max-width: 80vw;
+        max-height: 80vh;
+        flex-shrink: 1;
+        transform: scale(0.9);
     }
 
+    @media (width <= 768px) {
+        transform: scale(0.7);
+        max-height: 60vh;
+        max-width: 90vw;
+        width: 100%;
+    }
+    @media (width <= 500px) {
+        transform: scale(0.6);
+        max-height: 55vh;
+    }
+    @media (width < 400px) {
+        transform: scale(0.5);
+        max-height: 47vh;
+    }
+    @media (width < 250px) {
+        transform: scale(0.3);
+        max-height: 25vh;
+    }
 }
 
 .gallows-frame {
-    width: min(25.69vw, 370px);
-    height: min(41.6vw,600px);
+    height: 80%;
     position: relative;
     z-index: 1;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media  (height < 650px) {
-        height: calc(min(100vh - 60px,min(41.6vw,600px)));
-    }
 }
 
 .gallows {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     z-index: 2;
-    width: min(25.69vw, 370px);
+    width: 100%;
     display: inline-block;
-    height: min(41.6vw,600px);
-    @media  (height < 650px) {
-        height: calc(min(100vh - 60px,min(41.6vw,600px)));
-    }
+    min-height: 600px;
+    overflow: visible;
+    aspect-ratio: 3/4;
 }
 
 .gallows > * {
-    border: min(0.21vw, 3px) solid var(--gallows-fill);
-    border-radius: min(0.35vw, 5px);
+    border: 3px solid var(--gallows-fill);
+    border-radius: 5px;
     background: var(--gallows-stroke);
-    transform-origin: top left;
 }
 
 .gallows__vertical {
     position: absolute;
     z-index: 4;
-    width: min(2.92vw, 42px);
-    height: min(40.35vw, 581px);
+    width: 42px;
+    height: 581px;
     top: 0;
-    left: min(2.29vw, 33px);
-    @media  (height < 650px) {
-        height: calc(min(40.35vw, 581px) - 60px);
-    }
+    left: 33px;
 }
 
 .gallows__horizontal {
     position: absolute;
     z-index: 5;
-    width: min(2.92vw, 42px);
-    height: min(24.51vw, 353px);
+    width: 42px;
+    height: 353px;
     transform: rotate(-90deg);
-    top: min(5.21vw, 75px);
+    transform-origin: top left;
+    top: 75px;
     left: 0;
 }
 
 .gallows__between {
-    width: min(2.92vw, 42px);
-    height: min(14.03vw, 202px);
+    width: 42px;
+    height: 202px;
     transform: rotate(45deg);
+    transform-origin: top left;
     position: absolute;
     z-index: 3;
-    top: min(2.29vw, 33px);
-    left: min(12.29vw, 177px);
+    top: 33px;
+    left: 177px;
 }
 
 .gallows__hanger {
     position: absolute;
-    width: min(0.69vw, 10px);
-    height: min(5.14vw, 74px);
+    width: 10px;
+    height: 74px;
     border: none;
-    top: min(5.21vw, 75px);
-    left: min(20.69vw, 298px);
+    top: 75px;
+    left: 298px;
 }
 .hangman-frame {
     position: absolute;
     z-index: 10;
-    top: calc(min(5.21vw, 75px) + min(5.14vw, 74px));
-    left: min(20.69vw, 298px);
+    top: 150px;
+    left: 300.5px;
     fill: var(--hangman-fill);
     stroke: var(--hangman-stroke);
     background: var(--hangman-stroke);
+    aspect-ratio: 3/4;
+
 }
 .hangman-frame > * {
     transition: fill 0.3s ease-out, background 0.3s ease-out;
-    transform-origin: top left;
 }
 .head {
     position: absolute;
     top: 0;
-    left: calc(min(0.35vw, 5px) - (min(7vw, 101px) / 2));
+    left: -48px;
     border-radius: 100%;
-    stroke-width: min(0.35vw, 5px);
-    width: min(7vw, 101px);
-    height: min(7vw, 101px);
+    stroke-width: 5px;
+    width: 101px;
+    height: 101px;
 }
 .body {
     position: absolute;
-    top: min(7vw, 101px);
+    top: 101px;
     left: 0;
-    width: min(0.35vw, 5px);
-    height: min(9.1vw, 131px);
+    width: 5px;
+    height: 131px;
     background: inherit;
-    @media  (height < 650px) {
-        height: calc(min(9.1vw, 131px) - 30px);
-    }
 }
 .hand-left {
     position: absolute;
-    top: min(7vw, 101px);
-    left: 0;
-    width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    top: 101px;
+    left: -33px;
+    width: 5px;
+    height: 100px;
     transform: rotate(40deg);
     background: inherit;
 
 }
 .hand-right {
     position: absolute;
-    top: min(7vw, 101px);
-    left: 0;
-    width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    top: 101px;
+    left: 33px;
+    width: 5px;
+    height: 100px;
     transform: rotate(-40deg);
     background: inherit;
 
 }
 .leg-left {
     position: absolute;
-    top: calc(min(7vw, 101px) + min(9.1vw, 131px));
-    left: 0;
-    width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    top: 217px;
+    left: -33px;
+    width: 5px;
+    height: 100px;
     transform: rotate(40deg);
     background: inherit;
-    @media  (height < 650px) {
-        top: calc(min(7vw, 101px) + min(9.1vw, 131px) - 30px);
-    }
 }
 .leg-right {
     position: absolute;
-    top: calc(min(7vw, 101px) + min(9.1vw, 131px));
-    left: 0;
-    width: min(0.35vw, 5px);
-    height: min(6.94vw, 100px);
+    top: 217px;
+    left: 33px;
+    width: 5px;
+    height: 100px;
     transform: rotate(-40deg);
     background: inherit;
-    @media  (height < 650px) {
-        top: calc(min(7vw, 101px) + min(9.1vw, 131px) - 30px);
-    }
 }
 .hangman-name {
     width: 100%;
@@ -279,11 +277,11 @@ html {
     font-weight: 700;
     font-style: normal;
     text-transform: uppercase;
-    font-size: clamp(2rem, 3.44rem, 55px);
+    font-size: 3.44rem; /*55px;*/
     letter-spacing: 0.19rem; /*3px;*/
     border-top: 5px solid;
     @media (width < 1440px) {
-        font-size: clamp(2.4rem, calc(min(3.82vh,3.82vw)), 3.44rem);
+        font-size: clamp(2.75rem, 3.82vw, 3.44rem);
         letter-spacing: clamp(0.13rem, 0.21vw, 0.19rem);
     }
 }
@@ -291,11 +289,10 @@ html {
 
 /* Game start*/
 .game {
-    height: 100%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 2rem;
 
@@ -306,12 +303,12 @@ html {
     font-size: 1.56rem;/*25px;*/
 
     @media  (width < 1440px) {
-        gap: clamp(1.5rem, calc(min(2.22vh,2.22vw)), 2rem);
-        font-size: clamp(1.25rem, calc(min(1.7vh,1.7vw)), 1.56rem);
+        gap: clamp(1.5rem, 2.22vw, 2rem);
+        font-size: clamp(1.25rem, 1.7vw, 1.56rem);
     }
     @media  (width < 360px) {
-        gap: clamp(0.5rem, calc(min(2.22vh,2.22vw)), 1.5rem);
-        font-size: clamp(1rem, calc(min(1.7vh,1.7vw)), 1.25rem);
+        gap: clamp(0.5rem, 2.22vw, 1.5rem);
+        font-size: clamp(1rem, 1.7vw, 1.25rem);
     }
 }
 .game-words {
@@ -326,13 +323,13 @@ html {
 
     @media  (width < 1440px) {
         gap: 0.83vw;
-        font-size: clamp(1.2rem, calc(min(3.5vh,3.5vw)), 3.75rem);
+        font-size: 4.16vw;
     }
     @media  (width < 768px) {
-        font-size: clamp(1rem, calc(min(3vh,3vw)), 3.75rem);
+        font-size: clamp(1.7rem, 4vw, 3.75rem);;
     }
     @media  (width < 360px) {
-        font-size: clamp(1rem, calc(min(3vh,3vw)), 1.7rem);
+        font-size: clamp(1rem, 3vw, 1.7rem);
     }
 }
 
@@ -360,21 +357,21 @@ html {
     align-items: center;
     gap: 1rem;
     @media  (768px <= width < 1440px) {
-        margin-top: calc(min(3vh,3vw));
-        gap: calc(min(0.85vh,0.85vw));
+        margin-top: 3vw;
+        gap: 0.85vw;
     }
     @media  (width < 768px) {
-        margin-top: calc(min(2vh,2vw));
-        gap: calc(min(1vh,1vw));
+        margin-top: 2vw;
+        gap: 1vw;
     }
 }
 .game-keys__key {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
-    font-size: 30px;
+    width: 5rem;/*80px;*/
+    height: 5rem;/*80px;*/
+    font-size: 1.88rem;/*30px;*/
     font-weight: normal;
     text-transform: uppercase;
     color: var(--key-color);
@@ -383,14 +380,14 @@ html {
     cursor: pointer;
     transition: all 0.2s ease;
     @media  (768px <= width < 1440px) {
-        width: clamp(3rem, calc(min(5.55vh,10vw)), 80px);
-        height: clamp(3rem, calc(min(5.55vh,10vw)), 80px);
-        font-size: clamp(1.6rem, 1.6rem, 30px);
+        width: 5.55vw;
+        height: 5.55vw;
+        font-size: 1.6rem;
     }
     @media  (width < 768px) {
-        width: clamp(1.6rem, calc(min(4vh,8vw)), 3rem);
-        height: clamp(1.6rem, calc(min(4vh,8vw)), 3rem);
-        font-size: clamp(0.5rem, calc(min(3.5vh,5vw)), 1.8rem);
+        width: clamp(1.6rem, 5vw, 3rem);
+        height: clamp(1.6rem, 5vw, 3rem);
+        font-size: clamp(0.5rem, 3.8vw, 1.8rem);;
     }
 }
 .game-keys__key:hover {
