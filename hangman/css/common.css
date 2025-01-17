@@ -1,27 +1,6 @@
 
 /* Fonts start*/
 @font-face {
-    font-family: 'Stick Figures';
-    src: url('../assets/fonts/StickFigures-ppeO.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Mixed Silhouettes';
-    src: url('../assets/fonts/MixedSilhouettesFive-A1KD.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'zyxox';
-    src: url('../assets/fonts/Zyxox-lPOZ.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'Roboto Mono';
     src: url('../assets/fonts/RobotoMono-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 700;
