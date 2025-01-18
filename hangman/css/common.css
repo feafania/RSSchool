@@ -490,8 +490,7 @@ html {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-    max-width: 300px;
-    width: 100%;
+    min-width: 300px;
     @media (width < 360px) {
         padding: clamp(0.5rem, min(5vh,2.22vw), 2rem);
         box-shadow:
@@ -502,6 +501,7 @@ html {
             gap: clamp(0.7rem, 9vw, 2rem);
         }
         margin: 5px;
+        min-width: auto;
     }
 }
 .modal > * {
