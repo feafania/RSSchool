@@ -5,6 +5,7 @@ let numberOfAttempts = 6;
 let currentWord = 'mosquito';
 let currentHint = 'A small insect known for its buzzing sound and its tendency to bite humans and animals';
 let currentPart = 0;
+let guessedLetters = 0;
 
 
 function getRandomNumber(excludeSet,arrLength) {
@@ -149,10 +150,34 @@ function fillHangman(hangman) {
     hangmanFrame.append(legRight);
     clearHangman(hangmanFrame);
 
-    const hangmanName = document.createElement('div');
+    const hangmanName = document.createElement('h1');
     hangmanName.classList.add('hangman-name');
     hangmanName.textContent = 'Hangman game';
     hangman.append(hangmanName);
+}
+
+function fillModal(body) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.id = "modal";
+    body.append(modal);
+    const modalWindow = document.createElement('div');
+    modalWindow.classList.add('modal__window');
+    modal.append(modalWindow);
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('modal__paragraph');
+    modalWindow.append(paragraph);
+    const secretWord = document.createElement('p');
+    secretWord.classList.add('modal__secret-word');
+    modalWindow.append(secretWord);
+
+    const button = document.createElement('button');
+    button.classList.add('modal__button');
+    button.textContent = 'Play again';
+    button.addEventListener('click', () => {
+        finishGame()
+    });
+    modalWindow.append(button);
 }
 
 async function fillPage() {
@@ -173,6 +198,7 @@ async function fillPage() {
     game.classList.add('game');
     wrapper.append(game);
     fillGame(game);
+    fillModal(body);
 
 }
 
@@ -198,12 +224,31 @@ function activateKeys() {
     }
 }
 
-function checkEndOfGame() {
+function finishGame() {
+    fillWords();
+    clearHangman(document.querySelector('.hangman-frame'));
+    activateKeys();
+    modal.classList.remove('show');
+}
+
+function showModal() {
+    const modal = document.getElementById('modal');
+    const modalParagraph = document.querySelector('.modal__paragraph');
     if (currentPart >= numberOfAttempts) {
-        alert('hello');
-        fillWords();
-        clearHangman(document.querySelector('.hangman-frame'));
-        activateKeys();
+        modalParagraph.textContent = 'You lost.';
+    } else {
+        modalParagraph.textContent = 'You won.';
+    }
+    modalParagraph.textContent += '\r\n The secret word is ';
+    const modalSecretWord = document.querySelector('.modal__secret-word');
+    modalSecretWord.textContent = currentWord;
+    modal.classList.add('show');
+}
+
+function checkEndOfGame() {
+    if ((currentPart >= numberOfAttempts) || (guessedLetters >= currentWord.length)) {
+        guessedLetters = 0;
+        showModal();
     }
 }
 
@@ -221,6 +266,7 @@ function buttonClick(event) {
             currentLetter.textContent = sampleLetter;
             currentLetter.classList.remove('inactive');
             findLetter = true;
+            guessedLetters += 1;
         }
     }
     if (!findLetter) {
