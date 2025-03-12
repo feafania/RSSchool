@@ -2,6 +2,7 @@
 .idea/
 .DS_Store
 .gitignore
+news-api/dist
 
 # Logs
 logs
