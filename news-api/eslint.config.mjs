@@ -30,6 +30,13 @@ export default [...fixupConfigRules(compat.extends(
         "@typescript-eslint": fixupPluginRules(typescriptEslint),
     },
 
+    settings: {
+        "import/resolver": {
+            typescript: {}
+        }
+    },
+
+
     languageOptions: {
         globals: {
             ...globals.browser,
