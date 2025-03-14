@@ -11,10 +11,10 @@ class Sources {
                 if (sourceClone instanceof DocumentFragment) {
                     const sourceItemName = sourceClone.querySelector('.source__item-name');
                     if (sourceItemName instanceof HTMLElement) {
-                        sourceItemName.textContent = item.name;
+                        sourceItemName.textContent = item.name ?? 'Unknown Name';
                     }
                     const sourceItem = sourceClone.querySelector('.source__item');
-                    if (sourceItem instanceof HTMLElement) {
+                    if (sourceItem instanceof HTMLElement && item.id) {
                         sourceItem.setAttribute('data-source-id', item.id);
                     }
                 }

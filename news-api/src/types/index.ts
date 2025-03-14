@@ -10,24 +10,15 @@ export type Callback<T = unknown> = (data: T) => void;
 
 type Result = 'ok' | 'error';
 
-export interface NewsSource {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
-}
-export interface NewsArticle {
+export interface NewsArticleItem {
     source: SourceObject;
-    author?: string;
+    author: string;
     title: string;
     description: string;
     url: string;
-    urlToImage?: string;
+    urlToImage: string;
     publishedAt: string; // The date and time that the article was published, in UTC (+000)
-    content?: string; // The unformatted content of the article, where available. This is truncated to 200 chars
+    content: string; // The unformatted content of the article, where available. This is truncated to 200 chars
 }
 export type SourceObject = {
     id: string | null;
@@ -40,5 +31,11 @@ export interface ApiResponse<T> {
     articles?: ReadonlyArray<T>;
 }
 
-export type ArticlePreview = Pick<NewsArticle, 'title' | 'url' | 'description'>;
-export type PartialArticle = Partial<NewsArticle>;
+export type NewsSource = Partial<
+    { id: string; name: string; category: string; language: string; country: string } & Pick<
+        NewsArticleItem,
+        'url' | 'description'
+    >
+>;
+
+export type NewsArticle = Partial<NewsArticleItem>;
