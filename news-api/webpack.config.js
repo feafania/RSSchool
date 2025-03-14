@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index'),
@@ -18,6 +19,10 @@ const baseConfig = {
                 test: /\.ts$/i,
                 use: 'ts-loader',
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+            }
         ],
     },
     resolve: {
@@ -25,7 +30,8 @@ const baseConfig = {
     },
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     plugins: [
         new DotenvWebpackPlugin(),
@@ -36,6 +42,12 @@ const baseConfig = {
         new CleanWebpackPlugin(),
         new ESLintPlugin({
             extensions: 'ts',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'svg'), to: 'svg' },
+                { from: path.resolve(__dirname, 'img'), to: 'img' },
+            ],
         }),
     ],
 };
