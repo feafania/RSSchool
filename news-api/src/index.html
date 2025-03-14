@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>NewsPortal</title>
+        <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
-        <header>
+        <header class="container">
             <h1>News Portal</h1>
         </header>
-        <main>
+        <main class="container">
             <div class="sources buttons"></div>
             <div class="news"></div>
         </main>
-        <footer>
+        <footer class="container">
             <p class="copyright">
                 Copyright <a href="https://newsapi.org">NewsAPI</a>
             </p>
+            <div class="container container-footer">
+                <div class="footer__github">
+                    <a target="_blank" href="https://github.com/feafania" class="footer-github">
+                        <i class="fab fa-github section-contacts-logo"></i>
+                        <span>feafania</span>
+                    </a>
+                </div>
+                <div class="footer__year">2025</div>
+                <div class="footer__rsschool">
+                    <a target="_blank" href="https://rs.school/courses/javascript" rel="noopener noreferrer">
+                        <img src="/svg/rs-school-logo.svg" alt="RS School" class="footer-rsschool-logo">
+                    </a>
+                </div>
+            </div>
         </footer>
 
         <template id="sourceItemTemp">

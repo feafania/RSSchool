@@ -1,11 +1,45 @@
+:root {
+    --main-color: #ffffff;
+    --main-background: #17181c;
+    --main-color-header: #000000;
+    --main-color-header-hover: #555;
+    --main-background-header: rgba(255, 255, 255, 0.81);
+}
+
+* {
+    box-sizing: border-box;
+    border: none;
+    /*border: 1px solid red;*/
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
 body {
-    color: #fff;
-    background: #17181c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--main-color);
+    background: var(--main-background);
     font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
 header {
+    align-self: stretch;
     padding: 10px 30px;
+    width: 100%;
+    color: var(--main-color-header);
+    background: var(--main-background-header);
 }
 
 header h1 {
@@ -13,23 +47,66 @@ header h1 {
     font-weight: 800;
 }
 
+main {
+    flex-grow: 1;
+}
+.sources {
+    overflow: scroll;
+}
+
 footer {
     height: 100px;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: var(--main-color-header);
+    background: var(--main-background-header);
 }
 footer .copyright {
     font-size: 14px;
-    color: #333;
+    color: #333333;
     text-align: center;
 }
 footer .copyright a {
-    color: #444;
+    color: #444444;
 }
 footer .copyright a:hover {
-    color: #555;
+    color: var(--main-color-header-hover);
 }
 footer .copyright:before {
     content: '©';
+}
+
+.container-footer a {
+    text-decoration: none;
+    color: var(--main-color-header);
+    transition: color 0.3s;
+}
+
+.container-footer a:hover {
+    color: var(--main-color-header-hover);
+}
+
+.container-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+
+}
+.footer__rsschool {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: right;
+
+}
+
+.footer-rsschool-logo {
+    width: 100px;
 }
