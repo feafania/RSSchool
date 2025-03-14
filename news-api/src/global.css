@@ -10,6 +10,8 @@
     box-sizing: border-box;
     border: none;
     /*border: 1px solid red;*/
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -29,76 +31,101 @@ body {
     color: var(--main-color);
     background: var(--main-background);
     font-family: sans-serif;
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
 }
 
 header {
-    align-self: stretch;
-    padding: 10px 30px;
     width: 100%;
     color: var(--main-color-header);
     background: var(--main-background-header);
 }
+.container-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 30px;
+    text-align: center;
+    @media (max-width: 768px) {
+        padding: 10px 20px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 10px 15px;
+    }
+}
 
 header h1 {
-    font-size: 40px;
+    font-size: clamp(24px, 5vw, 40px);
     font-weight: 800;
 }
 
 main {
     flex-grow: 1;
 }
+.container-main {
+    padding: 20px;
+}
+
 .sources {
-    overflow: scroll;
+    overflow-x: scroll;
 }
 
 footer {
-    height: 100px;
+    color: var(--main-color-header);
+    background: var(--main-background-header);
+}
+
+.container-footer {
+    min-height: 100px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color: var(--main-color-header);
-    background: var(--main-background-header);
-}
-footer .copyright {
-    font-size: 14px;
-    color: #333333;
+    gap: 10px;
+    padding: 10px;
     text-align: center;
 }
-footer .copyright a {
-    color: #444444;
+.copyright {
+    font-size: 14px;
+    color: #333;
+    @media (max-width: 768px) {
+        font-size: 0.8rem;
+    }
 }
-footer .copyright a:hover {
+.copyright a {
+    color: #444;
+}
+.copyright a:hover {
     color: var(--main-color-header-hover);
 }
-footer .copyright:before {
+.copyright:before {
     content: '©';
 }
 
-.container-footer a {
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 80px;
+    align-items: center;
+    padding: 10px 20px;
+
+     @media (max-width: 480px) {
+         padding: 10px 15px;
+    }
+}
+
+.footer a {
     text-decoration: none;
     color: var(--main-color-header);
     transition: color 0.3s;
 }
 
-.container-footer a:hover {
+.footer a:hover {
     color: var(--main-color-header-hover);
 }
 
-.container-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 80px;
-    align-items: center;
-    padding: 0 20px;
-    width: 100%;
-
-}
 .footer__rsschool {
     display: flex;
     flex-direction: row;
@@ -109,4 +136,8 @@ footer .copyright:before {
 
 .footer-rsschool-logo {
     width: 100px;
+    max-width: 100%;
+    @media (max-width: 500px) {
+        width: 60px;
+    }
 }

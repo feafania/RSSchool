@@ -2,7 +2,7 @@ import './news.css';
 import { NewsArticle } from '../../../types';
 
 class News {
-    private static readonly MAX_NEWS_COUNT = 10;
+    private static readonly MAX_NEWS_COUNT = 12;
     public draw(data: NewsArticle[]) {
         // public draw: Callback<NewsArticle[]> = (data) => {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < News.MAX_NEWS_COUNT) : data;
