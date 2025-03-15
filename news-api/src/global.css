@@ -48,11 +48,9 @@ header {
     @media (max-width: 768px) {
         padding: 10px 20px;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 5px;
-    }
-
-    @media (max-width: 480px) {
-        padding: 10px 15px;
     }
 }
 
@@ -68,12 +66,13 @@ header h1 {
     align-items: center;
     width: 350px;
     margin-right: 10px;
-}
-
-.search-container {
-    position: relative;
-    margin-right: 10px;
     height: 40px;
+    @media (max-width: 768px) {
+        margin: auto;
+    }
+    @media (max-width: 480px) {
+        width: 250px;
+    }
 }
 
 .search-form {
@@ -83,16 +82,20 @@ header h1 {
 
 
 .search-input {
-    display: inline-block;
+    display: block;
     flex: 1;
     padding: 10px;
-    border: 3px solid rgba(var(--pretty-color), 0.5);
-    box-shadow: 0 0 5px rgba(var(--pretty-color), 0.5);
+    border: 3px solid rgb(39, 91, 108,  0.5);
+    box-shadow: 0 0 5px rgb(39, 91, 108,  0.5);
     width: 350px;
     font-size: 0.8em;
-    outline: none;/* Убираем обводку при фокусе */
+    outline: none;/* Removing the outline at focus */
     border-radius: 50px;
     transition: all 0.3s ease;
+
+    @media (max-width: 480px) {
+        width: 250px;
+    }
 }
 .search-input.active {
     border: 1px solid rgba(180, 180, 180, 0.5);
@@ -146,7 +149,7 @@ header h1 {
 .search-button:hover,
 .search-button.active
 {
-    color: rgba(var(--pretty-color), 1);
+    color: rgb(41, 172, 214);
 }
 
 
