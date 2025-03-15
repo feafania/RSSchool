@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index'),
-    mode: 'development',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -34,7 +34,6 @@ const baseConfig = {
         clean: true,
     },
     plugins: [
-        new DotenvWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
@@ -49,11 +48,14 @@ const baseConfig = {
                 { from: path.resolve(__dirname, 'img'), to: 'img' },
             ],
         }),
+        new DotenvWebpackPlugin({
+            path: './.env',
+        }),
     ],
 };
 
 module.exports = ({ mode }) => {
-    const isProductionMode = mode === 'prod';
+    const isProductionMode = mode === 'production';
     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
 
     return merge(baseConfig, envConfig);

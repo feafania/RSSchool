@@ -9,7 +9,6 @@
         "start:edge": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Microsoft Edge' http://localhost:8080",
         "start:opera": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Opera' http://localhost:8080",
         "start:safari": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Safari' http://localhost:8080",
-
         "build": "webpack --config ./webpack.config.js --env mode=prod",
         "lint": "ESLINT_USE_FLAT_CONFIG=false TIMING=1 eslint . --ext .ts"
     },
@@ -30,7 +29,7 @@
         "clean-webpack-plugin": "^4.0.0",
         "copy-webpack-plugin": "^12.0.2",
         "css-loader": "^6.10.0",
-        "dotenv-webpack": "^8.0.1",
+        "dotenv-webpack": "^8.1.0",
         "eslint": "^9.22.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-import-resolver-typescript": "^3.8.6",
