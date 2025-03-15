@@ -11,12 +11,12 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    public drawNews: Callback<ApiResponse<NewsArticle>> = (data) => {
+    public drawNews: Callback<ApiResponse<NewsArticle>> = (data: ApiResponse<NewsArticle>): void => {
         const values: NewsArticle[] = (data?.articles ?? []).slice();
         this.news.draw(values);
     };
 
-    public drawSources: Callback<ApiResponse<NewsSource>> = (data) => {
+    public drawSources: Callback<ApiResponse<NewsSource>> = (data: ApiResponse<NewsSource>): void => {
         const values: NewsSource[] = (data?.sources ?? []).slice();
         this.sources.draw(values);
     };
