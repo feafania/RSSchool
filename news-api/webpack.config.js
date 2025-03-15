@@ -44,8 +44,8 @@ const baseConfig = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: path.resolve(__dirname, 'svg'), to: 'svg' },
-                { from: path.resolve(__dirname, 'img'), to: 'img' },
+                { from: path.resolve(__dirname, 'src/svg'), to: 'svg' },
+                { from: path.resolve(__dirname, 'src/img'), to: 'img' },
             ],
         }),
         new DotenvWebpackPlugin({
