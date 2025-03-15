@@ -10,10 +10,10 @@ class Loader {
 
     public getResp<T>(
         { endpoint, options }: { endpoint: string; options?: StringRecord },
-        callback: Callback<T> = () => {
+        callback: Callback<T> = (): void => {
             console.error('No callback for GET response');
         }
-    ) {
+    ): void {
         this.load(Methods.Get, endpoint, callback, options);
     }
 
@@ -30,7 +30,6 @@ class Loader {
     private makeUrl(options: StringRecord, endpoint: string): string {
         const urlOptions: StringRecord = { ...this.options, ...options };
         let url: string = `${this.baseLink}${endpoint}?`;
-
         Object.keys(urlOptions).forEach((key: string): void => {
             url += `${key}=${urlOptions[key]}&`;
         });
@@ -38,10 +37,10 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<T>(method: Methods, endpoint: string, callback: Callback<T>, options: StringRecord = {}) {
+    private load<T>(method: Methods, endpoint: string, callback: Callback<T>, options: StringRecord = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res) => res.json())
+            .then((res: Response) => res.json())
             .then(callback)
             .catch((err: Error) => console.error(err));
     }
