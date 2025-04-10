@@ -1,0 +1,27 @@
+:root {
+    --main-color: #ffffff;
+    --main-color-hover: #555555;
+    --main-backgroundcolor: #282c34;
+    --border-color: #444444;
+}
+
+html, body {
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 1440px;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    background: var(--main-backgroundcolor);
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    font-family: sans-serif;
+}
