@@ -61,6 +61,7 @@ export default defineConfig([
       "unicorn/consistent-function-scoping": "error",
       "unicorn/no-array-reduce": "error",
       "unicorn/prefer-array-some": "error",
+      "max-lines-per-function": ["warn", { max: 40, skipBlankLines: false, skipComments: false }]
     },
   },
   js.configs.recommended,

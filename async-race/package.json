@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --node-env=production",
     "start": "webpack serve --open --mode=development",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint": "npx eslint 'src/**/*.{js,ts,tsx}' --max-warnings=0",
     "format": "npx prettier --write .",
     "ci:format": "npx prettier --check ."
   },
