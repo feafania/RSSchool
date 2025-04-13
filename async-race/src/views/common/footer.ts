@@ -31,10 +31,14 @@ function createRSSchoolLink() {
   rsschoolLink.rel = "noopener noreferrer";
   rsschoolElement.append(rsschoolLink);
 
-  const rsschoolImg = document.createElement("img");
-  rsschoolImg.className = "rsschool-logo";
-  rsschoolImg.src = logoUrl;
-  rsschoolImg.alt = "RS School";
+  const parser = new DOMParser();
+  const rsschoolDocument = parser.parseFromString(logoUrl, "image/svg+xml");
+
+  const rsschoolImg = rsschoolDocument.documentElement;
+  rsschoolImg.setAttribute("width", "100%");
+  rsschoolImg.setAttribute("height", "auto");
+  rsschoolImg.classList.add("rsschool-logo");
+  rsschoolImg.setAttribute("title", "RS School");
   rsschoolLink.append(rsschoolImg);
 
   return rsschoolElement;
