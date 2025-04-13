@@ -1,15 +1,26 @@
-// Button with props onClick and label, input with
-// color selection and create/update button
+import { ControlConfig } from "../../types/interfaces";
+import "../../styles/button.css";
 
-import { PageType } from "../../types/enum";
-
-export function controlButton(
-  buttonName: PageType,
-  onClick: (name: PageType) => void,
-) {
+export function createButton(
+  object: ControlConfig,
+  onClick?: () => void,
+): HTMLButtonElement {
   const control = document.createElement("button");
-  control.textContent =
-    buttonName.charAt(0).toUpperCase() + buttonName.slice(1).toLowerCase();
-  control.addEventListener("click", () => onClick(buttonName));
+  if (object.name) {
+    control.textContent = object.name;
+  }
+  if (object.id) {
+    control.id = object.id;
+  }
+  if (object.class) {
+    control.className = object.class;
+  }
+
+  control.disabled = object.disabled || false;
+
+  control.addEventListener("click", () => {
+    if (onClick) onClick();
+  });
+
   return control;
 }
