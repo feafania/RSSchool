@@ -1,24 +1,14 @@
 import "../../styles/main.css";
-import { PageType } from "../../types/enum";
+import { VIEW_CONTAINER_NAME } from "../../constants";
 
-import { controlButton } from "./button";
-
-export function createMain(onNavigate: (page: PageType) => void): HTMLElement {
+export function createMain(): HTMLElement {
   const main = document.createElement("main");
   main.className = "main";
 
-  const controls = document.createElement("div");
-  controls.className = "page-controls";
-
-  const garageButton = controlButton(PageType.Garage, onNavigate);
-  const winnersButton = controlButton(PageType.Winners, onNavigate);
-  controls.append(garageButton, winnersButton);
-
   const viewContainer = document.createElement("div");
-  viewContainer.className = "view-container";
-  viewContainer.id = "view-container";
+  viewContainer.className = VIEW_CONTAINER_NAME;
+  viewContainer.id = VIEW_CONTAINER_NAME;
 
-  main.append(controls, viewContainer);
-
+  main.append(viewContainer);
   return main;
 }
