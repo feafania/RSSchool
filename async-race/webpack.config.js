@@ -52,6 +52,10 @@ export default {
           filename: "assets/img/[name][ext]",
         },
       },
+      {
+        test: /\.svg$/i,
+        type: 'asset/source',
+      },
     ],
   },
   plugins: [
