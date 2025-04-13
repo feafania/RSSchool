@@ -1,0 +1,81 @@
+.car-block {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.manage-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 5px;
+}
+.manage-button {
+    width: fit-content;
+    height: fit-content;
+    min-width: 50px;
+    padding: 0.2rem;
+    background-color: var(--manage-car-background);
+    border-radius: 5px;
+    font-size: 0.7rem;
+}
+
+.manage-button:hover {
+    background-color: var(--manage-car-background-hover);
+}
+
+.car-name {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--car-name-color);
+}
+
+.track-line {
+    display: flex;
+    gap: 5px;
+    position: relative;
+    height: 40px;
+}
+
+.car-controls {
+    width: 30px;
+    height: 25px;
+    min-width: auto;
+    padding: 2px;
+    background-color: var(--control-car-background);
+    border-radius: 5px;
+    font-size: 0.7rem;
+}
+
+.car-controls:hover {
+    background-color: var(--control-car-background-hover);
+}
+
+.car-picture {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    left: 80px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: left 0.3s ease, transform 0.3s ease;
+}
+
+.car-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.finish-flag {
+    height: 30px;
+    width: 30px;
+    margin-left: auto;
+    margin-right: 110px;
+}
