@@ -1,27 +1,34 @@
 :root {
     --main-color: #ffffff;
-    --main-color-hover: #555555;
-    --main-backgroundcolor: #282c34;
+    --main-color-hover: #c8c6c6;
+    --main-background: #282c34;
+    --car-control-background: #d0d4f3;
+    --car-control-background-hover: #adb4ed;
+    --manage-car-background: #a3c7dc;
+    --manage-car-background-hover: #6faacf;
+    --control-car-background: #c5f1e4;
+    --control-car-background-hover: #7fe8d8;
+    --disables-color: #656464;
+    --disables-background: #dad8d8;
+    --car-name-color: #efdaa1;
     --border-color: #444444;
+    --flag-color: #bd1e1e;
 }
 
-html, body {
-    height: 100%;
+body {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    background: var(--main-background);
     margin: 0 auto;
-    padding: 10px;
     max-width: 1440px;
 }
 
-html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    background: var(--main-backgroundcolor);
-}
-
 #root {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    height: 100%;
+    justify-content: flex-start;
     font-family: sans-serif;
+    min-height: 100vh;
+    padding: 0.5rem;
 }
