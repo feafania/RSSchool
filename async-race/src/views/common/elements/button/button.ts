@@ -1,7 +1,7 @@
-import { ControlConfig } from "../../types/interfaces";
-import "../../styles/button.css";
+import { ControlConfig } from "../../../../types/interfaces";
+import "./button.css";
 
-export function createButton(
+export default function createButton(
   object: ControlConfig,
   onClick?: () => void,
 ): HTMLButtonElement {

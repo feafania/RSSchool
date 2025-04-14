@@ -1,9 +1,9 @@
-import "../../styles/input.css";
-import { CarBrand } from "../../types/enum";
-import { ControlConfig } from "../../types/interfaces";
-import { getState, saveState } from "../../utils/helpers";
+import "./input.css";
+import { CarBrand } from "../../../../types/enum";
+import { ControlConfig } from "../../../../types/interfaces";
+import { getState, saveState } from "../../../../utils/helpers";
 
-export function createInput(object: ControlConfig): HTMLDivElement {
+export default function createInput(object: ControlConfig): HTMLDivElement {
   const wrapper = document.createElement("div");
   if (object.id) {
     wrapper.id = `${object.id}-wrapper`;

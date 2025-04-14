@@ -1,12 +1,14 @@
 import "@melloware/coloris/dist/coloris.css";
 import Coloris from "@melloware/coloris";
-import "../../styles/color-picker.css";
+import "./color-selection.css";
 
-import { ControlConfig } from "../../types/interfaces";
-import { DEFAULT_CAR_COLOR } from "../../constants";
-import { getState, saveState } from "../../utils/helpers";
+import { ControlConfig } from "../../../../types/interfaces";
+import { DEFAULT_CAR_COLOR } from "../../../../constants";
+import { getState, saveState } from "../../../../utils/helpers";
 
-export function createColorPicker(object: ControlConfig): HTMLInputElement {
+export default function createColorPicker(
+  object: ControlConfig,
+): HTMLInputElement {
   Coloris.init();
   Coloris({ el: "#coloris" });
 

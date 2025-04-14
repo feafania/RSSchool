@@ -1,7 +1,7 @@
-import "../../styles/main.css";
-import { VIEW_CONTAINER_NAME } from "../../constants";
+import "./main.css";
+import { VIEW_CONTAINER_NAME } from "../../../../constants";
 
-export function createMain(): HTMLElement {
+export default function createMain(): HTMLElement {
   const main = document.createElement("main");
   main.className = "main";
 

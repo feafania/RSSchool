@@ -1,5 +1,5 @@
-import "../../styles/footer.css";
-import logoUrl from "../../assets/svg/rs-school-logo.svg";
+import "./footer.css";
+import logoUrl from "../../../../assets/svg/rs-school-logo.svg";
 
 function createGithubLink() {
   const githubElement = document.createElement("div");
@@ -44,7 +44,7 @@ function createRSSchoolLink() {
   return rsschoolElement;
 }
 
-export function createFooter(): HTMLElement {
+export default function createFooter(): HTMLElement {
   const footer = document.createElement("footer");
   footer.className = "footer";
 

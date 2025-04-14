@@ -1,10 +1,9 @@
-import "../../styles/header.css";
-import { capitalizeString } from "../../utils/helpers";
-import { PageType } from "../../types/enum";
+import "./header.css";
+import { capitalizeString } from "../../../../utils/helpers";
+import { PageType } from "../../../../types/enum";
+import createButton from "../../elements/button/button";
 
-import { createButton } from "./button";
-
-export function createHeader(
+export default function createHeader(
   onNavigate: (pageName: string) => void,
 ): HTMLElement {
   const header = document.createElement("header");
