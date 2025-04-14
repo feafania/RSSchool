@@ -84,7 +84,7 @@ export default {
     static: {
       directory: path.join(__dirname, "dist"),
     },
-    port: 3000,
+    port: 3020,
     open: true,
     hot: true,
     compress: true,
