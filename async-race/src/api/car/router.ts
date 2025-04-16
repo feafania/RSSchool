@@ -1,17 +1,18 @@
 import { CarType } from "../../types/interfaces";
 import { CarCreateUpdateModel } from "../../types/types";
-import Car from "../../entities/car";
 
 import getCars from "./routes/get-cars-controller";
-import getCar from "./routes/get-car-controller";
+import getCarByID from "./routes/get-car-controller";
 import createCar from "./routes/create-car-controller";
 import updateCar from "./routes/update-car-controller";
 import deleteCar from "./routes/delete-car-controller";
+import getTotalCountCars from "./routes/get-total-count-car-controller";
 
 const CarRouter = {
   async getCars(page: number | undefined = undefined): Promise<CarType[]> {
     try {
-      return await getCars(page);
+      const cars = await getCars(page);
+      return cars;
     } catch (error) {
       console.error("Error fetching cars:", error);
       return [];
@@ -19,13 +20,18 @@ const CarRouter = {
   },
 
   async getTotalCount(): Promise<number> {
-    const totalCount = await this.getCars();
-    return totalCount.length;
+    try {
+      return await getTotalCountCars();
+    } catch (error) {
+      console.error(`Error fetching total count:`, error);
+      const totalCount = await this.getCars();
+      return totalCount.length;
+    }
   },
 
   async getCar(id: number): Promise<CarType | undefined> {
     try {
-      return await getCar(id);
+      return await getCarByID(id);
     } catch (error) {
       console.error(`Error fetching car {${id}:`, error);
       return undefined;
@@ -53,9 +59,9 @@ const CarRouter = {
     }
   },
 
-  async deleteCar(car: Car): Promise<boolean> {
+  async deleteCar(id: number): Promise<boolean> {
     try {
-      return await deleteCar(car.id);
+      return await deleteCar(id);
     } catch (error) {
       console.error("Error deleting car:", error);
       return false;
