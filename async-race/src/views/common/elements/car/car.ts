@@ -4,21 +4,31 @@ import "./car.css";
 import { DEFAULT_CAR_COLOR } from "../../../../constants";
 import createButton from "../button/button";
 import Car from "../../../../entities/car";
+import deleteCarEvent from "../../../../controllers/car-controller/delete-car-controller";
+import selectCarEvent from "../../../../controllers/car-controller/select-car-controller";
 
-function renderManageLine(carName: string): HTMLElement {
+function renderManageLine(car: Car): HTMLElement {
   const manageLine = document.createElement("div");
   manageLine.className = "manage-line";
 
-  const selectButton = createButton({
-    name: "Select",
-    class: "manage-button",
-  });
-  const removeButton = createButton({
-    name: "Remove",
-    class: "manage-button",
-  });
+  const selectButton = createButton(
+    {
+      name: "Select",
+      class: "manage-button",
+    },
+    async () => {
+      selectCarEvent(car.id);
+    },
+  );
+  const removeButton = createButton(
+    {
+      name: "Remove",
+      class: "manage-button",
+    },
+    async () => await deleteCarEvent(car.id),
+  );
   const nameSpan = document.createElement("span");
-  nameSpan.textContent = carName;
+  nameSpan.textContent = car.name;
   nameSpan.className = "car-name";
 
   manageLine.append(selectButton, removeButton, nameSpan);
@@ -70,7 +80,7 @@ export default function renderCar(car: Car) {
   const carBlock = document.createElement("div");
   carBlock.className = "car-block";
   carBlock.id = String(car.id);
-  carBlock.append(renderManageLine(car.name));
+  carBlock.append(renderManageLine(car));
   carBlock.append(renderTrackLine(car));
   return carBlock;
 }

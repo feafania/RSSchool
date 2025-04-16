@@ -7,19 +7,25 @@ import { ControlConfig } from "../../../types/interfaces";
 import createPagination from "../../common/elements/pagination/pagination";
 import GarageState from "../../../entities/garage";
 import loadAndRenderCars from "../../../controllers/garage-controller";
+import refreshTitle from "../../../controllers/title-controllers";
+import createCarEvent from "../../../controllers/car-controller/create-car-controller";
+import GenerateCarsEvent from "../../../controllers/car-controller/generate-cars-controller";
+import updateCarEvent from "../../../controllers/car-controller/update-car-controller";
+import { getState } from "../../../utils/helpers";
 
 function renderSettingsGroup(
   group: string,
   inputElement: ControlConfig,
   colorPickerElement: ControlConfig,
   buttonElement: ControlConfig,
+  onClick: () => void,
 ): HTMLDivElement {
   const groupElement = document.createElement("div");
   groupElement.className = group;
 
   const brandInput = createInput(inputElement);
   const colorPicker = createColorPicker(colorPickerElement);
-  const button = createButton(buttonElement);
+  const button = createButton(buttonElement, onClick);
 
   groupElement.append(brandInput, colorPicker, button);
 
@@ -43,29 +49,32 @@ function renderCarCreate(): HTMLDivElement {
       id: "create-car-button",
       class: "car-controls-button",
     },
+    async () => await createCarEvent(),
   );
 }
 
 function renderCarUpdate(): HTMLDivElement {
+  const updatedCarId = getState("updatedCarId");
   return renderSettingsGroup(
     "car-update",
     {
       name: "",
       id: "update-brand-select",
       class: "brand-select",
-      disabled: true,
+      disabled: !updatedCarId,
     },
     {
       id: "update-car-color",
       class: "color-select",
-      disabled: true,
+      disabled: !updatedCarId,
     },
     {
       name: "Update",
       id: "update-car-button",
       class: "car-controls-button",
-      disabled: true,
+      disabled: !updatedCarId,
     },
+    async () => await updateCarEvent(),
   );
 }
 
@@ -91,11 +100,14 @@ function renderTrackControls() {
     id: "reset-button",
     class: "car-controls-button",
   });
-  const generateButton = createButton({
-    name: "Generate cars",
-    id: "generate-button",
-    class: "car-controls-button",
-  });
+  const generateButton = createButton(
+    {
+      name: "Generate cars",
+      id: "generate-button",
+      class: "car-controls-button",
+    },
+    async () => await GenerateCarsEvent(),
+  );
   trackControls.append(raceButton, resetButton, generateButton);
   return trackControls;
 }
@@ -108,25 +120,37 @@ function renderCarControls() {
   return controlsWrapper;
 }
 
+let pagination: HTMLElement;
+let title: HTMLHeadingElement;
+let garageList: HTMLDivElement;
+
+const rerenderCars = async () => {
+  await refreshTitle(PageType.Garage, title);
+  garageList.innerHTML = "";
+  await loadAndRenderCars(garageList);
+
+  const newPagination = createPagination(GarageState, rerenderCars);
+  pagination.replaceWith(newPagination);
+  pagination = newPagination;
+};
+
 export default async function renderGarageView(): Promise<HTMLElement> {
   const element = document.createElement("div");
   element.className = PageType.Garage + "-view";
 
-  const title = document.createElement("h2");
-  title.textContent = `Garage (${GarageState.totalCount})`;
+  title = document.createElement("h2");
   title.className = "garage-title";
   element.append(title);
 
-  element.append(createPagination());
-
-  element.append(renderCarControls());
-
-  const garageList = document.createElement("div");
+  garageList = document.createElement("div");
   garageList.className = "garage-list";
 
-  await loadAndRenderCars(garageList);
+  pagination = createPagination(GarageState, rerenderCars);
+  element.append(pagination);
 
+  element.append(renderCarControls());
   element.append(garageList);
+  await rerenderCars();
 
   return element;
 }
