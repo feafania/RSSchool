@@ -12,7 +12,7 @@ export default async function loadAndRenderCars(
 
     for (const carElement of cars) {
       const car = new Car(carElement);
-      GarageState.addCar(car);
+      GarageState.addItem(car);
       garageList.append(renderCar(car));
     }
   } catch (error) {
