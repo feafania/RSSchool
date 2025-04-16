@@ -1,5 +1,7 @@
 import { CarBrand, CarModel } from "../types/enum";
 import { StorageItem } from "../types/interfaces";
+import { HTTP_STATUSES } from "../constants";
+import showModalMessage from "../views/common/elements/modal-window/modal-window";
 
 export const getRandomColor = (): string =>
   `#${Math.floor(Math.random() * 16_777_215)
@@ -24,4 +26,28 @@ export function saveState(object: StorageItem) {
 
 export function getState(key: string): string | null {
   return sessionStorage.getItem(key);
+}
+
+export function deleteState(key: string) {
+  return sessionStorage.removeItem(key);
+}
+
+export function notFoundErrorHandler(
+  error: Response | Error,
+  notFoundMessage: string,
+  otherMessage: string,
+): void {
+  if (
+    error instanceof Response &&
+    error.status === HTTP_STATUSES.NOT_FOUND_404
+  ) {
+    showModalMessage(notFoundMessage);
+  } else if (
+    error instanceof Error &&
+    error.message.includes(HTTP_STATUSES.NOT_FOUND_404.toString())
+  ) {
+    showModalMessage(notFoundMessage);
+  } else {
+    showModalMessage(otherMessage);
+  }
 }
