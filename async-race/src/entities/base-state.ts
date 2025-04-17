@@ -1,11 +1,15 @@
+import { getState } from "../utils/helpers";
+
 export default class BaseState<T> {
   items = new Map<number, T>();
   totalCount = 0;
-  currentPage = 1;
+  currentPage = 0;
   readonly ITEMS_PER_PAGE: number;
+  public page: string;
 
   constructor(itemsPerPage: number) {
     this.ITEMS_PER_PAGE = itemsPerPage;
+    this.page = "";
   }
 
   resetItems() {
@@ -24,30 +28,29 @@ export default class BaseState<T> {
     return this.items.get(id);
   }
 
-  incrementTotalCount() {
-    this.totalCount++;
-  }
-
-  decrementTotalCount() {
-    if (this.totalCount > 0) {
-      this.totalCount--;
-    }
-  }
-
   totalPages(): number {
     return Math.ceil(this.totalCount / this.ITEMS_PER_PAGE);
   }
 
+  resetCurrentPage(): void {
+    this.currentPage = Number(getState(`${this.page}-page`)) || 1;
+  }
+
+  limitCurrentPage(): void {
+    this.currentPage = Math.max(
+      Math.min(this.currentPage, this.totalPages()),
+      1,
+    );
+  }
+
   incrementPage() {
-    if (this.currentPage < this.totalPages()) {
-      this.currentPage++;
-    }
+    this.currentPage++;
+    this.limitCurrentPage();
   }
 
   decrementPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
+    this.currentPage--;
+    this.limitCurrentPage();
   }
 
   async refreshTotalCount() {

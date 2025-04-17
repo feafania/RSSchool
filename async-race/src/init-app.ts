@@ -7,7 +7,6 @@ import "./global.css";
 import { getState, saveState } from "./utils/helpers";
 import { PageType } from "./types/enum";
 import { VIEW_CONTAINER_NAME } from "./constants";
-import GarageState from "./entities/garage";
 
 export default function initApp(root: HTMLElement) {
   root.id = "root";
@@ -17,9 +16,7 @@ export default function initApp(root: HTMLElement) {
   const main = createMain();
   const footer = createFooter();
   root.append(header, main, footer);
-  GarageState.refreshTotalCount().then(() => {
-    onNavigation(lastPage);
-  });
+  onNavigation(lastPage);
 }
 
 function onNavigation(page: string): void {
@@ -27,7 +24,7 @@ function onNavigation(page: string): void {
   if (page === PageType.Garage) {
     renderGarageView().then((element) => checkView(page, element));
   } else if (page === PageType.Winners) {
-    checkView(page, renderWinnersView());
+    renderWinnersView().then((element) => checkView(page, element));
   }
 }
 
