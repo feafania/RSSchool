@@ -6,27 +6,28 @@ import getCarByID from "./routes/get-car-controller";
 import createCar from "./routes/create-car-controller";
 import updateCar from "./routes/update-car-controller";
 import deleteCar from "./routes/delete-car-controller";
-import getTotalCountCars from "./routes/get-total-count-car-controller";
 
 const CarRouter = {
-  async getCars(page: number | undefined = undefined): Promise<CarType[]> {
+  totalCount: 0,
+  async getCars(page?: number): Promise<CarType[]> {
     try {
       const cars = await getCars(page);
-      return cars;
+      this.totalCount = cars.totalCount;
+      return cars.items;
     } catch (error) {
       console.error("Error fetching cars:", error);
+      this.totalCount = 0;
       return [];
     }
   },
 
   async getTotalCount(): Promise<number> {
     try {
-      return await getTotalCountCars();
+      await this.getCars();
     } catch (error) {
       console.error(`Error fetching total count:`, error);
-      const totalCount = await this.getCars();
-      return totalCount.length;
     }
+    return this.totalCount;
   },
 
   async getCar(id: number): Promise<CarType | undefined> {
@@ -49,10 +50,10 @@ const CarRouter = {
 
   async updateCar(
     id: number,
-    carParametres: CarCreateUpdateModel,
+    carParameters: CarCreateUpdateModel,
   ): Promise<CarType | undefined> {
     try {
-      return await updateCar(id, carParametres);
+      return await updateCar(id, carParameters);
     } catch (error) {
       console.error("Error updating car:", error);
       return undefined;
