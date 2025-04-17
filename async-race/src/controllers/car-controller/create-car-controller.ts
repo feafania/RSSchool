@@ -1,10 +1,6 @@
 import { DEFAULT_CAR_COLOR } from "../../constants";
 import CarRouter from "../../api/car/router";
-import { PageType } from "../../types/enum";
-import GarageState from "../../entities/garage";
 import showModalMessage from "../../views/common/elements/modal-window/modal-window";
-import loadAndRenderCars from "../garage-controller";
-import refreshPage from "../refresh-controller";
 import { saveState } from "../../utils/helpers";
 
 export default async function createCarEvent() {
@@ -35,6 +31,4 @@ export default async function createCarEvent() {
     showModalMessage("An error occurred when creating the car. Try again.");
     return;
   }
-
-  await refreshPage(GarageState, PageType.Garage, loadAndRenderCars);
 }

@@ -1,9 +1,7 @@
 import CarRouter from "../../api/car/router";
-import { PageType } from "../../types/enum";
 import GarageState from "../../entities/garage";
-import loadAndRenderCars from "../garage-controller";
-import refreshPage from "../refresh-controller";
-import { notFoundErrorHandler } from "../../utils/helpers";
+import { ErrorHandler } from "../../utils/helpers";
+import { HTTP_STATUSES } from "../../constants";
 
 export default async function deleteCarEvent(id: number) {
   try {
@@ -11,14 +9,13 @@ export default async function deleteCarEvent(id: number) {
     GarageState.items.delete(id);
   } catch (error) {
     console.error("Failed to delete car:", error);
-    notFoundErrorHandler(
+    ErrorHandler(
       error as Response | Error,
+      HTTP_STATUSES.NOT_FOUND_404,
       `Car with ID ${id} not found.`,
       "An error occurred when deleting the car. Try again.",
     );
   }
-  GarageState.refreshTotalCount();
-  await refreshPage(GarageState, PageType.Garage, loadAndRenderCars);
 
   // TODO delete winner with id
 }

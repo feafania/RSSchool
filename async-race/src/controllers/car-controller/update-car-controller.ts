@@ -1,14 +1,11 @@
-import { DEFAULT_CAR_COLOR } from "../../constants";
+import { DEFAULT_CAR_COLOR, HTTP_STATUSES } from "../../constants";
 import CarRouter from "../../api/car/router";
-import { PageType } from "../../types/enum";
 import GarageState from "../../entities/garage";
 import showModalMessage from "../../views/common/elements/modal-window/modal-window";
-import loadAndRenderCars from "../garage-controller";
-import refreshPage from "../refresh-controller";
 import {
   deleteState,
   getState,
-  notFoundErrorHandler,
+  ErrorHandler,
   saveState,
 } from "../../utils/helpers";
 import { CarCreateUpdateModel } from "../../types/types";
@@ -28,8 +25,9 @@ async function updateCar(
     return true;
   } catch (error) {
     console.error("Failed to update car:", error);
-    notFoundErrorHandler(
+    ErrorHandler(
       error as Response | Error,
+      HTTP_STATUSES.NOT_FOUND_404,
       `Car with ID ${id} not found.`,
       "An error occurred when updating the car. Try again.",
     );
@@ -73,6 +71,5 @@ export default async function updateCarEvent() {
     if (button) {
       button.disabled = true;
     }
-    await refreshPage(GarageState, PageType.Garage, loadAndRenderCars);
   }
 }
