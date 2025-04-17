@@ -43,7 +43,7 @@ export default class CarElement {
       },
       async () => {
         await deleteCarEvent(this.car.id);
-        this.page.state.refreshTotalCount();
+        await this.page.state.refreshTotalCount();
         this.page.refresh();
       },
     );
@@ -68,31 +68,41 @@ export default class CarElement {
       class: "car-controls",
       disabled: true,
     });
+    const carPicture = CarElement.renderCarPicture(this.car.color);
+    const flag = CarElement.renderTrackFlag();
+
+    carLine.append(startButton, stopButton, carPicture, flag);
+    return carLine;
+  }
+
+  static renderCarPicture(color: string): HTMLElement {
     const carPicture = document.createElement("div");
     carPicture.className = "car-picture";
 
     const parser = new DOMParser();
     const carDocument = parser.parseFromString(carSvg, "image/svg+xml");
 
-    const carElement = carDocument.documentElement;
-    carElement.setAttribute("width", "100%");
-    carElement.setAttribute("height", "auto");
-    carElement.setAttribute("fill", this.car.color || DEFAULT_CAR_COLOR);
-    carElement.setAttribute("title", "Car");
-    carElement.classList.add("car-image");
+    const carPictureElement = carDocument.documentElement;
+    carPictureElement.setAttribute("width", "100%");
+    carPictureElement.setAttribute("height", "auto");
+    carPictureElement.setAttribute("fill", color || DEFAULT_CAR_COLOR);
+    carPictureElement.setAttribute("title", "Car");
+    carPictureElement.classList.add("car-image");
 
-    carPicture.append(carElement);
+    carPicture.append(carPictureElement);
+    return carPicture;
+  }
 
+  static renderTrackFlag(): HTMLElement {
+    const parser = new DOMParser();
     const flag = document.createElement("div");
     flag.className = "finish-flag";
     const svgDocument = parser.parseFromString(flagSvg, "image/svg+xml");
     const svgElement = svgDocument.documentElement;
     svgElement.setAttribute("fill", "var(--flag-color)");
     svgElement.setAttribute("stroke", "var(--flag-color)");
-    carElement.setAttribute("title", "Flag");
+    svgElement.setAttribute("title", "Flag");
     flag.append(svgElement);
-
-    carLine.append(startButton, stopButton, carPicture, flag);
-    return carLine;
+    return flag;
   }
 }
