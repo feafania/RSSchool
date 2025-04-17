@@ -49,4 +49,8 @@ export default class BaseState<T> {
       this.currentPage--;
     }
   }
+
+  async refreshTotalCount() {
+    this.currentPage = Math.min(this.currentPage, this.totalPages());
+  }
 }
