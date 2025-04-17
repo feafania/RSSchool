@@ -49,3 +49,9 @@ export enum CarModel {
   Duster = "Duster",
   Panda = "Panda",
 }
+
+export enum WinnerSortFields {
+  id = "id",
+  time = "time",
+  wins = "wins",
+}
