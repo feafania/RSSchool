@@ -1,5 +1,6 @@
 import { PaginationState } from "../types/interfaces";
 import createPagination from "../views/common/elements/pagination/pagination";
+import { saveState } from "../utils/helpers";
 
 export default class PaginationController {
   public element: HTMLElement;
@@ -30,7 +31,11 @@ export default class PaginationController {
 
     const pageTitle = this.element.querySelector(".page-title");
     if (pageTitle) {
-      pageTitle.textContent = `Page #${this.state.currentPage}`;
+      pageTitle.textContent = `Page #${this.state.currentPage} / ${this.state.totalPages()}`;
+      saveState({
+        key: `${this.state.page}-page`,
+        value: `${this.state.currentPage}`,
+      });
     }
   }
 

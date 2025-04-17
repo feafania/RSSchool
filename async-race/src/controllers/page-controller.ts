@@ -11,15 +11,14 @@ export default class PageController<T> {
   public onPageChange: () => void;
 
   constructor(
-    public page: string,
     public state: BaseState<T>,
     public loadEvent: (page: PageController<T>) => void,
   ) {
     this.element = document.createElement("div");
-    this.element.className = `${page}-view`;
-    this.title = new TitleController<T>(page, state);
+    this.element.className = `${state.page}-view`;
+    this.title = new TitleController<T>(state.page, state);
     this.list = document.createElement("div");
-    this.list.className = `${page}-list`;
+    this.list.className = `${state.page}-list`;
     this.loadEvent = loadEvent;
     this.onPageChange = () => {
       this.title.refresh();
