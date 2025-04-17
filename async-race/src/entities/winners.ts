@@ -1,7 +1,7 @@
 import WinnersRouter from "../api/winners/router";
 import { WINNERS_PER_PAGE } from "../constants";
 import { WinnerType } from "../types/interfaces";
-import { SortOrder, WinnerSortFields } from "../types/enum";
+import { PageType, SortOrder, WinnerSortFields } from "../types/enum";
 import { getLocalState } from "../utils/helpers";
 
 import BaseState from "./base-state";
@@ -11,6 +11,8 @@ class WinnersStateClass extends BaseState<WinnerType> {
   public sortField: WinnerSortFields;
   constructor(itemsPerPage: number) {
     super(itemsPerPage);
+    this.page = PageType.Winners;
+    this.resetCurrentPage();
 
     const savedOrder = getLocalState("sortOrder");
     this.sortOrder =
@@ -25,7 +27,7 @@ class WinnersStateClass extends BaseState<WinnerType> {
 
   async refreshTotalCount() {
     this.totalCount = await WinnersRouter.getTotalCount();
-    this.currentPage = Math.min(this.currentPage, this.totalPages());
+    this.limitCurrentPage();
   }
 }
 
