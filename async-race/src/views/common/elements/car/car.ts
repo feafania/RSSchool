@@ -6,81 +6,93 @@ import createButton from "../button/button";
 import Car from "../../../../entities/car";
 import deleteCarEvent from "../../../../controllers/car-controller/delete-car-controller";
 import selectCarEvent from "../../../../controllers/car-controller/select-car-controller";
+import PageController from "../../../../controllers/page-controller";
 
-function renderManageLine(car: Car): HTMLElement {
-  const manageLine = document.createElement("div");
-  manageLine.className = "manage-line";
+export default class CarElement {
+  public element: HTMLElement;
+  constructor(
+    private page: PageController<Car>,
+    private car: Car,
+  ) {
+    this.page = page;
+    this.car = car;
+    this.element = document.createElement("div");
+    this.element.className = "car-block";
+    this.element.id = String(car.id);
+    this.element.append(this.renderManageLine());
+    this.element.append(this.renderTrackLine());
+  }
 
-  const selectButton = createButton(
-    {
-      name: "Select",
-      class: "manage-button",
-    },
-    async () => {
-      selectCarEvent(car.id);
-    },
-  );
-  const removeButton = createButton(
-    {
-      name: "Remove",
-      class: "manage-button",
-    },
-    async () => await deleteCarEvent(car.id),
-  );
-  const nameSpan = document.createElement("span");
-  nameSpan.textContent = car.name;
-  nameSpan.className = "car-name";
+  private renderManageLine(): HTMLElement {
+    const manageLine = document.createElement("div");
+    manageLine.className = "manage-line";
 
-  manageLine.append(selectButton, removeButton, nameSpan);
-  return manageLine;
-}
+    const selectButton = createButton(
+      {
+        name: "Select",
+        class: "manage-button",
+      },
+      async () => {
+        selectCarEvent(this.car.id);
+      },
+    );
+    const removeButton = createButton(
+      {
+        name: "Remove",
+        class: "manage-button",
+      },
+      async () => {
+        await deleteCarEvent(this.car.id);
+        this.page.state.refreshTotalCount();
+        this.page.refresh();
+      },
+    );
+    const nameSpan = document.createElement("span");
+    nameSpan.textContent = this.car.name;
+    nameSpan.className = "car-name";
 
-function renderTrackLine(car: Car): HTMLElement {
-  const carLine = document.createElement("div");
-  carLine.className = "track-line";
+    manageLine.append(selectButton, removeButton, nameSpan);
+    return manageLine;
+  }
 
-  const startButton = createButton({
-    name: "Start",
-    class: "car-controls",
-  });
-  const stopButton = createButton({
-    name: "Stop",
-    class: "car-controls",
-    disabled: true,
-  });
-  const carPicture = document.createElement("div");
-  carPicture.className = "car-picture";
+  private renderTrackLine(): HTMLElement {
+    const carLine = document.createElement("div");
+    carLine.className = "track-line";
 
-  const parser = new DOMParser();
-  const carDocument = parser.parseFromString(carSvg, "image/svg+xml");
+    const startButton = createButton({
+      name: "Start",
+      class: "car-controls",
+    });
+    const stopButton = createButton({
+      name: "Stop",
+      class: "car-controls",
+      disabled: true,
+    });
+    const carPicture = document.createElement("div");
+    carPicture.className = "car-picture";
 
-  const carElement = carDocument.documentElement;
-  carElement.setAttribute("width", "100%");
-  carElement.setAttribute("height", "auto");
-  carElement.setAttribute("fill", car.color || DEFAULT_CAR_COLOR);
-  carElement.setAttribute("title", "Car");
-  carElement.classList.add("car-image");
+    const parser = new DOMParser();
+    const carDocument = parser.parseFromString(carSvg, "image/svg+xml");
 
-  carPicture.append(carElement);
+    const carElement = carDocument.documentElement;
+    carElement.setAttribute("width", "100%");
+    carElement.setAttribute("height", "auto");
+    carElement.setAttribute("fill", this.car.color || DEFAULT_CAR_COLOR);
+    carElement.setAttribute("title", "Car");
+    carElement.classList.add("car-image");
 
-  const flag = document.createElement("div");
-  flag.className = "finish-flag";
-  const svgDocument = parser.parseFromString(flagSvg, "image/svg+xml");
-  const svgElement = svgDocument.documentElement;
-  svgElement.setAttribute("fill", "var(--flag-color)");
-  svgElement.setAttribute("stroke", "var(--flag-color)");
-  carElement.setAttribute("title", "Flag");
-  flag.append(svgElement);
+    carPicture.append(carElement);
 
-  carLine.append(startButton, stopButton, carPicture, flag);
-  return carLine;
-}
+    const flag = document.createElement("div");
+    flag.className = "finish-flag";
+    const svgDocument = parser.parseFromString(flagSvg, "image/svg+xml");
+    const svgElement = svgDocument.documentElement;
+    svgElement.setAttribute("fill", "var(--flag-color)");
+    svgElement.setAttribute("stroke", "var(--flag-color)");
+    carElement.setAttribute("title", "Flag");
+    flag.append(svgElement);
 
-export default function renderCar(car: Car) {
-  const carBlock = document.createElement("div");
-  carBlock.className = "car-block";
-  carBlock.id = String(car.id);
-  carBlock.append(renderManageLine(car));
-  carBlock.append(renderTrackLine(car));
-  return carBlock;
+    carLine.append(startButton, stopButton, carPicture, flag);
+    return carLine;
+  }
 }
