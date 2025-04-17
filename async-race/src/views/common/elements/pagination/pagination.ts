@@ -1,7 +1,6 @@
-import "./pagination.css";
 import createButton from "../button/button";
+import "./pagination.css";
 import { PaginationState } from "../../../../types/interfaces";
-import refreshPaginationState from "../../../../controllers/pagination-controllers";
 
 export default function createPagination(
   state: PaginationState,
@@ -34,7 +33,6 @@ export default function createPagination(
   });
 
   pagination.append(previousButton, nextButton);
-  refreshPaginationState(state, pagination);
 
   return pagination;
 }

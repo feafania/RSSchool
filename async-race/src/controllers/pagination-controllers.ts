@@ -1,26 +1,43 @@
 import { PaginationState } from "../types/interfaces";
+import createPagination from "../views/common/elements/pagination/pagination";
 
-export default function refreshPaginationState(
-  state: PaginationState,
-  pagination: HTMLElement,
-): void {
-  const previousButton = pagination.querySelector(
-    ".pagination-button:nth-of-type(1)",
-  ) as HTMLButtonElement | null;
-  const nextButton = pagination.querySelector(
-    ".pagination-button:nth-of-type(2)",
-  ) as HTMLButtonElement | null;
-
-  if (previousButton) {
-    previousButton.disabled = state.currentPage === 1;
+export default class PaginationController {
+  public element: HTMLElement;
+  constructor(
+    public state: PaginationState,
+    public onPageChange: () => void,
+  ) {
+    this.element = document.createElement("div");
+    this.state = state;
+    this.create();
   }
 
-  if (nextButton) {
-    nextButton.disabled = state.currentPage === state.totalPages();
+  refresh(): void {
+    const previousButton = this.element.querySelector(
+      ".pagination-button:nth-of-type(1)",
+    ) as HTMLButtonElement | null;
+    const nextButton = this.element.querySelector(
+      ".pagination-button:nth-of-type(2)",
+    ) as HTMLButtonElement | null;
+
+    if (previousButton) {
+      previousButton.disabled = this.state.currentPage === 1;
+    }
+
+    if (nextButton) {
+      nextButton.disabled = this.state.currentPage === this.state.totalPages();
+    }
+
+    const pageTitle = this.element.querySelector(".page-title");
+    if (pageTitle) {
+      pageTitle.textContent = `Page #${this.state.currentPage}`;
+    }
   }
 
-  const pageTitle = pagination.querySelector(".page-title");
-  if (pageTitle) {
-    pageTitle.textContent = `Page #${state.currentPage}`;
+  create() {
+    const newElement = createPagination(this.state, this.onPageChange);
+    this.element.replaceWith(newElement);
+    this.element = newElement;
+    this.refresh();
   }
 }
