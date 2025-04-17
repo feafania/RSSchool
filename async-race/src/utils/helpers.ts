@@ -1,7 +1,8 @@
 import { CarBrand, CarModel } from "../types/enum";
 import { StorageItem } from "../types/interfaces";
-import { HTTP_STATUSES } from "../constants";
 import showModalMessage from "../views/common/elements/modal-window/modal-window";
+import { HttpStatusType } from "../types/types";
+import { API_SETTINGS } from "../constants";
 
 export const getRandomColor = (): string =>
   `#${Math.floor(Math.random() * 16_777_215)
@@ -32,22 +33,32 @@ export function deleteState(key: string) {
   return sessionStorage.removeItem(key);
 }
 
-export function notFoundErrorHandler(
+export function saveLocalState(object: StorageItem) {
+  localStorage.setItem(object.key, object.value);
+}
+
+export function getLocalState(key: string): string | null {
+  return localStorage.getItem(key);
+}
+
+export function ErrorHandler(
   error: Response | Error,
-  notFoundMessage: string,
+  errorCode: HttpStatusType,
+  errorMessage: string,
   otherMessage: string,
 ): void {
-  if (
-    error instanceof Response &&
-    error.status === HTTP_STATUSES.NOT_FOUND_404
-  ) {
-    showModalMessage(notFoundMessage);
+  if (error instanceof Response && error.status === errorCode) {
+    showModalMessage(errorMessage);
   } else if (
     error instanceof Error &&
-    error.message.includes(HTTP_STATUSES.NOT_FOUND_404.toString())
+    error.message.includes(errorCode.toString())
   ) {
-    showModalMessage(notFoundMessage);
+    showModalMessage(errorMessage);
   } else {
     showModalMessage(otherMessage);
   }
+}
+
+export function buildUrl(path: string): string {
+  return `${API_SETTINGS.BASE_URL}:${API_SETTINGS.PORT}/${path}`;
 }
