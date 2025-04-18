@@ -204,7 +204,8 @@ export default class Car {
       console.error(`Missing elements inside car block for car ID ${this.id}`);
       return;
     }
-    startButton.disabled = this.position.progress === 1 || this.isRunning;
+    startButton.disabled = this.position.progress !== 0 || this.isRunning;
+    // startButton.disabled = this.position.progress === 1 || this.isRunning;
     stopButton.disabled = this.position.progress === 0 && !this.isRunning;
   }
 
