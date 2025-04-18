@@ -15,6 +15,9 @@ export default async function updateCar(
     },
     body: JSON.stringify(carParameters),
   });
+  if (response.status === 404) {
+    throw new Error("404");
+  }
   if (!response.ok) throw new Error("Failed to update car");
 
   return response.json();

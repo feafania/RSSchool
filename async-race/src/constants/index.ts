@@ -4,6 +4,7 @@ export const TOTAL_RANDOM_CARS = 100;
 
 export const DEFAULT_CAR_COLOR = "#ffff00";
 export const VIEW_CONTAINER_NAME = "view-container";
+export const CAR_START_POSITION = 80;
 
 export const API_SETTINGS = {
   PORT: 3000,

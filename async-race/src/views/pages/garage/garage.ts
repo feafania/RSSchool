@@ -3,7 +3,8 @@ import GarageState from "../../../entities/garage";
 import loadAndRenderCars from "../../../controllers/garage-controller";
 import Car from "../../../entities/car";
 import PageController from "../../../controllers/page-controller";
-import CarControls from "../../common/elements/car-controls/car-controls";
+
+import CarControls from "./car-controls/car-controls";
 
 export default async function renderGarageView(): Promise<HTMLElement> {
   const page = new PageController<Car>(GarageState, loadAndRenderCars);

@@ -18,7 +18,7 @@ export default class CarElement {
     this.car = car;
     this.element = document.createElement("div");
     this.element.className = "car-block";
-    this.element.id = String(car.id);
+    this.element.dataset.id = car.id.toString();
     this.element.append(this.renderManageLine());
     this.element.append(this.renderTrackLine());
   }
@@ -59,15 +59,21 @@ export default class CarElement {
     const carLine = document.createElement("div");
     carLine.className = "track-line";
 
-    const startButton = createButton({
-      name: "Start",
-      class: "car-controls",
-    });
-    const stopButton = createButton({
-      name: "Stop",
-      class: "car-controls",
-      disabled: true,
-    });
+    const startButton = createButton(
+      {
+        name: "Start",
+        class: "car-controls car-start",
+      },
+      async () => this.car.run(),
+    );
+    const stopButton = createButton(
+      {
+        name: "Back",
+        class: "car-controls car-stop",
+        disabled: true,
+      },
+      async () => this.car.stop(),
+    );
     const carPicture = CarElement.renderCarPicture(this.car.color);
     const flag = CarElement.renderTrackFlag();
 

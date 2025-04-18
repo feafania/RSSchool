@@ -1,6 +1,5 @@
 import { CarBrand, CarModel } from "../types/enum";
 import { StorageItem } from "../types/interfaces";
-import showModalMessage from "../views/common/elements/modal-window/modal-window";
 import { HttpStatusType } from "../types/types";
 import { API_SETTINGS } from "../constants";
 
@@ -46,16 +45,17 @@ export function ErrorHandler(
   errorCode: HttpStatusType,
   errorMessage: string,
   otherMessage: string,
+  handler: (message: string) => void,
 ): void {
   if (error instanceof Response && error.status === errorCode) {
-    showModalMessage(errorMessage);
+    handler(errorMessage);
   } else if (
     error instanceof Error &&
     error.message.includes(errorCode.toString())
   ) {
-    showModalMessage(errorMessage);
+    handler(errorMessage);
   } else {
-    showModalMessage(otherMessage);
+    handler(otherMessage);
   }
 }
 

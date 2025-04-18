@@ -1,4 +1,7 @@
 import { GetWinnersOptions, WinnerType } from "../../types/interfaces";
+import { WinnerUpdateModel } from "../../types/types";
+import { ErrorHandler } from "../../utils/helpers";
+import { HTTP_STATUSES } from "../../constants";
 
 import createWinner from "./routes/create-winner-controller";
 import deleteWinner from "./routes/delete-winner-controller";
@@ -42,14 +45,20 @@ const WinnersRouter = {
     try {
       return await createWinner(winner);
     } catch (error) {
-      console.error("Error creating winner:", error);
+      ErrorHandler(
+        error as Response | Error,
+        HTTP_STATUSES.INTERNAL_SERVER_ERROR_500,
+        `Insert failed, duplicate id ${winner.id}.`,
+        `Failed to create winner for car ${winner.id}:`,
+        console.error,
+      );
       return undefined;
     }
   },
 
   async updateWinner(
     id: number,
-    winnerParameters: WinnerType,
+    winnerParameters: WinnerUpdateModel,
   ): Promise<WinnerType | undefined> {
     try {
       return await updateWinner(id, winnerParameters);

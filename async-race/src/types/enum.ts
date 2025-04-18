@@ -55,3 +55,9 @@ export enum WinnerSortFields {
   time = "time",
   wins = "wins",
 }
+
+export enum EngineStatus {
+  start = "started",
+  stop = "stopped",
+  drive = "drive",
+}

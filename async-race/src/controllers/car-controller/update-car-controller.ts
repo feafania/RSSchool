@@ -30,6 +30,7 @@ async function updateCar(
       HTTP_STATUSES.NOT_FOUND_404,
       `Car with ID ${id} not found.`,
       "An error occurred when updating the car. Try again.",
+      showModalMessage,
     );
     return false;
   }
@@ -53,7 +54,6 @@ export default async function updateCarEvent() {
 
   const name = brandInput?.value.trim();
   const color = colorInput?.value || DEFAULT_CAR_COLOR;
-
   if (!name) {
     showModalMessage("Fill in the field with the name of the Car!");
     brandInput?.focus();
@@ -62,10 +62,13 @@ export default async function updateCarEvent() {
   if (await updateCar(id, { name, color })) {
     if (brandInput) {
       brandInput.value = "";
-      saveState({ key: id, value: "" });
+      saveState({ key: brandInput.id, value: brandInput.value });
       brandInput.disabled = true;
     }
     if (colorInput) {
+      colorInput.value = DEFAULT_CAR_COLOR;
+      colorInput.style.backgroundColor = colorInput.value;
+      saveState({ key: colorInput.id, value: colorInput.value });
       colorInput.disabled = true;
     }
     if (button) {

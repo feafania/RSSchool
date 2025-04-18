@@ -1,14 +1,15 @@
 import "./car-controls.css";
 import { ControlConfig } from "../../../../types/interfaces";
-import createInput from "../input/input";
-import createColorPicker from "../color-selection/color-selection";
-import createButton from "../button/button";
+import createInput from "../../../common/elements/input/input";
+import createColorPicker from "../../../common/elements/color-selection/color-selection";
+import createButton from "../../../common/elements/button/button";
 import createCarEvent from "../../../../controllers/car-controller/create-car-controller";
 import { getState } from "../../../../utils/helpers";
 import updateCarEvent from "../../../../controllers/car-controller/update-car-controller";
-import GenerateCarsEvent from "../../../../controllers/car-controller/generate-cars-controller";
+import generateCarsEvent from "../../../../controllers/car-controller/generate-cars-controller";
 import PageController from "../../../../controllers/page-controller";
 import Car from "../../../../entities/car";
+import resetCarsEvent from "../../../../controllers/car-controller/reset-cars-controller";
 
 export default class CarControls {
   public element: HTMLElement;
@@ -113,11 +114,16 @@ export default class CarControls {
       id: "race-button",
       class: "car-controls-button",
     });
-    const resetButton = createButton({
-      name: "Reset",
-      id: "reset-button",
-      class: "car-controls-button",
-    });
+    const resetButton = createButton(
+      {
+        name: "Reset",
+        id: "reset-button",
+        class: "car-controls-button",
+      },
+      async () => {
+        await resetCarsEvent();
+      },
+    );
     const generateButton = createButton(
       {
         name: "Generate cars",
@@ -125,7 +131,7 @@ export default class CarControls {
         class: "car-controls-button",
       },
       async () => {
-        await GenerateCarsEvent();
+        await generateCarsEvent();
         this.refresh();
       },
     );
