@@ -5,6 +5,7 @@ import { PageType, SortOrder, WinnerSortFields } from "../types/enum";
 import { getLocalState } from "../utils/helpers";
 
 import BaseState from "./base-state";
+import Car from "./car";
 
 class WinnersStateClass extends BaseState<WinnerType> {
   public sortOrder: SortOrder;
@@ -28,6 +29,23 @@ class WinnersStateClass extends BaseState<WinnerType> {
   async refreshTotalCount() {
     this.totalCount = await WinnersRouter.getTotalCount();
     this.limitCurrentPage();
+  }
+
+  async updateWinner(car: Car, time: number) {
+    const foundWinner = await WinnersRouter.getWinner(car.id);
+    const updatedWinner = await (foundWinner
+      ? WinnersRouter.updateWinner(car.id, {
+          wins: foundWinner.wins + 1,
+          time: Math.min(foundWinner.time, time),
+        })
+      : WinnersRouter.createWinner({
+          id: car.id,
+          wins: 1,
+          time,
+        }));
+    if (updatedWinner) {
+      this.items.set(car.id, updatedWinner);
+    }
   }
 }
 

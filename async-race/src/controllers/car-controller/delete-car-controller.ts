@@ -4,6 +4,7 @@ import { ErrorHandler } from "../../utils/helpers";
 import { HTTP_STATUSES } from "../../constants";
 import showModalMessage from "../../views/common/elements/modal-window/modal-window";
 import WinnersRouter from "../../api/winners/router";
+import WinnersState from "../../entities/winners";
 
 export default async function deleteCarEvent(id: number) {
   try {
@@ -20,5 +21,6 @@ export default async function deleteCarEvent(id: number) {
     );
   }
 
-  WinnersRouter.deleteWinner(id);
+  await WinnersRouter.deleteWinner(id);
+  WinnersState.items.delete(id);
 }

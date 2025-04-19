@@ -2,8 +2,8 @@ import WinnersRouter from "../api/winners/router";
 import WinnersState from "../entities/winners";
 import { WinnerType } from "../types/interfaces";
 import { WINNERS_PER_PAGE } from "../constants";
-import WinnersTable from "../views/common/elements/winners-table/winners-table";
-import { WinnerElement } from "../views/common/elements/winners-table/winner";
+import WinnersTable from "../views/pages/winners/winners-table/winners-table";
+import { WinnerElement } from "../views/pages/winners/winners-table/winner";
 
 import PageController from "./page-controller";
 

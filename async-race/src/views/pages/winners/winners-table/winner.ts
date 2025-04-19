@@ -1,6 +1,6 @@
 import { CarType, WinnerRow } from "../../../../types/interfaces";
 import CarRouter from "../../../../api/car/router";
-import CarElement from "../car/car";
+import CarElement from "../../../common/elements/car/car";
 
 export class WinnerElement {
   public winner: WinnerRow;

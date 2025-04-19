@@ -13,7 +13,7 @@ export default async function renderWinnersView(): Promise<HTMLElement> {
   page.element.append(page.title.element);
   page.element.append(page.pagination.element);
   page.element.append(page.list);
-  page.refresh();
+  await page.refresh();
 
   return page.element;
 }
