@@ -13,6 +13,9 @@ export default async function createWinner(
     },
     body: JSON.stringify(winner),
   });
+  if (response.status === 500) {
+    throw new Error("500");
+  }
   if (!response.ok) throw new Error("Failed to create winner");
 
   return response.json();

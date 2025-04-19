@@ -15,6 +15,9 @@ export default async function updateWinner(
     },
     body: JSON.stringify(winnerParameters),
   });
+  if (response.status === 404) {
+    throw new Error("404");
+  }
   if (!response.ok) throw new Error("Failed to update winner");
 
   return response.json();
