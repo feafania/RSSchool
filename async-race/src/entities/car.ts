@@ -1,14 +1,15 @@
 import { CarType } from "../types/interfaces";
 import EngineRouter from "../api/engine/router";
 import { CAR_START_POSITION } from "../constants";
+import { disableButton } from "../utils/helpers";
 
 export default class Car {
   private _data: CarType;
-  public isRunning: boolean;
-  public position: { progress: number; duration: number };
+  private isRunning: boolean;
   private animationStartTime: number | undefined = undefined;
-  public finishTime: number | undefined = undefined;
   private startTime: number | undefined = undefined;
+  public position: { progress: number; duration: number };
+  public finishTime: number | undefined = undefined;
 
   constructor(data: CarType) {
     this._data = data;
@@ -44,16 +45,12 @@ export default class Car {
     if (this.isRunning) {
       return;
     }
+    this.isRunning = true;
+    await this.startEngine();
+
     const carBlock = document.querySelector<HTMLElement>(
       `.car-block[data-id="${this.id}"]`,
     );
-    await this.startEngine();
-
-    const resetButton =
-      document.querySelector<HTMLButtonElement>("#reset-button");
-    if (resetButton) {
-      resetButton.disabled = false;
-    }
 
     if (!carBlock) {
       console.error(`Car block with ID ${this.id} not found.`);
@@ -68,13 +65,14 @@ export default class Car {
     // const finishX = flag.offsetLeft + flag.offsetWidth;
     // carPicture.style.transition = `left ${time}ms linear`;carPicture.style.left = `${finishX}px`;
     carPicture.style.transition = "none";
-
-    const animationPromise = this.animateCar(carPicture, flag);
+    this.animateCar(carPicture, flag); // const animationPromise =
     await this.driveEngine(carBlock);
-    await animationPromise;
+    // await animationPromise;
   }
 
   async stop() {
+    this.isRunning = false;
+
     await this.stopEngine();
 
     const carBlock = document.querySelector<HTMLElement>(
@@ -118,7 +116,6 @@ export default class Car {
   private async startEngine() {
     const engineData = await EngineRouter.start(this.id);
     if (!engineData) return;
-    this.isRunning = true;
     const { velocity, distance } = engineData;
     this.position.duration = distance / velocity;
     this.position.progress = 0;
@@ -132,7 +129,6 @@ export default class Car {
     await EngineRouter.stop(this.id);
     this.position.progress = 0;
     this.position.duration = 0;
-    this.isRunning = false;
     this.finishTime = undefined;
     this.startTime = undefined;
   }
@@ -150,11 +146,9 @@ export default class Car {
   private animateCar(element: HTMLElement, flag: HTMLElement): Promise<void> {
     const startX =
       Number.parseFloat(getComputedStyle(element).left) || CAR_START_POSITION;
-
     const startTime =
       this.animationStartTime ??
       performance.now() - this.position.progress * this.position.duration;
-
     this.animationStartTime = startTime;
 
     return new Promise((resolve) => {
@@ -174,10 +168,10 @@ export default class Car {
           this.isRunning = false;
           this.animationStartTime = undefined;
 
-          const startRace = this.startTime || startTime;
+          // const startRace = this.startTime || startTime;
 
           this.finishTime =
-            this.position.progress === 1 ? currentTime - startRace : undefined;
+            this.position.progress === 1 ? currentTime - startTime : undefined; // - startRace
 
           this.setButtonState(element);
           resolve();
@@ -201,16 +195,17 @@ export default class Car {
   }
 
   setButtonState(carBlock: HTMLElement) {
-    const startButton = carBlock.querySelector<HTMLButtonElement>(".car-start");
-    const stopButton = carBlock.querySelector<HTMLButtonElement>(".car-stop");
-
-    if (!startButton || !stopButton) {
-      console.error(`Missing elements inside car block for car ID ${this.id}`);
-      return;
-    }
-    startButton.disabled = this.position.progress !== 0 || this.isRunning;
+    disableButton(
+      carBlock,
+      ".car-start",
+      this.position.progress !== 0 || this.isRunning,
+    );
+    disableButton(
+      carBlock,
+      ".car-stop",
+      this.position.progress === 0 && !this.isRunning,
+    );
     // startButton.disabled = this.position.progress === 1 || this.isRunning;
-    stopButton.disabled = this.position.progress === 0 && !this.isRunning;
   }
 
   private selectCarElements(carBlock: HTMLElement): {

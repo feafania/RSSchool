@@ -4,12 +4,15 @@ import createInput from "../../../common/elements/input/input";
 import createColorPicker from "../../../common/elements/color-selection/color-selection";
 import createButton from "../../../common/elements/button/button";
 import createCarEvent from "../../../../controllers/car-controller/create-car-controller";
-import { getState } from "../../../../utils/helpers";
+import { disableButton, getState } from "../../../../utils/helpers";
 import updateCarEvent from "../../../../controllers/car-controller/update-car-controller";
 import generateCarsEvent from "../../../../controllers/car-controller/generate-cars-controller";
 import PageController from "../../../../controllers/page-controller";
 import Car from "../../../../entities/car";
 import resetCarsEvent from "../../../../controllers/car-controller/reset-cars-controller";
+import raceCarsEvent from "../../../../controllers/car-controller/race-cars-controller";
+import GarageState from "../../../../entities/garage";
+import RaceState from "../../../../entities/race";
 
 export default class CarControls {
   public element: HTMLElement;
@@ -109,11 +112,16 @@ export default class CarControls {
   private renderTrackControls() {
     const trackControls = document.createElement("div");
     trackControls.className = "track-controls";
-    const raceButton = createButton({
-      name: "Race",
-      id: "race-button",
-      class: "car-controls-button",
-    });
+    const raceButton = createButton(
+      {
+        name: "Race",
+        id: "race-button",
+        class: "car-controls-button",
+      },
+      async () => {
+        await raceCarsEvent();
+      },
+    );
     const resetButton = createButton(
       {
         name: "Reset",
@@ -141,5 +149,20 @@ export default class CarControls {
 
   async refresh() {
     await this.pageController.refresh();
+  }
+
+  static checkState() {
+    const carBlocks = document.querySelectorAll<HTMLElement>(".car-block");
+    let startState = true;
+    for (const carBlock of carBlocks) {
+      const id = Number(carBlock.dataset.id);
+      const car = GarageState.getItem(id);
+      if (!car) continue;
+      if (car.position.progress > 0) {
+        startState = false;
+      }
+    }
+    disableButton(document, "#race-button", !startState || RaceState.isRacing);
+    disableButton(document, "#reset-button", startState);
   }
 }

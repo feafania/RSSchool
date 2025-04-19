@@ -62,3 +62,14 @@ export function ErrorHandler(
 export function buildUrl(path: string): string {
   return `${API_SETTINGS.BASE_URL}:${API_SETTINGS.PORT}/${path}`;
 }
+
+export function disableButton(
+  element: ParentNode,
+  selector: string,
+  isDisabled: boolean,
+) {
+  const buttons = element.querySelectorAll<HTMLButtonElement>(selector);
+  for (const button of buttons) {
+    button.disabled = isDisabled;
+  }
+}

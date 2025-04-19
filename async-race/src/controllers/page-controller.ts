@@ -36,7 +36,7 @@ export default class PageController<T> {
       this.loadEvent(this);
       await this.pagination.refresh();
     } catch (error) {
-      console.error("Failed to render new cars:", error);
+      console.error("Failed to render page:", error);
     }
   }
 

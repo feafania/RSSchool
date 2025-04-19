@@ -2,6 +2,7 @@ import GarageState from "../entities/garage";
 import CarRouter from "../api/car/router";
 import Car from "../entities/car";
 import CarElement from "../views/common/elements/car/car";
+import CarControls from "../views/pages/garage/car-controls/car-controls";
 
 import PageController from "./page-controller";
 
@@ -21,7 +22,8 @@ export default async function loadAndRenderCars(
       GarageState.addItem(car);
       const carElement = new CarElement(page, car);
       page.list.append(carElement.element);
-      car.setStartState();
+      await car.setStartState();
+      CarControls.checkState();
     }
   } catch (error) {
     page.list.textContent = "Failed to load cars";

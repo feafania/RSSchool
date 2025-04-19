@@ -1,6 +1,6 @@
 import { PaginationState } from "../types/interfaces";
 import createPagination from "../views/common/elements/pagination/pagination";
-import { saveState } from "../utils/helpers";
+import { disableButton, saveState } from "../utils/helpers";
 
 export default class PaginationController {
   public element: HTMLElement;
@@ -14,20 +14,16 @@ export default class PaginationController {
   }
 
   async refresh() {
-    const previousButton = this.element.querySelector(
+    disableButton(
+      this.element,
       ".pagination-button:nth-of-type(1)",
-    ) as HTMLButtonElement | null;
-    const nextButton = this.element.querySelector(
+      this.state.currentPage === 1,
+    );
+    disableButton(
+      this.element,
       ".pagination-button:nth-of-type(2)",
-    ) as HTMLButtonElement | null;
-
-    if (previousButton) {
-      previousButton.disabled = this.state.currentPage === 1;
-    }
-
-    if (nextButton) {
-      nextButton.disabled = this.state.currentPage === this.state.totalPages();
-    }
+      this.state.currentPage === this.state.totalPages(),
+    );
 
     const pageTitle = this.element.querySelector(".page-title");
     if (pageTitle) {

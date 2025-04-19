@@ -7,6 +7,7 @@ import Car from "../../../../entities/car";
 import deleteCarEvent from "../../../../controllers/car-controller/delete-car-controller";
 import selectCarEvent from "../../../../controllers/car-controller/select-car-controller";
 import PageController from "../../../../controllers/page-controller";
+import { disableButton } from "../../../../utils/helpers";
 
 export default class CarElement {
   public element: HTMLElement;
@@ -39,7 +40,7 @@ export default class CarElement {
     const removeButton = createButton(
       {
         name: "Remove",
-        class: "manage-button",
+        class: "manage-button remove-button",
       },
       async () => {
         await deleteCarEvent(this.car.id);
@@ -64,7 +65,11 @@ export default class CarElement {
         name: "Start",
         class: "car-controls car-start",
       },
-      async () => this.car.run(),
+      async () => {
+        disableButton(document, "#race-button", true);
+        disableButton(document, "#reset-button", false);
+        this.car.run();
+      },
     );
     const stopButton = createButton(
       {
