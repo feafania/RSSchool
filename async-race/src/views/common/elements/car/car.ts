@@ -8,6 +8,7 @@ import deleteCarEvent from "../../../../controllers/car-controller/delete-car-co
 import selectCarEvent from "../../../../controllers/car-controller/select-car-controller";
 import PageController from "../../../../controllers/page-controller";
 import { disableButton } from "../../../../utils/helpers";
+import CarControls from "../../../pages/garage/car-controls/car-controls";
 
 export default class CarElement {
   public element: HTMLElement;
@@ -68,7 +69,7 @@ export default class CarElement {
       async () => {
         disableButton(document, "#race-button", true);
         disableButton(document, "#reset-button", false);
-        this.car.run();
+        await this.car.run();
       },
     );
     const stopButton = createButton(
@@ -77,7 +78,10 @@ export default class CarElement {
         class: "car-controls car-stop",
         disabled: true,
       },
-      async () => this.car.stop(),
+      async () => {
+        await this.car.stop();
+        CarControls.checkState();
+      },
     );
     const carPicture = CarElement.renderCarPicture(this.car.color);
     const flag = CarElement.renderTrackFlag();
