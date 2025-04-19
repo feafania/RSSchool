@@ -21,10 +21,10 @@ export default class PageController<T> {
     this.list.className = `${state.page}-list`;
     this.loadEvent = loadEvent;
     this.onPageChange = () => {
-      this.title.refresh();
+      (async () => await this.title.refresh())();
       this.list.innerHTML = "";
       (async () => await this.loadList())();
-      this.pagination.create();
+      (async () => await this.pagination.create())();
     };
     this.pagination = new PaginationController(state, this.onPageChange);
     this.pagination.create();
@@ -32,15 +32,15 @@ export default class PageController<T> {
 
   async refresh() {
     try {
-      this.title.refresh();
+      await this.title.refresh();
       this.loadEvent(this);
-      this.pagination.refresh();
+      await this.pagination.refresh();
     } catch (error) {
       console.error("Failed to render new cars:", error);
     }
   }
 
   async loadList() {
-    await this.loadEvent(this);
+    this.loadEvent(this);
   }
 }

@@ -64,7 +64,7 @@ export default class CarControls {
       },
       async () => {
         await createCarEvent();
-        this.refresh();
+        await this.refresh();
       },
     );
   }
@@ -92,7 +92,7 @@ export default class CarControls {
       },
       async () => {
         await updateCarEvent();
-        this.refresh();
+        await this.refresh();
       },
     );
   }
@@ -132,14 +132,14 @@ export default class CarControls {
       },
       async () => {
         await generateCarsEvent();
-        this.refresh();
+        await this.refresh();
       },
     );
     trackControls.append(raceButton, resetButton, generateButton);
     return trackControls;
   }
 
-  refresh() {
-    this.pageController.refresh();
+  async refresh() {
+    await this.pageController.refresh();
   }
 }

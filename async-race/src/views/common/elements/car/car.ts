@@ -33,7 +33,7 @@ export default class CarElement {
         class: "manage-button",
       },
       async () => {
-        selectCarEvent(this.car.id);
+        await selectCarEvent(this.car.id);
       },
     );
     const removeButton = createButton(
@@ -44,7 +44,7 @@ export default class CarElement {
       async () => {
         await deleteCarEvent(this.car.id);
         await this.page.state.refreshTotalCount();
-        this.page.refresh();
+        await this.page.refresh();
       },
     );
     const nameSpan = document.createElement("span");

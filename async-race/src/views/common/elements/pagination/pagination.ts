@@ -24,12 +24,12 @@ export default function createPagination(
 
   previousButton.addEventListener("click", async () => {
     state.decrementPage();
-    await onPageChange();
+    onPageChange();
   });
 
   nextButton.addEventListener("click", async () => {
     state.incrementPage();
-    await onPageChange();
+    onPageChange();
   });
 
   pagination.append(previousButton, nextButton);

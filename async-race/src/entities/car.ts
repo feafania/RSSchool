@@ -36,6 +36,10 @@ export default class Car {
     this._data.color = value;
   }
 
+  update(data: CarType) {
+    this._data = data;
+  }
+
   async run() {
     if (this.isRunning) {
       return;
@@ -89,7 +93,7 @@ export default class Car {
     this.setButtonState(carBlock);
   }
 
-  setStartState() {
+  async setStartState() {
     const carBlock = document.querySelector<HTMLElement>(
       `.car-block[data-id="${this.id}"]`,
     );

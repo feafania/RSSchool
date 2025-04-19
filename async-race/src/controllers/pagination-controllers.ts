@@ -10,10 +10,10 @@ export default class PaginationController {
   ) {
     this.element = document.createElement("div");
     this.state = state;
-    this.create();
+    (async () => await this.create())();
   }
 
-  refresh(): void {
+  async refresh() {
     const previousButton = this.element.querySelector(
       ".pagination-button:nth-of-type(1)",
     ) as HTMLButtonElement | null;
@@ -39,10 +39,10 @@ export default class PaginationController {
     }
   }
 
-  create() {
+  async create() {
     const newElement = createPagination(this.state, this.onPageChange);
     this.element.replaceWith(newElement);
     this.element = newElement;
-    this.refresh();
+    await this.refresh();
   }
 }

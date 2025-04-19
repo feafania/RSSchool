@@ -14,7 +14,7 @@ export default async function renderGarageView(): Promise<HTMLElement> {
   const carControls = new CarControls(page);
   page.element.append(carControls.element);
   page.element.append(page.list);
-  page.refresh();
+  await page.refresh();
 
   return page.element;
 }

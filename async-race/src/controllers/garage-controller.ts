@@ -13,7 +13,11 @@ export default async function loadAndRenderCars(
     page.list.innerHTML = "";
 
     for (const carItem of cars) {
-      const car = GarageState.getItem(carItem.id) || new Car(carItem);
+      const foundCar = GarageState.getItem(carItem.id);
+      if (foundCar) {
+        foundCar.update(carItem);
+      }
+      const car = foundCar || new Car(carItem);
       GarageState.addItem(car);
       const carElement = new CarElement(page, car);
       page.list.append(carElement.element);
