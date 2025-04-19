@@ -1,37 +1,37 @@
 :root {
-    --main-color: #ffffff;
-    --main-color-hover: #c8c6c6;
-    --main-background: #282c34;
-    --car-control-background: #d0d4f3;
-    --car-control-background-hover: #adb4ed;
-    --manage-car-background: #a3c7dc;
-    --manage-car-background-hover: #6faacf;
-    --control-car-background: #c5f1e4;
-    --control-car-background-hover: #7fe8d8;
-    --modal-button: #4e5155;
-    --modal-button-hover: #7e8385;
-    --disables-color: #656464;
-    --disables-background: #dad8d8;
-    --car-name-color: #efdaa1;
-    --border-color: #444444;
-    --flag-color: #bd1e1e;
-    --table-border: #cccccc;
+  --main-color: #ffffff;
+  --main-color-hover: #c8c6c6;
+  --main-background: #282c34;
+  --car-control-background: #d0d4f3;
+  --car-control-background-hover: #adb4ed;
+  --manage-car-background: #a3c7dc;
+  --manage-car-background-hover: #6faacf;
+  --control-car-background: #c5f1e4;
+  --control-car-background-hover: #7fe8d8;
+  --modal-button: #4e5155;
+  --modal-button-hover: #7e8385;
+  --disables-color: #656464;
+  --disables-background: #dad8d8;
+  --car-name-color: #efdaa1;
+  --border-color: #444444;
+  --flag-color: #bd1e1e;
+  --table-border: #cccccc;
 }
 
 body {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    background: var(--main-background);
-    margin: 0 auto;
-    max-width: 1440px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background: var(--main-background);
+  margin: 0 auto;
+  max-width: 1440px;
 }
 
 #root {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    font-family: sans-serif;
-    min-height: 100vh;
-    padding: 0.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: sans-serif;
+  min-height: 100vh;
+  padding: 0.5rem;
 }

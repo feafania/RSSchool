@@ -1,12 +1,12 @@
 .pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 0.5rem;
-    gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0.5rem;
+  gap: 1rem;
 }
 
 .page-title {
-    margin-right: 2rem;
+  margin-right: 2rem;
 }

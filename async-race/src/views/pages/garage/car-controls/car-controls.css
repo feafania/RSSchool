@@ -1,64 +1,63 @@
 .controls-wrapper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 
 .car-settings {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: flex-start;
-    gap: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .car-create,
 .car-update,
 .track-controls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: flex-start;
-    gap: 1rem;
-    flex-wrap: wrap;
-    padding: 0.5rem 0.5rem 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .car-create > *,
 .car-update > *,
 .track-controls > * {
-    font-size: 0.8rem;
-    height: fit-content;
-    padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  height: fit-content;
+  padding: 0.3rem 0.5rem;
 }
 
 .car-controls-button {
-    height: fit-content;
-    background-color: var(--car-control-background);
-    color: var(--main-background);
-    border-radius: 5px;
+  height: fit-content;
+  background-color: var(--car-control-background);
+  color: var(--main-background);
+  border-radius: 5px;
 }
 
 .car-controls-button:hover {
-    background-color: var(--car-control-background-hover);
+  background-color: var(--car-control-background-hover);
 }
 
 #generate-button {
-    background-color: var(--manage-car-background);
+  background-color: var(--manage-car-background);
 }
 
 #generate-button:hover {
-    background-color: var(--manage-car-background-hover);
+  background-color: var(--manage-car-background-hover);
 }
 
 @media (max-width: 600px) {
-    .car-settings {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-items: flex-start;
-        gap: 0;
-    }
+  .car-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+    gap: 0;
+  }
 }
-

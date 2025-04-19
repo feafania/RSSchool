@@ -4,7 +4,7 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier";
 import pluginImport from "eslint-plugin-import";
-import unicorn from 'eslint-plugin-unicorn';
+import unicorn from "eslint-plugin-unicorn";
 
 export default defineConfig([
   {
@@ -61,7 +61,10 @@ export default defineConfig([
       "unicorn/consistent-function-scoping": "error",
       "unicorn/no-array-reduce": "error",
       "unicorn/prefer-array-some": "error",
-      "max-lines-per-function": ["error", { max: 40, skipBlankLines: false, skipComments: false }]
+      "max-lines-per-function": [
+        "error",
+        { max: 40, skipBlankLines: false, skipComments: false },
+      ],
     },
   },
   js.configs.recommended,

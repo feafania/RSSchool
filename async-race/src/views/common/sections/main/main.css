@@ -1,16 +1,16 @@
 .main {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .view-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: var(--main-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--main-background);
 }
 
 @media (max-width: 600px) {
-    .main {
-        padding: 0.3rem;
-    }
+  .main {
+    padding: 0.3rem;
+  }
 }

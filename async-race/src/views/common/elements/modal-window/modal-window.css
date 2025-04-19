@@ -1,38 +1,38 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal {
-    background-color: var(--main-color);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 60%;
-    text-align: center;
+  background-color: var(--main-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 60%;
+  text-align: center;
 }
 
 .modal-text {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
 .modal-button {
-    background-color: var(--modal-button);
-    padding: 0.5rem 1rem;
-    border: var(--main-background);
-    color: var(--main-color);
-    cursor: pointer;
+  background-color: var(--modal-button);
+  padding: 0.5rem 1rem;
+  border: var(--main-background);
+  color: var(--main-color);
+  cursor: pointer;
 }
 
 .modal-button:hover {
-    background-color: var(--modal-button-hover);
+  background-color: var(--modal-button-hover);
 }
