@@ -1,0 +1,13 @@
+.banner {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    color: red;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 1000;
+}
