@@ -21,10 +21,16 @@ export default function initApp(root: HTMLElement) {
 
 function onNavigation(page: string): void {
   saveState({ key: "lastPage", value: page });
-  if (page === PageType.Garage) {
-    renderGarageView().then((element) => checkView(page, element));
-  } else if (page === PageType.Winners) {
-    renderWinnersView().then((element) => checkView(page, element));
+
+  const renderMap = {
+    [PageType.Garage]: renderGarageView,
+    [PageType.Winners]: renderWinnersView,
+  };
+
+  const renderFunction = renderMap[page as keyof typeof renderMap];
+
+  if (renderFunction) {
+    renderFunction().then((element) => checkView(page, element));
   }
 }
 
