@@ -32,6 +32,7 @@ export default async function loadAndRenderCars(
 
     await Promise.allSettled(renderPromises);
     CarControls.checkState();
+    await page.pagination.refresh();
   } catch (error) {
     page.list.textContent = "Failed to load cars";
     console.error("Error loading cars:", error);
