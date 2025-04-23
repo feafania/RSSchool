@@ -17,12 +17,12 @@ export default class PaginationController {
     disableButton(
       this.element,
       ".pagination-button:nth-of-type(1)",
-      this.state.currentPage === 1,
+      this.state.currentPage <= 1,
     );
     disableButton(
       this.element,
       ".pagination-button:nth-of-type(2)",
-      this.state.currentPage === this.state.totalPages(),
+      this.state.currentPage >= this.state.totalPages(),
     );
 
     const pageTitle = this.element.querySelector(".page-title");
