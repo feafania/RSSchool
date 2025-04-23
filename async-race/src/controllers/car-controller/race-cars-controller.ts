@@ -13,6 +13,7 @@ export default async function raceCarsEvent() {
   const paginationState = savePaginationState();
   disableButton(document, ".remove-button", true);
   disableButton(document, ".pagination-button", true);
+  disableButton(document, ".winners-view-button", true);
 
   RaceState.race();
   const carBlocks = document.querySelectorAll<HTMLElement>(".car-block");
@@ -41,6 +42,7 @@ export default async function raceCarsEvent() {
     RaceState.stop();
     CarControls.checkState();
     disableButton(document, ".remove-button", false);
+    disableButton(document, ".winners-view-button", false);
     restorePaginationState(paginationState);
   }
 }

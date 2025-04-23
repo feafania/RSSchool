@@ -17,11 +17,17 @@ export default function createHeader(
   controls.className = "page-controls";
 
   const garageButton = createButton(
-    { name: capitalizeString(PageType.Garage), class: "view-button" },
+    {
+      name: capitalizeString(PageType.Garage),
+      class: "view-button garage-view-button",
+    },
     () => onNavigate(PageType.Garage),
   );
   const winnersButton = createButton(
-    { name: capitalizeString(PageType.Winners), class: "view-button" },
+    {
+      name: capitalizeString(PageType.Winners),
+      class: "view-button winners-view-button",
+    },
     () => onNavigate(PageType.Winners),
   );
   controls.append(garageButton, winnersButton);
