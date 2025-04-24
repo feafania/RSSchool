@@ -9,7 +9,6 @@ import { PageType } from "./types/enum";
 import { VIEW_CONTAINER_NAME } from "./constants";
 
 export default function initApp(root: HTMLElement) {
-  root.id = "root";
   root.innerHTML = "";
   const lastPage = getState("lastPage") || PageType.Garage;
   const header = createHeader(onNavigation);
