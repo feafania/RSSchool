@@ -8,22 +8,23 @@ import WinnersState from "../../entities/winners";
 import CarControls from "../../views/pages/garage/car-controls/car-controls";
 
 export default async function raceCarsEvent() {
-  // await resetCarsEvent();
-  disableButton(document, "#race-button", true);
   const paginationState = savePaginationState();
-  disableButton(document, ".remove-button", true);
-  disableButton(document, ".pagination-button", true);
-  disableButton(document, ".winners-view-button", true);
-
+  const buttons = [
+    "#race-button",
+    ".remove-button",
+    ".pagination-button",
+    ".view-button",
+  ];
+  for (const button of buttons) {
+    disableButton(document, button, true);
+  }
   RaceState.race();
   const carBlocks = document.querySelectorAll<HTMLElement>(".car-block");
   const racePromises: Promise<RaceResponse | undefined>[] = [];
-
   for (const carBlock of carBlocks) {
     const id = Number(carBlock.dataset.id);
     const car = GarageState.getItem(id);
     if (!car) continue;
-
     const racePromise = getCarPromise(car);
     racePromises.push(racePromise);
   }
@@ -42,7 +43,7 @@ export default async function raceCarsEvent() {
     RaceState.stop();
     CarControls.checkState();
     disableButton(document, ".remove-button", false);
-    disableButton(document, ".winners-view-button", false);
+    disableButton(document, ".view-button", false);
     restorePaginationState(paginationState);
   }
 }
