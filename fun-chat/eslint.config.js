@@ -1,6 +1,7 @@
 import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import pluginPrettier from "eslint-plugin-prettier";
 import pluginImport from "eslint-plugin-import";
 import unicorn from "eslint-plugin-unicorn";
 
@@ -15,6 +16,7 @@ export default defineConfig([
       },
     },
     plugins: {
+      prettier: pluginPrettier,
       import: pluginImport,
       "@typescript-eslint": tseslint.plugin,
       unicorn: unicorn,
@@ -63,7 +65,9 @@ export default defineConfig([
         { max: 40, skipBlankLines: false, skipComments: false },
       ],
     },
-    noInlineConfig: true,
+    linterOptions: {
+      noInlineConfig: true,
+    },
   },
   ...tseslint.configs.recommended,
   {
