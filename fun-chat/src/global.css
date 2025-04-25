@@ -2,11 +2,11 @@
   --main-color: #282c34;
   --main-color-hover: #7e8385;
   --main-background: #ffffff;
-  --modal-button: #c8c6c6;
-  --modal-button-hover: #7e8385;
   --disables-color: #656464;
   --disables-background: #dad8d8;
   --border-color: black;
+  --form-background: #f9f9f9;
+  --validation-message: red;
 }
 
 html, body {
@@ -15,13 +15,13 @@ html, body {
   padding: 0;
 }
 
-/** {*/
-/*  border: 1px solid red;*/
-/*}*/
+* {
+  box-sizing: border-box;
+  /*border: 1px solid red;*/
+}
 
 
 body {
-  box-sizing: border-box;
   scroll-behavior: smooth;
   margin: 0 auto;
   padding: 1rem;

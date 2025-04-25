@@ -50,7 +50,7 @@
   opacity: 0.8;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 380px) {
   .header {
     font-size: 0.9rem;
     padding: 0.8rem 0;

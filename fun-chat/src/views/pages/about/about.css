@@ -23,7 +23,7 @@
   color: var(--main-color-hover);
 }
 
-@media (max-width: 320px) {
+@media (max-width: 380px) {
   .about-view {
     gap: 1rem;
   }
