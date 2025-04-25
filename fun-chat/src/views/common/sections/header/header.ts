@@ -2,7 +2,7 @@ import "./header.css";
 import { getState } from "../../../../utils/helpers";
 import { NavType } from "../../../../types/interfaces";
 import { PageType } from "../../../../types/enum";
-import PageRouter from "../../../../api/page-router";
+import PageRouter from "../../../../router/page-router";
 
 const Header = {
   nav: document.createElement("nav") as HTMLElement,

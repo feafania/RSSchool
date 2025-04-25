@@ -1,6 +1,6 @@
 import { PageType } from "../types/enum";
 import { getState } from "../utils/helpers";
-import { renderLoginView } from "../views/pages/login/login";
+import LoginView from "../views/pages/login/login";
 import { renderMainView } from "../views/pages/chat/chat";
 import { renderAboutView } from "../views/pages/about/about";
 import Header from "../views/common/sections/header/header";
@@ -33,7 +33,7 @@ const PageRouter = {
     this.currentPage = page;
 
     const renderMap = {
-      [PageType.login]: renderLoginView,
+      [PageType.login]: LoginView.render.bind(LoginView),
       [PageType.chat]: renderMainView,
       [PageType.about]: renderAboutView,
     };
