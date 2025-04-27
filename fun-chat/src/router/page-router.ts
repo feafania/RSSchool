@@ -1,9 +1,9 @@
 import { PageType } from "../types/enum";
-import { getState } from "../utils/helpers";
 import LoginView from "../views/pages/login/login";
 import { renderMainView } from "../views/pages/chat/chat";
 import { renderAboutView } from "../views/pages/about/about";
 import Header from "../views/common/sections/header/header";
+import authStore from "../store/auth-store";
 
 const PageRouter = {
   currentPage: PageType.login as PageType,
@@ -23,7 +23,7 @@ const PageRouter = {
     if (path === PageType.about) {
       page = path;
     } else {
-      const isLoggedIn = getState("token");
+      const isLoggedIn = Boolean(authStore.user);
       page = isLoggedIn ? PageType.chat : PageType.login;
       if (!path || path !== page) {
         history.replaceState(undefined, "", `/${page}`);
@@ -49,7 +49,7 @@ const PageRouter = {
       }
     }
 
-    Header.replaceNav();
+    Header.renderNav();
   },
 
   navigateTo(path: PageType) {
