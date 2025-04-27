@@ -45,7 +45,7 @@ export default function createInput(object: ControlConfig): HTMLDivElement {
 function validateInput(wrapper: HTMLElement, validation: ValidationType) {
   const input = wrapper.querySelector("input");
   const value = input?.value || "";
-  const isValid = validation.expression.test(value);
+  const isValid = validation.pattern.test(value);
   let errorDiv = wrapper.querySelector("#input-error");
 
   if (isValid) {
