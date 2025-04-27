@@ -1,8 +1,9 @@
 import "./header.css";
-import { getState } from "../../../../utils/helpers";
 import { NavType } from "../../../../types/interfaces";
 import { PageType } from "../../../../types/enum";
 import PageRouter from "../../../../router/page-router";
+import authStore from "../../../../store/auth-store";
+import { wsClient } from "../../../../api/websocket";
 
 const Header = {
   nav: document.createElement("nav") as HTMLElement,
@@ -18,17 +19,9 @@ const Header = {
 
     this.nav.className = "nav";
     header.append(this.nav);
-    this.replaceNav();
+    this.renderNav();
 
     return header;
-  },
-
-  replaceNav() {
-    this.renderNav();
-    const nav = document.querySelector(".nav");
-    if (nav) {
-      nav.replaceWith(this.nav);
-    }
   },
 
   renderNav() {
@@ -52,11 +45,17 @@ const Header = {
       if (isCurrent) {
         link.classList.add("active");
       } else {
-        link.addEventListener("click", () => {
-          if (label === "Sign Out") {
-            localStorage.removeItem("token");
+        link.addEventListener("click", async () => {
+          if (label === "Sign Out" && authStore.user) {
+            try {
+              await wsClient.logout(authStore.user);
+            } catch (error) {
+              wsClient.close();
+              console.error("Logout error:", error);
+            }
+          } else {
+            PageRouter.navigateTo(page);
           }
-          PageRouter.navigateTo(page);
         });
       }
       li.append(link);
@@ -66,7 +65,7 @@ const Header = {
   },
 
   getNavLinks(): NavType[] {
-    const isLoggedIn = Boolean(getState("token"));
+    const isLoggedIn = Boolean(authStore.user);
 
     const links: NavType[] = [
       { label: "Sign In", page: PageType.login, visible: !isLoggedIn },
