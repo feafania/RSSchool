@@ -6,7 +6,7 @@ import { PageType } from "../../../types/enum";
 import usersStore from "../../../store/users-store";
 import showModalMessage from "../../../views/common/elements/modal-window/modal-window";
 
-export default function userLoginHandler(response: WSRequest<unknown>) {
+export default async function userLoginHandler(response: WSRequest<unknown>) {
   if (response.payload && isUserMessage(response)) {
     const user = response.payload.user as UserType;
 
@@ -17,6 +17,7 @@ export default function userLoginHandler(response: WSRequest<unknown>) {
       if (user.isLogined) {
         authStore.setUser(AuthStore.restoreUser());
         console.info("User successfully logged in:", user.login);
+        usersStore.clear();
         PageRouter.navigateTo(PageType.chat);
       } else {
         authStore.setUser(undefined);
