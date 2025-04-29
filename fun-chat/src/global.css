@@ -14,7 +14,11 @@
   --light-gray: #f0f0f0;
   --dark-gray: #333333;
   --chat-border-color: #cccccc;
-  --accent-color: #e74c3c;
+  --accent-color: #007bff;
+  --active-users: green;
+  --active-header-users: #04e604;
+  --inactive-users: orange;
+  --inactive-header-users: #fff200;
 }
 
 html {

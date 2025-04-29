@@ -1,14 +1,46 @@
 import "./chat-header.css";
+import { UserType } from "../../../../../types/interfaces";
 
-export default function renderChatHeader(): HTMLElement {
-  const chatHeader = document.createElement("div");
-  chatHeader.className = "chat-header";
+class ChatHeader {
+  private headerElement: HTMLDivElement;
+  private usernameSpan: HTMLSpanElement;
+  private userStatusSpan: HTMLSpanElement;
 
-  const chatUsername = document.createElement("span");
-  chatUsername.className = "chat-username";
-  chatUsername.textContent = "No user selected";
+  constructor() {
+    this.headerElement = document.createElement("div");
+    this.headerElement.className = "chat-header";
 
-  chatHeader.append(chatUsername);
+    this.usernameSpan = document.createElement("span");
+    this.usernameSpan.className = "chat-username";
+    this.usernameSpan.textContent = "No user selected";
 
-  return chatHeader;
+    this.userStatusSpan = document.createElement("span");
+    this.userStatusSpan.className = "chat-user-status";
+    this.userStatusSpan.textContent = "";
+
+    this.headerElement.append(this.usernameSpan, this.userStatusSpan);
+  }
+
+  render(): HTMLElement {
+    return this.headerElement;
+  }
+
+  setUsername(user: string | UserType) {
+    if (typeof user === "string") {
+      this.usernameSpan.textContent = user;
+      this.userStatusSpan.textContent = "";
+    } else {
+      this.usernameSpan.textContent = user.login;
+      this.userStatusSpan.textContent = user.isLogined ? "online" : "offline";
+
+      if (user.isLogined) {
+        this.userStatusSpan.classList.remove("inactive");
+      } else {
+        this.userStatusSpan.classList.add("inactive");
+      }
+    }
+  }
 }
+
+const chatHeader = new ChatHeader();
+export default chatHeader;
