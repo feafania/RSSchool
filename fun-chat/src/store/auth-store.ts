@@ -1,11 +1,13 @@
 import { UserType } from "../types/interfaces";
 import { deleteState, getState, saveState } from "../utils/helpers";
+import renderHeaderUsername from "../views/common/sections/header/header-user-update";
 
 export class AuthStore {
   private _user: UserType | undefined = undefined;
 
   constructor() {
     this._user = AuthStore.restoreUser();
+    renderHeaderUsername();
   }
 
   get user() {
@@ -21,6 +23,7 @@ export class AuthStore {
 
   setUser(user: UserType | undefined) {
     this._user = user;
+    renderHeaderUsername();
     if (user) {
       saveState({ key: "user", value: JSON.stringify(user) });
     } else {
