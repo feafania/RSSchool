@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 1.5rem 0;
   color: var(--main-color);
   font-size: 1rem;
@@ -13,6 +14,18 @@
   margin: 0;
   font-size: 2rem;
 }
+
+.header-username {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  max-width: 300px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: width 0.1s ease;
+}
+
 
 .nav-list {
   list-style: none;
@@ -50,14 +63,25 @@
   opacity: 0.8;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 600px) {
   .header {
-    font-size: 0.9rem;
-    padding: 0.8rem 0;
     flex-direction: column;
     gap: 1rem;
+    font-size: clamp(0.7rem, 2.6vw, 1rem);
+    padding: 0.8rem 0;
   }
-  .title {
-    font-size: 1.5rem;
+  .title,
+  .header-username {
+    font-size: clamp(0.9rem, 5.2vw, 2rem);
+  }
+  .header-username {
+    max-width: 260px;
   }
 }
+
+@media (max-width: 380px) {
+  .header-username {
+    max-width: 100%;
+  }
+}
+
