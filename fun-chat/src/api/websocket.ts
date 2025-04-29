@@ -236,6 +236,7 @@ export class WebSocketClient {
     this.send<null>({
       id: `active_${Date.now()}`,
       type: MessageVariant.USER_ACTIVE,
+      payload: JSON.parse("null"),
     });
   }
 
@@ -243,6 +244,7 @@ export class WebSocketClient {
     this.send<null>({
       id: `inactive_${Date.now()}`,
       type: MessageVariant.USER_INACTIVE,
+      payload: JSON.parse("null"),
     });
   }
 
