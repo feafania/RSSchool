@@ -5,8 +5,11 @@
   align-items: center;
   min-height: 5vh;
   width: 100%;
+  height: fit-content;
+  padding-top: 1rem;
   color: var(--main-color);
   text-align: center;
+  margin-top: 0.5rem;
 }
 
 .footer a {
@@ -57,10 +60,18 @@
 
 @media (max-width: 500px) {
   .footer {
-    padding: 0.2rem;
+    padding: 1rem 0.2rem 0;
   }
   .rsschool-logo {
     width: 60px;
+  }
+  .github-link,
+  .footer p {
+    display: inline-block;
+    font-size: clamp(0.7rem, 3.2vw, 1rem);
+  }
+  .github-logo {
+    margin-right: 3px;
   }
 }
 

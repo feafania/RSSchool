@@ -13,7 +13,7 @@ function createGithubLink() {
   githubElement.append(githubLink);
 
   const githubFa = document.createElement("i");
-  githubFa.className = "fab fa-github section-contacts-logo";
+  githubFa.className = "fab fa-github github-logo";
   const githubName = document.createElement("span");
   githubName.textContent = "feafania";
   githubLink.append(githubFa, githubName);
