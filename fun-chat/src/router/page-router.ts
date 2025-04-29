@@ -1,9 +1,9 @@
 import { PageType } from "../types/enum";
 import LoginView from "../views/pages/login/login";
-import { renderMainView } from "../views/pages/chat/chat";
 import { renderAboutView } from "../views/pages/about/about";
 import Header from "../views/common/sections/header/header";
 import authStore from "../store/auth-store";
+import ChatView from "../views/pages/chat/chat";
 
 const PageRouter = {
   currentPage: PageType.login as PageType,
@@ -34,7 +34,7 @@ const PageRouter = {
 
     const renderMap = {
       [PageType.login]: LoginView.render.bind(LoginView),
-      [PageType.chat]: renderMainView,
+      [PageType.chat]: ChatView.renderChat.bind(ChatView),
       [PageType.about]: renderAboutView,
     };
 
