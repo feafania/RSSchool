@@ -9,19 +9,16 @@ export default function createInput(object: ControlConfig): HTMLDivElement {
   wrapper.classList.add("input-wrapper");
 
   if (object.label) {
-    const label = document.createElement("label");
-    label.textContent = object.label;
-    if (object.id) {
-      label.id = `${object.id}-label`;
-      label.htmlFor = object.id;
-    }
-    label.className = object.class ? `${object.class}-label` : "";
-    label.classList.add("input-label");
+    const label = createLabel(object);
     wrapper.append(label);
   }
 
-  const input = document.createElement("input");
-  input.type = object.type || "text";
+  const input = document.createElement(
+    object.type === "textarea" ? "textarea" : "input",
+  );
+  if (input instanceof HTMLInputElement) {
+    input.type = object.type || "text";
+  }
   input.placeholder = object.placeholder || "";
   input.id = object.id ?? `input-${Date.now()}`;
   input.name = object.name || "";
@@ -40,6 +37,20 @@ export default function createInput(object: ControlConfig): HTMLDivElement {
 
   wrapper.append(input);
   return wrapper;
+}
+
+function createLabel(object: ControlConfig): HTMLLabelElement {
+  const label = document.createElement("label");
+  if (object.label) {
+    label.textContent = object.label;
+  }
+  if (object.id) {
+    label.id = `${object.id}-label`;
+    label.htmlFor = object.id;
+  }
+  label.className = object.class ? `${object.class}-label` : "";
+  label.classList.add("input-label");
+  return label;
 }
 
 function validateInput(wrapper: HTMLElement, validation: ValidationType) {
