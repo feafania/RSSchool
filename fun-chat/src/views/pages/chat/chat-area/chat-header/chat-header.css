@@ -1,0 +1,10 @@
+.chat-header {
+    padding: 1rem;
+    background-color: var(--chat-primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.chat-username {
+
+}
