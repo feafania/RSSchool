@@ -1,19 +1,19 @@
 import { UserType } from "../types/interfaces";
-import { UsersListener } from "../types/types";
+import { Listener } from "../types/types";
 
 class UsersStore {
   private _users: Map<string, UserType> = new Map();
-  private listeners: Set<UsersListener> = new Set();
+  private listeners: Set<Listener> = new Set();
 
   get users() {
     return [...this._users.values()];
   }
 
-  subscribe(listener: UsersListener) {
+  subscribe(listener: Listener) {
     this.listeners.add(listener);
   }
 
-  unsubscribe(listener: UsersListener) {
+  unsubscribe(listener: Listener) {
     this.listeners.delete(listener);
   }
 
