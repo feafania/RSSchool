@@ -9,6 +9,12 @@
   --validation-message: red;
   --spinner-border: #cccccc;
   --spinner-border-top: #100f0f;
+
+  --chat-primary-color: #333333;
+  --light-gray: #f0f0f0;
+  --dark-gray: #333333;
+  --chat-border-color: #cccccc;
+  --accent-color: #e74c3c;
 }
 
 html {
