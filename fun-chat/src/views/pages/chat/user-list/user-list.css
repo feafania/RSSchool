@@ -1,0 +1,106 @@
+.users-list {
+    flex: 1 1 35%;
+    max-width: 280px;
+    height: 100%;
+    background: var(--main-background);
+    border-right: 1px solid var(--chat-border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+}
+
+.users {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--chat-border-color);
+    cursor: pointer;
+}
+
+.user:hover {
+    background-color: var(--light-gray);
+}
+
+.user:active {
+    background-color: var(--dark-gray);
+    color: var(--main-background);
+}
+
+.user.selected {
+    background-color: var(--dark-gray);
+    color: white;
+}
+
+.user-text {
+    flex: 1;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.status-active {
+    background-color: var(--active-users);
+}
+
+.status-inactive {
+    background-color: var(--inactive-users);
+}
+
+.unread-count {
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+}
+
+@media (max-width: 600px) {
+    .users-list,
+    .user {
+        padding: 0.5rem;
+        font-size: clamp(0.7rem, 3.2vw, 1rem);
+    }
+
+    .users-list {
+        min-width: 35%;
+    }
+
+    .user-status {
+        width: 5px;
+        height: 5px;
+        margin-right: 0.25rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .users-list,
+    .user {
+        padding: 0.25rem;
+        font-size: 0.7rem;
+    }
+
+    .user-status {
+        width: 3px;
+        height: 3px;
+        margin-right: 2px;
+    }
+}
