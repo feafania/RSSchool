@@ -26,5 +26,6 @@
 @media (max-width: 380px) {
   .about-view {
     gap: 1rem;
+    font-size: clamp(0.8rem, 5.5vw, 1.3rem);
   }
 }
