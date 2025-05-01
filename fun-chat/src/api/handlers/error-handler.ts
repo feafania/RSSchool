@@ -29,7 +29,7 @@ const requestStructureErrors = new Set([
 export default function errorHandler(response: WSRequest<unknown>) {
   if (response.payload && isErrorMessage(response)) {
     const error = response.payload.error as string;
-    console.error("Error:", error);
+    // console.error("Error:", error);
 
     if (error === "another user is already authorized in this connection") {
       showModalMessage("Another user is already authorized.");
