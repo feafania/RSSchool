@@ -61,7 +61,9 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
   max-width: 200px;
   align-self: center;
 }
