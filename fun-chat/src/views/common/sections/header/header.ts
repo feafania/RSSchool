@@ -47,18 +47,7 @@ const Header = {
       if (isCurrent) {
         link.classList.add("active");
       } else {
-        link.addEventListener("click", async () => {
-          if (label === "Sign Out" && authStore.user) {
-            try {
-              await wsClient.logout(authStore.user);
-            } catch (error) {
-              wsClient.close();
-              console.error("Logout error:", error);
-            }
-          } else {
-            PageRouter.navigateTo(page);
-          }
-        });
+        link.addEventListener("click", this.onClick(label, page));
       }
       li.append(link);
       ul.append(li);
@@ -76,6 +65,21 @@ const Header = {
       { label: "Sign Out", page: PageType.login, visible: isLoggedIn },
     ];
     return links;
+  },
+
+  onClick(label: string, page: PageType) {
+    return async () => {
+      if (label === "Sign Out" && authStore.user) {
+        try {
+          await wsClient.logout(authStore.user);
+        } catch (error) {
+          wsClient.close();
+          console.error("Logout error:", error);
+        }
+      } else {
+        PageRouter.navigateTo(page);
+      }
+    };
   },
 };
 

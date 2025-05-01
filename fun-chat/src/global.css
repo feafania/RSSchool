@@ -20,6 +20,9 @@
   --active-header-users: #04e604;
   --inactive-users: orange;
   --inactive-header-users: #fff200;
+  --chat-notice: #999999;
+  --auth-message: #d8fbd8;
+  --chat-status: #777777;
 }
 
 html {
@@ -28,7 +31,9 @@ html {
   height: 100vh;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   border: none;
   margin: 0;

@@ -1,20 +1,17 @@
 import "./chat-area.css";
 
-import renderChatMessages from "./chat-messages/chat-messages";
 import chatInputArea from "./chat-input-area/chat-input-area";
 import chatHeader from "./chat-header/chat-header";
+import chatMessages from "./chat-messages/chat-messages";
 
 export default function renderChatArea(): HTMLElement {
   const chatAreaSection = document.createElement("section");
   chatAreaSection.className = "chat-area";
 
-  const chatMessages = renderChatMessages();
-  const chatInputAreaElement = chatInputArea.render();
-
   chatAreaSection.append(
     chatHeader.render(),
-    chatMessages,
-    chatInputAreaElement,
+    chatMessages.render(),
+    chatInputArea.render(),
   );
   return chatAreaSection;
 }

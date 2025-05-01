@@ -12,17 +12,22 @@ class ChatHeader {
 
     this.usernameSpan = document.createElement("span");
     this.usernameSpan.className = "chat-username";
-    this.usernameSpan.textContent = "No user selected";
 
     this.userStatusSpan = document.createElement("span");
     this.userStatusSpan.className = "chat-user-status";
-    this.userStatusSpan.textContent = "";
+
+    this.reset();
 
     this.headerElement.append(this.usernameSpan, this.userStatusSpan);
   }
 
   render(): HTMLElement {
     return this.headerElement;
+  }
+
+  reset() {
+    this.usernameSpan.textContent = "No user selected";
+    this.userStatusSpan.textContent = "";
   }
 
   setUsername(user: string | UserType) {

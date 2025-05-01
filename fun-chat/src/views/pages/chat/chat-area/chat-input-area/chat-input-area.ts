@@ -2,10 +2,14 @@ import "./chat-input-area.css";
 
 import createInput from "../../../../common/elements/input";
 import createButton from "../../../../common/elements/button";
+import userList from "../../user-list/user-list";
+import { wsClient } from "../../../../../api/websocket";
 
 class ChatInputArea {
-  private chatInput: HTMLTextAreaElement;
-  private sendButton: HTMLButtonElement;
+  public chatInput: HTMLTextAreaElement;
+  public sendButton: HTMLButtonElement;
+
+  private messageDrafts: Record<string, string> = {};
 
   constructor() {
     this.chatInput = document.createElement("textarea");
@@ -21,6 +25,25 @@ class ChatInputArea {
     return chatInputArea;
   }
 
+  public updateInputState() {
+    this.chatInput.disabled = !Boolean(userList.selectedUser);
+  }
+
+  public saveDraft(login: string) {
+    if (this.chatInput) {
+      this.messageDrafts[login] = this.chatInput.value;
+    }
+  }
+
+  public restoreDraft(login: string) {
+    this.chatInput.value = this.messageDrafts[login] || "";
+    this.chatInput.dispatchEvent(new Event("input"));
+  }
+
+  public clearDrafts() {
+    this.messageDrafts = {};
+  }
+
   private renderChatInput(): HTMLDivElement {
     const chatInputWrapper = createInput({
       type: "textarea",
@@ -33,32 +56,34 @@ class ChatInputArea {
       this.chatInput = chatInput;
     }
     this.updateInputHeight();
-    this.addInputListerners();
+    this.addInputListeners();
+    this.updateInputState();
     return chatInputWrapper;
   }
 
   private renderSendButton(): HTMLButtonElement {
-    const sendButton = createButton(
-      {
-        name: "Send",
-        class: "send-button",
-      },
-      // disabled: true,
-    );
-    this.addButtonListerners();
-    return sendButton;
+    this.sendButton = createButton({
+      name: "Send",
+      class: "send-button",
+      disabled: true,
+    });
+    this.addButtonListeners();
+    return this.sendButton;
   }
 
-  private addInputListerners(): void {
+  private addInputListeners(): void {
     if (this.chatInput) {
       this.chatInput.addEventListener("input", () => {
         this.updateInputHeight();
+        this.updateSendButtonState();
       });
       this.chatInput.addEventListener("change", () => {
         this.updateInputHeight();
+        this.updateSendButtonState();
       });
       this.chatInput.form?.addEventListener("reset", () => {
         this.updateInputHeight();
+        this.updateSendButtonState();
       });
       this.chatInput.addEventListener("keydown", (event) => {
         this.onKeyPress(event);
@@ -66,7 +91,7 @@ class ChatInputArea {
     }
   }
 
-  private addButtonListerners(): void {
+  private addButtonListeners(): void {
     if (this.sendButton) {
       this.sendButton.addEventListener("click", (event) => {
         event.preventDefault();
@@ -99,6 +124,14 @@ class ChatInputArea {
     } else {
       this.chatInput.style.height = `${maxHeight}px`;
       this.chatInput.style.overflowY = "scroll";
+    }
+  }
+
+  private updateSendButtonState() {
+    if (this.sendButton && this.chatInput) {
+      const hasText = this.chatInput.value.trim() !== "";
+      const hasRecipient = Boolean(userList.selectedUser);
+      this.sendButton.disabled = !(hasText && hasRecipient);
     }
   }
 
@@ -141,11 +174,18 @@ class ChatInputArea {
   }
 
   private sendMessage() {
-    if (this.chatInput?.value.trim()) {
-      console.log("Sending message:", this.chatInput.value);
+    const text = this.chatInput?.value.trim();
+    const recipient = userList.selectedUser;
+
+    if (text && recipient) {
+      wsClient.sendMessage(recipient, text);
+      console.log("Sending message:", text);
+
       this.chatInput.value = "";
       this.chatInput.dispatchEvent(new Event("input"));
     }
+
+    this.updateSendButtonState();
   }
 }
 

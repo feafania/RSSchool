@@ -18,10 +18,6 @@ class UsersStore {
     this.listeners.delete(listener);
   }
 
-  private notify() {
-    for (const listener of this.listeners) listener();
-  }
-
   async addUser(user: UserType) {
     this._users.set(user.login, user);
     await wsClient.getMessageHistory(user.login);
@@ -41,6 +37,10 @@ class UsersStore {
   clear() {
     this._users.clear();
     this.notify();
+  }
+
+  private notify() {
+    for (const listener of this.listeners) listener();
   }
 }
 

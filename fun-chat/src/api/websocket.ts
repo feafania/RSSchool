@@ -24,7 +24,9 @@ import userLogoutHandler from "./handlers/user-handlers/user-logout-handler";
 
 export class WebSocketClient {
   public socket: WebSocket | undefined;
+  public isLoggingOut: boolean;
   readonly messageHandlers: MessageHandlerType;
+
   private onOpenBound = this.onOpen.bind(this);
   private onMessageBound = this.onMessage.bind(this);
   private onErrorBound = this.onError.bind(this);
@@ -34,7 +36,6 @@ export class WebSocketClient {
   private maxReconnectAttempts: number = 100;
   private maxSendingAttempts: number = 20;
   private reconnectAttempts: number = 0;
-  public isLoggingOut: boolean;
 
   constructor() {
     this.socket = undefined;

@@ -20,10 +20,6 @@ class MessagesStore {
     this.listeners.delete(listener);
   }
 
-  private notify() {
-    for (const listener of this.listeners) listener();
-  }
-
   getUserMessages(login: string): ChatMessage[] {
     return this._messages.get(login) ?? [];
   }
@@ -134,8 +130,13 @@ class MessagesStore {
 
   countUnreadMessages(login: string): number {
     const messages = this.getUserMessages(login);
-    return messages.filter((m) => !m.status?.isReaded && !m.status?.isDeleted)
-      .length;
+    return messages.filter(
+      (m) => m.from === login && !m.status?.isReaded && !m.status?.isDeleted,
+    ).length;
+  }
+
+  private notify() {
+    for (const listener of this.listeners) listener();
   }
 }
 

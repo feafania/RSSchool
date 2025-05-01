@@ -4,6 +4,8 @@ import authStore from "../../../../store/auth-store";
 import { UserType } from "../../../../types/interfaces";
 import messagesStore from "../../../../store/messages-store";
 import chatHeader from "../chat-area/chat-header/chat-header";
+import chatMessages from "../chat-area/chat-messages/chat-messages";
+import chatInputArea from "../chat-area/chat-input-area/chat-input-area";
 
 import searchBar from "./search-button/search-button";
 
@@ -36,6 +38,11 @@ class UserList {
     usersListSection.append(searchBarElement, this.users);
     this.updateUsers();
     return usersListSection;
+  }
+
+  public reset() {
+    this.searchTerm = "";
+    this.selectedUser = undefined;
   }
 
   private updateUsers() {
@@ -87,7 +94,6 @@ class UserList {
     statusDot.classList.add(
       user.isLogined ? "status-active" : "status-inactive",
     );
-
     const loginText = document.createElement("span");
     loginText.textContent = user.login;
     loginText.className = "user-text";
@@ -109,11 +115,7 @@ class UserList {
     }
     li.append(countElement);
 
-    li.addEventListener("click", () => {
-      this.selectedUser = user.login;
-      chatHeader.setUsername(user);
-      this.updateUsers();
-    });
+    li.addEventListener("click", this.userListener(user));
     return li;
   }
 
@@ -125,7 +127,10 @@ class UserList {
       const login = item.dataset.login;
       if (!login) continue;
 
-      const count = messagesStore.countUnreadMessages(login);
+      const count =
+        login === this.selectedUser && !chatMessages.isUnreadLine
+          ? 0
+          : messagesStore.countUnreadMessages(login);
       let countElement = li.querySelector(".unread-count") as HTMLSpanElement;
 
       if (!countElement) {
@@ -141,6 +146,21 @@ class UserList {
         countElement.style.display = "none";
       }
     }
+  }
+
+  private userListener(user: UserType) {
+    return () => {
+      if (userList.selectedUser) {
+        chatInputArea.saveDraft(userList.selectedUser);
+      }
+
+      this.selectedUser = user.login;
+      chatHeader.setUsername(user);
+      chatMessages.render();
+      this.updateUsers();
+      chatInputArea.restoreDraft(user.login);
+      chatInputArea.updateInputState();
+    };
   }
 }
 
