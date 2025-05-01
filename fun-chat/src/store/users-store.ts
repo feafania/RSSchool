@@ -1,5 +1,6 @@
 import { UserType } from "../types/interfaces";
 import { Listener } from "../types/types";
+import { wsClient } from "../api/websocket";
 
 class UsersStore {
   private _users: Map<string, UserType> = new Map();
@@ -21,13 +22,19 @@ class UsersStore {
     for (const listener of this.listeners) listener();
   }
 
-  addUser(user: UserType) {
+  async addUser(user: UserType) {
     this._users.set(user.login, user);
+    await wsClient.getMessageHistory(user.login);
     this.notify();
   }
 
-  setUsers(users: UserType[]) {
-    for (const user of users) this._users.set(user.login, user);
+  async setUsers(users: UserType[]) {
+    const historyPromises = users.map(async (user) => {
+      this._users.set(user.login, user);
+      await wsClient.getMessageHistory(user.login);
+    });
+
+    await Promise.all(historyPromises);
     this.notify();
   }
 

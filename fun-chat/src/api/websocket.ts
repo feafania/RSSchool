@@ -210,6 +210,8 @@ export class WebSocketClient {
         payload: { user: { login, password } },
       });
       saveState({ key: "user", value: JSON.stringify(user) });
+      wsClient.getActiveUsers();
+      wsClient.getInactiveUsers();
     } else {
       showModalMessage("Missing login or password.");
       console.error("Login or password is missing.");
@@ -249,6 +251,9 @@ export class WebSocketClient {
   }
 
   async sendMessage(to: string, text: string) {
+    if (to === authStore.user?.login) {
+      return;
+    }
     this.send({
       id: `msg_send_${Date.now()}`,
       type: MessageVariant.MSG_SEND,
@@ -257,6 +262,9 @@ export class WebSocketClient {
   }
 
   async getMessageHistory(login: string) {
+    if (login === authStore.user?.login) {
+      return;
+    }
     this.send({
       id: `msg_history_${Date.now()}`,
       type: MessageVariant.MSG_FROM_USER,
