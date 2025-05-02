@@ -106,6 +106,7 @@ class UserList {
     if (user.login === this.selectedUser) {
       li.classList.add("selected");
       countElement.classList.add("selected");
+      chatHeader.setUsername(user);
     }
     if (unreadMessages > 0) {
       countElement.textContent = String(unreadMessages);
@@ -115,7 +116,7 @@ class UserList {
     }
     li.append(countElement);
 
-    li.addEventListener("click", this.userListener(user));
+    li.addEventListener("click", this.updateChatMessages(user));
     return li;
   }
 
@@ -148,18 +149,21 @@ class UserList {
     }
   }
 
-  private userListener(user: UserType) {
+  private updateChatMessages(user: UserType) {
     return () => {
       if (userList.selectedUser) {
         chatInputArea.saveDraft(userList.selectedUser);
       }
-
       this.selectedUser = user.login;
       chatHeader.setUsername(user);
       chatMessages.render();
       this.updateUsers();
       chatInputArea.restoreDraft(user.login);
       chatInputArea.updateInputState();
+
+      if (chatInputArea.chatInput) {
+        chatInputArea.chatInput.focus();
+      }
     };
   }
 }
