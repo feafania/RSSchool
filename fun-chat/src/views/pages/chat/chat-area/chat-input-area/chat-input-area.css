@@ -10,6 +10,8 @@
   width: 100%;
   flex-grow: 1;
   padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
 }
 
 .chat-input {
@@ -24,6 +26,11 @@
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.2;
+}
+
+.chat-input:disabled {
+  border-color: var(--chat-border-color);
+  cursor: not-allowed;
 }
 
 .send-button {
@@ -42,6 +49,19 @@
   cursor: not-allowed;
 }
 
+.cancel-edit-button {
+  border: none;
+  background: transparent;
+  color: var(--cancel-batton);
+  font-size: 1rem;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.cancel-edit-button:hover {
+  color: red;
+}
+
 @media (max-width: 600px) {
   .chat-input-area {
     padding: 0.5rem;
@@ -50,10 +70,11 @@
   .chat-input-wrapper,
   .chat-input {
     padding: 0.25rem;
-    font-size: clamp(0.7rem, 3.2vw, 1rem);
+    font-size: clamp(0.5rem, 3.2vw, 1rem);
   }
 
-  .send-button {
+  .send-button,
+  .cancel-edit-button {
     margin-left: 0.25rem;
     font-size: clamp(0.7rem, 3.2vw, 1rem);
   }

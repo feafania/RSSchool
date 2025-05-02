@@ -2,6 +2,7 @@ import { WSRequest } from "../../types/interfaces";
 import { isErrorMessage } from "../../utils/ws-guards";
 import { wsClient } from "../websocket";
 import showModalMessage from "../../views/common/elements/modal-window/modal-window";
+import authStore from "../../store/auth-store";
 
 const incorrectLoginErrors = new Set([
   "incorrect password",
@@ -35,7 +36,7 @@ export default function errorHandler(response: WSRequest<unknown>) {
       showModalMessage("Another user is already authorized.");
       wsClient.close();
     } else if (error === "a user with this login is already authorized") {
-      if (wsClient.isLoggingOut) {
+      if (wsClient.isLoggingOut || !authStore.user) {
         showModalMessage("A user with this login is already connected.");
         wsClient.close();
       }

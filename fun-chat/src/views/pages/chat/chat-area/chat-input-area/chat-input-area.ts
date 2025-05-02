@@ -4,12 +4,15 @@ import createInput from "../../../../common/elements/input";
 import createButton from "../../../../common/elements/button";
 import userList from "../../user-list/user-list";
 import { wsClient } from "../../../../../api/websocket";
+import chatMessages from "../chat-messages/chat-messages";
 
 class ChatInputArea {
   public chatInput: HTMLTextAreaElement;
   public sendButton: HTMLButtonElement;
+  public editingMessageIds: Record<string, string | undefined> = {};
 
   private messageDrafts: Record<string, string> = {};
+  private isEditing: boolean = false;
 
   constructor() {
     this.chatInput = document.createElement("textarea");
@@ -22,6 +25,7 @@ class ChatInputArea {
     const chatInputWrapper = this.renderChatInput();
     const sendButton = this.renderSendButton();
     chatInputArea.append(chatInputWrapper, sendButton);
+    this.restoreDraft(userList.selectedUser);
     return chatInputArea;
   }
 
@@ -29,19 +33,45 @@ class ChatInputArea {
     this.chatInput.disabled = !Boolean(userList.selectedUser);
   }
 
-  public saveDraft(login: string) {
-    if (this.chatInput) {
+  public saveDraft(login: string | undefined) {
+    if (this.chatInput && login) {
       this.messageDrafts[login] = this.chatInput.value;
     }
   }
 
-  public restoreDraft(login: string) {
-    this.chatInput.value = this.messageDrafts[login] || "";
-    this.chatInput.dispatchEvent(new Event("input"));
+  public restoreDraft(login: string | undefined) {
+    if (this.chatInput && login) {
+      this.isEditing = !!(login && this.editingMessageIds[login]);
+      this.chatInput.value = this.messageDrafts[login] ?? "";
+      this.chatInput.dispatchEvent(new Event("input"));
+    }
   }
 
   public clearDrafts() {
     this.messageDrafts = {};
+    this.editingMessageIds = {};
+    this.isEditing = false;
+  }
+
+  public editMessage(messageId: string, text: string) {
+    const login = userList.selectedUser;
+    if (!login) return;
+
+    this.chatInput.value = text;
+    this.editingMessageIds[login] = messageId;
+    this.isEditing = true;
+    this.chatInput.focus();
+    this.chatInput.dispatchEvent(new Event("input"));
+  }
+
+  public cancelEdit() {
+    const login = userList.selectedUser;
+    if (login && this.editingMessageIds[login]) {
+      chatMessages.resetEditState();
+      this.editingMessageIds[login] = undefined;
+      this.messageDrafts[login] = "";
+      this.restoreDraft(login);
+    }
   }
 
   private renderChatInput(): HTMLDivElement {
@@ -57,7 +87,10 @@ class ChatInputArea {
     }
     this.updateInputHeight();
     this.addInputListeners();
-    this.updateInputState();
+    const cancelButton = this.renderCancelButton();
+    if (cancelButton) {
+      chatInputWrapper.append(cancelButton);
+    }
     return chatInputWrapper;
   }
 
@@ -71,24 +104,43 @@ class ChatInputArea {
     return this.sendButton;
   }
 
+  private renderCancelButton(): HTMLButtonElement {
+    const cancelButton = createButton({
+      name: "✕",
+      class: "cancel-edit-button",
+    });
+    cancelButton.title = "Cancel editing";
+    cancelButton.style.display = this.isEditing ? "inline-block" : "none";
+    cancelButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      this.cancelEdit();
+    });
+    return cancelButton;
+  }
+
   private addInputListeners(): void {
     if (this.chatInput) {
       this.chatInput.addEventListener("input", () => {
-        this.updateInputHeight();
-        this.updateSendButtonState();
+        this.onInputChange();
       });
       this.chatInput.addEventListener("change", () => {
-        this.updateInputHeight();
-        this.updateSendButtonState();
+        this.onInputChange();
       });
       this.chatInput.form?.addEventListener("reset", () => {
+        this.clearDrafts();
         this.updateInputHeight();
-        this.updateSendButtonState();
+        this.updateButtonState();
       });
       this.chatInput.addEventListener("keydown", (event) => {
         this.onKeyPress(event);
       });
     }
+  }
+
+  private onInputChange() {
+    this.saveDraft(userList.selectedUser);
+    this.updateInputHeight();
+    this.updateButtonState();
   }
 
   private addButtonListeners(): void {
@@ -127,11 +179,19 @@ class ChatInputArea {
     }
   }
 
-  private updateSendButtonState() {
+  private updateButtonState() {
     if (this.sendButton && this.chatInput) {
       const hasText = this.chatInput.value.trim() !== "";
       const hasRecipient = Boolean(userList.selectedUser);
       this.sendButton.disabled = !(hasText && hasRecipient);
+      this.sendButton.textContent = this.isEditing ? "Save" : "Send";
+
+      const cancelButton = this.chatInput.parentElement?.querySelector(
+        ".cancel-edit-button",
+      ) as HTMLButtonElement;
+      if (cancelButton) {
+        cancelButton.style.display = this.isEditing ? "inline-block" : "none";
+      }
     }
   }
 
@@ -169,6 +229,8 @@ class ChatInputArea {
         if (this.sendButton) {
           this.sendButton.click();
         }
+      } else if (event.key === "Escape") {
+        this.cancelEdit();
       }
     }
   }
@@ -178,14 +240,22 @@ class ChatInputArea {
     const recipient = userList.selectedUser;
 
     if (text && recipient) {
-      wsClient.sendMessage(recipient, text);
-      console.log("Sending message:", text);
+      const editingId = this.editingMessageIds[recipient];
+      if (editingId) {
+        wsClient.editMessage(editingId, text);
+        console.log("Editing message:", editingId, text);
+        this.cancelEdit();
+        chatMessages.scrollPoint = editingId;
+      } else {
+        wsClient.sendMessage(recipient, text);
+        console.log("Sending message:", text);
+      }
 
       this.chatInput.value = "";
       this.chatInput.dispatchEvent(new Event("input"));
     }
 
-    this.updateSendButtonState();
+    this.updateButtonState();
   }
 }
 

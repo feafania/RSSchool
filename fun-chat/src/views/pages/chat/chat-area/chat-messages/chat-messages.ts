@@ -5,9 +5,13 @@ import authStore from "../../../../../store/auth-store";
 import userList from "../../user-list/user-list";
 import createButton from "../../../../common/elements/button";
 import { wsClient } from "../../../../../api/websocket";
+import chatInputArea from "../chat-input-area/chat-input-area";
+import showModalMessage from "../../../../common/elements/modal-window/modal-window";
 
 class ChatMessages {
   public isUnreadLine: boolean | undefined = undefined;
+  public scrollPoint: string | undefined = undefined;
+  private editingMessageId: string | undefined = undefined;
   private chatElement: HTMLElement;
   private unreadLine: HTMLElement | undefined = undefined;
   private messageContainer: HTMLElement;
@@ -60,6 +64,41 @@ class ChatMessages {
     this.lastRenderedUser = undefined;
   }
 
+  public startEditing(messageId: string) {
+    this.editingMessageId = messageId;
+    const messageElement = this.messageContainer.querySelector(
+      `[data-message-id="${messageId}"]`,
+    );
+
+    if (!messageElement) return;
+
+    const oldNotice = messageElement.querySelector(".editing-notice");
+    if (!oldNotice) {
+      const editingNotice = this.renderEditNotice();
+
+      const actions = messageElement.querySelector(".message-actions");
+      if (actions) {
+        actions.before(editingNotice);
+      } else {
+        messageElement.append(editingNotice);
+      }
+    }
+  }
+
+  public resetEditState() {
+    const messageElement = this.messageContainer.querySelector(
+      `[data-message-id="${this.editingMessageId}"]`,
+    );
+
+    if (!messageElement) return;
+
+    const oldNotice = messageElement.querySelector(".editing-notice");
+    if (oldNotice) {
+      oldNotice.remove();
+    }
+    this.editingMessageId = undefined;
+  }
+
   private renderMessages() {
     const selectedUser = userList.selectedUser;
     const userChanged = selectedUser !== this.lastRenderedUser;
@@ -75,8 +114,11 @@ class ChatMessages {
       );
       return;
     }
-
-    const messages = messagesStore.getUserMessages(selectedUser);
+    const messages = [...messagesStore.getUserMessages(selectedUser)].sort(
+      (a, b) =>
+        new Date(a.datetime ?? 0).getTime() -
+        new Date(b.datetime ?? 0).getTime(),
+    );
     if (messages.length === 0) {
       this.renderNotice(
         "chat-start",
@@ -85,7 +127,9 @@ class ChatMessages {
       return;
     }
     this.messageContainer.style.justifyContent = "flex-end";
+    this.messageContainer.style.height = "auto";
 
+    this.editingMessageId = chatInputArea.editingMessageIds[selectedUser];
     this.setUnreadLineOnMessages(messages);
     const lastMessage = messages.at(-1);
     const isFromSelectedUser = lastMessage?.from === selectedUser;
@@ -93,12 +137,7 @@ class ChatMessages {
     if (!isFromSelectedUser) {
       this.removeUnreadLine();
     }
-    if (this.isUnreadLine && isFromSelectedUser) {
-      this.scrollToUnreadLine();
-    } else {
-      this.scrollToBottom();
-      this.readMessages();
-    }
+    this.scrollToView(isFromSelectedUser);
   }
 
   private renderNotice(className: string, text: string) {
@@ -107,6 +146,7 @@ class ChatMessages {
     notice.textContent = text;
     this.messageContainer.append(notice);
     this.messageContainer.style.justifyContent = "center";
+    this.messageContainer.style.height = "100%";
   }
 
   private readMessages(): void {
@@ -134,10 +174,36 @@ class ChatMessages {
     }
   }
 
+  private scrollToView(isFromSelectedUser: boolean): void {
+    if (this.editingMessageId) {
+      this.scrollToMessage(this.editingMessageId);
+    } else if (this.scrollPoint) {
+      this.scrollToMessage(this.scrollPoint);
+      this.scrollPoint = undefined;
+    } else if (this.isUnreadLine && isFromSelectedUser) {
+      this.scrollToUnreadLine();
+    } else {
+      this.scrollToBottom();
+      this.readMessages();
+    }
+  }
+
+  private scrollToMessage(messageID: string): void {
+    const element = this.messageContainer.querySelector(
+      `[data-message-id="${messageID}"]`,
+    );
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "auto", block: "center" });
+      }, 0);
+    }
+  }
+
   private createMessageElement(message: ChatMessage): HTMLElement {
     const isCurrentUser = message.from === authStore.user?.login;
     const messageElement = document.createElement("div");
     messageElement.className = `chat-message ${isCurrentUser ? "from-me" : "from-user"}`;
+    messageElement.dataset.messageId = message.id;
 
     const messageHeader = this.createMessageHeader(message);
 
@@ -146,17 +212,14 @@ class ChatMessages {
     messageBody.textContent = message.text ?? "";
 
     messageElement.append(messageHeader, messageBody);
-
     if (isCurrentUser || message.status?.isEdited) {
       const statusLine = document.createElement("div");
       statusLine.className = "message-status-line";
-
       if (isCurrentUser) {
         const status = this.renderStatus(message);
         status.classList.add("status-left");
         statusLine.append(status);
       }
-
       if (message.status?.isEdited) {
         const editedMark = document.createElement("div");
         editedMark.className = "message-edited status-right";
@@ -164,7 +227,10 @@ class ChatMessages {
       }
       messageElement.append(statusLine);
     }
-
+    if (isCurrentUser && message.id === this.editingMessageId) {
+      const editingNotice = this.renderEditNotice();
+      messageElement.append(editingNotice);
+    }
     if (isCurrentUser) {
       messageElement.append(this.renderActions(message));
     }
@@ -178,7 +244,8 @@ class ChatMessages {
 
     const senderElement = document.createElement("span");
     senderElement.className = "message-sender";
-    senderElement.textContent = message.from ?? "";
+    senderElement.textContent =
+      message.from === authStore.user?.login ? "you" : (message.from ?? "");
 
     const datetimeElement = document.createElement("span");
     datetimeElement.className = "message-datetime";
@@ -189,6 +256,7 @@ class ChatMessages {
           year: "numeric",
           hour: "2-digit",
           minute: "2-digit",
+          second: "2-digit",
         })
       : "";
 
@@ -216,19 +284,31 @@ class ChatMessages {
     const editButton = createButton(
       { name: "✏️", class: "chat-button" },
       () => {
-        const newText = prompt("Edit your message:", message.text);
-        if (newText?.trim()) {
-          wsClient.editMessage(message.id, newText.trim());
-        }
+        this.resetEditState();
+        chatInputArea.editMessage(message.id, message.text!);
+        this.startEditing(message.id);
       },
     );
 
     const deleteButton = createButton(
       { name: "🗑️", class: "chat-button" },
       () => {
-        if (confirm("Delete this message?")) {
-          wsClient.deleteMessage(message.id);
-        }
+        showModalMessage("Delete this message?", {
+          showCancel: true,
+          onOk: () => {
+            const selectedUser = userList.selectedUser;
+            if (this.editingMessageId === message.id) {
+              this.resetEditState();
+            }
+            if (
+              selectedUser &&
+              chatInputArea.editingMessageIds[selectedUser] === message.id
+            ) {
+              chatInputArea.cancelEdit();
+            }
+            wsClient.deleteMessage(message.id);
+          },
+        });
       },
     );
 
@@ -236,6 +316,13 @@ class ChatMessages {
     actions.append(deleteButton);
 
     return actions;
+  }
+
+  private renderEditNotice() {
+    const editingNotice = document.createElement("div");
+    editingNotice.className = "editing-notice";
+    editingNotice.textContent = "You are editing this message";
+    return editingNotice;
   }
 
   private setUnreadLineOnMessages(messages: ChatMessage[]) {
