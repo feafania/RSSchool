@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 1.7rem;
-  padding: 2rem;
+  padding: 1.5rem;
   max-width: 500px;
   font-size: 1.3rem;
   text-align: center;
@@ -12,6 +12,28 @@
 
 .about-text {
   line-height: 1.8;
+}
+
+.tips-wrapper {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 0.8em;
+}
+
+.tip-title {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.tips-list {
+  padding-left: 20px;
+  margin: 8px 0;
+  list-style-type: disc; /* стандартны буліт */
+}
+
+.tips-list li {
+  margin-bottom: 4px;
+  text-align: left;
 }
 
 .about-link {
@@ -23,9 +45,9 @@
   color: var(--main-color-hover);
 }
 
-@media (max-width: 380px) {
+@media (max-width: 600px) {
   .about-view {
     gap: 1rem;
-    font-size: clamp(0.8rem, 5.5vw, 1.3rem);
+    font-size: clamp(0.8rem, 3.5vw, 1.3rem);
   }
 }

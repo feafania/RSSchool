@@ -21,7 +21,35 @@ export async function renderAboutView(): Promise<HTMLElement> {
   link.rel = "noopener noreferrer";
   link.textContent = "Author: Tatsiana Kashko";
 
-  container.append(h2, text, link);
+  // Увесь парадак
+  container.append(h2, text, renderTips(), link);
 
   return container;
+}
+
+function renderTips() {
+  const tipsWrapper = document.createElement("div");
+  tipsWrapper.className = "tips-wrapper";
+
+  const tipsTitle = document.createElement("p");
+  tipsTitle.className = "about-text tip-title";
+  tipsTitle.textContent = "Tips:";
+
+  const tipsList = document.createElement("ul");
+  tipsList.className = "tips-list";
+
+  const tips = [
+    "hover over a message to edit or delete it;",
+    "press Ctrl (Cmd) + Enter to add a new line;",
+    "press Esc to cancel editing.",
+  ];
+
+  for (const tip of tips) {
+    const li = document.createElement("li");
+    li.textContent = tip;
+    tipsList.append(li);
+  }
+
+  tipsWrapper.append(tipsTitle, tipsList);
+  return tipsWrapper;
 }
