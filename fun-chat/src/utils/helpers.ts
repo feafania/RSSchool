@@ -1,9 +1,5 @@
 import { StorageItem } from "../types/interfaces";
 
-export function capitalizeString(string: string): string {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 export function saveState(object: StorageItem) {
   sessionStorage.setItem(object.key, object.value);
 }
@@ -26,15 +22,4 @@ export function getLocalState(key: string): string | null {
 
 export async function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export function disableButton(
-  element: ParentNode,
-  selector: string,
-  isDisabled: boolean,
-) {
-  const buttons = element.querySelectorAll<HTMLButtonElement>(selector);
-  for (const button of buttons) {
-    button.disabled = isDisabled;
-  }
 }
