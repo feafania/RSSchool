@@ -4,6 +4,8 @@ import { PageType } from "../../../../types/enum";
 import PageRouter from "../../../../router/page-router";
 import authStore from "../../../../store/auth-store";
 import { wsClient } from "../../../../api/websocket";
+import userList from "../../../pages/chat/user-list/user-list";
+import chatInputArea from "../../../pages/chat/chat-area/chat-input-area/chat-input-area";
 
 import renderHeaderUsername from "./header-user-update";
 
@@ -77,6 +79,7 @@ const Header = {
           console.error("Logout error:", error);
         }
       } else {
+        chatInputArea.saveDraft(userList.selectedUser);
         PageRouter.navigateTo(page);
       }
     };
