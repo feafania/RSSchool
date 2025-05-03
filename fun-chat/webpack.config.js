@@ -24,6 +24,7 @@ export default {
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/feafania-JSFEEN2024Q4/fun-chat/",
     clean: true,
   },
   module: {
@@ -69,12 +70,20 @@ export default {
           from: path.resolve(__dirname, "public"),
           to: path.resolve(__dirname, "dist/public"),
           globOptions: {
-            ignore: ["**/index.html"],
+            ignore: ["**/*.html"],
           },
         },
         // { from: path.resolve(__dirname, "src/assets"), to: path.resolve(__dirname, "dist/assets") },
       ],
     }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.resolve(__dirname, "public/404.html"),
+    //       to: path.resolve(__dirname, "dist/404.html"),
+    //     },
+    //   ],
+    // }),
     new ESLintPlugin({
       eslintPath: require.resolve("eslint"), // Цяпер require працуе
       extensions: ["js", "ts", "tsx"],

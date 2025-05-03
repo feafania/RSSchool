@@ -7,6 +7,10 @@ export const API_SETTINGS = {
   BASE_URL: "ws://127.0.0.1",
 };
 
+const isGitHubPages = location.hostname === "rolling-scopes-school.github.io";
+
+export const BASE_PATH = isGitHubPages ? "/feafania-JSFEEN2024Q4/fun-chat" : "";
+
 export const VALIDATION = {
   username: {
     pattern: /^[a-zA-Z0-9]{4,30}$/,
