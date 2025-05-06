@@ -76,14 +76,14 @@ export default {
         // { from: path.resolve(__dirname, "src/assets"), to: path.resolve(__dirname, "dist/assets") },
       ],
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, "public/404.html"),
-    //       to: path.resolve(__dirname, "dist/404.html"),
-    //     },
-    //   ],
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public/404.html"),
+          to: path.resolve(__dirname, "dist/404.html"),
+        },
+      ],
+    }),
     new ESLintPlugin({
       eslintPath: require.resolve("eslint"), // Цяпер require працуе
       extensions: ["js", "ts", "tsx"],
