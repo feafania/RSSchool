@@ -46,6 +46,18 @@ class UserList {
   }
 
   private updateUsers() {
+    if (this.selectedUser && !usersStore.hasUser(this.selectedUser)) {
+      setTimeout(() => {
+        if (this.selectedUser && !usersStore.hasUser(this.selectedUser)) {
+          chatInputArea.cancelEdit();
+          this.selectedUser = undefined;
+          chatHeader.reset();
+          chatMessages.reset();
+          chatMessages.render();
+        }
+      }, 2000);
+    }
+
     const filteredUsers = this.filterUsers();
 
     this.users.innerHTML = "";

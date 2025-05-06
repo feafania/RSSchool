@@ -39,6 +39,10 @@ class UsersStore {
     this.notify();
   }
 
+  hasUser(login: string): boolean {
+    return this._users.has(login);
+  }
+
   private notify() {
     for (const listener of this.listeners) listener();
   }
