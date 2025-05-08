@@ -26,6 +26,7 @@ class ChatInputArea {
     const sendButton = this.renderSendButton();
     chatInputArea.append(chatInputWrapper, sendButton);
     this.restoreDraft(userList.selectedUser);
+    this.updateInputState();
     return chatInputArea;
   }
 
@@ -185,6 +186,7 @@ class ChatInputArea {
       const hasRecipient = Boolean(userList.selectedUser);
       this.sendButton.disabled = !(hasText && hasRecipient);
       this.sendButton.textContent = this.isEditing ? "Save" : "Send";
+      this.chatInput.disabled = !hasRecipient;
 
       const cancelButton = this.chatInput.parentElement?.querySelector(
         ".cancel-edit-button",
