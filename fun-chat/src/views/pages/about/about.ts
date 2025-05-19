@@ -21,7 +21,6 @@ export async function renderAboutView(): Promise<HTMLElement> {
   link.rel = "noopener noreferrer";
   link.textContent = "Author: Tatsiana Kashko";
 
-  // Увесь парадак
   container.append(h2, text, renderTips(), link);
 
   return container;

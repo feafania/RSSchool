@@ -5,6 +5,9 @@ import PageRouter from "../../../router/page-router";
 import { PageType } from "../../../types/enum";
 import usersStore from "../../../store/users-store";
 import showModalMessage from "../../../views/common/elements/modal-window/modal-window";
+import messagesStore from "../../../store/messages-store";
+import chatMessages from "../../../views/pages/chat/chat-area/chat-messages/chat-messages";
+import chatInputArea from "../../../views/pages/chat/chat-area/chat-input-area/chat-input-area";
 
 export default async function userLoginHandler(response: WSRequest<unknown>) {
   if (response.payload && isUserMessage(response)) {
@@ -18,6 +21,9 @@ export default async function userLoginHandler(response: WSRequest<unknown>) {
         authStore.setUser(AuthStore.restoreUser());
         console.info("User successfully logged in:", user.login);
         usersStore.clear();
+        messagesStore.clear();
+        chatMessages.reset();
+        chatInputArea.isEditing = false;
         PageRouter.navigateTo(PageType.chat);
       } else {
         authStore.setUser(undefined);

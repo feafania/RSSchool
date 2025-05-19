@@ -10,9 +10,9 @@ class ChatInputArea {
   public chatInput: HTMLTextAreaElement;
   public sendButton: HTMLButtonElement;
   public editingMessageIds: Record<string, string | undefined> = {};
+  public isEditing: boolean = false;
 
   private messageDrafts: Record<string, string> = {};
-  private isEditing: boolean = false;
 
   constructor() {
     this.chatInput = document.createElement("textarea");
