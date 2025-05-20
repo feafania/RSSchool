@@ -8,6 +8,7 @@ import showModalMessage from "../../../views/common/elements/modal-window/modal-
 import messagesStore from "../../../store/messages-store";
 import chatMessages from "../../../views/pages/chat/chat-area/chat-messages/chat-messages";
 import chatInputArea from "../../../views/pages/chat/chat-area/chat-input-area/chat-input-area";
+import { SETTINGS } from "../../../constants/settings";
 
 export default async function userLoginHandler(response: WSRequest<unknown>) {
   if (response.payload && isUserMessage(response)) {
@@ -28,7 +29,7 @@ export default async function userLoginHandler(response: WSRequest<unknown>) {
       } else {
         authStore.setUser(undefined);
         console.error("Login failed. User not authorized.");
-        showModalMessage("Login failed. Please check your credentials.");
+        showModalMessage(SETTINGS.label.login.loginFailed);
         PageRouter.navigateTo(PageType.login);
       }
     }

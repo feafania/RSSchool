@@ -7,6 +7,7 @@ import createButton from "../../../../common/elements/button";
 import { wsClient } from "../../../../../api/websocket";
 import chatInputArea from "../chat-input-area/chat-input-area";
 import showModalMessage from "../../../../common/elements/modal-window/modal-window";
+import { SETTINGS } from "../../../../../constants/settings";
 
 class ChatMessages {
   public isUnreadLine: boolean | undefined = undefined;
@@ -108,10 +109,7 @@ class ChatMessages {
     this.messageContainer.innerHTML = "";
 
     if (!selectedUser) {
-      this.renderNotice(
-        "chat-notice",
-        "Please select a user to start a conversation.",
-      );
+      this.renderNotice("chat-notice", SETTINGS.label.chat.chatNotice);
       return;
     }
     const messages = [...messagesStore.getUserMessages(selectedUser)].sort(
@@ -120,10 +118,7 @@ class ChatMessages {
         new Date(b.datetime ?? 0).getTime(),
     );
     if (messages.length === 0) {
-      this.renderNotice(
-        "chat-start",
-        "This is the beginning of the conversation.",
-      );
+      this.renderNotice("chat-start", SETTINGS.label.chat.chatStart);
       return;
     }
     this.messageContainer.style.justifyContent = "flex-end";
@@ -293,7 +288,7 @@ class ChatMessages {
     const deleteButton = createButton(
       { name: "🗑️", class: "chat-button" },
       () => {
-        showModalMessage("Delete this message?", {
+        showModalMessage(SETTINGS.label.chat.deleteMessage, {
           showCancel: true,
           onOk: () => {
             const selectedUser = userList.selectedUser;
@@ -321,7 +316,7 @@ class ChatMessages {
   private renderEditNotice() {
     const editingNotice = document.createElement("div");
     editingNotice.className = "editing-notice";
-    editingNotice.textContent = "You are editing this message";
+    editingNotice.textContent = SETTINGS.label.chat.editMessage;
     return editingNotice;
   }
 
@@ -338,7 +333,7 @@ class ChatMessages {
       ) {
         this.unreadLine = document.createElement("div");
         this.unreadLine.className = "chat-unread-line";
-        this.unreadLine.textContent = "Unread messages";
+        this.unreadLine.textContent = SETTINGS.label.chat.unreadMessages;
         this.messageContainer.append(this.unreadLine);
         addedUnreadLine = true;
       }

@@ -5,6 +5,7 @@ import { VALIDATION } from "../../../constants";
 import showModalMessage from "../../common/elements/modal-window/modal-window";
 import { wsClient } from "../../../api/websocket";
 import { UserType } from "../../../types/interfaces";
+import { SETTINGS } from "../../../constants/settings";
 
 const LoginView = {
   async render(): Promise<HTMLElement> {
@@ -14,7 +15,7 @@ const LoginView = {
 
     const h2 = document.createElement("h2");
     h2.className = "login-title";
-    h2.textContent = "Authentication";
+    h2.textContent = SETTINGS.label.login.title;
 
     const form = document.createElement("form");
     form.className = "login-form";
@@ -32,9 +33,9 @@ const LoginView = {
   renderLogin(): HTMLElement {
     return createInput({
       type: "text",
-      label: "Login",
+      label: SETTINGS.label.login.name,
       name: "username",
-      placeholder: "Enter your name...",
+      placeholder: SETTINGS.label.login.namePlaceholder,
       id: "username",
       class: "login-input",
       // required: true,
@@ -45,9 +46,9 @@ const LoginView = {
   renderPassword(): HTMLElement {
     return createInput({
       type: "password",
-      label: "Password",
+      label: SETTINGS.label.login.password,
       name: "password",
-      placeholder: "Enter your password...",
+      placeholder: SETTINGS.label.login.passwordPlaceholder,
       id: "password",
       class: "password-input",
       // required: true,
@@ -57,7 +58,7 @@ const LoginView = {
 
   renderSubmit(): HTMLElement {
     return createButton({
-      name: "Submit",
+      name: SETTINGS.label.login.submit,
       id: "submit-login",
       class: "submit-login-button",
     });
@@ -76,25 +77,25 @@ const LoginView = {
     const passwordInput = form.querySelector<HTMLInputElement>("#password");
 
     if (!login) {
-      showModalMessage("Please enter your username.");
+      showModalMessage(SETTINGS.label.login.enterUsername);
       loginInput?.focus();
       return;
     }
 
     if (!VALIDATION.username.pattern.test(login)) {
-      showModalMessage("Username is invalid. Please follow the rules.");
+      showModalMessage(SETTINGS.label.login.invalidUsername);
       loginInput?.focus();
       return;
     }
 
     if (!password) {
-      showModalMessage("Please enter your password.");
+      showModalMessage(SETTINGS.label.login.enterPassword);
       passwordInput?.focus();
       return;
     }
 
     if (!VALIDATION.password.pattern.test(password)) {
-      showModalMessage("Password is invalid. Please follow the rules.");
+      showModalMessage(SETTINGS.label.login.invalidPassword);
       passwordInput?.focus();
       return;
     }

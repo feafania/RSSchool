@@ -19,3 +19,8 @@ export enum MessageVariant {
   MSG_DELETE = "MSG_DELETE",
   MSG_EDIT = "MSG_EDIT",
 }
+
+export enum NotificationPermission {
+  granted = "granted",
+  default = "default",
+}

@@ -2,6 +2,7 @@ import { ChatMessage, WSRequest } from "../../../types/interfaces";
 import { isChatMessage } from "../../../utils/ws-guards";
 import authStore from "../../../store/auth-store";
 import messagesStore from "../../../store/messages-store";
+import { NotificationPermission } from "../../../types/enum";
 
 export default function receiveMessageHandler(response: WSRequest<unknown>) {
   if (response.payload && isChatMessage(response)) {
@@ -17,7 +18,7 @@ export default function receiveMessageHandler(response: WSRequest<unknown>) {
     messagesStore.addMessage(login, message);
     if (
       document.hidden &&
-      Notification.permission === "granted" &&
+      Notification.permission === NotificationPermission.granted &&
       message.id === null
     ) {
       new Notification(`${message.from}: ${message.text ?? ""}`);

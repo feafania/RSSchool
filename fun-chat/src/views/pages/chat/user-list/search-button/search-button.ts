@@ -1,6 +1,7 @@
 import "./search-button.css";
 import createInput from "../../../../common/elements/input";
 import createButton from "../../../../common/elements/button";
+import { SETTINGS } from "../../../../../constants/settings";
 
 class SearchBar {
   public searchInput: HTMLInputElement;
@@ -25,7 +26,7 @@ class SearchBar {
   private renderInput(): HTMLDivElement {
     const searchInputGroupe = createInput({
       type: "text",
-      placeholder: "Search user...",
+      placeholder: SETTINGS.label.chat.search,
       class: "search-input",
     });
     const searchInput = searchInputGroupe.querySelector(

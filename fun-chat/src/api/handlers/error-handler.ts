@@ -3,6 +3,7 @@ import { isErrorMessage } from "../../utils/ws-guards";
 import { wsClient } from "../websocket";
 import showModalMessage from "../../views/common/elements/modal-window/modal-window";
 import authStore from "../../store/auth-store";
+import { SETTINGS } from "../../constants/settings";
 
 const incorrectLoginErrors = new Set([
   "incorrect password",
@@ -26,36 +27,39 @@ const requestStructureErrors = new Set([
   "incorrect type parameters",
   "incorrect payload parameters",
 ]);
+const anotherUserError =
+  "another user is already authorized in this connection";
+const userAuthorized = "a user with this login is already authorized";
 
 export default function errorHandler(response: WSRequest<unknown>) {
   if (response.payload && isErrorMessage(response)) {
     const error = response.payload.error as string;
     // console.error("Error:", error);
 
-    if (error === "another user is already authorized in this connection") {
-      showModalMessage("Another user is already authorized.");
+    if (error === anotherUserError) {
+      showModalMessage(SETTINGS.label.errors.anotherUserAuthorized);
       wsClient.close();
-    } else if (error === "a user with this login is already authorized") {
+    } else if (error === userAuthorized) {
       if (wsClient.isLoggingOut || !authStore.user) {
-        showModalMessage("A user with this login is already connected.");
+        showModalMessage(SETTINGS.label.errors.userConnected);
         wsClient.close();
       }
     } else if (incorrectLoginErrors.has(error)) {
-      showModalMessage("Incorrect login or password.");
+      showModalMessage(SETTINGS.label.errors.incorrectLogin);
       wsClient.close();
     } else if (loginErrors.has(error)) {
-      showModalMessage("Authorization error. Please log in again.");
+      showModalMessage(SETTINGS.label.errors.authorization);
       wsClient.close();
     } else if (invalidRecipientErrors.has(error)) {
-      showModalMessage("Invalid recipient user.");
+      showModalMessage(SETTINGS.label.errors.invalidRecipient);
     } else if (messageProcessingErrors.has(error)) {
       console.warn("Message processing error. Possibly outdated.");
     } else if (requestStructureErrors.has(error)) {
       console.error("Request structure error. Possible bug.");
     } else if (error === "internal server error") {
-      showModalMessage("Internal server error. Please try again later.");
+      showModalMessage(SETTINGS.label.errors.internalServer);
     } else {
-      showModalMessage(`Unknown error: ${error}`);
+      showModalMessage(`${SETTINGS.label.errors.unknown}: ${error}`);
     }
   } else {
     console.error("Invalid message format: no error in payload");

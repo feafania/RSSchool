@@ -5,6 +5,7 @@ import createButton from "../../../../common/elements/button";
 import userList from "../../user-list/user-list";
 import { wsClient } from "../../../../../api/websocket";
 import chatMessages from "../chat-messages/chat-messages";
+import { SETTINGS } from "../../../../../constants/settings";
 
 class ChatInputArea {
   public chatInput: HTMLTextAreaElement;
@@ -78,7 +79,7 @@ class ChatInputArea {
   private renderChatInput(): HTMLDivElement {
     const chatInputWrapper = createInput({
       type: "textarea",
-      placeholder: "Type your message...",
+      placeholder: SETTINGS.label.chat.inputPlaceholder,
       class: "chat-input",
     });
     const chatInput = chatInputWrapper.querySelector("textarea");
@@ -97,7 +98,7 @@ class ChatInputArea {
 
   private renderSendButton(): HTMLButtonElement {
     this.sendButton = createButton({
-      name: "Send",
+      name: SETTINGS.label.chat.sendButton,
       class: "send-button",
       disabled: true,
     });
@@ -110,7 +111,7 @@ class ChatInputArea {
       name: "✕",
       class: "cancel-edit-button",
     });
-    cancelButton.title = "Cancel editing";
+    cancelButton.title = SETTINGS.label.chat.cancelButton;
     cancelButton.style.display = this.isEditing ? "inline-block" : "none";
     cancelButton.addEventListener("click", (event) => {
       event.preventDefault();
@@ -158,12 +159,14 @@ class ChatInputArea {
       return;
     }
     const lineHeight =
-      Number.parseInt(getComputedStyle(this.chatInput).lineHeight) || 20;
+      Number.parseInt(getComputedStyle(this.chatInput).lineHeight) ||
+      SETTINGS.lineHeight;
     const paddingY =
       Number.parseInt(getComputedStyle(this.chatInput).paddingTop) +
-        Number.parseInt(getComputedStyle(this.chatInput).paddingBottom) || 16;
+        Number.parseInt(getComputedStyle(this.chatInput).paddingBottom) ||
+      SETTINGS.paddingY;
     const singleLineHeight = lineHeight + paddingY;
-    const maxHeight = lineHeight * 3 + paddingY;
+    const maxHeight = lineHeight * SETTINGS.maxHeightLines + paddingY;
 
     this.chatInput.style.height = "auto"; // reset height
     const newHeight = this.chatInput.scrollHeight;
@@ -185,7 +188,9 @@ class ChatInputArea {
       const hasText = this.chatInput.value.trim() !== "";
       const hasRecipient = Boolean(userList.selectedUser);
       this.sendButton.disabled = !(hasText && hasRecipient);
-      this.sendButton.textContent = this.isEditing ? "Save" : "Send";
+      this.sendButton.textContent = this.isEditing
+        ? SETTINGS.label.chat.saveButton
+        : SETTINGS.label.chat.sendButton;
       this.chatInput.disabled = !hasRecipient;
 
       const cancelButton = this.chatInput.parentElement?.querySelector(

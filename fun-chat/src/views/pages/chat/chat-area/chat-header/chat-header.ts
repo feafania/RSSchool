@@ -1,5 +1,6 @@
 import "./chat-header.css";
 import { UserType } from "../../../../../types/interfaces";
+import { SETTINGS } from "../../../../../constants/settings";
 
 class ChatHeader {
   private headerElement: HTMLDivElement;
@@ -36,7 +37,9 @@ class ChatHeader {
       this.userStatusSpan.textContent = "";
     } else {
       this.usernameSpan.textContent = user.login;
-      this.userStatusSpan.textContent = user.isLogined ? "online" : "offline";
+      this.userStatusSpan.textContent = user.isLogined
+        ? SETTINGS.label.chat.online
+        : SETTINGS.label.chat.offline;
 
       if (user.isLogined) {
         this.userStatusSpan.classList.remove("inactive");

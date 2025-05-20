@@ -6,6 +6,7 @@ import messagesStore from "../../../../store/messages-store";
 import chatHeader from "../chat-area/chat-header/chat-header";
 import chatMessages from "../chat-area/chat-messages/chat-messages";
 import chatInputArea from "../chat-area/chat-input-area/chat-input-area";
+import { SETTINGS } from "../../../../constants/settings";
 
 import searchBar from "./search-button/search-button";
 
@@ -70,7 +71,7 @@ class UserList {
     if (filteredUsers.length === 0) {
       const noResult = document.createElement("li");
       noResult.className = "user user-text user-empty";
-      noResult.textContent = "No users found.";
+      noResult.textContent = SETTINGS.label.chat.noUsers;
       this.users.append(noResult);
     }
   }

@@ -1,15 +1,12 @@
 import "./footer.css";
 import logoUrl from "../../../../assets/svg/rs-school-logo.svg";
+import createGithubLinkElement from "../../elements/github-link";
 
 function createGithubLink() {
   const githubElement = document.createElement("div");
   githubElement.className = "github";
 
-  const githubLink = document.createElement("a");
-  githubLink.className = "github-link";
-  githubLink.target = "_blank";
-  githubLink.href = "https://github.com/feafania";
-  githubLink.rel = "noopener noreferrer";
+  const githubLink = createGithubLinkElement("github-link");
   githubElement.append(githubLink);
 
   const githubFa = document.createElement("i");

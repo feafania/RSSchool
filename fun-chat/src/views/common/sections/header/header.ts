@@ -6,6 +6,7 @@ import authStore from "../../../../store/auth-store";
 import { wsClient } from "../../../../api/websocket";
 import userList from "../../../pages/chat/user-list/user-list";
 import chatInputArea from "../../../pages/chat/chat-area/chat-input-area/chat-input-area";
+import { SETTINGS } from "../../../../constants/settings";
 
 import renderHeaderUsername from "./header-user-update";
 
@@ -18,7 +19,7 @@ const Header = {
 
     const title = document.createElement("h1");
     title.className = "title";
-    title.textContent = "Fun Chat";
+    title.textContent = SETTINGS.label.title;
 
     const username = document.createElement("h1");
     username.className = "header-username";
@@ -61,17 +62,29 @@ const Header = {
     const isLoggedIn = Boolean(authStore.user);
 
     const links: NavType[] = [
-      { label: "Sign In", page: PageType.login, visible: !isLoggedIn },
-      { label: "Chat", page: PageType.chat, visible: isLoggedIn },
-      { label: "About", page: PageType.about, visible: true },
-      { label: "Sign Out", page: PageType.login, visible: isLoggedIn },
+      {
+        label: SETTINGS.label.nav.signIn,
+        page: PageType.login,
+        visible: !isLoggedIn,
+      },
+      {
+        label: SETTINGS.label.nav.chat,
+        page: PageType.chat,
+        visible: isLoggedIn,
+      },
+      { label: SETTINGS.label.nav.about, page: PageType.about, visible: true },
+      {
+        label: SETTINGS.label.nav.signOut,
+        page: PageType.login,
+        visible: isLoggedIn,
+      },
     ];
     return links;
   },
 
   onClick(label: string, page: PageType) {
     return async () => {
-      if (label === "Sign Out" && authStore.user) {
+      if (label === SETTINGS.label.nav.signOut && authStore.user) {
         try {
           await wsClient.logout(authStore.user);
         } catch (error) {

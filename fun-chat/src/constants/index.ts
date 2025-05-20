@@ -1,5 +1,7 @@
 import { ValidationType } from "../types/types";
 
+import { SETTINGS } from "./settings";
+
 export const VIEW_CONTAINER_NAME = "view-container";
 
 export const API_SETTINGS = {
@@ -14,14 +16,10 @@ export const BASE_PATH = isGitHubPages ? "/feafania-JSFEEN2024Q4/fun-chat" : "";
 export const VALIDATION = {
   username: {
     pattern: /^[a-zA-Z0-9]{4,30}$/,
-    message:
-      "Username must be between 4 and 30 characters long " +
-      "and contain only letters of Latin alphabet and numbers.",
+    message: SETTINGS.label.login.validateUsername,
   } as ValidationType,
   password: {
     pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{6,}$/,
-    message:
-      "Password must be at least 6 characters long " +
-      "and include at least one number and one uppercase letter.",
+    message: SETTINGS.label.login.validatePassword,
   } as ValidationType,
 };

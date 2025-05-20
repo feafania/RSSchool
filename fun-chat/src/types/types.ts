@@ -1,3 +1,5 @@
+import translations from "../constants/interfaces";
+
 import { ChatMessage, WSRequest } from "./interfaces";
 import { MessageVariant } from "./enum";
 
@@ -10,3 +12,5 @@ export type MessageHandlerType = Partial<
 export type StatusKeys = keyof NonNullable<ChatMessage["status"]>;
 
 export type Listener = () => void;
+
+export type LanguageCode = keyof typeof translations;
