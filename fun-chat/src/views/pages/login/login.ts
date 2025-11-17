@@ -1,0 +1,108 @@
+import "./login.css";
+import createInput from "../../common/elements/input";
+import createButton from "../../common/elements/button";
+import { VALIDATION } from "../../../constants";
+import showModalMessage from "../../common/elements/modal-window/modal-window";
+import { wsClient } from "../../../api/websocket";
+import { UserType } from "../../../types/interfaces";
+import { SETTINGS } from "../../../constants/settings";
+
+const LoginView = {
+  async render(): Promise<HTMLElement> {
+    const container = document.createElement("div");
+    container.id = "login";
+    container.className = "view login-view";
+
+    const h2 = document.createElement("h2");
+    h2.className = "login-title";
+    h2.textContent = SETTINGS.label.login.title;
+
+    const form = document.createElement("form");
+    form.className = "login-form";
+    form.append(this.renderLogin(), this.renderPassword(), this.renderSubmit());
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.onSubmit(event);
+    });
+
+    container.append(h2, form);
+    return container;
+  },
+
+  renderLogin(): HTMLElement {
+    return createInput({
+      type: "text",
+      label: SETTINGS.label.login.name,
+      name: "username",
+      placeholder: SETTINGS.label.login.namePlaceholder,
+      id: "username",
+      class: "login-input",
+      // required: true,
+      validation: VALIDATION.username,
+    });
+  },
+
+  renderPassword(): HTMLElement {
+    return createInput({
+      type: "password",
+      label: SETTINGS.label.login.password,
+      name: "password",
+      placeholder: SETTINGS.label.login.passwordPlaceholder,
+      id: "password",
+      class: "password-input",
+      // required: true,
+      validation: VALIDATION.password,
+    });
+  },
+
+  renderSubmit(): HTMLElement {
+    return createButton({
+      name: SETTINGS.label.login.submit,
+      id: "submit-login",
+      class: "submit-login-button",
+    });
+  },
+
+  async onSubmit(event: SubmitEvent) {
+    console.log("Login form submitted");
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const login = (formData.get("username") as string)?.trim();
+    const password = (formData.get("password") as string)?.trim();
+
+    const loginInput = form.querySelector<HTMLInputElement>("#username");
+    const passwordInput = form.querySelector<HTMLInputElement>("#password");
+
+    if (!login) {
+      showModalMessage(SETTINGS.label.login.enterUsername);
+      loginInput?.focus();
+      return;
+    }
+
+    if (!VALIDATION.username.pattern.test(login)) {
+      showModalMessage(SETTINGS.label.login.invalidUsername);
+      loginInput?.focus();
+      return;
+    }
+
+    if (!password) {
+      showModalMessage(SETTINGS.label.login.enterPassword);
+      passwordInput?.focus();
+      return;
+    }
+
+    if (!VALIDATION.password.pattern.test(password)) {
+      showModalMessage(SETTINGS.label.login.invalidPassword);
+      passwordInput?.focus();
+      return;
+    }
+
+    const user: UserType = { login, password };
+    await wsClient.login(user);
+  },
+};
+
+export default LoginView;
