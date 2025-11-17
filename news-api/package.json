@@ -1,0 +1,51 @@
+{
+    "name": "NewsJS",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+        "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
+        "start:chrome": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Google Chrome' http://localhost:8080",
+        "start:edge": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Microsoft Edge' http://localhost:8080",
+        "start:opera": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Opera' http://localhost:8080",
+        "start:safari": "webpack serve --config ./webpack.config.js --env mode=dev & open -a 'Safari' http://localhost:8080",
+        "build": "webpack --config ./webpack.config.js --env mode=prod",
+        "lint": "ESLINT_USE_FLAT_CONFIG=false TIMING=1 eslint . --ext .ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [],
+    "author": "Aleh Serhiyenia",
+    "license": "ISC",
+    "homepage": "",
+    "devDependencies": {
+        "@eslint/compat": "^1.2.7",
+        "@eslint/eslintrc": "^3.3.0",
+        "@eslint/js": "^9.22.0",
+        "@typescript-eslint/eslint-plugin": "^8.26.1",
+        "@typescript-eslint/parser": "^8.26.1",
+        "clean-webpack-plugin": "^4.0.0",
+        "copy-webpack-plugin": "^12.0.2",
+        "css-loader": "^6.10.0",
+        "dotenv-webpack": "^8.1.0",
+        "eslint": "^9.22.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.8.6",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-prettier": "^5.2.3",
+        "eslint-webpack-plugin": "^5.0.0",
+        "globals": "^16.0.0",
+        "html-webpack-plugin": "^5.6.0",
+        "prettier": "3.2.5",
+        "style-loader": "^3.3.4",
+        "ts-loader": "^9.5.2",
+        "typescript": "^5.8.2",
+        "typescript-eslint": "^8.26.1",
+        "webpack": "^5.90.1",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.0.0",
+        "webpack-merge": "^5.10.0"
+    }
+}
