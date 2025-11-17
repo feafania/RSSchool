@@ -1,0 +1,145 @@
+/* Gifts start*/
+.gifts-section-background {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 60px 8px;
+    background-color: var(--primary);
+    background-image: url(../assets/img/bg-garland.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center top;
+}
+
+.gifts-section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.gifts__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 426px;
+    text-align: center;
+    color: var(--static-white);
+
+    @media (max-width: 426px) {
+        max-width: 100%;
+    }
+}
+
+.gifts__tab {
+    color: var(--static-white);
+}
+
+.gifts__tab-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    @media (max-width: 656px) {
+        gap: 0;
+    }
+}
+
+.gifts__tab-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    background: inherit;
+    transition: background 0.3s ease;
+    @media (max-width: 656px) {
+        padding: 12px 8px;
+    }
+}
+
+.gifts__tab-item:active {
+    background: var(--static-white-20);
+}
+
+@media (hover: hover) {
+    .gifts__tab-item:hover {
+        background: var(--static-white-20);
+    }
+}
+
+.gifts__tab-item.inactive {
+    background: var(--static-white-20);
+    pointer-events: none;
+    cursor: default;
+}
+
+.gifts-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 3fr;
+    gap: 12px;
+    justify-content: center;
+    align-items: start;
+
+    @media (656px < width <= 1300px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    @media (max-width: 656px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(12, 1fr);
+    }
+}
+
+/* Gifts end*/
+
+/* Arrow button start */
+
+.arrow-button.arrow-button-up {
+    display: none;
+    border: 1px solid var(--primary);
+    border-radius: 100px;
+    background: var(--static-white);
+    stroke: var(--primary);
+    transition: opacity 0.3s;
+    opacity: 0;
+
+    @media (max-width: 768px) {
+        display: flex;
+        position: fixed;
+        bottom: 8px;
+        right: 8px;
+    }
+}
+
+/* Arrow button end */
+
+@media (max-width: 370px) {
+    * {
+        flex-wrap: wrap !important;
+    }
+
+    img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media (max-width: 200px) {
+    * {
+        border-radius: 3px !important;
+        margin: 0 auto !important;
+        padding: 1px !important;
+    }
+}
