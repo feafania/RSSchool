@@ -2,7 +2,6 @@
 .idea/
 .DS_Store
 .gitignore
-news-api/dist
 
 # Logs
 logs
@@ -108,3 +107,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+package-lock.json

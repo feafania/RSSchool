@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Christmas shop. Gifts</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/gifts.css">
+    <link rel="icon" href="assets/img/santa-claus/favicon.ico">
+    <script src="js/data.js" defer></script>
+    <script src="js/gifts.js" defer></script>
+    <script src="js/module.js" defer></script>
+
+</head>
+<body>
+<div class="overlay"></div>
+<header>
+    <div class="container header-container-fixed"></div>
+    <div class="container header-container">
+        <div class="header-section">
+            <div class="wrapper">
+                <div class="header-section-background">
+                    <div class="section-wrapper">
+                        <div class="header-section-wrapper">
+                            <div class="header-element action-small">
+                                <div class="header-logo" onclick="window.location.href='index.html'">
+                                    <img src="assets/svg/snowflake.svg" alt="Snowflake logo" class="header-logo__img">
+                                    <span class="header-logo__text">
+                                     the gifts
+                                </span>
+                                </div>
+                                <div class="header-element__burger-menu burger-menu">
+                                    <div class="header-element__burger-menu-line burger-menu-line burger-menu-line-one"></div>
+                                    <div class="header-element__burger-menu-line burger-menu-line burger-menu-line-two"></div>
+                                </div>
+                                <nav class="header-element__nav-menu nav-menu">
+                                    <ul class="header-element__nav-list">
+                                        <li id="gifts" class="header-element__nav-menu-item nav-menu-item">
+                                            <a href="gifts.html" class="header-element__nav-menu-link">gifts</a>
+                                        </li>
+                                        <li class="header-element__nav-menu-item nav-menu-item">
+                                            <a href="index.html#about" class="header-element__nav-menu-link">about</a>
+                                        </li>
+                                        <li class="header-element__nav-menu-item nav-menu-item">
+                                            <a href="index.html#best" class="header-element__nav-menu-link">best</a>
+                                        </li>
+                                        <li class="header-element__nav-menu-item nav-menu-item">
+                                            <a href="#contacts" class="header-element__nav-menu-link">contacts</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container main-container">
+        <section class="gifts-section">
+            <div class="wrapper">
+                <div class="gifts-section-background">
+                    <div class="section-wrapper">
+                        <div class="gifts-section-wrapper">
+                            <h1 class="gifts__header">
+                                Achieve health, harmony, and inner strength
+                            </h1>
+                            <nav class="gifts__tab">
+                                <ul class="gifts__tab-list action-small">
+                                    <li class="gifts__tab-item" data-category="">All</li>
+                                    <li class="gifts__tab-item" data-category="For Work">for work</li>
+                                    <li class="gifts__tab-item" data-category="For Health">for health</li>
+                                    <li class="gifts__tab-item" data-category="For Harmony">for harmony</li>
+                                </ul>
+                            </nav>
+                            <div class="gifts-container cards-container">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <button class="arrow-button arrow-button-up">
+        <svg class="arrow-button__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19"/>
+            <path d="M18 11L12 5"/>
+            <path d="M6 11L12 5"/>
+        </svg>
+    </button></main>
+<div id="footer-placeholder"></div>
+</body>
+</html>
