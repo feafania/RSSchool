@@ -1,0 +1,314 @@
+/*color     */
+
+* {
+    box-sizing: border-box;
+    border: none;
+    /* border: 1px solid red;*/
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    /* font use */
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.wrapper {
+    max-width: 1280px;
+
+    @media (max-width: 1279px) {
+        max-width: 768px;
+    }
+
+    @media (max-width: 767px) {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
+.pets-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pets-container_wrapper {
+    width: 100%;
+    max-width: 1280px;
+    min-height: 120px;
+
+    @media (max-width: 1279px) {
+        width: 100%;
+        max-width: 768px;
+        height: auto; /* Height adjusts automatically */
+    }
+
+    @media (max-width: 767px) {
+        max-width: 320px;
+    }
+}
+
+.pets-container-header {
+    max-width: 1200px;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 1279px) {
+        max-width: 708px;
+    }
+
+    @media (max-width: 767px) {
+        max-width: 280px;
+    }
+}
+.pets-container-header__item {
+    /*flex: 1;*/
+}
+
+.pets-container-header__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0;
+}
+
+.pets-container-header__logo_link {
+    text-decoration: none;
+    color: inherit;
+    transition: cursor 0.3s ease;
+}
+
+.pets-container-header__logo-title {
+    min-height: 35px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.pets-container-header__logo-subtitle {
+    min-height: 15px;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--color-dark-3xl);
+    text-align: left;
+    padding-left: 4px;
+}
+.pets-container-header__navigation {
+    min-height: 27px;
+    min-width: 443px;
+    width: 100%;
+    float: right;
+    position: inherit;
+
+    @media (max-width: 767px) {
+        display: block;
+        transition: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        min-width: 320px;
+        width: 320px;
+        height: 100vh;
+        float: none;
+        margin-top: 4px;
+        background-color: white;
+        z-index: 900; /* on top */
+        transition: right 0.3s ease, opacity 0.3s ease;
+    }
+}
+
+.pets-container-header__navigation.active {
+    @media (max-width: 767px) {
+        right: 0;
+    }
+}
+
+
+.pets-container-header__link {
+    background: none;
+    @media (max-width: 767px) {
+        margin: 20px 0;
+    }
+}
+
+.pets-container-header__menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.pets-container-header__link_a {
+    text-decoration: none;
+    color: var(--color-dark-l);
+    transition: color 0.3s ease, cursor 0.3s ease;
+    @media (max-width: 767px) {
+        font-size: 32px;
+    }
+}
+
+.pets-container-header__link_a:active {
+    color: var(--color-dark-l);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.pets-container-header__link_a:hover {
+    color: var(--color-dark-3xl);
+    cursor: pointer;
+}
+
+.pets-container-header__link_a.inactive {
+    color: var(--color-dark-l);
+    /* pointer-events: none;*/
+    cursor: default;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.pets-container-header__burger-menu-line {
+    border: 2px solid #000;
+}
+
+.section-pets {
+    width: 100%;
+    min-height: 1342px;
+    background: var(--color-light-l);
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 1279px) {
+        min-height: 1733px;
+        padding-top: 0;
+    }
+    @media (max-width: 767px) {
+        min-height: 1649px;
+    }
+}
+
+.section-pets_wrapper {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 1162px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 1279px) {
+        max-width: 708px;
+        min-height: 1603px;
+        margin-top: 50px;
+        margin-bottom: 80px;
+        justify-content: end;
+    }
+
+    @media (max-width: 767px) {
+        max-width: 300px;
+        min-height: 1565px;
+        margin-top: 46px;
+        margin-bottom: 38px;
+    }
+}
+
+.section-pets__header {
+    width: 100%;
+    max-width: 400px;
+    min-height: 90px;
+    text-align: center;
+
+    @media (max-width: 1279px) {
+        margin-bottom: 30px;
+    }
+
+    @media (max-width: 767px) {
+        min-height: 64px;
+        margin-bottom: 40px;
+    }
+}
+
+.section-pets_card-container {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 930px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    transition: transform 0.5s ease;
+
+    @media (max-width: 1279px) {
+        max-width: 580px;
+        min-height: 1365px;
+        margin-bottom: 35px;
+        justify-items: flex-end;
+        justify-content: center;
+        row-gap: 30px;
+        column-gap: 40px;
+    }
+
+    @media (max-width: 767px) {
+        max-width: 270px;
+        margin-bottom: 45px;
+    }
+}
+
+.section-pets__paginator {
+    width: 100%;
+    max-width: 340px;
+    min-height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s ease;
+
+    @media (max-width: 767px) {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1279px) {
+    #card7, #card8
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    #card4, #card5, #card6
+    {
+        display: none;
+    }
+}
