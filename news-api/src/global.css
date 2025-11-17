@@ -1,0 +1,237 @@
+:root {
+    --main-color: #ffffff;
+    --main-background: #17181c;
+    --main-color-header: #000000;
+    --main-color-header-hover: #555;
+    --main-background-header: rgba(255, 255, 255, 0.81);
+}
+
+* {
+    box-sizing: border-box;
+    border: none;
+    /*border: 1px solid red;*/
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--main-color);
+    background: var(--main-background);
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    color: var(--main-color-header);
+    background: var(--main-background-header);
+}
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    text-align: center;
+    @media (max-width: 768px) {
+        padding: 10px 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+header h1 {
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: 800;
+}
+
+.header-search {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 350px;
+    margin-right: 10px;
+    height: 40px;
+    @media (max-width: 768px) {
+        margin: auto;
+    }
+    @media (max-width: 480px) {
+        width: 250px;
+    }
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+
+.search-input {
+    display: block;
+    flex: 1;
+    padding: 10px;
+    border: 3px solid rgb(39, 91, 108,  0.5);
+    box-shadow: 0 0 5px rgb(39, 91, 108,  0.5);
+    width: 350px;
+    font-size: 0.8em;
+    outline: none;/* Removing the outline at focus */
+    border-radius: 50px;
+    transition: all 0.3s ease;
+
+    @media (max-width: 480px) {
+        width: 250px;
+    }
+}
+.search-input.active {
+    border: 1px solid rgba(180, 180, 180, 0.5);
+    box-shadow: none;
+}
+.clear-button {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    padding: 0;
+    margin: 0;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5); /* Cross icon color */
+    display: flex;
+    transition: all 0.3s ease;
+    place-items: center;
+}
+
+@-moz-document url-prefix() {
+    .clear-button {
+        transform: translateY(-60%); /* Firefox-specific style */
+    }
+}
+
+.clear-button:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+.search-button {
+    display: inline-block;
+    flex: 0;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    border-radius: 0 50px 50px 0;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover,
+.search-button.active
+{
+    color: rgb(41, 172, 214);
+}
+
+
+main {
+    flex-grow: 1;
+}
+.container-main {
+    padding: 20px;
+}
+
+.sources {
+    overflow-x: scroll;
+}
+
+footer {
+    color: var(--main-color-header);
+    background: var(--main-background-header);
+}
+
+.container-footer {
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.copyright {
+    font-size: 14px;
+    color: #333;
+    @media (max-width: 768px) {
+        font-size: 0.8rem;
+    }
+}
+.copyright a {
+    color: #444;
+}
+.copyright a:hover {
+    color: var(--main-color-header-hover);
+}
+.copyright:before {
+    content: '©';
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 80px;
+    align-items: center;
+    padding: 10px 20px;
+
+     @media (max-width: 480px) {
+         padding: 10px 15px;
+    }
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--main-color-header);
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: var(--main-color-header-hover);
+}
+
+.footer__rsschool {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: right;
+
+}
+
+.footer-rsschool-logo {
+    width: 100px;
+    max-width: 100%;
+    @media (max-width: 500px) {
+        width: 60px;
+    }
+}
