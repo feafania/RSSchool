@@ -1,0 +1,15 @@
+.garage-view {
+  color: var(--main-color);
+}
+
+.garage-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.garage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid var(--border-color);
+}
